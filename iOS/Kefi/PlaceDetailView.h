@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PlaceDetailView.h
 //  Kefi
 //
 //  Created by Gal Oshri on 4/5/14.
@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Place.h"
 
-@interface ViewController : UIViewController
+@interface PlaceDetailView : UIViewController
+
+@property (nonatomic, strong) Place *place;
 
 @end

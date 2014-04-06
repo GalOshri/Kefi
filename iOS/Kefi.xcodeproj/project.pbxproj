@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D4F49F918F09CBC00F901AE /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */; };
+		0D4F49FC18F0ACA000F901AE /* PlaceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F49FB18F0ACA000F901AE /* PlaceListView.m */; };
+		0D4F4A0018F0AD8100F901AE /* PlaceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F49FF18F0AD8100F901AE /* PlaceList.m */; };
+		0D4F4A0318F0ADF700F901AE /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4A0218F0ADF700F901AE /* Place.m */; };
+		0D4F4A0918F0B66A00F901AE /* PlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4A0818F0B66A00F901AE /* PlaceCell.m */; };
+		0D4F4A0D18F0B78100F901AE /* bar_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F4A0C18F0B78100F901AE /* bar_64.png */; };
 		0D727EA318F099F1008310FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D727EA218F099F1008310FC /* Foundation.framework */; };
 		0D727EA518F099F1008310FC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D727EA418F099F1008310FC /* CoreGraphics.framework */; };
 		0D727EA718F099F1008310FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D727EA618F099F1008310FC /* UIKit.framework */; };
@@ -14,13 +20,15 @@
 		0D727EAF18F099F1008310FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D727EAE18F099F1008310FC /* main.m */; };
 		0D727EB318F099F1008310FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D727EB218F099F1008310FC /* AppDelegate.m */; };
 		0D727EB618F099F1008310FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D727EB418F099F1008310FC /* Main.storyboard */; };
-		0D727EB918F099F1008310FC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D727EB818F099F1008310FC /* ViewController.m */; };
 		0D727EBB18F099F1008310FC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D727EBA18F099F1008310FC /* Images.xcassets */; };
 		0D727EC218F099F2008310FC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D727EC118F099F2008310FC /* XCTest.framework */; };
 		0D727EC318F099F2008310FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D727EA218F099F1008310FC /* Foundation.framework */; };
 		0D727EC418F099F2008310FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D727EA618F099F1008310FC /* UIKit.framework */; };
 		0D727ECC18F099F2008310FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D727ECA18F099F2008310FC /* InfoPlist.strings */; };
 		0D727ECE18F099F2008310FC /* KefiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D727ECD18F099F2008310FC /* KefiTests.m */; };
+		0D81466418F0E3670072702B /* KefiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466318F0E3660072702B /* KefiService.m */; };
+		0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466618F10DD90072702B /* PlaceDetailView.m */; };
+		0D81466D18F1259F0072702B /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466C18F1259F0072702B /* SearchView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +42,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
+		0D4F49FA18F0ACA000F901AE /* PlaceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceListView.h; sourceTree = "<group>"; };
+		0D4F49FB18F0ACA000F901AE /* PlaceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceListView.m; sourceTree = "<group>"; };
+		0D4F49FE18F0AD8100F901AE /* PlaceList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceList.h; sourceTree = "<group>"; };
+		0D4F49FF18F0AD8100F901AE /* PlaceList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceList.m; sourceTree = "<group>"; };
+		0D4F4A0118F0ADF700F901AE /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		0D4F4A0218F0ADF700F901AE /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		0D4F4A0718F0B66A00F901AE /* PlaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceCell.h; sourceTree = "<group>"; };
+		0D4F4A0818F0B66A00F901AE /* PlaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceCell.m; sourceTree = "<group>"; };
+		0D4F4A0C18F0B78100F901AE /* bar_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_64.png; sourceTree = "<group>"; };
 		0D727E9F18F099F1008310FC /* Kefi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kefi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D727EA218F099F1008310FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D727EA418F099F1008310FC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -45,14 +63,18 @@
 		0D727EB118F099F1008310FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0D727EB218F099F1008310FC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0D727EB518F099F1008310FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0D727EB718F099F1008310FC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		0D727EB818F099F1008310FC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		0D727EBA18F099F1008310FC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0D727EC018F099F2008310FC /* KefiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KefiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D727EC118F099F2008310FC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0D727EC918F099F2008310FC /* KefiTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KefiTests-Info.plist"; sourceTree = "<group>"; };
 		0D727ECB18F099F2008310FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0D727ECD18F099F2008310FC /* KefiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KefiTests.m; sourceTree = "<group>"; };
+		0D81466218F0E3660072702B /* KefiService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KefiService.h; sourceTree = "<group>"; };
+		0D81466318F0E3660072702B /* KefiService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KefiService.m; sourceTree = "<group>"; };
+		0D81466518F10DD90072702B /* PlaceDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceDetailView.h; sourceTree = "<group>"; };
+		0D81466618F10DD90072702B /* PlaceDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDetailView.m; sourceTree = "<group>"; };
+		0D81466B18F1259F0072702B /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
+		0D81466C18F1259F0072702B /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +84,7 @@
 			files = (
 				0D727EA518F099F1008310FC /* CoreGraphics.framework in Frameworks */,
 				0D727EA718F099F1008310FC /* UIKit.framework in Frameworks */,
+				0D4F49F918F09CBC00F901AE /* WindowsAzureMobileServices.framework in Frameworks */,
 				0D727EA318F099F1008310FC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +102,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D4F49FD18F0AD5600F901AE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F49FE18F0AD8100F901AE /* PlaceList.h */,
+				0D4F49FF18F0AD8100F901AE /* PlaceList.m */,
+				0D4F4A0118F0ADF700F901AE /* Place.h */,
+				0D4F4A0218F0ADF700F901AE /* Place.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		0D727E9618F099F1008310FC = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +135,7 @@
 		0D727EA118F099F1008310FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */,
 				0D727EA218F099F1008310FC /* Foundation.framework */,
 				0D727EA418F099F1008310FC /* CoreGraphics.framework */,
 				0D727EA618F099F1008310FC /* UIKit.framework */,
@@ -112,12 +147,18 @@
 		0D727EA818F099F1008310FC /* Kefi */ = {
 			isa = PBXGroup;
 			children = (
-				0D727EB118F099F1008310FC /* AppDelegate.h */,
-				0D727EB218F099F1008310FC /* AppDelegate.m */,
 				0D727EB418F099F1008310FC /* Main.storyboard */,
-				0D727EB718F099F1008310FC /* ViewController.h */,
-				0D727EB818F099F1008310FC /* ViewController.m */,
-				0D727EBA18F099F1008310FC /* Images.xcassets */,
+				0D4F49FA18F0ACA000F901AE /* PlaceListView.h */,
+				0D4F49FB18F0ACA000F901AE /* PlaceListView.m */,
+				0D81466518F10DD90072702B /* PlaceDetailView.h */,
+				0D81466618F10DD90072702B /* PlaceDetailView.m */,
+				0D81466B18F1259F0072702B /* SearchView.h */,
+				0D81466C18F1259F0072702B /* SearchView.m */,
+				0D4F4A0718F0B66A00F901AE /* PlaceCell.h */,
+				0D4F4A0818F0B66A00F901AE /* PlaceCell.m */,
+				0D4F4A0C18F0B78100F901AE /* bar_64.png */,
+				0D4F49FD18F0AD5600F901AE /* Models */,
+				0D81466118F0E1040072702B /* Service */,
 				0D727EA918F099F1008310FC /* Supporting Files */,
 			);
 			path = Kefi;
@@ -126,6 +167,9 @@
 		0D727EA918F099F1008310FC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0D727EBA18F099F1008310FC /* Images.xcassets */,
+				0D727EB118F099F1008310FC /* AppDelegate.h */,
+				0D727EB218F099F1008310FC /* AppDelegate.m */,
 				0D727EAA18F099F1008310FC /* Kefi-Info.plist */,
 				0D727EAB18F099F1008310FC /* InfoPlist.strings */,
 				0D727EAE18F099F1008310FC /* main.m */,
@@ -150,6 +194,15 @@
 				0D727ECA18F099F2008310FC /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0D81466118F0E1040072702B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0D81466218F0E3660072702B /* KefiService.h */,
+				0D81466318F0E3660072702B /* KefiService.m */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +284,7 @@
 				0D727EBB18F099F1008310FC /* Images.xcassets in Resources */,
 				0D727EAD18F099F1008310FC /* InfoPlist.strings in Resources */,
 				0D727EB618F099F1008310FC /* Main.storyboard in Resources */,
+				0D4F4A0D18F0B78100F901AE /* bar_64.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,9 +303,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D727EB918F099F1008310FC /* ViewController.m in Sources */,
+				0D81466D18F1259F0072702B /* SearchView.m in Sources */,
+				0D81466418F0E3670072702B /* KefiService.m in Sources */,
+				0D4F4A0918F0B66A00F901AE /* PlaceCell.m in Sources */,
+				0D4F4A0018F0AD8100F901AE /* PlaceList.m in Sources */,
 				0D727EB318F099F1008310FC /* AppDelegate.m in Sources */,
+				0D4F4A0318F0ADF700F901AE /* Place.m in Sources */,
+				0D4F49FC18F0ACA000F901AE /* PlaceListView.m in Sources */,
 				0D727EAF18F099F1008310FC /* main.m in Sources */,
+				0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +438,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/goshri/Documents/Xcode/Kefi/iOS,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kefi/Kefi-Prefix.pch";
 				INFOPLIST_FILE = "Kefi/Kefi-Info.plist";
@@ -391,6 +455,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/goshri/Documents/Xcode/Kefi/iOS,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kefi/Kefi-Prefix.pch";
 				INFOPLIST_FILE = "Kefi/Kefi-Info.plist";
@@ -460,6 +528,7 @@
 				0D727ED318F099F2008310FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D727ED418F099F2008310FC /* Build configuration list for PBXNativeTarget "KefiTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +537,7 @@
 				0D727ED618F099F2008310FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
