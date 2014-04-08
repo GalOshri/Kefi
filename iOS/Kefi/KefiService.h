@@ -11,6 +11,6 @@
 
 @interface KefiService : NSObject
 
-+ (void) PopulatePlaceList:(PlaceList *)placeList;
++ (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView;
 
 @end

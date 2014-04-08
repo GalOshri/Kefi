@@ -29,6 +29,7 @@
 		0D81466418F0E3670072702B /* KefiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466318F0E3660072702B /* KefiService.m */; };
 		0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466618F10DD90072702B /* PlaceDetailView.m */; };
 		0D81466D18F1259F0072702B /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466C18F1259F0072702B /* SearchView.m */; };
+		0DFE223F18F3C8F5002693D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		0D81466618F10DD90072702B /* PlaceDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDetailView.m; sourceTree = "<group>"; };
 		0D81466B18F1259F0072702B /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
 		0D81466C18F1259F0072702B /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
+		0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DFE223F18F3C8F5002693D6 /* CoreLocation.framework in Frameworks */,
 				0D727EA518F099F1008310FC /* CoreGraphics.framework in Frameworks */,
 				0D727EA718F099F1008310FC /* UIKit.framework in Frameworks */,
 				0D4F49F918F09CBC00F901AE /* WindowsAzureMobileServices.framework in Frameworks */,
@@ -135,6 +138,7 @@
 		0D727EA118F099F1008310FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */,
 				0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */,
 				0D727EA218F099F1008310FC /* Foundation.framework */,
 				0D727EA418F099F1008310FC /* CoreGraphics.framework */,

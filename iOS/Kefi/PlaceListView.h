@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "PlaceList.h"
 
-@interface PlaceListView : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface PlaceListView : UITableViewController <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) PlaceList *placeList;
 
