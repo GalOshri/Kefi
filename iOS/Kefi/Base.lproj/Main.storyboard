@@ -92,10 +92,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="xet-07-7Kz">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ZDB-38-zCm"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ZDB-38-zCm">
+                            <connections>
+                                <segue destination="GKO-KP-OHu" kind="unwind" unwindAction="unwindToList:" id="Jze-oy-v8g"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Tu-ew-r1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GKO-KP-OHu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1856" y="677"/>
         </scene>

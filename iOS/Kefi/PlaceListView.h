@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) PlaceList *placeList;
 
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue;
+
 @end
