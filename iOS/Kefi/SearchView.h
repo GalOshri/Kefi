@@ -10,4 +10,6 @@
 
 @interface SearchView : UIViewController
 
+@property (strong, nonatomic) NSString *searchTerm;
+
 @end

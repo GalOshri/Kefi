@@ -18,8 +18,13 @@ NSInteger radius = 1000;
 
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView
 {
-    // TEST CODE FOR HTTP REQUEST
-    
+    [self PopulatePlaceList:placeList withTable:tableView withSearchTerm:@""];
+}
+
+
+
++ (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withSearchTerm:(NSString *)searchTerm
+{
     NSString *fsURLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&radius=%d&intent=browse&categoryId=%@&client_id=%@&client_secret=%@&v=%d",
                              47.615925,
                              -122.326968,
@@ -29,20 +34,24 @@ NSInteger radius = 1000;
                              client_secret,
                              20140306];
     
+    if (![searchTerm isEqualToString:@""])
+    {
+        fsURLString = [fsURLString stringByAppendingFormat:@"&query=%@",searchTerm];
+        fsURLString = [fsURLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
+    
     NSURLSession *session = [NSURLSession sharedSession];
     [[session dataTaskWithURL:[NSURL URLWithString:fsURLString]
             completionHandler:^(NSData *data,
                                 NSURLResponse *response,
                                 NSError *error) {
-                // handle response
-//                NSString *strData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-//                NSLog(@"%@",strData);
+                
                 NSError *jsonError;
                 NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
                 NSDictionary *responseDict = [jsonDict objectForKey:@"response"];
                 NSArray *venueArray = [responseDict objectForKey:@"venues"];
-            
-                for (int i = 0; i < 30; i++)
+                
+                for (int i = 0; i < [venueArray count]; i++)
                 {
                     NSDictionary *venue = [venueArray objectAtIndex:i];
                     NSLog(@"%@", [venue objectForKey:@"name"]);
@@ -51,14 +60,35 @@ NSInteger radius = 1000;
                     Place *place = [[Place alloc] init];
                     place.fsId = @"ABC";
                     place.name = [NSString stringWithFormat:@"%@",[venue objectForKey:@"name"]];
+                    
+                    for (int j = 0; j < 6; j++)
+                    {
+                        Hashtag *hashtag = [[Hashtag alloc] init];
+                        hashtag.text = [NSString stringWithFormat:@"Hashtag%d", j];
+                        [place.hashtagList addObject:hashtag];
+                    }
+                    
                     [placeList.places addObject:place];
                 }
                 
                 [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
                 
             }] resume];
-    
+}
 
+
++ (void) PopulateHashtagList:(NSMutableArray *)hashtagList
+{
+    for (int i = 0; i < 5; i++)
+    {
+        Hashtag *hashtag = [[Hashtag alloc] init];
+        hashtag.text = [NSString stringWithFormat:@"Hashtag %d", i];
+        [hashtagList addObject:hashtag];
+    }
+}
++ (void) PopulateHashtagCatList:(NSMutableArray *)hashtagCatList
+{
+    
 }
 
 @end

@@ -10,6 +10,16 @@
 
 @implementation Place
 
+- (NSMutableArray *)hashtagList
+{
+    if (!_hashtagList)
+    {
+        _hashtagList = [[NSMutableArray alloc] init];
+    }
+    
+    return _hashtagList;
+}
+
 - (id)initWithId:(NSString *)fsId
         WithName:(NSString *)placeName;
 {

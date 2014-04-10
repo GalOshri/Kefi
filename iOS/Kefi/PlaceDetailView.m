@@ -30,7 +30,7 @@
 	// Do any additional setup after loading the view.
     
     [self.navigationController.viewControllers[self.navigationController.viewControllers.count -1] setTitle:self.place.name];
-    [self.navigationController.viewControllers[self.navigationController.viewControllers.count -2] setTitle:@"Back"];
+    //[self.navigationController.viewControllers[self.navigationController.viewControllers.count -2] setTitle:@"Bac"];
 }
 
 - (void)didReceiveMemoryWarning

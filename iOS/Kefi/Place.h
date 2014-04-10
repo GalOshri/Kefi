@@ -13,6 +13,8 @@
 @property (nonatomic, strong) NSString *fsId;
 @property (nonatomic, strong) NSString *name;
 
+@property (nonatomic, strong) NSMutableArray *hashtagList;
+
 - (id)initWithId:(NSString *)fsId
         WithName:(NSString *)placeName;
 

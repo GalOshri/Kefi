@@ -12,6 +12,8 @@
 #import "PlaceDetailView.h"
 #import "SearchView.h"
 
+#import "Hashtag.h"
+
 @interface PlaceListView ()
 
 @property (nonatomic, strong) KefiService *kefiService;
@@ -22,6 +24,7 @@
     CLLocationManager *locationManager;
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
+    NSString *searchTerm;
 }
 
 # pragma mark - Lazy Initiations
@@ -34,6 +37,16 @@
     }
     
     return _placeList;
+}
+
+- (NSMutableArray *)hashtagList
+{
+    if (!_hashtagList)
+    {
+        _hashtagList = [[NSMutableArray alloc] init];
+    }
+    
+    return _hashtagList;
 }
 
 
@@ -60,7 +73,15 @@
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue
 {
-    
+    SearchView *source = [segue sourceViewController];
+    searchTerm = source.searchTerm;
+    if (searchTerm != nil)
+    {
+        if (![searchTerm isEqualToString:@""]) {
+            [self.placeList.places removeAllObjects];
+            [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withSearchTerm:searchTerm];
+        }
+    }
 }
 
 
@@ -81,9 +102,15 @@
     
     //[self.tableView registerClass:[PlaceCell class] forCellReuseIdentifier:@"PlaceCell"];
     
+    searchTerm = @"";
+    
     self.kefiService = [[KefiService alloc] init];
     
+    [KefiService PopulateHashtagList:self.hashtagList];
+    
     [KefiService PopulatePlaceList:self.placeList withTable:self.tableView];
+    
+    
     
     locationManager = [[CLLocationManager alloc] init];
     geocoder = [[CLGeocoder alloc] init];
@@ -144,7 +171,21 @@
 
     cell.placeName.text = cell.place.name;
     cell.placeTypeImage.image = [UIImage imageNamed:@"bar_64.png"];
-
+    
+    NSString *hashtagText = @"";
+    Hashtag *currentHashtag;
+    
+    for (int j = 0; j < [currentPlace.hashtagList count]; j++)
+    {
+        currentHashtag = [currentPlace.hashtagList objectAtIndex:j];
+        hashtagText = [hashtagText stringByAppendingFormat:@"#%@   ",currentHashtag.text];
+    }
+    
+   
+    
+    cell.placeHashtags.text = hashtagText;
+    cell.placeHashtags.textColor = [UIColor whiteColor];
+    NSLog(cell.placeHashtags.text);
     return cell;
 }
 

@@ -16,5 +16,6 @@
 // UI elements
 @property (strong, nonatomic) IBOutlet UILabel *placeName;
 @property (strong, nonatomic) IBOutlet UIImageView *placeTypeImage;
+@property (strong, nonatomic) IBOutlet UITextView *placeHashtags;
 
 @end

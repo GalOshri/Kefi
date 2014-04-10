@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0C131118F65DDD00C90A5F /* Hashtag.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0C131018F65DDD00C90A5F /* Hashtag.m */; };
 		0D4F49F918F09CBC00F901AE /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */; };
 		0D4F49FC18F0ACA000F901AE /* PlaceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F49FB18F0ACA000F901AE /* PlaceListView.m */; };
 		0D4F4A0018F0AD8100F901AE /* PlaceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F49FF18F0AD8100F901AE /* PlaceList.m */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D0C130F18F65DDD00C90A5F /* Hashtag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hashtag.h; sourceTree = "<group>"; };
+		0D0C131018F65DDD00C90A5F /* Hashtag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hashtag.m; sourceTree = "<group>"; };
 		0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
 		0D4F49FA18F0ACA000F901AE /* PlaceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceListView.h; sourceTree = "<group>"; };
 		0D4F49FB18F0ACA000F901AE /* PlaceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceListView.m; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 				0D4F49FF18F0AD8100F901AE /* PlaceList.m */,
 				0D4F4A0118F0ADF700F901AE /* Place.h */,
 				0D4F4A0218F0ADF700F901AE /* Place.m */,
+				0D0C130F18F65DDD00C90A5F /* Hashtag.h */,
+				0D0C131018F65DDD00C90A5F /* Hashtag.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -307,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0C131118F65DDD00C90A5F /* Hashtag.m in Sources */,
 				0D81466D18F1259F0072702B /* SearchView.m in Sources */,
 				0D81466418F0E3670072702B /* KefiService.m in Sources */,
 				0D4F4A0918F0B66A00F901AE /* PlaceCell.m in Sources */,

@@ -9,10 +9,14 @@
 #import "SearchView.h"
 
 @interface SearchView ()
+@property (strong, nonatomic) IBOutlet UITextField *searchTextField;
+@property (strong, nonatomic) IBOutlet UIButton *searchButton;
 
 @end
 
 @implementation SearchView
+
+# pragma mark - Lazy Initiations
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +37,14 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if (sender != self.searchButton) return;
+    if (self.searchTextField.text.length > 0) {
+        self.searchTerm = self.searchTextField.text;
+    }
 }
 
 @end
