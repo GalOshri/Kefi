@@ -54,7 +54,6 @@ NSInteger radius = 1000;
                 for (int i = 0; i < [venueArray count]; i++)
                 {
                     NSDictionary *venue = [venueArray objectAtIndex:i];
-                    NSLog(@"%@", [venue objectForKey:@"name"]);
                     
                     
                     Place *place = [[Place alloc] init];
@@ -70,6 +69,8 @@ NSInteger radius = 1000;
                     
                     [placeList.places addObject:place];
                 }
+                
+                
                 
                 [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
                 

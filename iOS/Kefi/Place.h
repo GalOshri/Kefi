@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Hashtag.h"
 
 @interface Place : NSObject
 

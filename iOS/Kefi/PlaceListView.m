@@ -112,6 +112,7 @@
     
     
     
+    
     locationManager = [[CLLocationManager alloc] init];
     geocoder = [[CLGeocoder alloc] init];
     
@@ -185,7 +186,6 @@
     
     cell.placeHashtags.text = hashtagText;
     cell.placeHashtags.textColor = [UIColor whiteColor];
-    NSLog(cell.placeHashtags.text);
     return cell;
 }
 

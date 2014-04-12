@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "Place.h"
 
-@interface PlaceDetailView : UIViewController
+@interface PlaceDetailView : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) Place *place;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
