@@ -17,6 +17,7 @@
 @interface PlaceListView ()
 
 @property (nonatomic, strong) KefiService *kefiService;
+@property (strong, nonatomic) IBOutlet UIButton *cancelSearchButton;
 
 @end
 
@@ -121,10 +122,9 @@
     
     //[locationManager startUpdatingLocation];
     
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
-    
-
-    
+    self.tableView.tableHeaderView = nil;
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -153,6 +153,7 @@
     // Return the number of sections.
     return 1;
 }
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -185,7 +186,7 @@
    
     
     cell.placeHashtags.text = hashtagText;
-    cell.placeHashtags.textColor = [UIColor whiteColor];
+    //cell.placeHashtags.textColor = [UIColor whiteColor];
     return cell;
 }
 

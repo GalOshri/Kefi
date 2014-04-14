@@ -7,6 +7,7 @@
 //
 
 #import "PlaceDetailView.h"
+#import "SubmitView.h"
 
 @interface PlaceDetailView ()
 
@@ -14,6 +15,27 @@
 @end
 
 @implementation PlaceDetailView
+
+#pragma mark - Navigation
+
+// In a story board-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"SubmitReviewSegue"]) {
+        if ([segue.destinationViewController isKindOfClass:[SubmitView class]])
+        {
+            SubmitView *sv = (SubmitView *)segue.destinationViewController;
+            //PlaceCell *cell = (PlaceCell *)sender;
+            //pdv.place = cell.place;
+        }
+    }
+}
+
+- (IBAction)unwindToPlaceDetail:(UIStoryboardSegue *)segue
+{
+    SubmitView *source = [segue sourceViewController];
+    
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +59,8 @@
 //    [self.tableView registerClass:[ContactCell class] forCellReuseIdentifier:@"cell"];
     
     self.tableView.delegate = self;
+    
+    self.tableView.sectionHeaderHeight = 0.0f;
 
     
     [self.tableView reloadData];
@@ -46,6 +70,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+
+
+- (IBAction)favoritePlace:(UIButton *)sender {
 }
 
 #pragma mark - Table Protocol Methods

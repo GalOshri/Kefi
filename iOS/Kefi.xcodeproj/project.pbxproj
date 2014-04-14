@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0D0C131118F65DDD00C90A5F /* Hashtag.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0C131018F65DDD00C90A5F /* Hashtag.m */; };
+		0D0C131418FB72B600C90A5F /* FavFilled.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0C131218FB72B600C90A5F /* FavFilled.png */; };
+		0D0C131518FB72B600C90A5F /* FavUnfilled.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0C131318FB72B600C90A5F /* FavUnfilled.png */; };
+		0D0C131718FB762600C90A5F /* KefItIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0C131618FB762600C90A5F /* KefItIcon.png */; };
+		0D0C131B18FB824600C90A5F /* SubmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0C131A18FB824600C90A5F /* SubmitView.m */; };
 		0D4F49F918F09CBC00F901AE /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */; };
 		0D4F49FC18F0ACA000F901AE /* PlaceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F49FB18F0ACA000F901AE /* PlaceListView.m */; };
 		0D4F4A0018F0AD8100F901AE /* PlaceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F49FF18F0AD8100F901AE /* PlaceList.m */; };
@@ -46,6 +50,11 @@
 /* Begin PBXFileReference section */
 		0D0C130F18F65DDD00C90A5F /* Hashtag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hashtag.h; sourceTree = "<group>"; };
 		0D0C131018F65DDD00C90A5F /* Hashtag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hashtag.m; sourceTree = "<group>"; };
+		0D0C131218FB72B600C90A5F /* FavFilled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FavFilled.png; sourceTree = "<group>"; };
+		0D0C131318FB72B600C90A5F /* FavUnfilled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FavUnfilled.png; sourceTree = "<group>"; };
+		0D0C131618FB762600C90A5F /* KefItIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KefItIcon.png; sourceTree = "<group>"; };
+		0D0C131918FB824600C90A5F /* SubmitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitView.h; sourceTree = "<group>"; };
+		0D0C131A18FB824600C90A5F /* SubmitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitView.m; sourceTree = "<group>"; };
 		0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
 		0D4F49FA18F0ACA000F901AE /* PlaceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceListView.h; sourceTree = "<group>"; };
 		0D4F49FB18F0ACA000F901AE /* PlaceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceListView.m; sourceTree = "<group>"; };
@@ -108,6 +117,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D0C131818FB7F9000C90A5F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0D0C131618FB762600C90A5F /* KefItIcon.png */,
+				0D0C131218FB72B600C90A5F /* FavFilled.png */,
+				0D0C131318FB72B600C90A5F /* FavUnfilled.png */,
+				0D4F4A0C18F0B78100F901AE /* bar_64.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		0D4F49FD18F0AD5600F901AE /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				0D727EB418F099F1008310FC /* Main.storyboard */,
+				0D0C131918FB824600C90A5F /* SubmitView.h */,
+				0D0C131A18FB824600C90A5F /* SubmitView.m */,
 				0D4F49FA18F0ACA000F901AE /* PlaceListView.h */,
 				0D4F49FB18F0ACA000F901AE /* PlaceListView.m */,
 				0D81466518F10DD90072702B /* PlaceDetailView.h */,
@@ -165,9 +187,9 @@
 				0D81466C18F1259F0072702B /* SearchView.m */,
 				0D4F4A0718F0B66A00F901AE /* PlaceCell.h */,
 				0D4F4A0818F0B66A00F901AE /* PlaceCell.m */,
-				0D4F4A0C18F0B78100F901AE /* bar_64.png */,
 				0D4F49FD18F0AD5600F901AE /* Models */,
 				0D81466118F0E1040072702B /* Service */,
+				0D0C131818FB7F9000C90A5F /* Images */,
 				0D727EA918F099F1008310FC /* Supporting Files */,
 			);
 			path = Kefi;
@@ -291,7 +313,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D727EBB18F099F1008310FC /* Images.xcassets in Resources */,
+				0D0C131418FB72B600C90A5F /* FavFilled.png in Resources */,
+				0D0C131518FB72B600C90A5F /* FavUnfilled.png in Resources */,
 				0D727EAD18F099F1008310FC /* InfoPlist.strings in Resources */,
+				0D0C131718FB762600C90A5F /* KefItIcon.png in Resources */,
 				0D727EB618F099F1008310FC /* Main.storyboard in Resources */,
 				0D4F4A0D18F0B78100F901AE /* bar_64.png in Resources */,
 			);
@@ -321,6 +346,7 @@
 				0D4F4A0318F0ADF700F901AE /* Place.m in Sources */,
 				0D4F49FC18F0ACA000F901AE /* PlaceListView.m in Sources */,
 				0D727EAF18F099F1008310FC /* main.m in Sources */,
+				0D0C131B18FB824600C90A5F /* SubmitView.m in Sources */,
 				0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
