@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) KefiService *kefiService;
 @property (strong, nonatomic) IBOutlet UIButton *cancelSearchButton;
+@property (strong, nonatomic) UIView *tableHeader;
 
 @end
 
@@ -81,6 +82,7 @@
         if (![searchTerm isEqualToString:@""]) {
             [self.placeList.places removeAllObjects];
             [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withSearchTerm:searchTerm];
+            self.tableView.tableHeaderView = self.tableHeader;
         }
     }
 }
@@ -124,7 +126,11 @@
     
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
+    self.tableHeader = self.tableView.tableHeaderView;
     self.tableView.tableHeaderView = nil;
+
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -145,6 +151,24 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+- (IBAction)searchCancelClick:(UIButton *)sender
+{
+    [UIView animateWithDuration:1.0
+                          delay:0.0
+                        options:UIViewAnimationOptionAllowUserInteraction
+                     animations:^{
+                         self.tableView.tableHeaderView = nil;
+                     }
+                     completion:^(BOOL finished) {
+                         [self.placeList.places removeAllObjects];
+                         [KefiService PopulatePlaceList:self.placeList withTable:self.tableView];
+                     }];
+}
+
+
 
 #pragma mark - Table View Data Source
 

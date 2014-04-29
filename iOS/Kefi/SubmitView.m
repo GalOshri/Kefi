@@ -35,4 +35,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)realMovingButton:(UIButton *)sender forEvent:(UIEvent *)event {
+    CGPoint point = [[[event allTouches] anyObject] locationInView:self.view];
+    self.moveButton.center = point;
+    self.coordinateLabel.text = [NSString stringWithFormat:@"%f",self.moveButton.frame.origin.x];
+}
+
+
+    
+
+
+
 @end

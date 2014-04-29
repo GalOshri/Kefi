@@ -34,7 +34,6 @@
 - (IBAction)unwindToPlaceDetail:(UIStoryboardSegue *)segue
 {
     SubmitView *source = [segue sourceViewController];
-    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -76,6 +75,7 @@
 
 
 - (IBAction)favoritePlace:(UIButton *)sender {
+    
 }
 
 #pragma mark - Table Protocol Methods
@@ -95,6 +95,9 @@
     cell.textLabel.text = hashtag.text;
     return cell;
 }
+
+
+
 
 
 @end
