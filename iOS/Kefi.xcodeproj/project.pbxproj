@@ -35,6 +35,7 @@
 		0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466618F10DD90072702B /* PlaceDetailView.m */; };
 		0D81466D18F1259F0072702B /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466C18F1259F0072702B /* SearchView.m */; };
 		0DFE223F18F3C8F5002693D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */; };
+		5018A48C191220AE008BED0F /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018A48B191220AE008BED0F /* WindowsAzureMobileServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		0D81466B18F1259F0072702B /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
 		0D81466C18F1259F0072702B /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 		0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5018A48B191220AE008BED0F /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5018A48C191220AE008BED0F /* WindowsAzureMobileServices.framework in Frameworks */,
 				0DFE223F18F3C8F5002693D6 /* CoreLocation.framework in Frameworks */,
 				0D727EA518F099F1008310FC /* CoreGraphics.framework in Frameworks */,
 				0D727EA718F099F1008310FC /* UIKit.framework in Frameworks */,
@@ -144,6 +147,7 @@
 		0D727E9618F099F1008310FC = {
 			isa = PBXGroup;
 			children = (
+				5018A48B191220AE008BED0F /* WindowsAzureMobileServices.framework */,
 				0D727EA818F099F1008310FC /* Kefi */,
 				0D727EC718F099F2008310FC /* KefiTests */,
 				0D727EA118F099F1008310FC /* Frameworks */,
@@ -477,6 +481,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/goshri/Documents/Xcode/Kefi/iOS,
+					/Users/pStav/Desktop/Paul/github/Kefi/iOS,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kefi/Kefi-Prefix.pch";
@@ -494,6 +499,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/goshri/Documents/Xcode/Kefi/iOS,
+					/Users/pStav/Desktop/Paul/github/Kefi/iOS,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kefi/Kefi-Prefix.pch";

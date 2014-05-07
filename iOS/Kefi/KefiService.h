@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PlaceList.h"
 #import "Hashtag.h"
+#import "Place.h"
 
 @interface KefiService : NSObject
 
@@ -18,4 +19,6 @@
 + (void) PopulateHashtagList:(NSMutableArray *)hashtagList;
 + (void) PopulateHashtagCatList:(NSMutableArray *)hashtagCatList;
 
+//Paul added
++ (void) PopulatePlaceDetailView: (Place *)place withView:(UIView *)view;
 @end

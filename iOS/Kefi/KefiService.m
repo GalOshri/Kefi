@@ -57,7 +57,7 @@ NSInteger radius = 1000;
                     
                     
                     Place *place = [[Place alloc] init];
-                    place.fsId = @"ABC";
+                    place.fsId = [NSString stringWithFormat:@"%@",[venue objectForKey:@"id"]];
                     place.name = [NSString stringWithFormat:@"%@",[venue objectForKey:@"name"]];
                     
                     for (int j = 0; j < 6; j++)
@@ -87,9 +87,52 @@ NSInteger radius = 1000;
         [hashtagList addObject:hashtag];
     }
 }
+
 + (void) PopulateHashtagCatList:(NSMutableArray *)hashtagCatList
 {
     
 }
+
+//Paul added
++ (void)PopulatePlaceDetailView:(Place *)place withView:(UIView *)view {
+    //initialize array
+    
+    NSString *fsURLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/%@?client_id=%@&client_secret=%@&v=%d",
+                             place.fsId,
+                             client_id,
+                             client_secret,
+                             20140306];
+   
+    //NSLog(@"the URL is %@", fsURLString);
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    [[session dataTaskWithURL:[NSURL URLWithString:fsURLString]
+            completionHandler:^(NSData *data,
+                                NSURLResponse *response,
+                                NSError *error) {
+            NSError *jsonError;
+            NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+            NSDictionary *responseDict = [jsonDict objectForKey:@"response"];
+            NSDictionary *venue = [responseDict objectForKey:@"venue"];
+            //NSLog(@"responseDict is %@,\n venue is %@",responseDict, venue);
+                
+            //grab data here
+            NSDictionary *location= [[NSDictionary alloc] init];
+            location = [venue objectForKey:@"location"];
+                
+            //define place instance
+            //place.fsId = [NSString stringWithFormat:@"%@",[location objectForKey:@"id"]];
+            //place.name = [NSString stringWithFormat:@"%@",[location objectForKey:@"name"]];
+            place.address = [NSString stringWithFormat:@"%@",[location objectForKey:@"address"]];
+            place.crossStreet = [NSString stringWithFormat:@"%@", [location objectForKey:@"crossStreet"]];
+
+
+            //what to do with data reload the view so that we see changes.
+            [view performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    
+      }] resume];
+}
+
 
 @end

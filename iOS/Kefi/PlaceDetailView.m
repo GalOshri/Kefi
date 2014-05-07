@@ -8,9 +8,10 @@
 
 #import "PlaceDetailView.h"
 #import "SubmitView.h"
+#import "KefiService.h"
 
 @interface PlaceDetailView ()
-
+@property (nonatomic, strong) KefiService *kefiService;
 
 @end
 
@@ -50,6 +51,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    //sets name to view?
     [self.navigationController.viewControllers[self.navigationController.viewControllers.count -1] setTitle:self.place.name];
     //[self.navigationController.viewControllers[self.navigationController.viewControllers.count -2] setTitle:@"Bac"];
     
@@ -63,6 +65,20 @@
 
     
     [self.tableView reloadData];
+    
+    
+    //Kefi Service instance
+    self.kefiService = [[KefiService alloc] init];
+    
+    //this will be a call to get necessary information from Foursquare venue API
+    [KefiService PopulatePlaceDetailView:self.place withView:self.tableView];
+    
+    NSLog(@"%@ is the place", self.place);
+    
+    //set name and all other attributes here
+    //self.placeTitle.text = self.place.name;
+    self.placeAddress.text = self.place.address;
+    self.placeCrossStreets.text = self.place.crossStreet;
 }
 
 - (void)didReceiveMemoryWarning
