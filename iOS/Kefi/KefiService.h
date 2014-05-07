@@ -19,6 +19,5 @@
 + (void) PopulateHashtagList:(NSMutableArray *)hashtagList;
 + (void) PopulateHashtagCatList:(NSMutableArray *)hashtagCatList;
 
-//Paul added
-+ (void) PopulatePlaceDetailView: (Place *)place withView:(UIView *)view;
+//+ (void) PopulatePlaceDetailView: (Place *)place withPlaceAddress:(UILabel *)placeAddress withPlaceCrossStreet: (UILabel *)placeCrossStreets;
 @end

@@ -12,7 +12,6 @@
 		0D0C131518FB72B600C90A5F /* FavUnfilled.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0C131318FB72B600C90A5F /* FavUnfilled.png */; };
 		0D0C131718FB762600C90A5F /* KefItIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D0C131618FB762600C90A5F /* KefItIcon.png */; };
 		0D0C131B18FB824600C90A5F /* SubmitView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D0C131A18FB824600C90A5F /* SubmitView.m */; };
-		0D4F49F918F09CBC00F901AE /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */; };
 		0D4F49FC18F0ACA000F901AE /* PlaceListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F49FB18F0ACA000F901AE /* PlaceListView.m */; };
 		0D4F4A0018F0AD8100F901AE /* PlaceList.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F49FF18F0AD8100F901AE /* PlaceList.m */; };
 		0D4F4A0318F0ADF700F901AE /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4A0218F0ADF700F901AE /* Place.m */; };
@@ -35,7 +34,7 @@
 		0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466618F10DD90072702B /* PlaceDetailView.m */; };
 		0D81466D18F1259F0072702B /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466C18F1259F0072702B /* SearchView.m */; };
 		0DFE223F18F3C8F5002693D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */; };
-		5018A48C191220AE008BED0F /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5018A48B191220AE008BED0F /* WindowsAzureMobileServices.framework */; };
+		DAFB18351919E18E00B4A56F /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +90,8 @@
 		0D81466C18F1259F0072702B /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 		0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5018A48B191220AE008BED0F /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
+		DAFB18311919E16C00B4A56F /* WindowsAzureMobileServices */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = WindowsAzureMobileServices; path = WindowsAzureMobileServices.framework/WindowsAzureMobileServices; sourceTree = "<group>"; };
+		DAFB18331919E17A00B4A56F /* WindowsAzureMobileServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WindowsAzureMobileServices.h; path = WindowsAzureMobileServices.framework/Headers/WindowsAzureMobileServices.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +99,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5018A48C191220AE008BED0F /* WindowsAzureMobileServices.framework in Frameworks */,
+				DAFB18351919E18E00B4A56F /* WindowsAzureMobileServices.framework in Frameworks */,
 				0DFE223F18F3C8F5002693D6 /* CoreLocation.framework in Frameworks */,
 				0D727EA518F099F1008310FC /* CoreGraphics.framework in Frameworks */,
 				0D727EA718F099F1008310FC /* UIKit.framework in Frameworks */,
-				0D4F49F918F09CBC00F901AE /* WindowsAzureMobileServices.framework in Frameworks */,
 				0D727EA318F099F1008310FC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +167,8 @@
 		0D727EA118F099F1008310FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DAFB18331919E17A00B4A56F /* WindowsAzureMobileServices.h */,
+				DAFB18311919E16C00B4A56F /* WindowsAzureMobileServices */,
 				0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */,
 				0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */,
 				0D727EA218F099F1008310FC /* Foundation.framework */,
@@ -284,7 +286,7 @@
 		0D727E9718F099F1008310FC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Kefi;
 				TargetAttributes = {
 					0D727EBF18F099F2008310FC = {
@@ -405,7 +407,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -444,7 +445,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -482,10 +482,15 @@
 					"$(inherited)",
 					/Users/goshri/Documents/Xcode/Kefi/iOS,
 					/Users/pStav/Desktop/Paul/github/Kefi/iOS,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kefi/Kefi-Prefix.pch";
 				INFOPLIST_FILE = "Kefi/Kefi-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WindowsAzureMobileServices.framework",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -500,10 +505,15 @@
 					"$(inherited)",
 					/Users/goshri/Documents/Xcode/Kefi/iOS,
 					/Users/pStav/Desktop/Paul/github/Kefi/iOS,
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kefi/Kefi-Prefix.pch";
 				INFOPLIST_FILE = "Kefi/Kefi-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WindowsAzureMobileServices.framework",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -512,7 +522,6 @@
 		0D727ED518F099F2008310FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Kefi.app/Kefi";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -535,7 +544,6 @@
 		0D727ED618F099F2008310FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Kefi.app/Kefi";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

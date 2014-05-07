@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *crossStreet;
 @property (nonatomic, strong) NSMutableArray *hashtagList;
+@property (nonatomic, strong) NSNumber *currentDistance;
 
 - (id)initWithId:(NSString *)fsId
         WithName:(NSString *)placeName;

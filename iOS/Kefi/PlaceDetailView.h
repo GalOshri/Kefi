@@ -20,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *placeAddress;
 @property (weak, nonatomic) IBOutlet UILabel *placeTitle;
 @property (weak, nonatomic) IBOutlet UILabel *placeCrossStreets;
+@property (weak, nonatomic) IBOutlet UILabel *distanceMi;
 
 @end

@@ -54,11 +54,22 @@ NSInteger radius = 1000;
                 for (int i = 0; i < [venueArray count]; i++)
                 {
                     NSDictionary *venue = [venueArray objectAtIndex:i];
-                    
+                    NSDictionary *location = [venue objectForKey:@"location"];
                     
                     Place *place = [[Place alloc] init];
                     place.fsId = [NSString stringWithFormat:@"%@",[venue objectForKey:@"id"]];
                     place.name = [NSString stringWithFormat:@"%@",[venue objectForKey:@"name"]];
+                    place.address = [NSString stringWithFormat:@"%@",[location objectForKey:@"address"]];
+                    place.crossStreet = [NSString stringWithFormat:@"%@", [location objectForKey:@"crossStreet"]];
+                    place.currentDistance = [location objectForKey:@"distance"];
+
+                    //NSLog(@"distance is: %@",place.currentDistance);
+                    
+                    //modify currentDistance to represent miles
+                    place.currentDistance =  @([place.currentDistance doubleValue]* 0.000621371192);
+                    //NSLog(@"in miles is: %@",place.currentDistance);
+                    
+                    
                     
                     for (int j = 0; j < 6; j++)
                     {
@@ -93,10 +104,12 @@ NSInteger radius = 1000;
     
 }
 
-//Paul added
-+ (void)PopulatePlaceDetailView:(Place *)place withView:(UIView *)view {
+
+/*
+
++ (void) PopulatePlaceDetailView: (Place *)place withPlaceAddress:(UILabel *)placeAddress withPlaceCrossStreet: (UILabel *)placeCrossStreets{
+  
     //initialize array
-    
     NSString *fsURLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/%@?client_id=%@&client_secret=%@&v=%d",
                              place.fsId,
                              client_id,
@@ -129,10 +142,13 @@ NSInteger radius = 1000;
 
 
             //what to do with data reload the view so that we see changes.
-            [view performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+            //set name and all other attributes here
+            //self.placeTitle.text = self.place.name;
+            placeAddress.text = place.address;
+            placeCrossStreets.text = place.crossStreet;
     
       }] resume];
 }
-
+*/
 
 @end

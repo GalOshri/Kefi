@@ -70,15 +70,20 @@
     //Kefi Service instance
     self.kefiService = [[KefiService alloc] init];
     
-    //this will be a call to get necessary information from Foursquare venue API
-    [KefiService PopulatePlaceDetailView:self.place withView:self.tableView];
+    //this will be a call to get necessary information from Foursquare venue API --> All necessary info is part of Place model now!
+    //[KefiService PopulatePlaceDetailView:self.place withPlaceAddress: self.placeAddress withPlaceCrossStreet: self.placeCrossStreets];
     
-    NSLog(@"%@ is the place", self.place);
     
-    //set name and all other attributes here
-    //self.placeTitle.text = self.place.name;
+    //set some more variables here
     self.placeAddress.text = self.place.address;
     self.placeCrossStreets.text = self.place.crossStreet;
+    
+    NSString *distanceString = [self.place.currentDistance stringValue];
+    distanceString = [distanceString substringToIndex:4];
+    self.distanceMi.text = [NSString stringWithFormat:@"%@ mi",distanceString];
+    
+    NSLog(@"distance is: %@ mi", self.place.currentDistance);
+ 
 }
 
 - (void)didReceiveMemoryWarning
