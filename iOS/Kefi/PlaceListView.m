@@ -200,7 +200,7 @@
     //round corners of imageType and display image
     CALayer * l = [cell.placeTypeImage layer];
     [l setMasksToBounds:YES];
-    [l setCornerRadius:10.0];
+    [l setCornerRadius:7.0];
     
     cell.placeTypeImage.image = cell.place.imageType; //[UIImage imageNamed:@"bar_64.png"];
     
@@ -208,7 +208,7 @@
     NSString *distanceString = [cell.place.currentDistance stringValue];
     distanceString = [distanceString substringToIndex:4];
     
-    NSString *displayInfoContent = [NSString stringWithFormat:@"%@;    %@ mi", cell.place.categoryType, distanceString];
+    NSString *displayInfoContent = [NSString stringWithFormat:@" %@ mi", distanceString];
     
     cell.moreCellInfo.text = displayInfoContent;
     
