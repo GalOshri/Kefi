@@ -62,12 +62,23 @@ NSInteger radius = 1000;
                     place.address = [NSString stringWithFormat:@"%@",[location objectForKey:@"address"]];
                     place.crossStreet = [NSString stringWithFormat:@"%@", [location objectForKey:@"crossStreet"]];
                     place.currentDistance = [location objectForKey:@"distance"];
-
-                    //NSLog(@"distance is: %@",place.currentDistance);
                     
                     //modify currentDistance to represent miles
                     place.currentDistance =  @([place.currentDistance doubleValue]* 0.000621371192);
-                    //NSLog(@"in miles is: %@",place.currentDistance);
+                  
+                    //grab image url
+                    NSString *imageURL = [NSString stringWithFormat:@"%@%@%@",
+                                          [[[[venue objectForKey:@"categories"] objectAtIndex:0] objectForKey:@"icon"] objectForKey:@"prefix"],
+                                          @"bg_64",
+                                          [[[[venue objectForKey:@"categories"] objectAtIndex:0]objectForKey:@"icon"]objectForKey:@"suffix"]
+                                          ];
+                    
+                    NSURL *imageURLConcat = [NSURL URLWithString:imageURL];
+                    NSData *imageData = [NSData dataWithContentsOfURL:imageURLConcat];
+                    place.imageType = [UIImage imageWithData:imageData];
+                    
+                    //grab category type
+                    place.categoryType = [NSString stringWithFormat:@"%@", [[[venue objectForKey:@"categories"] objectAtIndex:0] objectForKey:@"name"]];
                     
                     
                     

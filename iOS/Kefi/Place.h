@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSString *crossStreet;
 @property (nonatomic, strong) NSMutableArray *hashtagList;
 @property (nonatomic, strong) NSNumber *currentDistance;
+@property (nonatomic, strong) UIImage *imageType;
+@property (nonatomic, strong) NSString *categoryType;
 
 - (id)initWithId:(NSString *)fsId
         WithName:(NSString *)placeName;

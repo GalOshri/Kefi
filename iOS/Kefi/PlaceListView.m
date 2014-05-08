@@ -196,7 +196,21 @@
     cell.place = currentPlace;
 
     cell.placeName.text = cell.place.name;
-    cell.placeTypeImage.image = [UIImage imageNamed:@"bar_64.png"];
+
+    //round corners of imageType and display image
+    CALayer * l = [cell.placeTypeImage layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:10.0];
+    
+    cell.placeTypeImage.image = cell.place.imageType; //[UIImage imageNamed:@"bar_64.png"];
+    
+    //display category name and distance
+    NSString *distanceString = [cell.place.currentDistance stringValue];
+    distanceString = [distanceString substringToIndex:4];
+    
+    NSString *displayInfoContent = [NSString stringWithFormat:@"%@;    %@ mi", cell.place.categoryType, distanceString];
+    
+    cell.moreCellInfo.text = displayInfoContent;
     
     NSString *hashtagText = @"";
     Hashtag *currentHashtag;

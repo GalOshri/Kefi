@@ -200,7 +200,7 @@
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.2 mi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgi-Cu-kSw">
-                                            <rect key="frame" x="20" y="39" width="42" height="21"/>
+                                            <rect key="frame" x="20" y="39" width="208" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -210,6 +210,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="moreCellInfo" destination="Lgi-Cu-kSw" id="1u6-Au-TNJ"/>
                                     <outlet property="placeHashtags" destination="jKk-uu-IyW" id="KBm-11-wFE"/>
                                     <outlet property="placeName" destination="Tg9-RK-WPi" id="WR2-de-fW2"/>
                                     <outlet property="placeTypeImage" destination="ARY-dB-oVh" id="8CA-2V-iPS"/>

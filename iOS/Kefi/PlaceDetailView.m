@@ -78,12 +78,16 @@
     self.placeAddress.text = self.place.address;
     self.placeCrossStreets.text = self.place.crossStreet;
     
+    //modifications to print sigFigs for distance. NEED TO ROUND
     NSString *distanceString = [self.place.currentDistance stringValue];
     distanceString = [distanceString substringToIndex:4];
     self.distanceMi.text = [NSString stringWithFormat:@"%@ mi",distanceString];
     
-    NSLog(@"distance is: %@ mi", self.place.currentDistance);
- 
+    //grab picture from URL
+    
+
+
+     
 }
 
 - (void)didReceiveMemoryWarning
