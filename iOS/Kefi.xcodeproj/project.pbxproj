@@ -33,6 +33,7 @@
 		0D81466418F0E3670072702B /* KefiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466318F0E3660072702B /* KefiService.m */; };
 		0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466618F10DD90072702B /* PlaceDetailView.m */; };
 		0D81466D18F1259F0072702B /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466C18F1259F0072702B /* SearchView.m */; };
+		0DB0B435191EE2B8008D5624 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D10AE26191ED8500071E1E9 /* QuartzCore.framework */; };
 		0DFE223F18F3C8F5002693D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */; };
 		DAFB18351919E18E00B4A56F /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		0D0C131618FB762600C90A5F /* KefItIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KefItIcon.png; sourceTree = "<group>"; };
 		0D0C131918FB824600C90A5F /* SubmitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitView.h; sourceTree = "<group>"; };
 		0D0C131A18FB824600C90A5F /* SubmitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitView.m; sourceTree = "<group>"; };
+		0D10AE26191ED8500071E1E9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
 		0D4F49FA18F0ACA000F901AE /* PlaceListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceListView.h; sourceTree = "<group>"; };
 		0D4F49FB18F0ACA000F901AE /* PlaceListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceListView.m; sourceTree = "<group>"; };
@@ -89,9 +91,6 @@
 		0D81466B18F1259F0072702B /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
 		0D81466C18F1259F0072702B /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 		0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		5018A48B191220AE008BED0F /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
-		DAFB18311919E16C00B4A56F /* WindowsAzureMobileServices */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = WindowsAzureMobileServices; path = WindowsAzureMobileServices.framework/WindowsAzureMobileServices; sourceTree = "<group>"; };
-		DAFB18331919E17A00B4A56F /* WindowsAzureMobileServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WindowsAzureMobileServices.h; path = WindowsAzureMobileServices.framework/Headers/WindowsAzureMobileServices.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DB0B435191EE2B8008D5624 /* QuartzCore.framework in Frameworks */,
 				DAFB18351919E18E00B4A56F /* WindowsAzureMobileServices.framework in Frameworks */,
 				0DFE223F18F3C8F5002693D6 /* CoreLocation.framework in Frameworks */,
 				0D727EA518F099F1008310FC /* CoreGraphics.framework in Frameworks */,
@@ -147,7 +147,6 @@
 		0D727E9618F099F1008310FC = {
 			isa = PBXGroup;
 			children = (
-				5018A48B191220AE008BED0F /* WindowsAzureMobileServices.framework */,
 				0D727EA818F099F1008310FC /* Kefi */,
 				0D727EC718F099F2008310FC /* KefiTests */,
 				0D727EA118F099F1008310FC /* Frameworks */,
@@ -167,8 +166,7 @@
 		0D727EA118F099F1008310FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DAFB18331919E17A00B4A56F /* WindowsAzureMobileServices.h */,
-				DAFB18311919E16C00B4A56F /* WindowsAzureMobileServices */,
+				0D10AE26191ED8500071E1E9 /* QuartzCore.framework */,
 				0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */,
 				0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */,
 				0D727EA218F099F1008310FC /* Foundation.framework */,
