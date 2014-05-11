@@ -34,18 +34,13 @@
 		0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466618F10DD90072702B /* PlaceDetailView.m */; };
 		0D81466D18F1259F0072702B /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466C18F1259F0072702B /* SearchView.m */; };
 		0DFE223F18F3C8F5002693D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */; };
-		DA089B1F191F32F20055FD31 /* eh.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B19191F32F20055FD31 /* eh.png */; };
-		DA089B20191F32F20055FD31 /* fullCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B1A191F32F20055FD31 /* fullCircle.png */; };
-		DA089B21191F32F20055FD31 /* semiHappy.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B1B191F32F20055FD31 /* semiHappy.png */; };
-		DA089B22191F32F20055FD31 /* smallCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B1C191F32F20055FD31 /* smallCircle.png */; };
-		DA089B23191F32F20055FD31 /* smallCircleFull.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B1D191F32F20055FD31 /* smallCircleFull.png */; };
-		DA089B24191F32F20055FD31 /* soPissed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B1E191F32F20055FD31 /* soPissed.png */; };
-		DA089B27191F33220055FD31 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B25191F33220055FD31 /* circle.png */; };
-		DA089B28191F33220055FD31 /* soHappy.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B26191F33220055FD31 /* soHappy.png */; };
-		DA089B2D191F44760055FD31 /* ehGray.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B29191F44760055FD31 /* ehGray.png */; };
-		DA089B2E191F44760055FD31 /* semiHappyGray.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B2A191F44760055FD31 /* semiHappyGray.png */; };
-		DA089B2F191F44760055FD31 /* soHappyGray.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B2B191F44760055FD31 /* soHappyGray.png */; };
-		DA089B30191F44760055FD31 /* soPissedGray.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B2C191F44760055FD31 /* soPissedGray.png */; };
+		DA089B38192016120055FD31 /* smallCircleFull.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B31192016120055FD31 /* smallCircleFull.png */; };
+		DA089B39192016120055FD31 /* smallCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B32192016120055FD31 /* smallCircle.png */; };
+		DA089B3A192016120055FD31 /* fullCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B33192016120055FD31 /* fullCircle.png */; };
+		DA089B3B192016120055FD31 /* semiHappy.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B34192016120055FD31 /* semiHappy.png */; };
+		DA089B3C192016120055FD31 /* soHappy.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B35192016120055FD31 /* soHappy.png */; };
+		DA089B3D192016120055FD31 /* eh.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B36192016120055FD31 /* eh.png */; };
+		DA089B3E192016120055FD31 /* soPissed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B37192016120055FD31 /* soPissed.png */; };
 		DA9EB651191EDF4F00C375B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9EB650191EDF4F00C375B3 /* MapKit.framework */; };
 		DAFB18351919E18E00B4A56F /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */; };
 /* End PBXBuildFile section */
@@ -103,18 +98,13 @@
 		0D81466C18F1259F0072702B /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 		0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5018A48B191220AE008BED0F /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
-		DA089B19191F32F20055FD31 /* eh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = eh.png; path = ../../../../../Dropbox/KEfi/eh.png; sourceTree = "<group>"; };
-		DA089B1A191F32F20055FD31 /* fullCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fullCircle.png; path = ../../../../../Dropbox/KEfi/fullCircle.png; sourceTree = "<group>"; };
-		DA089B1B191F32F20055FD31 /* semiHappy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = semiHappy.png; path = ../../../../../Dropbox/KEfi/semiHappy.png; sourceTree = "<group>"; };
-		DA089B1C191F32F20055FD31 /* smallCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smallCircle.png; path = ../../../../../Dropbox/KEfi/smallCircle.png; sourceTree = "<group>"; };
-		DA089B1D191F32F20055FD31 /* smallCircleFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = smallCircleFull.png; path = ../../../../../Dropbox/KEfi/smallCircleFull.png; sourceTree = "<group>"; };
-		DA089B1E191F32F20055FD31 /* soPissed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = soPissed.png; path = ../../../../../Dropbox/KEfi/soPissed.png; sourceTree = "<group>"; };
-		DA089B25191F33220055FD31 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circle.png; path = ../../../../../Dropbox/KEfi/circle.png; sourceTree = "<group>"; };
-		DA089B26191F33220055FD31 /* soHappy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = soHappy.png; path = ../../../../../Dropbox/KEfi/soHappy.png; sourceTree = "<group>"; };
-		DA089B29191F44760055FD31 /* ehGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ehGray.png; path = ../../../../../Dropbox/KEfi/ehGray.png; sourceTree = "<group>"; };
-		DA089B2A191F44760055FD31 /* semiHappyGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = semiHappyGray.png; path = ../../../../../Dropbox/KEfi/semiHappyGray.png; sourceTree = "<group>"; };
-		DA089B2B191F44760055FD31 /* soHappyGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = soHappyGray.png; path = ../../../../../Dropbox/KEfi/soHappyGray.png; sourceTree = "<group>"; };
-		DA089B2C191F44760055FD31 /* soPissedGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = soPissedGray.png; path = ../../../../../Dropbox/KEfi/soPissedGray.png; sourceTree = "<group>"; };
+		DA089B31192016120055FD31 /* smallCircleFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallCircleFull.png; sourceTree = "<group>"; };
+		DA089B32192016120055FD31 /* smallCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallCircle.png; sourceTree = "<group>"; };
+		DA089B33192016120055FD31 /* fullCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullCircle.png; sourceTree = "<group>"; };
+		DA089B34192016120055FD31 /* semiHappy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = semiHappy.png; sourceTree = "<group>"; };
+		DA089B35192016120055FD31 /* soHappy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soHappy.png; sourceTree = "<group>"; };
+		DA089B36192016120055FD31 /* eh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eh.png; sourceTree = "<group>"; };
+		DA089B37192016120055FD31 /* soPissed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soPissed.png; sourceTree = "<group>"; };
 		DA9EB650191EDF4F00C375B3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DAFB18311919E16C00B4A56F /* WindowsAzureMobileServices */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = WindowsAzureMobileServices; path = WindowsAzureMobileServices.framework/WindowsAzureMobileServices; sourceTree = "<group>"; };
 		DAFB18331919E17A00B4A56F /* WindowsAzureMobileServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WindowsAzureMobileServices.h; path = WindowsAzureMobileServices.framework/Headers/WindowsAzureMobileServices.h; sourceTree = "<group>"; };
@@ -150,19 +140,14 @@
 		0D0C131818FB7F9000C90A5F /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				DA089B29191F44760055FD31 /* ehGray.png */,
-				DA089B2A191F44760055FD31 /* semiHappyGray.png */,
-				DA089B2B191F44760055FD31 /* soHappyGray.png */,
-				DA089B2C191F44760055FD31 /* soPissedGray.png */,
-				DA089B25191F33220055FD31 /* circle.png */,
-				DA089B26191F33220055FD31 /* soHappy.png */,
+				DA089B31192016120055FD31 /* smallCircleFull.png */,
+				DA089B32192016120055FD31 /* smallCircle.png */,
+				DA089B33192016120055FD31 /* fullCircle.png */,
+				DA089B34192016120055FD31 /* semiHappy.png */,
+				DA089B35192016120055FD31 /* soHappy.png */,
+				DA089B36192016120055FD31 /* eh.png */,
+				DA089B37192016120055FD31 /* soPissed.png */,
 				0D0C131618FB762600C90A5F /* KefItIcon.png */,
-				DA089B19191F32F20055FD31 /* eh.png */,
-				DA089B1A191F32F20055FD31 /* fullCircle.png */,
-				DA089B1B191F32F20055FD31 /* semiHappy.png */,
-				DA089B1C191F32F20055FD31 /* smallCircle.png */,
-				DA089B1D191F32F20055FD31 /* smallCircleFull.png */,
-				DA089B1E191F32F20055FD31 /* soPissed.png */,
 				0D0C131218FB72B600C90A5F /* FavFilled.png */,
 				0D0C131318FB72B600C90A5F /* FavUnfilled.png */,
 				0D4F4A0C18F0B78100F901AE /* bar_64.png */,
@@ -358,24 +343,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA089B23191F32F20055FD31 /* smallCircleFull.png in Resources */,
+				DA089B3D192016120055FD31 /* eh.png in Resources */,
+				DA089B3E192016120055FD31 /* soPissed.png in Resources */,
 				0D727EBB18F099F1008310FC /* Images.xcassets in Resources */,
-				DA089B2E191F44760055FD31 /* semiHappyGray.png in Resources */,
-				DA089B30191F44760055FD31 /* soPissedGray.png in Resources */,
-				DA089B22191F32F20055FD31 /* smallCircle.png in Resources */,
-				DA089B20191F32F20055FD31 /* fullCircle.png in Resources */,
 				0D0C131418FB72B600C90A5F /* FavFilled.png in Resources */,
-				DA089B28191F33220055FD31 /* soHappy.png in Resources */,
+				DA089B3C192016120055FD31 /* soHappy.png in Resources */,
+				DA089B3B192016120055FD31 /* semiHappy.png in Resources */,
+				DA089B3A192016120055FD31 /* fullCircle.png in Resources */,
 				0D0C131518FB72B600C90A5F /* FavUnfilled.png in Resources */,
+				DA089B39192016120055FD31 /* smallCircle.png in Resources */,
 				0D727EAD18F099F1008310FC /* InfoPlist.strings in Resources */,
+				DA089B38192016120055FD31 /* smallCircleFull.png in Resources */,
 				0D0C131718FB762600C90A5F /* KefItIcon.png in Resources */,
-				DA089B21191F32F20055FD31 /* semiHappy.png in Resources */,
-				DA089B2F191F44760055FD31 /* soHappyGray.png in Resources */,
 				0D727EB618F099F1008310FC /* Main.storyboard in Resources */,
-				DA089B24191F32F20055FD31 /* soPissed.png in Resources */,
-				DA089B27191F33220055FD31 /* circle.png in Resources */,
-				DA089B2D191F44760055FD31 /* ehGray.png in Resources */,
-				DA089B1F191F32F20055FD31 /* eh.png in Resources */,
 				0D4F4A0D18F0B78100F901AE /* bar_64.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
