@@ -8,7 +8,6 @@
 
 #import "SubmitView.h"
 
-
 @interface SubmitView ()
 @property (strong, nonatomic) IBOutlet UIView *drawView;
 @property (strong, nonatomic) IBOutlet UIButton *reviewButton;
@@ -17,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *L3Sentiment;
 @property (weak, nonatomic) IBOutlet UIButton *L2Sentiment;
 @property (weak, nonatomic) IBOutlet UIButton *L1Sentiment;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *sentimentCircles;
 
 
 
@@ -24,17 +24,28 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L3EnergyCircles;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L2EnergyCircles;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L1EnergyCircles;
+
+
 @end
 
 @implementation SubmitView
 
     
 
-
+//globals needed
 int numVerticalCells = 4;
 int numHorizontalCells = 4;
 CGFloat cellWidth;
 CGFloat cellHeight;
+
+//needed for finding change
+int StillNoChangeIndex = -1;
+NSTimer *timer;
+
+
+//boolean to see if evaluating energy levels
+bool evaluatingEnergyLevels = false;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -70,8 +81,8 @@ CGFloat cellHeight;
     
     [self.view.layer addSublayer: outline]; */
     
-    cellWidth = self.drawView.frame.size.width / numHorizontalCells;
-    cellHeight = self.drawView.frame.size.height / numVerticalCells;
+    cellWidth = (self.drawView.frame.size.width - 70) / numHorizontalCells;
+    cellHeight = (self.drawView.frame.size.height - 60) / numVerticalCells;
     
     
     self.drawView.layer.borderColor = [UIColor blackColor].CGColor;
@@ -82,6 +93,19 @@ CGFloat cellHeight;
     [self.L2EnergyCircles setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
     [self.L3EnergyCircles setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
     [self.L4EnergyCircles setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
+    
+    //tie all of the sentiment circles with ID's
+    [self.L1Sentiment setTag:1];
+    [self.L2Sentiment setTag:2];
+    [self.L3Sentiment setTag:3];
+    [self.L4Sentiment setTag:4];
+    
+    [self.L1EnergyCircles setValue:@(5) forKey:@"tag"];
+    [self.L2EnergyCircles setValue:@(6) forKey:@"tag"];
+    [self.L3EnergyCircles setValue:@(7) forKey:@"tag"];
+    [self.L4EnergyCircles setValue:@(8) forKey:@"tag"];
+
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,15 +119,53 @@ CGFloat cellHeight;
     CGPoint point = [[[event allTouches] anyObject] locationInView:self.drawView];
     if (CGRectContainsPoint(self.drawView.frame, CGPointMake(point.x + self.drawView.frame.origin.x, point.y + self.drawView.frame.origin.y)))
         sender.center = point;
-    int horizontalCellIndex = floor(sender.frame.origin.x / cellWidth) + 1;
+    int horizontalCellIndex = floor(sender.frame.origin.x / cellWidth);
     int verticalCellIndex = floor((self.drawView.frame.size.height - sender.frame.origin.y) / cellHeight);
+    
+    if (horizontalCellIndex == -1)
+        horizontalCellIndex = 0;
+    
     self.coordinateLabel.text = [NSString stringWithFormat:@"e: %d   s: %d",horizontalCellIndex, verticalCellIndex];
-    NSLog(@"%f %f %f %f",point.x, point.y, self.drawView.frame.origin.x, self.drawView.frame.origin.y);
-    
+   
     //check if person has submitted a review
-    
+    //if 115<frame.origin.x<165 && horizontalcellindex hasn't changed for more than 1 second, and it != 2
+    if((115 < sender.frame.origin.x < 165) && (verticalCellIndex != 2) && StillNoChangeIndex != verticalCellIndex)
+    {
+        [timer invalidate];
+        StillNoChangeIndex = verticalCellIndex;
+        //start/reset the timer.
+        timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(InitiateReviewEnergyLevels:) userInfo:[NSString stringWithFormat:@"%d",verticalCellIndex] repeats:NO];
+    }
 }
 
+-(void)InitiateReviewEnergyLevels:(NSTimer *)timer
+{
+    NSInteger horizontalCellIndex = [timer.userInfo integerValue];
 
+    
+    if (evaluatingEnergyLevels == false)
+    {
+        evaluatingEnergyLevels = true;
+    
+        //move sentiment objects left
+        for (int i=1; i<5; i++)
+        {
+            UIButton *currentButton = (UIButton *) [self.view viewWithTag:i];
+            [UIView animateWithDuration:0.5 animations:^{currentButton.center= CGPointMake(currentButton.frame.origin.x/3, currentButton.frame.origin.y+30);}];
+            
+            
+            if (currentButton.tag != horizontalCellIndex)
+                //change imate
+                [currentButton setAlpha:0.4];
+            else
+            {
+                NSArray *energyCircles = (NSArray(UIButton *))[self.view viewWithTag:i+4];
+                NSLog(@"energy circle is \n %@", energyCircles);
+                [energyCircles setValue: @(NO) forKey:@"hidden"];
+            }
+        }
+  
+    }
+}
 
 @end

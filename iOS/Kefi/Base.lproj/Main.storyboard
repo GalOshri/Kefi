@@ -293,7 +293,6 @@
                         <outletCollection property="L4EnergyCircles" destination="0Ws-lu-cmh" id="Vyj-xz-ZnE"/>
                         <outletCollection property="L4EnergyCircles" destination="LTg-XA-WnX" id="LwA-eu-Fje"/>
                         <outletCollection property="L4EnergyCircles" destination="haE-4a-ExV" id="otZ-IW-So8"/>
-                        <outletCollection property="L3EnergyCircles" destination="POF-Z7-1bX" id="r9y-ox-5Xu"/>
                         <outletCollection property="L3EnergyCircles" destination="HNH-FB-9Gk" id="uck-sV-VJy"/>
                         <outletCollection property="L3EnergyCircles" destination="34Q-nC-nCx" id="9KW-rl-vMX"/>
                         <outletCollection property="L3EnergyCircles" destination="tkh-Uf-swV" id="6SI-9h-B0N"/>
@@ -305,6 +304,11 @@
                         <outletCollection property="L1EnergyCircles" destination="rLu-DJ-XXB" id="fvl-b9-TJK"/>
                         <outletCollection property="L1EnergyCircles" destination="Lld-ew-SOq" id="zy5-8i-tZc"/>
                         <outletCollection property="L1EnergyCircles" destination="MK1-Oh-CI5" id="7NX-wR-vAI"/>
+                        <outletCollection property="sentimentCircles" destination="onz-A6-ax2" id="A5w-S5-sgm"/>
+                        <outletCollection property="sentimentCircles" destination="oOI-lE-Jeb" id="Deq-ur-7R1"/>
+                        <outletCollection property="sentimentCircles" destination="eP7-7A-tAd" id="1pw-rT-hfX"/>
+                        <outletCollection property="sentimentCircles" destination="KCj-C5-5MC" id="G5G-ba-BHW"/>
+                        <outletCollection property="sentimentCircles" destination="Bvm-RL-7d1" id="bXk-IC-Ieh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vqm-ny-vLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
