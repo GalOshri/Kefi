@@ -107,28 +107,27 @@
     
     searchTerm = @"";
     
-    self.kefiService = [[KefiService alloc] init];
-    
-    [KefiService PopulateHashtagList:self.hashtagList];
-    
-    [KefiService PopulatePlaceList:self.placeList withTable:self.tableView];
-    
-    
-    
-    
+  /*
     locationManager = [[CLLocationManager alloc] init];
     geocoder = [[CLGeocoder alloc] init];
     
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
     
-    //[locationManager startUpdatingLocation];
+    NSLog(@"%g, %g", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
+  */
+    
     
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
     self.tableHeader = self.tableView.tableHeaderView;
     self.tableView.tableHeaderView = nil;
 
+    
+    self.kefiService = [[KefiService alloc] init];
+    [KefiService PopulateHashtagList:self.hashtagList];
+    [KefiService PopulatePlaceList:self.placeList withTable:self.tableView];
     
     
     // Uncomment the following line to preserve selection between presentations.

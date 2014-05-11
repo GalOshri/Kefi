@@ -16,6 +16,7 @@
 @end
 
 @implementation PlaceDetailView
+@synthesize mapView;
 
 #pragma mark - Navigation
 
@@ -49,7 +50,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
 	// Do any additional setup after loading the view.
+    
     
     //sets name to view?
     [self.navigationController.viewControllers[self.navigationController.viewControllers.count -1] setTitle:self.place.name];
@@ -83,8 +86,18 @@
     distanceString = [distanceString substringToIndex:4];
     self.distanceMi.text = [NSString stringWithFormat:@"%@ mi",distanceString];
     
-    //grab picture from URL
+   /*
+    //adjust map
+    CLLocationCoordinate2D startCoord;
+    startCoord.latitude = [[self.place.latLong objectAtIndex:0] doubleValue];
+    startCoord.longitude = [[self.place.latLong objectAtIndex:0] doubleValue];
+
+    MKPointAnnotation *point = [[MKPointAnnotation alloc]init];
+    point.coordinate = startCoord;
+    [self.mapView addAnnotation:point];
     
+    [mapView setRegion:MKCoordinateRegionMakeWithDistance(startCoord, 200, 200) animated:YES];
+  */
 
 
      
@@ -120,9 +133,6 @@
     cell.textLabel.text = hashtag.text;
     return cell;
 }
-
-
-
 
 
 @end

@@ -62,6 +62,9 @@ NSInteger radius = 1000;
                     place.address = [NSString stringWithFormat:@"%@",[location objectForKey:@"address"]];
                     place.crossStreet = [NSString stringWithFormat:@"%@", [location objectForKey:@"crossStreet"]];
                     place.currentDistance = [location objectForKey:@"distance"];
+                    place.latLong = @[[location objectForKey: @"lat"],[location objectForKey:@"lng"]];
+                    
+                    
                     
                     //modify currentDistance to represent miles
                     place.currentDistance =  @([place.currentDistance doubleValue]* 0.000621371192);

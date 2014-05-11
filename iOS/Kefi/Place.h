@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSNumber *currentDistance;
 @property (nonatomic, strong) UIImage *imageType;
 @property (nonatomic, strong) NSString *categoryType;
+@property (nonatomic, strong) NSArray *latLong;
 
 - (id)initWithId:(NSString *)fsId
         WithName:(NSString *)placeName;

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qin-61-ZkP">
-                                <rect key="frame" x="30" y="104" width="46" height="30"/>
+                                <rect key="frame" x="13" y="89" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Map">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,21 +51,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vKE-6m-8Km">
-                                <rect key="frame" x="110" y="111" width="100" height="100"/>
+                                <rect key="frame" x="110" y="126" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="KefItIcon.png"/>
                                 <connections>
                                     <segue destination="d65-21-QS9" kind="modal" identifier="SubmitReviewSegue" id="GFe-tn-y7D"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kef It" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CS3-Pi-gWS">
-                                <rect key="frame" x="140" y="89" width="41" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7b-Rq-64T">
-                                <rect key="frame" x="240" y="136" width="50" height="50"/>
+                                <rect key="frame" x="240" y="117" width="56" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="FavUnfilled.png"/>
                                 <connections>
@@ -73,7 +67,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favorite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ak-gm-bLk">
-                                <rect key="frame" x="234" y="111" width="62" height="21"/>
+                                <rect key="frame" x="234" y="92" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
@@ -93,7 +87,6 @@
                         <outlet property="distanceMi" destination="srq-si-z3G" id="gHA-nR-VI7"/>
                         <outlet property="placeAddress" destination="XhW-FH-r3L" id="qyb-Jj-5HM"/>
                         <outlet property="placeCrossStreets" destination="P3K-m1-tho" id="D7T-uV-84o"/>
-                        <outlet property="placeTitle" destination="CS3-Pi-gWS" id="hQF-Mq-hWU"/>
                         <outlet property="tableView" destination="SqG-AP-L2L" id="gZE-8q-7vo"/>
                     </connections>
                 </viewController>
@@ -238,7 +231,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUI-ba-g42" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="785" y="347"/>
+            <point key="canvasLocation" x="743" y="347"/>
         </scene>
         <!--Search View-->
         <scene sceneID="ycy-VW-CcL">

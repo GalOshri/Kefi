@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "Place.h"
 
 @interface PlaceDetailView : UIViewController <UITableViewDataSource, UITableViewDelegate>
@@ -21,5 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *placeTitle;
 @property (weak, nonatomic) IBOutlet UILabel *placeCrossStreets;
 @property (weak, nonatomic) IBOutlet UILabel *distanceMi;
+//@property (nonatomic, strong) IBOutlet MKMapView *mapView;
+
 
 @end
