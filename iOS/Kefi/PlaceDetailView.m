@@ -16,7 +16,7 @@
 @end
 
 @implementation PlaceDetailView
-@synthesize mapView;
+//@synthesize mapView;
 
 #pragma mark - Navigation
 

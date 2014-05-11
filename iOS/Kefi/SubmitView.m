@@ -13,6 +13,17 @@
 @property (strong, nonatomic) IBOutlet UIView *drawView;
 @property (strong, nonatomic) IBOutlet UIButton *reviewButton;
 
+@property (weak, nonatomic) IBOutlet UIButton *L4Sentiment;
+@property (weak, nonatomic) IBOutlet UIButton *L3Sentiment;
+@property (weak, nonatomic) IBOutlet UIButton *L2Sentiment;
+@property (weak, nonatomic) IBOutlet UIButton *L1Sentiment;
+
+
+
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L4EnergyCircles;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L3EnergyCircles;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L2EnergyCircles;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L1EnergyCircles;
 @end
 
 @implementation SubmitView
@@ -65,6 +76,12 @@ CGFloat cellHeight;
     
     self.drawView.layer.borderColor = [UIColor blackColor].CGColor;
     self.drawView.layer.borderWidth = 1.0f;
+    
+    //set circle Buttons to hidden on load
+    [self.L1EnergyCircles setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
+    [self.L2EnergyCircles setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
+    [self.L3EnergyCircles setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
+    [self.L4EnergyCircles setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -72,18 +89,20 @@ CGFloat cellHeight;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+    
 - (IBAction)reviewButtonDragged:(UIButton *)sender forEvent:(UIEvent *)event {
     CGPoint point = [[[event allTouches] anyObject] locationInView:self.drawView];
     if (CGRectContainsPoint(self.drawView.frame, CGPointMake(point.x + self.drawView.frame.origin.x, point.y + self.drawView.frame.origin.y)))
         sender.center = point;
     int horizontalCellIndex = floor(sender.frame.origin.x / cellWidth) + 1;
-    int verticalCellIndex = floor((self.drawView.frame.size.height - sender.frame.origin.y) / cellHeight) + 1;
+    int verticalCellIndex = floor((self.drawView.frame.size.height - sender.frame.origin.y) / cellHeight);
     self.coordinateLabel.text = [NSString stringWithFormat:@"e: %d   s: %d",horizontalCellIndex, verticalCellIndex];
     NSLog(@"%f %f %f %f",point.x, point.y, self.drawView.frame.origin.x, self.drawView.frame.origin.y);
-}
-
-
     
+    //check if person has submitted a review
+    
+}
 
 
 
