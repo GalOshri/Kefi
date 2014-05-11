@@ -207,7 +207,7 @@
     NSString *distanceString = [cell.place.currentDistance stringValue];
     distanceString = [distanceString substringToIndex:4];
     
-    NSString *displayInfoContent = [NSString stringWithFormat:@" %@ mi", distanceString];
+    NSString *displayInfoContent = [NSString stringWithFormat:@" %@ mi %@", distanceString, cell.place.categoryType];
     
     cell.moreCellInfo.text = displayInfoContent;
     
