@@ -18,8 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *L1Sentiment;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *sentimentCircles;
 
-
-
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L4EnergyCircles;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L3EnergyCircles;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L2EnergyCircles;
@@ -27,6 +25,8 @@
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert1EnergyCircles;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert2EnergyCircles;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert3EnergyCircles;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert4EnergyCircles;
 
 
 
@@ -45,12 +45,17 @@ CGFloat cellWidth;
 CGFloat cellHeight;
 
 //needed for finding change
-int StillNoChangeIndex = -1;
+int newSentimentIndex = -1;
+int newEnergyIndex = -1;
 NSTimer *timer;
 
 
-//boolean to see if evaluating energy levels
-bool evaluatingEnergyLevels = false;
+bool sentimentsActivated = NO;
+
+NSDictionary *horizontalToSentimentDict;
+NSDictionary *horizontalToEnergyCirclesDict;
+NSDictionary *verticalToEnergyCirclesDict;
+NSMutableSet *activatedEnergyCircles;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -67,50 +72,31 @@ bool evaluatingEnergyLevels = false;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    /*CGMutablePathRef arc = CGPathCreateMutable();
-    CGPathMoveToPoint(arc, NULL,
-                      100, 100);
-    CGPathAddLineToPoint(arc, NULL, 200, 200);
-    CGFloat lineWidth = 10.0;
-    CGPathRef strokedArc =
-    CGPathCreateCopyByStrokingPath(arc, NULL,
-                                   lineWidth,
-                                   kCGLineCapButt,
-                                   kCGLineJoinMiter, // the default
-                                   10); // 10 is default miter limit
-
-    CAShapeLayer *outline = [CAShapeLayer layer];
-    outline.fillColor = [UIColor lightGrayColor].CGColor;
-    outline.strokeColor = [UIColor blackColor].CGColor;
-    outline.lineWidth = 1.0;
-    outline.path = strokedArc; // the path we created above
-    
-    [self.view.layer addSublayer: outline]; */
-    
     cellWidth = (self.drawView.frame.size.width - 70) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height - 60) / numVerticalCells;
     
     
     self.drawView.layer.borderColor = [UIColor blackColor].CGColor;
     self.drawView.layer.borderWidth = 1.0f;
-    
-    //set circle Buttons to hidden on load
-    [self.L1EnergyCircles setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
-    [self.L2EnergyCircles setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
-    [self.L3EnergyCircles setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
-    [self.L4EnergyCircles setValue:[NSNumber numberWithBool:YES] forKey:@"hidden"];
-    
-    //tie all of the sentiment circles with ID's
-    [self.L1Sentiment setTag:1];
-    [self.L2Sentiment setTag:2];
-    [self.L3Sentiment setTag:3];
-    [self.L4Sentiment setTag:4];
-    
-    [self.L1EnergyCircles setValue:@(5) forKey:@"tag"];
-    [self.L2EnergyCircles setValue:@(6) forKey:@"tag"];
-    [self.L3EnergyCircles setValue:@(7) forKey:@"tag"];
-    [self.L4EnergyCircles setValue:@(8) forKey:@"tag"];
 
+    
+    
+    horizontalToSentimentDict = @{@0:self.L1Sentiment,
+                                                @1:self.L2Sentiment,
+                                                @3:self.L3Sentiment,
+                                                @4:self.L4Sentiment};
+    
+    horizontalToEnergyCirclesDict = @{@0:self.L1EnergyCircles,
+                                      @1:self.L2EnergyCircles,
+                                      @3:self.L3EnergyCircles,
+                                      @4:self.L4EnergyCircles};
+                                      
+    verticalToEnergyCirclesDict = @{@1:self.Vert1EnergyCircles,
+                                    @2:self.Vert2EnergyCircles,
+                                    @3:self.Vert3EnergyCircles,
+                                    @4:self.Vert4EnergyCircles};
+    
+    activatedEnergyCircles = [[NSMutableSet alloc] init];
     
 }
 
@@ -133,45 +119,128 @@ bool evaluatingEnergyLevels = false;
     
     self.coordinateLabel.text = [NSString stringWithFormat:@"e: %d   s: %d",horizontalCellIndex, verticalCellIndex];
    
-    //check if person has submitted a review
+  
     //if 115<frame.origin.x<165 && horizontalcellindex hasn't changed for more than 1 second, and it != 2
-    if((115 < sender.frame.origin.x < 165) && (verticalCellIndex != 2) && StillNoChangeIndex != verticalCellIndex)
+
+    
+    // activate correct energy circle if sentiments activated
+    if (sentimentsActivated)
     {
-        [timer invalidate];
-        StillNoChangeIndex = verticalCellIndex;
-        //start/reset the timer.
-        timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(InitiateReviewEnergyLevels:) userInfo:[NSString stringWithFormat:@"%d",verticalCellIndex] repeats:NO];
+        if (newEnergyIndex != horizontalCellIndex)
+        {
+            newEnergyIndex = horizontalCellIndex;
+            for (UIButton *energyCircle in activatedEnergyCircles)
+            {
+                [energyCircle setImage:[UIImage imageNamed:@"smallCircle.png"] forState:UIControlStateNormal];
+            }
+            [activatedEnergyCircles removeAllObjects];
+            
+            if (verticalCellIndex == newSentimentIndex)
+            {
+                
+                NSArray *vertEnergyCircles = [verticalToEnergyCirclesDict objectForKey:[NSNumber numberWithInt:horizontalCellIndex]];
+                
+                for (UIButton *energyCircle in vertEnergyCircles)
+                {
+                    [energyCircle setImage:[UIImage imageNamed:@"smallCircleFull.png"] forState:UIControlStateNormal];
+                    
+                }
+                [activatedEnergyCircles addObjectsFromArray:vertEnergyCircles];
+            }
+        }
+    }
+    
+    // check if we need to activate sentiment
+    else
+    {
+        if((115 < sender.frame.origin.x < 165) && (verticalCellIndex != 2) && newSentimentIndex != verticalCellIndex)
+        {
+            [timer invalidate];
+            newSentimentIndex = verticalCellIndex;
+            //start/reset the timer.
+            timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(InitiateReviewEnergyLevels:) userInfo:[NSString stringWithFormat:@"%d",verticalCellIndex] repeats:NO];
+        }
     }
 }
 
 -(void)InitiateReviewEnergyLevels:(NSTimer *)timer
 {
     NSInteger horizontalCellIndex = [timer.userInfo integerValue];
+    
+    if (sentimentsActivated)
+        return;
+    
 
+    sentimentsActivated = YES;
     
-    if (evaluatingEnergyLevels == false)
-    {
-        evaluatingEnergyLevels = true;
-    
-        //move sentiment objects left
-        for (int i=1; i<5; i++)
+    //move sentiment objects left
+    [UIView animateWithDuration:0.5 animations:^{
+        for (id key in horizontalToSentimentDict)
         {
-            UIButton *currentButton = (UIButton *) [self.view viewWithTag:i];
-            [UIView animateWithDuration:0.5 animations:^{currentButton.center= CGPointMake(currentButton.frame.origin.x/3, currentButton.frame.origin.y+30);}];
+            UIButton *currentButton = [horizontalToSentimentDict objectForKey:key];
             
-            
-            if (currentButton.tag != horizontalCellIndex)
-                //change imate
+            currentButton.center = CGPointMake(currentButton.center.x / 3, currentButton.center.y );
+            if ([key integerValue] != horizontalCellIndex)
                 [currentButton setAlpha:0.4];
-            else
-            {
-              //  NSArray *energyCircles = (NSArray(UIButton *))[self.view viewWithTag:i+4];
-             //   NSLog(@"energy circle is \n %@", energyCircles);
-             //   [energyCircles setValue: @(NO) forKey:@"hidden"];
-            }
         }
-  
+    }
+    completion:^(BOOL finished) {
+         NSArray *energyCircles = [horizontalToEnergyCirclesDict objectForKey:[NSNumber numberWithInteger:horizontalCellIndex]];
+         for (UIButton *energyCircle in energyCircles)
+         {
+             energyCircle.hidden = NO;
+             energyCircle.alpha = 1;
+         }
+     }];
+}
+
+- (IBAction)reviewButtonTouchUp:(UIButton *)sender forEvent:(UIEvent *)event {
+    
+    CGPoint point = [[[event allTouches] anyObject] locationInView:self.drawView];
+    if (CGRectContainsPoint(self.drawView.frame, CGPointMake(point.x + self.drawView.frame.origin.x, point.y + self.drawView.frame.origin.y)))
+        sender.center = point;
+    int horizontalCellIndex = floor(sender.frame.origin.x / cellWidth);
+    int verticalCellIndex = floor((self.drawView.frame.size.height - sender.frame.origin.y) / cellHeight);
+    
+    NSLog(@"hor: %d, ver: %d",horizontalCellIndex,verticalCellIndex);
+    
+    
+    
+    [self returnSentimentButtons];
+}
+
+
+
+- (void)returnSentimentButtons
+{
+    if (!sentimentsActivated)
+        return;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        for (id key in horizontalToSentimentDict)
+        {
+            UIButton *currentButton = [horizontalToSentimentDict objectForKey:key];
+            currentButton.center= CGPointMake(currentButton.center.x * 3, currentButton.center.y );
+            [currentButton setAlpha:1];
+        }
+        
+        for (id key in horizontalToEnergyCirclesDict)
+            [self turnOffEnergyLevel:[key integerValue]];
+    }];
+    sentimentsActivated = NO;
+    newSentimentIndex = -1;
+}
+
+- (void)turnOffEnergyLevel:(NSInteger)energyLevel
+{
+    NSArray *energyCircles = [horizontalToEnergyCirclesDict objectForKey:[NSNumber numberWithInteger:energyLevel]];
+    for (UIButton *energyCircle in energyCircles)
+    {
+        energyCircle.hidden = YES;
+        energyCircle.alpha = 0;
     }
 }
+
+
 
 @end
