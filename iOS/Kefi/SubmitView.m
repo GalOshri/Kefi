@@ -25,6 +25,12 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L2EnergyCircles;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L1EnergyCircles;
 
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert1EnergyCircles;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert2EnergyCircles;
+
+
+
+
 
 @end
 
@@ -159,9 +165,9 @@ bool evaluatingEnergyLevels = false;
                 [currentButton setAlpha:0.4];
             else
             {
-                NSArray *energyCircles = (NSArray(UIButton *))[self.view viewWithTag:i+4];
-                NSLog(@"energy circle is \n %@", energyCircles);
-                [energyCircles setValue: @(NO) forKey:@"hidden"];
+              //  NSArray *energyCircles = (NSArray(UIButton *))[self.view viewWithTag:i+4];
+             //   NSLog(@"energy circle is \n %@", energyCircles);
+             //   [energyCircles setValue: @(NO) forKey:@"hidden"];
             }
         }
   

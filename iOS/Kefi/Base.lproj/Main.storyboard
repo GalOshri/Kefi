@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vVz-uH-k2V">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vVz-uH-k2V">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -309,6 +309,11 @@
                         <outletCollection property="sentimentCircles" destination="eP7-7A-tAd" id="1pw-rT-hfX"/>
                         <outletCollection property="sentimentCircles" destination="KCj-C5-5MC" id="G5G-ba-BHW"/>
                         <outletCollection property="sentimentCircles" destination="Bvm-RL-7d1" id="bXk-IC-Ieh"/>
+                        <outletCollection property="Vert1EnergyCircles" destination="haE-4a-ExV" id="Vv8-UY-HV4"/>
+                        <outletCollection property="Vert1EnergyCircles" destination="tkh-Uf-swV" id="aIj-7I-ssH"/>
+                        <outletCollection property="Vert1EnergyCircles" destination="wVF-7w-ELx" id="Go6-Tg-pXz"/>
+                        <outletCollection property="Vert1EnergyCircles" destination="MK1-Oh-CI5" id="Yo2-fL-pLr"/>
+                        <outletCollection property="Vert2EnergyCircles" destination="Lld-ew-SOq" id="u63-6h-4UF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vqm-ny-vLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
