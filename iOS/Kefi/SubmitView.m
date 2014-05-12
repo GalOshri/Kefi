@@ -39,18 +39,17 @@
     
 
 //globals needed
-int numVerticalCells = 4;
-int numHorizontalCells = 4;
+int numVerticalCells = 5;
+int numHorizontalCells = 5;
 CGFloat cellWidth;
 CGFloat cellHeight;
 
 //needed for finding change
-int newSentimentIndex = -1;
-int newEnergyIndex = -1;
+int selectedSentimentIndex = -1;
 NSTimer *timer;
 
-
-bool sentimentsActivated = NO;
+int activatedSentiment = -1; // -1 is when nothing is activated
+int activatedEnergy = -1; // -1 is when nothing is activated
 
 NSDictionary *horizontalToSentimentDict;
 NSDictionary *horizontalToEnergyCirclesDict;
@@ -72,9 +71,8 @@ NSMutableSet *activatedEnergyCircles;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    cellWidth = (self.drawView.frame.size.width - 70) / numHorizontalCells;
-    cellHeight = (self.drawView.frame.size.height - 60) / numVerticalCells;
-    
+    cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
+    cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
     
     self.drawView.layer.borderColor = [UIColor blackColor].CGColor;
     self.drawView.layer.borderWidth = 1.0f;
@@ -108,90 +106,81 @@ NSMutableSet *activatedEnergyCircles;
 
     
 - (IBAction)reviewButtonDragged:(UIButton *)sender forEvent:(UIEvent *)event {
+    // Where are we
+    
     CGPoint point = [[[event allTouches] anyObject] locationInView:self.drawView];
-    if (CGRectContainsPoint(self.drawView.frame, CGPointMake(point.x + self.drawView.frame.origin.x, point.y + self.drawView.frame.origin.y)))
+    if ((point.x - self.reviewButton.frame.size.width / 2) > 0 &&
+        (point.x + self.reviewButton.frame.size.width / 2) < self.drawView.frame.size.width &&
+        (point.y - self.reviewButton.frame.size.height / 2) > 0 &&
+        (point.y + self.reviewButton.frame.size.height / 2) < self.drawView.frame.size.height)
         sender.center = point;
     int horizontalCellIndex = floor(sender.frame.origin.x / cellWidth);
     int verticalCellIndex = floor((self.drawView.frame.size.height - sender.frame.origin.y) / cellHeight);
     
-    if (horizontalCellIndex == -1)
-        horizontalCellIndex = 0;
+   // if (horizontalCellIndex == -1)
+     //   horizontalCellIndex = 0;
     
     self.coordinateLabel.text = [NSString stringWithFormat:@"e: %d   s: %d",horizontalCellIndex, verticalCellIndex];
    
   
-    //if 115<frame.origin.x<165 && horizontalcellindex hasn't changed for more than 1 second, and it != 2
-
-    
-    // activate correct energy circle if sentiments activated
-    if (sentimentsActivated)
+    if (activatedSentiment == -1)
     {
-        if (newEnergyIndex != horizontalCellIndex)
-        {
-            newEnergyIndex = horizontalCellIndex;
-            for (UIButton *energyCircle in activatedEnergyCircles)
-            {
-                [energyCircle setImage:[UIImage imageNamed:@"smallCircle.png"] forState:UIControlStateNormal];
-            }
-            [activatedEnergyCircles removeAllObjects];
-            
-            if (verticalCellIndex == newSentimentIndex)
-            {
-                
-                NSArray *vertEnergyCircles = [verticalToEnergyCirclesDict objectForKey:[NSNumber numberWithInt:horizontalCellIndex]];
-                
-                for (UIButton *energyCircle in vertEnergyCircles)
-                {
-                    [energyCircle setImage:[UIImage imageNamed:@"smallCircleFull.png"] forState:UIControlStateNormal];
-                    
-                }
-                [activatedEnergyCircles addObjectsFromArray:vertEnergyCircles];
-            }
-        }
-    }
-    
-    // check if we need to activate sentiment
-    else
-    {
-        if((115 < sender.frame.origin.x < 165) && (verticalCellIndex != 2) && newSentimentIndex != verticalCellIndex)
+        if((115 < sender.frame.origin.x < 165) && (verticalCellIndex != 2) && selectedSentimentIndex != verticalCellIndex)
         {
             [timer invalidate];
-            newSentimentIndex = verticalCellIndex;
+            selectedSentimentIndex = verticalCellIndex;
             //start/reset the timer.
             timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(InitiateReviewEnergyLevels:) userInfo:[NSString stringWithFormat:@"%d",verticalCellIndex] repeats:NO];
         }
     }
+    
+    else
+    {
+        if (activatedSentiment != verticalCellIndex)
+        {
+            // TODO: CHOOSE DIFFERENT SENTIMENT MAYBE
+            if (horizontalCellIndex == 0 && verticalCellIndex != 2)
+            {
+                [self DeactivateSentiment:activatedSentiment];
+                [self ActivateSentiment:verticalCellIndex];
+            }
+            
+            // Deactivate all energy circles
+            [self DeactivateAllEnergyCircles];
+        }
+        
+        else
+        {
+            if (activatedEnergy != horizontalCellIndex)
+            {
+                [self DeactivateAllEnergyCircles];
+
+                NSArray *vertEnergyCircles = [verticalToEnergyCirclesDict objectForKey:[NSNumber numberWithInt:horizontalCellIndex]];
+                
+                for (UIButton *energyCircle in vertEnergyCircles)
+                {
+                    [self ActivateEnergyCircle:energyCircle];
+                }
+                
+                [activatedEnergyCircles addObjectsFromArray:vertEnergyCircles];
+                
+            }
+        }
+    }
+    
+
+
 }
 
 -(void)InitiateReviewEnergyLevels:(NSTimer *)timer
 {
-    NSInteger horizontalCellIndex = [timer.userInfo integerValue];
+    NSInteger selectedSentiment = [timer.userInfo integerValue];
     
-    if (sentimentsActivated)
+    if (activatedSentiment != -1)
         return;
     
-
-    sentimentsActivated = YES;
-    
-    //move sentiment objects left
-    [UIView animateWithDuration:0.5 animations:^{
-        for (id key in horizontalToSentimentDict)
-        {
-            UIButton *currentButton = [horizontalToSentimentDict objectForKey:key];
-            
-            currentButton.center = CGPointMake(currentButton.center.x / 3, currentButton.center.y );
-            if ([key integerValue] != horizontalCellIndex)
-                [currentButton setAlpha:0.4];
-        }
-    }
-    completion:^(BOOL finished) {
-         NSArray *energyCircles = [horizontalToEnergyCirclesDict objectForKey:[NSNumber numberWithInteger:horizontalCellIndex]];
-         for (UIButton *energyCircle in energyCircles)
-         {
-             energyCircle.hidden = NO;
-             energyCircle.alpha = 1;
-         }
-     }];
+    [self SlideAllSentimentsLeft:(int)selectedSentiment];
+    activatedSentiment = (int)selectedSentiment;
 }
 
 - (IBAction)reviewButtonTouchUp:(UIButton *)sender forEvent:(UIEvent *)event {
@@ -204,18 +193,55 @@ NSMutableSet *activatedEnergyCircles;
     
     NSLog(@"hor: %d, ver: %d",horizontalCellIndex,verticalCellIndex);
     
+    if (activatedSentiment != -1 && activatedEnergy != -1)
+    {
+        // TODO: SUBMIT REVIEW
+    }
+    else if (activatedSentiment != -1)
+    {
+        [self SlideAllSentimentsRight];
+        [self resetReviewButton];
+    }
+    else
+    {
+        [self resetReviewButton];
+    }
+    
+    [timer invalidate];
+    activatedSentiment = -1;
+    activatedEnergy = -1;
     
     
-    [self returnSentimentButtons];
+ 
+}
+
+- (void)resetReviewButton
+{
+    self.reviewButton.center = CGPointMake(self.view.center.x, self.view.center.y - self.drawView.frame.origin.y / 2);
 }
 
 
-
-- (void)returnSentimentButtons
+- (void)SlideAllSentimentsLeft:(int)selectedSentiment
 {
-    if (!sentimentsActivated)
-        return;
+    [UIView animateWithDuration:0.5 animations:^{
+        for (id key in horizontalToSentimentDict)
+        {
+            UIButton *currentButton = [horizontalToSentimentDict objectForKey:key];
+            
+            currentButton.center = CGPointMake(currentButton.center.x / 3, currentButton.center.y );
+            if ([key integerValue] != selectedSentiment)
+                [currentButton setAlpha:0.4];
+        }
+    }
+                     completion:^(BOOL finished) {
+                         [self ActivateSentiment:selectedSentiment];
+                     }];
     
+    activatedSentiment = selectedSentiment;
+}
+
+- (void)SlideAllSentimentsRight
+{
     [UIView animateWithDuration:0.5 animations:^{
         for (id key in horizontalToSentimentDict)
         {
@@ -223,17 +249,56 @@ NSMutableSet *activatedEnergyCircles;
             currentButton.center= CGPointMake(currentButton.center.x * 3, currentButton.center.y );
             [currentButton setAlpha:1];
         }
-        
-        for (id key in horizontalToEnergyCirclesDict)
-            [self turnOffEnergyLevel:[key integerValue]];
     }];
-    sentimentsActivated = NO;
-    newSentimentIndex = -1;
+    
+    activatedSentiment = -1;
+    for (id key in horizontalToSentimentDict)
+    {
+        [self DeactivateEnergyLevel:[key intValue]];
+    }
 }
 
-- (void)turnOffEnergyLevel:(NSInteger)energyLevel
+- (void)ActivateSentiment:(int)sentiment
 {
-    NSArray *energyCircles = [horizontalToEnergyCirclesDict objectForKey:[NSNumber numberWithInteger:energyLevel]];
+    // TODO: SOME ANIMATION TO ACTIVATE SENTIMENT
+    
+    activatedSentiment = sentiment;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:sentiment]];
+                                   [currentButton setAlpha:1];
+                                   }];
+        
+    [self ActivateEnergyLevel:sentiment];
+}
+
+- (void)DeactivateSentiment:(int)sentiment
+{
+    // TODO: SOME ANIMATION TO DEACTIVATE SENTIMENT
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:sentiment]];
+                                   [currentButton setAlpha:0.4];
+                                   }];
+    
+    [self DeactivateEnergyLevel:sentiment];
+}
+
+- (void)ActivateEnergyLevel:(int)sentiment
+{
+    // TODO: ADD ANIMATION
+    NSArray *energyCircles = [horizontalToEnergyCirclesDict objectForKey:[NSNumber numberWithInteger:sentiment]];
+    for (UIButton *energyCircle in energyCircles)
+    {
+        energyCircle.hidden = NO;
+        energyCircle.alpha = 1;
+    }
+}
+
+- (void)DeactivateEnergyLevel:(int)sentiment
+{
+    // TODO: ADD ANIMATION
+    NSArray *energyCircles = [horizontalToEnergyCirclesDict objectForKey:[NSNumber numberWithInteger:sentiment]];
     for (UIButton *energyCircle in energyCircles)
     {
         energyCircle.hidden = YES;
@@ -241,6 +306,24 @@ NSMutableSet *activatedEnergyCircles;
     }
 }
 
+- (void)ActivateEnergyCircle:(UIButton *)energyCircle
+{
+    [energyCircle setImage:[UIImage imageNamed:@"smallCircleFull.png"] forState:UIControlStateNormal];
+}
+
+- (void)DeactivateEnergyCircle:(UIButton *)energyCircle
+{
+    [energyCircle setImage:[UIImage imageNamed:@"smallCircle.png"] forState:UIControlStateNormal];
+}
+
+- (void)DeactivateAllEnergyCircles
+{
+    for (UIButton *energyCircle in activatedEnergyCircles)
+    {
+        [self DeactivateEnergyCircle:energyCircle];
+    }
+    [activatedEnergyCircles removeAllObjects];
+}
 
 
 @end
