@@ -7,6 +7,7 @@
 //
 
 #import "SubmitView.h"
+#import "SubmitReviewDetailView.h"
 
 @interface SubmitView ()
 @property (strong, nonatomic) IBOutlet UIView *drawView;
@@ -56,6 +57,25 @@ NSDictionary *horizontalToEnergyCirclesDict;
 NSDictionary *verticalToEnergyCirclesDict;
 NSMutableSet *activatedEnergyCircles;
 
+#pragma mark - Navigation
+
+// In a story board-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"SubmitReviewDetailSegue"]) {
+        if ([segue.destinationViewController isKindOfClass:[SubmitReviewDetailView class]])
+        {
+            SubmitReviewDetailView *srdv = (SubmitReviewDetailView *)segue.destinationViewController;
+            srdv.sentimentLevel = activatedSentiment;
+            srdv.energyLevel = activatedEnergy;
+            UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
+            NSLog(@"%f   %f   %f    %f", currentButton.frame.origin.x, currentButton.frame.origin.y, currentButton.frame.size.height, currentButton.frame.size.width);
+            srdv.imageFrame = CGRectMake(currentButton.frame.origin.x, currentButton.frame.origin.y + self.drawView.frame.origin.y, currentButton.frame.size.width, currentButton.frame.size.height);
+            srdv.sentimentImage.image = currentButton.imageView.image;
+        }
+    }
+}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -74,8 +94,8 @@ NSMutableSet *activatedEnergyCircles;
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
     
-    self.drawView.layer.borderColor = [UIColor blackColor].CGColor;
-    self.drawView.layer.borderWidth = 1.0f;
+//    self.drawView.layer.borderColor = [UIColor blackColor].CGColor;
+//    self.drawView.layer.borderWidth = 1.0f;
 
     
     
@@ -147,6 +167,7 @@ NSMutableSet *activatedEnergyCircles;
             
             // Deactivate all energy circles
             [self DeactivateAllEnergyCircles];
+            activatedEnergy = -1;
         }
         
         else
@@ -163,6 +184,7 @@ NSMutableSet *activatedEnergyCircles;
                 }
                 
                 [activatedEnergyCircles addObjectsFromArray:vertEnergyCircles];
+                activatedEnergy = horizontalCellIndex;
                 
             }
         }
@@ -196,6 +218,17 @@ NSMutableSet *activatedEnergyCircles;
     if (activatedSentiment != -1 && activatedEnergy != -1)
     {
         // TODO: SUBMIT REVIEW
+        NSLog(@"HI");
+        [self HideAllExceptSentiment:activatedSentiment];
+        UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
+        [UIView animateWithDuration:0.75 animations:^{
+            currentButton.center = CGPointMake(currentButton.center.x, 0);
+            
+        }completion:^(BOOL finished){ [self performSegueWithIdentifier:@"SubmitReviewDetailSegue" sender:self];}];
+        
+        [timer invalidate];
+        return;
+        
     }
     else if (activatedSentiment != -1)
     {
@@ -323,6 +356,23 @@ NSMutableSet *activatedEnergyCircles;
         [self DeactivateEnergyCircle:energyCircle];
     }
     [activatedEnergyCircles removeAllObjects];
+}
+
+- (void)HideAllExceptSentiment:(int)sentiment
+{
+    self.coordinateLabel.hidden = YES;
+    self.reviewButton.hidden = YES;
+    [self DeactivateEnergyLevel:0];
+    [self DeactivateEnergyLevel:1];
+    [self DeactivateEnergyLevel:3];
+    [self DeactivateEnergyLevel:4];
+    for (id key in horizontalToSentimentDict)
+    {
+        UIButton *currentButton = [horizontalToSentimentDict objectForKey:key];
+        
+        if ([key integerValue] != sentiment)
+            currentButton.hidden = YES;
+    }
 }
 
 

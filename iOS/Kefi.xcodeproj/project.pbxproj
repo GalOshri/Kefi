@@ -33,6 +33,7 @@
 		0D81466418F0E3670072702B /* KefiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466318F0E3660072702B /* KefiService.m */; };
 		0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466618F10DD90072702B /* PlaceDetailView.m */; };
 		0D81466D18F1259F0072702B /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466C18F1259F0072702B /* SearchView.m */; };
+		0DB0B4381921D8DF008D5624 /* SubmitReviewDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */; };
 		0DFE223F18F3C8F5002693D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */; };
 		DA089B38192016120055FD31 /* smallCircleFull.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B31192016120055FD31 /* smallCircleFull.png */; };
 		DA089B39192016120055FD31 /* smallCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B32192016120055FD31 /* smallCircle.png */; };
@@ -96,6 +97,8 @@
 		0D81466618F10DD90072702B /* PlaceDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDetailView.m; sourceTree = "<group>"; };
 		0D81466B18F1259F0072702B /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
 		0D81466C18F1259F0072702B /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
+		0DB0B4361921D8DF008D5624 /* SubmitReviewDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitReviewDetailView.h; sourceTree = "<group>"; };
+		0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitReviewDetailView.m; sourceTree = "<group>"; };
 		0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5018A48B191220AE008BED0F /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
 		DA089B31192016120055FD31 /* smallCircleFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallCircleFull.png; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				0D727EB418F099F1008310FC /* Main.storyboard */,
+				0DB0B4361921D8DF008D5624 /* SubmitReviewDetailView.h */,
+				0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */,
 				0D0C131918FB824600C90A5F /* SubmitView.h */,
 				0D0C131A18FB824600C90A5F /* SubmitView.m */,
 				0D4F49FA18F0ACA000F901AE /* PlaceListView.h */,
@@ -378,6 +383,7 @@
 				0D0C131118F65DDD00C90A5F /* Hashtag.m in Sources */,
 				0D81466D18F1259F0072702B /* SearchView.m in Sources */,
 				0D81466418F0E3670072702B /* KefiService.m in Sources */,
+				0DB0B4381921D8DF008D5624 /* SubmitReviewDetailView.m in Sources */,
 				0D4F4A0918F0B66A00F901AE /* PlaceCell.m in Sources */,
 				0D4F4A0018F0AD8100F901AE /* PlaceList.m in Sources */,
 				0D727EB318F099F1008310FC /* AppDelegate.m in Sources */,
