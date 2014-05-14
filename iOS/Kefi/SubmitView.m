@@ -10,8 +10,12 @@
 #import "SubmitReviewDetailView.h"
 
 @interface SubmitView ()
+@property (strong, nonatomic) IBOutlet UILabel *coordinateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *placeLabel;
+@property (strong, nonatomic) IBOutlet UIButton *moveButton;
 @property (strong, nonatomic) IBOutlet UIView *drawView;
 @property (strong, nonatomic) IBOutlet UIButton *reviewButton;
+@property (weak, nonatomic) IBOutlet UILabel *PlaceName;
 
 @property (weak, nonatomic) IBOutlet UIButton *L4Sentiment;
 @property (weak, nonatomic) IBOutlet UIButton *L3Sentiment;
@@ -68,10 +72,16 @@ NSMutableSet *activatedEnergyCircles;
             SubmitReviewDetailView *srdv = (SubmitReviewDetailView *)segue.destinationViewController;
             srdv.sentimentLevel = activatedSentiment;
             srdv.energyLevel = activatedEnergy;
+            
             UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
             NSLog(@"%f   %f   %f    %f", currentButton.frame.origin.x, currentButton.frame.origin.y, currentButton.frame.size.height, currentButton.frame.size.width);
             srdv.imageFrame = CGRectMake(currentButton.frame.origin.x, currentButton.frame.origin.y + self.drawView.frame.origin.y, currentButton.frame.size.width, currentButton.frame.size.height);
             srdv.sentimentImage.image = currentButton.imageView.image;
+            
+            srdv.placeLabelFrame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
+            srdv.reviewDetailLabelFrame = CGRectMake(self.coordinateLabel.frame.origin.x, self.coordinateLabel.frame.origin.y, self.coordinateLabel.frame.size.width, self.coordinateLabel.frame.size.height);
+            
+            
         }
     }
 }

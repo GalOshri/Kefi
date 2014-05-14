@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SubmitView : UIViewController
-@property (strong, nonatomic) IBOutlet UILabel *coordinateLabel;
-@property (strong, nonatomic) IBOutlet UIButton *moveButton;
+
 
 @end

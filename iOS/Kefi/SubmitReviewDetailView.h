@@ -12,11 +12,11 @@
 
 @property (nonatomic) int energyLevel;
 @property (nonatomic) int sentimentLevel;
-@property (strong, nonatomic) IBOutlet UILabel *sentimentLabel;
-@property (strong, nonatomic) IBOutlet UILabel *energyLabel;
 
 @property (strong, nonatomic) IBOutlet UIImageView *sentimentImage;
 
 @property (nonatomic) CGRect imageFrame;
+@property (nonatomic) CGRect placeLabelFrame;
+@property (nonatomic) CGRect reviewDetailLabelFrame;
 
 @end
