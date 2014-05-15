@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Place.h"
 
 @interface SubmitReviewDetailView : UIViewController
-
+@property (nonatomic, strong) Place *place;
 @property (nonatomic) int energyLevel;
 @property (nonatomic) int sentimentLevel;
 

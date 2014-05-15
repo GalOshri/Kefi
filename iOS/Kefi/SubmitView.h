@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "place.h"
 
 @interface SubmitView : UIViewController
-
+@property (nonatomic, strong) Place *place;
 
 @end

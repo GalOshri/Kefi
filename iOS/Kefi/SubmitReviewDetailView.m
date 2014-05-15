@@ -7,6 +7,7 @@
 //
 
 #import "SubmitReviewDetailView.h"
+#import "Place.h"
 
 @interface SubmitReviewDetailView ()
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
@@ -29,12 +30,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.reviewDetailLabel.text = [NSString stringWithFormat:@"S: %d  E: %d", self.sentimentLevel, self.energyLevel];
+    self.placeLabel.text = self.place.name;
+    
 
 }
 
 - (void)didReceiveMemoryWarning
-{
+{;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -48,23 +51,22 @@
                                                 @3:@"semiHappy.png",
                                                 @4:@"soHappy.png"};
     
-    NSLog(@"%f   %f   %f    %f", self.imageFrame.origin.x, self.imageFrame.origin.y, self.imageFrame.size.height, self.imageFrame.size.width);
+    self.placeLabel.frame = self.placeLabelFrame;
+    self.reviewDetailLabel.frame = self.reviewDetailLabelFrame;
+    
+    self.placeLabel.textAlignment = NSTextAlignmentCenter;
+    self.reviewDetailLabel.textAlignment = NSTextAlignmentCenter;
+
+    
     self.sentimentImage.frame = self.imageFrame;
     self.sentimentImage.image = [UIImage imageNamed:[horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:self.sentimentLevel]]];
     
-    self.placeLabel.frame = self.placeLabelFrame;
-    self.reviewDetailLabel.frame = self.reviewDetailLabelFrame;
-    self.reviewDetailLabel.textAlignment = NSTextAlignmentCenter;
     
-    //animate placeName and reviewdetail labels down and to the left
+    //animate placeName and reviewdetail labels down
     
     [UIView animateWithDuration:0.5 animations:^{
         self.placeLabel.center = CGPointMake(self.view.center.x , self.sentimentImage.frame.origin.y + 17);
         self.reviewDetailLabel.center = CGPointMake(self.view.center.x, self.placeLabel.frame.origin.y + 35);
-        self.reviewDetailLabel.text = [NSString stringWithFormat:@"S: %d  E: %d", self.sentimentLevel, self.energyLevel];
-        //self.placeLabel.textAlignment = NSTextAlignmentLeft;
-        //self.reviewDetailLabel.textAlignment = NSTextAlignmentLeft;
-        
     }];
     
 }

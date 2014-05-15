@@ -8,8 +8,11 @@
 
 #import "SubmitView.h"
 #import "SubmitReviewDetailView.h"
+#import "Place.h"
 
 @interface SubmitView ()
+
+
 @property (strong, nonatomic) IBOutlet UILabel *coordinateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
 @property (strong, nonatomic) IBOutlet UIButton *moveButton;
@@ -81,6 +84,8 @@ NSMutableSet *activatedEnergyCircles;
             srdv.placeLabelFrame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
             srdv.reviewDetailLabelFrame = CGRectMake(self.coordinateLabel.frame.origin.x, self.coordinateLabel.frame.origin.y, self.coordinateLabel.frame.size.width, self.coordinateLabel.frame.size.height);
             
+            srdv.place = self.place;
+            
             
         }
     }
@@ -106,7 +111,10 @@ NSMutableSet *activatedEnergyCircles;
     
 //    self.drawView.layer.borderColor = [UIColor blackColor].CGColor;
 //    self.drawView.layer.borderWidth = 1.0f;
-
+    
+    //set title
+    self.placeLabel.text = self.place.name;
+    self.placeLabel.textAlignment = NSTextAlignmentCenter;
     
     
     horizontalToSentimentDict = @{@0:self.L1Sentiment,
@@ -151,7 +159,7 @@ NSMutableSet *activatedEnergyCircles;
      //   horizontalCellIndex = 0;
     
     self.coordinateLabel.text = [NSString stringWithFormat:@"e: %d   s: %d",horizontalCellIndex, verticalCellIndex];
-   
+    self.coordinateLabel.textAlignment = NSTextAlignmentCenter;
   
     if (activatedSentiment == -1)
     {
@@ -233,8 +241,10 @@ NSMutableSet *activatedEnergyCircles;
         UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
         [UIView animateWithDuration:0.75 animations:^{
             currentButton.center = CGPointMake(currentButton.center.x, 0);
-            
-        }completion:^(BOOL finished){ [self performSegueWithIdentifier:@"SubmitReviewDetailSegue" sender:self];}];
+        }completion:^(BOOL finished){
+            [self performSegueWithIdentifier:@"SubmitReviewDetailSegue" sender:self];
+ 
+        }];
         
         [timer invalidate];
         return;

@@ -27,8 +27,7 @@
         if ([segue.destinationViewController isKindOfClass:[SubmitView class]])
         {
             SubmitView *sv = (SubmitView *)segue.destinationViewController;
-            //PlaceCell *cell = (PlaceCell *)sender;
-            //pdv.place = cell.place;
+            sv.place = self.place;
         }
     }
 }
