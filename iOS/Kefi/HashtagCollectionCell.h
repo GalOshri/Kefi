@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Hashtag.h"
 
 @interface HashtagCollectionCell : UICollectionViewCell
 
 @property (strong, nonatomic) IBOutlet UIButton *hashtagToggle;
+@property (strong, nonatomic) Hashtag *hashtag;
 
 @end

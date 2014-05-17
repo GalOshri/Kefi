@@ -58,16 +58,12 @@
     //[self.navigationController.viewControllers[self.navigationController.viewControllers.count -2] setTitle:@"Bac"];
     
     // table stuff
-    self.tableView.dataSource = self;
-//    [self.tableView registerClass:[ContactCell class] forCellReuseIdentifier:@"cell"];
-    
+    /*self.tableView.dataSource = self;
+    //[self.tableView registerClass:[ContactCell class] forCellReuseIdentifier:@"cell"];
     self.tableView.delegate = self;
-    
     self.tableView.sectionHeaderHeight = 0.0f;
-
-    
     [self.tableView reloadData];
-    
+    */
     
     //Kefi Service instance
     self.kefiService = [[KefiService alloc] init];
@@ -110,7 +106,7 @@
 
 
 
-
+//favorite/unfavorite this place
 - (IBAction)favoritePlace:(UIButton *)sender {
     
 }
