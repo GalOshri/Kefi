@@ -68,7 +68,7 @@
      else if ([segue.identifier isEqualToString:@"SearchSegue"]) {
          if ([segue.destinationViewController isKindOfClass:[SearchView class]])
          {
-             SearchView *pdv = (SearchView *)segue.destinationViewController;
+             // SearchView *pdv = (SearchView *)segue.destinationViewController;
          }
      }
  }

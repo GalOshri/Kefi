@@ -34,7 +34,7 @@
 
 - (IBAction)unwindToPlaceDetail:(UIStoryboardSegue *)segue
 {
-    SubmitView *source = [segue sourceViewController];
+    // SubmitView *source = [segue sourceViewController];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -122,7 +122,7 @@
 {
     NSString *ident = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ident forIndexPath:indexPath];
-    int index = [indexPath row];
+    NSInteger index = [indexPath row];
     Hashtag *hashtag = [self.place.hashtagList objectAtIndex:index];
     
     cell.textLabel.text = hashtag.text;

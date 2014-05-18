@@ -9,14 +9,13 @@
 #import "SubmitReviewDetailView.h"
 #import "Place.h"
 
+
 @interface SubmitReviewDetailView ()
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *reviewDetailLabel;
 @end
 
 @implementation SubmitReviewDetailView
-
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,16 +31,9 @@
     [super viewDidLoad];
     self.reviewDetailLabel.text = [NSString stringWithFormat:@"S: %d  E: %d", self.sentimentLevel, self.energyLevel];
     self.placeLabel.text = self.place.name;
-    
-
 }
 
-- (void)didReceiveMemoryWarning
-{;
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+// Adjust layout to match previous view
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
@@ -71,15 +63,37 @@
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)submitReview
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    // Update place's sentiment and energy
+    [self.place submitSentiment:self.sentimentLevel];
+    [self.place submitEnergy:self.energyLevel];
+    [self.place updateLastReviewTime];
+    
+    // Address hashtags
+    NSArray *hashtags = @[@"BeenHereDoneThat", @"Ain'tNobodyGotTimeForThis", @"LustyIntentions", @"CasualBlackout"];
+    bool isExisting;
+    
+    for (NSString *hashtagString in hashtags)
+    {
+        isExisting = NO;
+        // Address existing hashtags
+        for (Hashtag *existingHashtag in self.place.hashtagList)
+        {
+            if ([existingHashtag.text isEqualToString:hashtagString])
+            {
+                [existingHashtag addReview];
+                isExisting = YES;
+                break;
+            }
+        }
+        
+        // New hashtag
+        if (!isExisting)
+        {
+            [self.place addHashtag:hashtagString];
+        }
+    }
 }
-*/
 
 @end

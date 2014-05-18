@@ -34,4 +34,31 @@
     return self;
 }
 
+- (void)addHashtag:(NSString *)text
+{
+    Hashtag *newHashtag = [[Hashtag alloc] initWithText:text];
+    [self.hashtagList addObject:newHashtag];
+}
+
+// TODO: Actually do something useful
+- (void)submitSentiment:(int)newSentiment
+{
+    double sentiment = [self.sentiment doubleValue];
+    sentiment = (sentiment + newSentiment) / 2.0; // TODO: GET THIS FROM THE SERVICE
+    self.sentiment = [NSNumber numberWithDouble:sentiment];
+}
+
+// TODO: Actually do something useful
+- (void)submitEnergy:(int)newEnergy
+{
+    double energy = [self.energy doubleValue];
+    energy = (energy + energy) / 2.0; // TODO: GET THIS FROM THE SERVICE
+    self.energy = [NSNumber numberWithDouble:energy];
+}
+
+- (void)updateLastReviewTime
+{
+    self.lastReviewedTime = [NSDate date];
+}
+
 @end
