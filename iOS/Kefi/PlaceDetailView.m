@@ -37,14 +37,7 @@
     // SubmitView *source = [segue sourceViewController];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - View Methods
 
 - (void)viewDidLoad
 {
@@ -98,19 +91,6 @@
      
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
-//favorite/unfavorite this place
-- (IBAction)favoritePlace:(UIButton *)sender {
-    
-}
-
 #pragma mark - Table Protocol Methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -127,6 +107,14 @@
     
     cell.textLabel.text = hashtag.text;
     return cell;
+}
+
+
+#pragma mark - Custom Methods
+
+//favorite/unfavorite this place
+- (IBAction)favoritePlace:(UIButton *)sender {
+    
 }
 
 

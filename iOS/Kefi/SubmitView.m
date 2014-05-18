@@ -89,15 +89,7 @@ NSMutableSet *activatedEnergyCircles;
     }
 }
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - View Methods
 
 - (void)viewDidLoad
 {
@@ -134,11 +126,7 @@ NSMutableSet *activatedEnergyCircles;
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - Button Moving Methods
 
     
 - (IBAction)reviewButtonDragged:(UIButton *)sender forEvent:(UIEvent *)event {
@@ -268,6 +256,7 @@ NSMutableSet *activatedEnergyCircles;
     self.reviewButton.center = CGPointMake(self.view.center.x, self.view.center.y - self.drawView.frame.origin.y / 2);
 }
 
+#pragma mark - Helper Action Methods
 
 - (void)SlideAllSentimentsLeft:(int)selectedSentiment
 {

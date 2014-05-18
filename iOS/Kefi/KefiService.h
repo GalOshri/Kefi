@@ -16,8 +16,4 @@
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView;
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withSearchTerm:(NSString *)searchTerm;
 
-+ (void) PopulateHashtagList:(NSMutableArray *)hashtagList;
-+ (void) PopulateHashtagCatList:(NSMutableArray *)hashtagCatList;
-
-//+ (void) PopulatePlaceDetailView: (Place *)place withPlaceAddress:(UILabel *)placeAddress withPlaceCrossStreet: (UILabel *)placeCrossStreets;
 @end

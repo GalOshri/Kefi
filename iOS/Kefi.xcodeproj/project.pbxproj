@@ -103,7 +103,6 @@
 		0DB0B4361921D8DF008D5624 /* SubmitReviewDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitReviewDetailView.h; sourceTree = "<group>"; };
 		0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitReviewDetailView.m; sourceTree = "<group>"; };
 		0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		5018A48B191220AE008BED0F /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
 		DA089B31192016120055FD31 /* smallCircleFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallCircleFull.png; sourceTree = "<group>"; };
 		DA089B32192016120055FD31 /* smallCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallCircle.png; sourceTree = "<group>"; };
 		DA089B33192016120055FD31 /* fullCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullCircle.png; sourceTree = "<group>"; };
@@ -118,8 +117,6 @@
 		DA089B8C192707B90055FD31 /* HashtagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashtagList.h; sourceTree = "<group>"; };
 		DA089B8D192707B90055FD31 /* HashtagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashtagList.m; sourceTree = "<group>"; };
 		DA9EB650191EDF4F00C375B3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		DAFB18311919E16C00B4A56F /* WindowsAzureMobileServices */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = WindowsAzureMobileServices; path = WindowsAzureMobileServices.framework/WindowsAzureMobileServices; sourceTree = "<group>"; };
-		DAFB18331919E17A00B4A56F /* WindowsAzureMobileServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WindowsAzureMobileServices.h; path = WindowsAzureMobileServices.framework/Headers/WindowsAzureMobileServices.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +184,6 @@
 		0D727E9618F099F1008310FC = {
 			isa = PBXGroup;
 			children = (
-				5018A48B191220AE008BED0F /* WindowsAzureMobileServices.framework */,
 				0D727EA818F099F1008310FC /* Kefi */,
 				0D727EC718F099F2008310FC /* KefiTests */,
 				0D727EA118F099F1008310FC /* Frameworks */,
@@ -208,8 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				DA9EB650191EDF4F00C375B3 /* MapKit.framework */,
-				DAFB18331919E17A00B4A56F /* WindowsAzureMobileServices.h */,
-				DAFB18311919E16C00B4A56F /* WindowsAzureMobileServices */,
 				0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */,
 				0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */,
 				0D727EA218F099F1008310FC /* Foundation.framework */,
@@ -224,20 +218,10 @@
 			isa = PBXGroup;
 			children = (
 				0D727EB418F099F1008310FC /* Main.storyboard */,
-				0DB0B4361921D8DF008D5624 /* SubmitReviewDetailView.h */,
-				0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */,
-				0D0C131918FB824600C90A5F /* SubmitView.h */,
-				0D0C131A18FB824600C90A5F /* SubmitView.m */,
-				0D4F49FA18F0ACA000F901AE /* PlaceListView.h */,
-				0D4F49FB18F0ACA000F901AE /* PlaceListView.m */,
-				0D81466518F10DD90072702B /* PlaceDetailView.h */,
-				0D81466618F10DD90072702B /* PlaceDetailView.m */,
-				0D81466B18F1259F0072702B /* SearchView.h */,
-				0D81466C18F1259F0072702B /* SearchView.m */,
-				0D4F4A0718F0B66A00F901AE /* PlaceCell.h */,
-				0D4F4A0818F0B66A00F901AE /* PlaceCell.m */,
-				DA089B891925CFF80055FD31 /* HashtagCollectionCell.h */,
-				DA089B8A1925CFF80055FD31 /* HashtagCollectionCell.m */,
+				0DABAFEF192860C20018CED9 /* Home View */,
+				0DABAFF0192861520018CED9 /* Place Detail View */,
+				0DABAFEE192860950018CED9 /* Review Submission */,
+				0DABAFF11928616A0018CED9 /* Search View */,
 				0D4F49FD18F0AD5600F901AE /* Models */,
 				0D81466118F0E1040072702B /* Service */,
 				0D0C131818FB7F9000C90A5F /* Images */,
@@ -285,6 +269,64 @@
 				0D81466318F0E3660072702B /* KefiService.m */,
 			);
 			name = Service;
+			sourceTree = "<group>";
+		};
+		0DABAFEE192860950018CED9 /* Review Submission */ = {
+			isa = PBXGroup;
+			children = (
+				0DABAFF21928619C0018CED9 /* Overview View */,
+				0DABAFF3192861C00018CED9 /* Review Detail View */,
+			);
+			name = "Review Submission";
+			sourceTree = "<group>";
+		};
+		0DABAFEF192860C20018CED9 /* Home View */ = {
+			isa = PBXGroup;
+			children = (
+				0D4F49FA18F0ACA000F901AE /* PlaceListView.h */,
+				0D4F49FB18F0ACA000F901AE /* PlaceListView.m */,
+				0D4F4A0718F0B66A00F901AE /* PlaceCell.h */,
+				0D4F4A0818F0B66A00F901AE /* PlaceCell.m */,
+			);
+			name = "Home View";
+			sourceTree = "<group>";
+		};
+		0DABAFF0192861520018CED9 /* Place Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				0D81466518F10DD90072702B /* PlaceDetailView.h */,
+				0D81466618F10DD90072702B /* PlaceDetailView.m */,
+			);
+			name = "Place Detail View";
+			sourceTree = "<group>";
+		};
+		0DABAFF11928616A0018CED9 /* Search View */ = {
+			isa = PBXGroup;
+			children = (
+				0D81466B18F1259F0072702B /* SearchView.h */,
+				0D81466C18F1259F0072702B /* SearchView.m */,
+			);
+			name = "Search View";
+			sourceTree = "<group>";
+		};
+		0DABAFF21928619C0018CED9 /* Overview View */ = {
+			isa = PBXGroup;
+			children = (
+				0D0C131918FB824600C90A5F /* SubmitView.h */,
+				0D0C131A18FB824600C90A5F /* SubmitView.m */,
+			);
+			name = "Overview View";
+			sourceTree = "<group>";
+		};
+		0DABAFF3192861C00018CED9 /* Review Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				0DB0B4361921D8DF008D5624 /* SubmitReviewDetailView.h */,
+				0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */,
+				DA089B891925CFF80055FD31 /* HashtagCollectionCell.h */,
+				DA089B8A1925CFF80055FD31 /* HashtagCollectionCell.m */,
+			);
+			name = "Review Detail View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

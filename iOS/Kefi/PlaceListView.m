@@ -29,7 +29,7 @@
     NSString *searchTerm;
 }
 
-# pragma mark - Lazy Initiations
+# pragma mark - Lazy Instantiations
 
 - (PlaceList *)placeList
 {
@@ -41,7 +41,7 @@
     return _placeList;
 }
 
-- (NSMutableArray *)hashtagList
+/* - (NSMutableArray *)hashtagList
 {
     if (!_hashtagList)
     {
@@ -49,7 +49,7 @@
     }
     
     return _hashtagList;
-}
+}*/
 
 
  #pragma mark - Navigation
@@ -88,7 +88,7 @@
 }
 
 
-# pragma mark - View Methods
+#pragma mark - View Methods
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -126,7 +126,6 @@
 
     
     self.kefiService = [[KefiService alloc] init];
-    [KefiService PopulateHashtagList:self.hashtagList];
     [KefiService PopulatePlaceList:self.placeList withTable:self.tableView];
     
     
@@ -145,14 +144,7 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
+#pragma mark - Search Methods
 - (IBAction)searchCancelClick:(UIButton *)sender
 {
     [UIView animateWithDuration:1.0
@@ -166,8 +158,6 @@
                          [KefiService PopulatePlaceList:self.placeList withTable:self.tableView];
                      }];
 }
-
-
 
 #pragma mark - Table View Data Source
 
@@ -227,7 +217,7 @@
     return cell;
 }
 
-#pragma mark - CLLocationManagerDelegate
+#pragma mark - Location
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {

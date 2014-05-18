@@ -9,22 +9,17 @@
 #import "SubmitReviewDetailView.h"
 #import "Place.h"
 
-
 @interface SubmitReviewDetailView ()
+
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *reviewDetailLabel;
+
 @end
 
 @implementation SubmitReviewDetailView
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+
+#pragma mark - View Methods
 
 - (void)viewDidLoad
 {
@@ -62,6 +57,9 @@
     }];
     
 }
+
+#pragma mark - Submission Methods
+
 - (IBAction)submitReview:(UIButton *)sender {
     // Update place's sentiment and energy
     [self.place submitSentiment:self.sentimentLevel];
@@ -92,8 +90,6 @@
             [self.place addHashtag:hashtagString];
         }
     }
-    
-    NSLog(@"BOOYAH BABY");
 }
 
 
