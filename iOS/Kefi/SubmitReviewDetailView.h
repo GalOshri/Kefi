@@ -10,12 +10,14 @@
 #import "Place.h"
 
 @interface SubmitReviewDetailView : UIViewController
+
+// data
 @property (nonatomic, strong) Place *place;
 @property (nonatomic) int energyLevel;
 @property (nonatomic) int sentimentLevel;
 
+// UI
 @property (strong, nonatomic) IBOutlet UIImageView *sentimentImage;
-
 @property (nonatomic) CGRect imageFrame;
 @property (nonatomic) CGRect placeLabelFrame;
 @property (nonatomic) CGRect reviewDetailLabelFrame;

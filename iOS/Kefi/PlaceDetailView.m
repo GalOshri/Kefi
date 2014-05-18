@@ -34,17 +34,10 @@
 
 - (IBAction)unwindToPlaceDetail:(UIStoryboardSegue *)segue
 {
-    SubmitView *source = [segue sourceViewController];
+    // SubmitView *source = [segue sourceViewController];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - View Methods
 
 - (void)viewDidLoad
 {
@@ -116,14 +109,17 @@
     
 }
 
-#pragma mark -
+
+
 #pragma mark UICollectionViewDataSource
+
 
 -(NSInteger)numberOfSectionsInCollectionView:
 (UICollectionView *)collectionView
 {
     return 1;
 }
+
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView
     numberOfItemsInSection:(NSInteger)section
@@ -132,8 +128,8 @@
 }
 
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-                 cellForItemAtIndexPath:(NSIndexPath *)indexPath
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HashtagCollectionCell *myCell = [collectionView
                                     dequeueReusableCellWithReuseIdentifier:@"hashtagCell"

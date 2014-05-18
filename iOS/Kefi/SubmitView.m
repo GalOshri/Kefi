@@ -56,8 +56,8 @@ CGFloat cellHeight;
 int selectedSentimentIndex = -1;
 NSTimer *timer;
 
-int activatedSentiment = -1; // -1 is when nothing is activated
-int activatedEnergy = -1; // -1 is when nothing is activated
+int activatedSentiment; // -1 is when nothing is activated
+int activatedEnergy; // -1 is when nothing is activated
 
 NSDictionary *horizontalToSentimentDict;
 NSDictionary *horizontalToEnergyCirclesDict;
@@ -72,34 +72,24 @@ NSMutableSet *activatedEnergyCircles;
     if ([segue.identifier isEqualToString:@"SubmitReviewDetailSegue"]) {
         if ([segue.destinationViewController isKindOfClass:[SubmitReviewDetailView class]])
         {
+            // Pass information to next view to tell where to place UI elements
             SubmitReviewDetailView *srdv = (SubmitReviewDetailView *)segue.destinationViewController;
             srdv.sentimentLevel = activatedSentiment;
             srdv.energyLevel = activatedEnergy;
             
             UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
-            NSLog(@"%f   %f   %f    %f", currentButton.frame.origin.x, currentButton.frame.origin.y, currentButton.frame.size.height, currentButton.frame.size.width);
+
             srdv.imageFrame = CGRectMake(currentButton.frame.origin.x, currentButton.frame.origin.y + self.drawView.frame.origin.y, currentButton.frame.size.width, currentButton.frame.size.height);
-            srdv.sentimentImage.image = currentButton.imageView.image;
             
             srdv.placeLabelFrame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
             srdv.reviewDetailLabelFrame = CGRectMake(self.coordinateLabel.frame.origin.x, self.coordinateLabel.frame.origin.y, self.coordinateLabel.frame.size.width, self.coordinateLabel.frame.size.height);
             
             srdv.place = self.place;
-            
-            
         }
     }
 }
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - View Methods
 
 - (void)viewDidLoad
 {
@@ -109,10 +99,7 @@ NSMutableSet *activatedEnergyCircles;
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
     
-//    self.drawView.layer.borderColor = [UIColor blackColor].CGColor;
-//    self.drawView.layer.borderWidth = 1.0f;
-    
-    //set title
+    // set title
     self.placeLabel.text = self.place.name;
     self.placeLabel.textAlignment = NSTextAlignmentCenter;
     
@@ -134,18 +121,17 @@ NSMutableSet *activatedEnergyCircles;
     
     activatedEnergyCircles = [[NSMutableSet alloc] init];
     
+    activatedSentiment = -1;
+    activatedEnergy = -1;
+    
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - Button Moving Methods
 
     
 - (IBAction)reviewButtonDragged:(UIButton *)sender forEvent:(UIEvent *)event {
-    // Where are we
     
+    // Which segment are we in?
     CGPoint point = [[[event allTouches] anyObject] locationInView:self.drawView];
     if ((point.x - self.reviewButton.frame.size.width / 2) > 0 &&
         (point.x + self.reviewButton.frame.size.width / 2) < self.drawView.frame.size.width &&
@@ -176,7 +162,7 @@ NSMutableSet *activatedEnergyCircles;
     {
         if (activatedSentiment != verticalCellIndex)
         {
-            // TODO: CHOOSE DIFFERENT SENTIMENT MAYBE
+            // Choose different sentiment
             if (horizontalCellIndex == 0 && verticalCellIndex != 2)
             {
                 [self DeactivateSentiment:activatedSentiment];
@@ -207,9 +193,6 @@ NSMutableSet *activatedEnergyCircles;
             }
         }
     }
-    
-
-
 }
 
 -(void)InitiateReviewEnergyLevels:(NSTimer *)timer
@@ -273,6 +256,7 @@ NSMutableSet *activatedEnergyCircles;
     self.reviewButton.center = CGPointMake(self.view.center.x, self.view.center.y - self.drawView.frame.origin.y / 2);
 }
 
+#pragma mark - Helper Action Methods
 
 - (void)SlideAllSentimentsLeft:(int)selectedSentiment
 {

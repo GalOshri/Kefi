@@ -478,6 +478,10 @@
                                 <state key="normal" title="submit">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitReview:" destination="d9R-wC-4Vk" eventType="touchUpInside" id="rLH-Kh-lb4"/>
+                                    <segue destination="Rj0-8q-Owb" kind="unwind" unwindAction="unwindToPlaceDetail:" id="taY-l9-nu8"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BII-Sw-Gbq">
                                 <rect key="frame" x="32" y="53" width="45" height="30"/>
@@ -485,6 +489,9 @@
                                 <state key="normal" title="cancel">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Rj0-8q-Owb" kind="unwind" unwindAction="unwindToPlaceDetail:" id="LI0-Tb-YHu"/>
+                                </connections>
                             </button>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ddy-aK-kfn">
                                 <rect key="frame" x="43" y="225" width="235" height="231"/>
@@ -542,11 +549,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="kPh-c8-pTp">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Job-ce-A9p">
-                            <connections>
-                                <segue destination="Rj0-8q-Owb" kind="unwind" unwindAction="unwindToPlaceDetail:" id="f19-RO-oF6"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Job-ce-A9p"/>
                     </navigationItem>
                     <connections>
                         <outlet property="placeLabel" destination="v2z-pL-4Bx" id="P1x-z4-1dK"/>

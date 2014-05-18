@@ -11,9 +11,15 @@
 @interface Hashtag : NSObject
 
 @property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) NSString *category;
+//@property (nonatomic, strong) NSString *category;
 
-@property (nonatomic, strong) NSString *username;
+// @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSNumber *score;
+@property (nonatomic, strong) NSDate *lastSubmitTime;
+
+- (id)initWithText:(NSString *)text;
+
+- (void)addReview;
+
 
 @end

@@ -12,8 +12,10 @@
 @interface Review : NSObject
 
 @property (nonatomic, strong) NSNumber *sentiment;
-@property (nonatomic, strong) NSNumber *energyLevel;
+@property (nonatomic, strong) NSNumber *energy;
 @property (nonatomic, strong) NSDate *submitTime;
 @property (nonatomic, strong) NSMutableArray *hashtags;
+
+
 
 @end
