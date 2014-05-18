@@ -94,7 +94,12 @@
     [mapView setRegion:MKCoordinateRegionMakeWithDistance(startCoord, 200, 200) animated:YES];
   */
 
-
+    //temporary assignment of hashtagList
+    self.place.hashtagList = [@[@"#LustyIntentions",
+                     @"#EverythingIsAwesome",
+                     @"#DJMyPantsOff",
+                     @"GetLucky",
+                     @"PackedLikeSardines"] mutableCopy];
      
 }
 
@@ -111,23 +116,35 @@
     
 }
 
-#pragma mark - Table Protocol Methods
+#pragma mark -
+#pragma mark UICollectionViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(NSInteger)numberOfSectionsInCollectionView:
+(UICollectionView *)collectionView
 {
-    return [self.place.hashtagList count];
+    return 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(NSInteger)collectionView:(UICollectionView *)collectionView
+    numberOfItemsInSection:(NSInteger)section
 {
-    NSString *ident = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ident forIndexPath:indexPath];
-    int index = [indexPath row];
-    Hashtag *hashtag = [self.place.hashtagList objectAtIndex:index];
+    return self.place.hashtagList.count;
+}
+
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                 cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    HashtagCollectionCell *myCell = [collectionView
+                                    dequeueReusableCellWithReuseIdentifier:@"hashtagCell"
+                                    forIndexPath:indexPath];
     
-    cell.textLabel.text = hashtag.text;
-    return cell;
-}
 
+    long row = [indexPath row];
+    
+    [myCell.hashtagToggle setTitle:[self.place.hashtagList objectAtIndex: row] forState:UIControlStateNormal];
+    
+    return myCell;
+}
 
 @end

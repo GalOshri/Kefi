@@ -49,8 +49,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="107" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlZ-ew-8hp">
-                                                    <rect key="frame" x="-33" y="10" width="171" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlZ-ew-8hp">
+                                                    <rect key="frame" x="5" y="5" width="96" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <state key="normal" title="LustyIntentions">
@@ -60,7 +60,13 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="centerY" secondItem="KlZ-ew-8hp" secondAttribute="centerY" id="yLO-yc-8Ya"/>
+                                        </constraints>
                                         <size key="customSize" width="107" height="40"/>
+                                        <connections>
+                                            <outlet property="hashtagToggle" destination="KlZ-ew-8hp" id="Uyy-Qm-PuL"/>
+                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9wV-v0-ebD">
                                         <rect key="frame" x="195" y="0.0" width="107" height="40"/>
@@ -70,7 +76,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNj-2e-FsO">
-                                                    <rect key="frame" x="-32" y="10" width="171" height="30"/>
+                                                    <rect key="frame" x="-32" y="5" width="171" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <state key="normal" title="Lusty Intentions">
