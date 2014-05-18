@@ -56,8 +56,8 @@ CGFloat cellHeight;
 int selectedSentimentIndex = -1;
 NSTimer *timer;
 
-int activatedSentiment = -1; // -1 is when nothing is activated
-int activatedEnergy = -1; // -1 is when nothing is activated
+int activatedSentiment; // -1 is when nothing is activated
+int activatedEnergy; // -1 is when nothing is activated
 
 NSDictionary *horizontalToSentimentDict;
 NSDictionary *horizontalToEnergyCirclesDict;
@@ -128,6 +128,9 @@ NSMutableSet *activatedEnergyCircles;
                                     @4:self.Vert4EnergyCircles};
     
     activatedEnergyCircles = [[NSMutableSet alloc] init];
+    
+    activatedSentiment = -1;
+    activatedEnergy = -1;
     
 }
 

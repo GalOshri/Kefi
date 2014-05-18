@@ -62,9 +62,7 @@
     }];
     
 }
-
-- (void)submitReview
-{
+- (IBAction)submitReview:(UIButton *)sender {
     // Update place's sentiment and energy
     [self.place submitSentiment:self.sentimentLevel];
     [self.place submitEnergy:self.energyLevel];
@@ -94,6 +92,9 @@
             [self.place addHashtag:hashtagString];
         }
     }
+    
+    NSLog(@"BOOYAH BABY");
 }
+
 
 @end

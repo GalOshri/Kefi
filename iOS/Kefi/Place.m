@@ -52,7 +52,7 @@
 - (void)submitEnergy:(int)newEnergy
 {
     double energy = [self.energy doubleValue];
-    energy = (energy + energy) / 2.0; // TODO: GET THIS FROM THE SERVICE
+    energy = (energy + newEnergy) / 2.0; // TODO: GET THIS FROM THE SERVICE
     self.energy = [NSNumber numberWithDouble:energy];
 }
 

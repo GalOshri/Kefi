@@ -17,7 +17,7 @@
     if (self)
     {
         self.text = [NSString stringWithString:text];
-        self.score = 0; // TODO: GET THIS FROM THE SERVICE
+        self.score = [NSNumber numberWithDouble:50.0]; // TODO: GET THIS FROM THE SERVICE
         self.lastSubmitTime = [NSDate date];
     }
     
