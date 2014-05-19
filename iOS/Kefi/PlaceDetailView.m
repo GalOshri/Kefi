@@ -93,6 +93,11 @@
                      @"#DJMyPantsOff",
                      @"GetLucky",
                      @"PackedLikeSardines"] mutableCopy];
+    
+    _hashtagView.delegate = self;
+    _hashtagView.dataSource = self;
+    self.hashtagView.backgroundColor = [UIColor whiteColor];
+
      
 }
 
@@ -113,7 +118,6 @@
 
 #pragma mark UICollectionViewDataSource
 
-
 -(NSInteger)numberOfSectionsInCollectionView:
 (UICollectionView *)collectionView
 {
@@ -124,11 +128,12 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView
     numberOfItemsInSection:(NSInteger)section
 {
+    NSLog(@"number of items: %lu", (unsigned long)self.place.hashtagList.count);
     return self.place.hashtagList.count;
 }
 
 
-
+#pragma mark - UICollectionView Datasource
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HashtagCollectionCell *myCell = [collectionView
@@ -139,8 +144,38 @@
     long row = [indexPath row];
     
     [myCell.hashtagToggle setTitle:[self.place.hashtagList objectAtIndex: row] forState:UIControlStateNormal];
+    [myCell.hashtagToggle sizeToFit];
     
     return myCell;
 }
+
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    // TODO: Select Item
+}
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // TODO: Deselect item
+}
+
+#pragma mark – UICollectionViewDelegateFlowLayout
+
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //find the hashtag we're trying to size
+    UIButton *button = self.place.hashtagList[indexPath.row];
+
+    //set the size and add a border, if we would like.
+    CGSize retval = CGSizeMake(button.frame.size.width, button.frame.size.height);
+    return retval;
+}
+
+
+- (UIEdgeInsets)collectionView:
+(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    return UIEdgeInsetsMake(5, 10, 5, 10);
+}
+
 
 @end
