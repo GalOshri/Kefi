@@ -87,12 +87,12 @@
     [mapView setRegion:MKCoordinateRegionMakeWithDistance(startCoord, 200, 200) animated:YES];
   */
 
-    //temporary assignment of hashtagList
-    self.place.hashtagList = [@[@"#LustyIntentions",
-                     @"#EverythingIsAwesome",
-                     @"#DJMyPantsOff",
-                     @"GetLucky",
-                     @"PackedLikeSardines"] mutableCopy];
+    //temporary assignment of hashtagList. Right now, there are two hashtags. Add some more.
+    Hashtag *hashtag3 = [[Hashtag alloc] initWithText: @"LustyIntentions"];
+    Hashtag *hashtag4 = [[Hashtag alloc] initWithText: @"TurnUp"];
+
+    [self.place.hashtagList addObject:hashtag3];
+    [self.place.hashtagList addObject:hashtag4];
     
     _hashtagView.delegate = self;
     _hashtagView.dataSource = self;
@@ -140,10 +140,9 @@
                                     dequeueReusableCellWithReuseIdentifier:@"hashtagCell"
                                     forIndexPath:indexPath];
     
-
-    long row = [indexPath row];
+    Hashtag *temp = self.place.hashtagList[indexPath.row];
     
-    [myCell.hashtagToggle setTitle:[self.place.hashtagList objectAtIndex: row] forState:UIControlStateNormal];
+    [myCell.hashtagToggle setTitle: temp.text forState:UIControlStateNormal];
     [myCell.hashtagToggle sizeToFit];
     
     return myCell;
@@ -158,13 +157,13 @@
     // TODO: Deselect item
 }
 
-#pragma mark – UICollectionViewDelegateFlowLayout
-
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+#pragma mark – UICollectionViewDelegateFlowLayout 
+- (CGSize)collectionView:(UICollectionView *)collectionView sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    Hashtag *temp = self.place.hashtagList[indexPath.row];
     
     //find the hashtag we're trying to size
-    UIButton *button = self.place.hashtagList[indexPath.row];
+    UIButton *button = [[UIButton alloc] init];
+    [button setTitle:temp.text forState:UIControlStateNormal];
 
     //set the size and add a border, if we would like.
     CGSize retval = CGSizeMake(button.frame.size.width, button.frame.size.height);
@@ -173,7 +172,8 @@
 
 
 - (UIEdgeInsets)collectionView:
-(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+(UICollectionView *)collectionView  insetForSectionAtIndex:(NSInteger)section {
+    NSLog(@"hi?");
     return UIEdgeInsetsMake(5, 10, 5, 10);
 }
 

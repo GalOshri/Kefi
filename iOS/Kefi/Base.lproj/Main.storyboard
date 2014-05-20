@@ -43,10 +43,10 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="hashtagCell" id="MJE-zt-Rv9" customClass="HashtagCollectionCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="154" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="123" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="154" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="123" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlZ-ew-8hp">
@@ -60,13 +60,13 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <size key="customSize" width="154" height="50"/>
+                                        <size key="customSize" width="123" height="41"/>
                                         <connections>
                                             <outlet property="hashtagToggle" destination="KlZ-ew-8hp" id="Uyy-Qm-PuL"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9wV-v0-ebD">
-                                        <rect key="frame" x="164" y="5" width="107" height="40"/>
+                                        <rect key="frame" x="133" y="1" width="107" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="107" height="40"/>
