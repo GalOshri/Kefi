@@ -48,23 +48,7 @@
     
     //sets name to view?
     [self.navigationController.viewControllers[self.navigationController.viewControllers.count -1] setTitle:self.place.name];
-    //[self.navigationController.viewControllers[self.navigationController.viewControllers.count -2] setTitle:@"Bac"];
-    
-    // table stuff
-    /*self.tableView.dataSource = self;
-    //[self.tableView registerClass:[ContactCell class] forCellReuseIdentifier:@"cell"];
-    self.tableView.delegate = self;
-    self.tableView.sectionHeaderHeight = 0.0f;
-    [self.tableView reloadData];
-    */
-    
-    //Kefi Service instance
-    self.kefiService = [[KefiService alloc] init];
-    
-    //this will be a call to get necessary information from Foursquare venue API --> All necessary info is part of Place model now!
-    //[KefiService PopulatePlaceDetailView:self.place withPlaceAddress: self.placeAddress withPlaceCrossStreet: self.placeCrossStreets];
-    
-    
+
     //set some more variables here
     self.placeAddress.text = self.place.address;
     self.placeCrossStreets.text = self.place.crossStreet;
@@ -74,31 +58,56 @@
     distanceString = [distanceString substringToIndex:4];
     self.distanceMi.text = [NSString stringWithFormat:@"%@ mi",distanceString];
     
-   /*
-    //adjust map
-    CLLocationCoordinate2D startCoord;
-    startCoord.latitude = [[self.place.latLong objectAtIndex:0] doubleValue];
-    startCoord.longitude = [[self.place.latLong objectAtIndex:0] doubleValue];
 
-    MKPointAnnotation *point = [[MKPointAnnotation alloc]init];
-    point.coordinate = startCoord;
-    [self.mapView addAnnotation:point];
-    
-    [mapView setRegion:MKCoordinateRegionMakeWithDistance(startCoord, 200, 200) animated:YES];
-  */
 
     //temporary assignment of hashtagList. Right now, there are two hashtags. Add some more.
-    Hashtag *hashtag3 = [[Hashtag alloc] initWithText: @"LustyIntentions"];
-    Hashtag *hashtag4 = [[Hashtag alloc] initWithText: @"TurnUp"];
-
+    Hashtag *hashtag3 = [[Hashtag alloc] initWithText: @"HowYouLikeThemApples"];
+    Hashtag *hashtag4 = [[Hashtag alloc] initWithText: @"LustyIntentions"];
+    Hashtag *hashtag5 = [[Hashtag alloc] initWithText: @"TurnUp"];
+    Hashtag *hashtag6 = [[Hashtag alloc] initWithText: @"IsThatMyMom?"];
+    Hashtag *hashtag7 = [[Hashtag alloc] initWithText: @"That'sNO"];
+    Hashtag *hashtag8 = [[Hashtag alloc] initWithText: @"CasualBlackout"];
+    
     [self.place.hashtagList addObject:hashtag3];
     [self.place.hashtagList addObject:hashtag4];
-    
-    _hashtagView.delegate = self;
-    _hashtagView.dataSource = self;
-    self.hashtagView.backgroundColor = [UIColor whiteColor];
+    [self.place.hashtagList addObject:hashtag5];
+    [self.place.hashtagList addObject:hashtag6];
+    [self.place.hashtagList addObject:hashtag7];
+    [self.place.hashtagList addObject:hashtag8];
 
+    
+    self.hashtagView.backgroundColor = [UIColor whiteColor];
+    //self.hashtagView.scrollEnabled = NO;
+
+    
+    
+    //[self.navigationController.viewControllers[self.navigationController.viewControllers.count -2] setTitle:@"Bac"];
+    
+    // table stuff
+    /*self.tableView.dataSource = self;
+     //[self.tableView registerClass:[ContactCell class] forCellReuseIdentifier:@"cell"];
+     self.tableView.delegate = self;
+     self.tableView.sectionHeaderHeight = 0.0f;
+     [self.tableView reloadData];
+     */
+    
+    //Kefi Service instance
+    //self.kefiService = [[KefiService alloc] init];
+    
+    //this will be a call to get necessary information from Foursquare venue API --> All necessary info is part of Place model now!
+    //[KefiService PopulatePlaceDetailView:self.place withPlaceAddress: self.placeAddress withPlaceCrossStreet: self.placeCrossStreets];
+    /*
+     //adjust map
+     CLLocationCoordinate2D startCoord;
+     startCoord.latitude = [[self.place.latLong objectAtIndex:0] doubleValue];
+     startCoord.longitude = [[self.place.latLong objectAtIndex:0] doubleValue];
      
+     MKPointAnnotation *point = [[MKPointAnnotation alloc]init];
+     point.coordinate = startCoord;
+     [self.mapView addAnnotation:point];
+     
+     [mapView setRegion:MKCoordinateRegionMakeWithDistance(startCoord, 200, 200) animated:YES];
+     */
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,11 +125,12 @@
 
 
 
-#pragma mark UICollectionViewDataSource
+#pragma mark Collection View Methods
 
 -(NSInteger)numberOfSectionsInCollectionView:
 (UICollectionView *)collectionView
 {
+    //always 1 section
     return 1;
 }
 
@@ -142,11 +152,23 @@
     
     Hashtag *temp = self.place.hashtagList[indexPath.row];
     
-    [myCell.hashtagToggle setTitle: temp.text forState:UIControlStateNormal];
-    [myCell.hashtagToggle sizeToFit];
+    UIButton *button = (UIButton *)[myCell viewWithTag:100];
     
+    //set button text and assign to hashtagToggle
+    [button setTitle:temp.text forState:UIControlStateNormal];
+ 
+    myCell.hashtagToggle = button;
+    
+    //play with cells
+    [myCell.layer setBorderWidth:2];
+    [myCell.layer setBorderColor:[UIColor grayColor].CGColor];
+    [myCell.layer setCornerRadius:10];
+    
+
     return myCell;
 }
+
+
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -157,7 +179,7 @@
     // TODO: Deselect item
 }
 
-#pragma mark – UICollectionViewDelegateFlowLayout 
+/*#pragma mark – UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     Hashtag *temp = self.place.hashtagList[indexPath.row];
     
@@ -167,15 +189,10 @@
 
     //set the size and add a border, if we would like.
     CGSize retval = CGSizeMake(button.frame.size.width, button.frame.size.height);
+    NSLog(@"done with setting button/text size..");
     return retval;
 }
-
-
-- (UIEdgeInsets)collectionView:
-(UICollectionView *)collectionView  insetForSectionAtIndex:(NSInteger)section {
-    NSLog(@"hi?");
-    return UIEdgeInsetsMake(5, 10, 5, 10);
-}
+*/
 
 
 @end

@@ -44,7 +44,7 @@
     self.placeLabel.textAlignment = NSTextAlignmentCenter;
     self.reviewDetailLabel.textAlignment = NSTextAlignmentCenter;
 
-    
+
     self.sentimentImage.frame = self.imageFrame;
     self.sentimentImage.image = [UIImage imageNamed:[horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:self.sentimentLevel]]];
     
