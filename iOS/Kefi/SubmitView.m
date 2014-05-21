@@ -34,7 +34,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert1EnergyCircles;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert2EnergyCircles;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert3EnergyCircles;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert4EnergyCircles;
+
 
 
 
@@ -48,7 +48,7 @@
 
 //globals needed
 int numVerticalCells = 5;
-int numHorizontalCells = 5;
+int numHorizontalCells = 4;
 CGFloat cellWidth;
 CGFloat cellHeight;
 
@@ -116,8 +116,7 @@ NSMutableSet *activatedEnergyCircles;
                                       
     verticalToEnergyCirclesDict = @{@1:self.Vert1EnergyCircles,
                                     @2:self.Vert2EnergyCircles,
-                                    @3:self.Vert3EnergyCircles,
-                                    @4:self.Vert4EnergyCircles};
+                                    @3:self.Vert3EnergyCircles};
     
     activatedEnergyCircles = [[NSMutableSet alloc] init];
     
@@ -219,7 +218,6 @@ NSMutableSet *activatedEnergyCircles;
     if (activatedSentiment != -1 && activatedEnergy != -1)
     {
         // TODO: SUBMIT REVIEW
-        NSLog(@"HI");
         [self HideAllExceptSentiment:activatedSentiment];
         UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
         [UIView animateWithDuration:0.75 animations:^{
