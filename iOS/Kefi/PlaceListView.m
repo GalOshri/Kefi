@@ -186,34 +186,32 @@
 
     cell.placeName.text = cell.place.name;
 
-    //round corners of imageType and display image
-    CALayer * l = [cell.placeTypeImage layer];
-    [l setMasksToBounds:YES];
-    [l setCornerRadius:7.0];
-    
-    cell.placeTypeImage.image = cell.place.imageType; //[UIImage imageNamed:@"bar_64.png"];
     
     //display category name and distance
     NSString *distanceString = [cell.place.currentDistance stringValue];
     distanceString = [distanceString substringToIndex:4];
     
-    NSString *displayInfoContent = [NSString stringWithFormat:@" %@ mi %@", distanceString, cell.place.categoryType];
+    NSString *displayDistance = [NSString stringWithFormat:@" %@ mi", distanceString];
+    NSString *displayType = [NSString stringWithFormat:@"%@", cell.place.categoryType];
     
-    cell.moreCellInfo.text = displayInfoContent;
+    cell.placeDistance.text = displayDistance;
+    cell.placeType.text = displayType;
     
     NSString *hashtagText = @"";
     Hashtag *currentHashtag;
     
-    for (int j = 0; j < [currentPlace.hashtagList count]; j++)
+    for (int j = 0; j < 1; j++)
     {
         currentHashtag = [currentPlace.hashtagList objectAtIndex:j];
-        hashtagText = [hashtagText stringByAppendingFormat:@"#%@   ",currentHashtag.text];
+        hashtagText = [hashtagText stringByAppendingFormat:@"#%@",currentHashtag.text];
     }
     
    
     
     cell.placeHashtags.text = hashtagText;
-    //cell.placeHashtags.textColor = [UIColor whiteColor];
+    cell.placeHashtags.font= [UIFont fontWithName:@"Helvetica Neue" size:14];
+    cell.placeHashtags.textAlignment = NSTextAlignmentCenter;
+    
     return cell;
 }
 

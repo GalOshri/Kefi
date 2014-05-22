@@ -15,8 +15,11 @@
 
 // UI elements
 @property (strong, nonatomic) IBOutlet UILabel *placeName;
-@property (strong, nonatomic) IBOutlet UIImageView *placeTypeImage;
 @property (strong, nonatomic) IBOutlet UITextView *placeHashtags;
-@property (weak, nonatomic) IBOutlet UILabel *moreCellInfo;
+@property (weak, nonatomic) IBOutlet UILabel *placeDistance;
+@property (weak, nonatomic) IBOutlet UILabel *placeType;
+
+
+//@property (strong, nonatomic) IBOutlet UIImageView *placeTypeImage;
 
 @end

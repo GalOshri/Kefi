@@ -11,17 +11,15 @@
 #import "Place.h"
 #import "HashtagCollectionCell.h"
 #import "HashtagList.h"
-#import "HashtagViewLayout.h"
 
-@interface PlaceDetailView : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>{
+
+@interface PlaceDetailView : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>{
     
 }
 
 @property (strong, nonatomic) IBOutlet UIView *allView;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *hashtagView;
-
-@property (weak, nonatomic) IBOutlet HashtagViewLayout *hashtagViewLayout;
 
 
 //@property (strong, nonatomic) HashtagList *hashtagList;

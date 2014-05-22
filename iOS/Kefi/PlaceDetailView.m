@@ -12,6 +12,7 @@
 
 @interface PlaceDetailView ()
 @property (nonatomic, strong) KefiService *kefiService;
+@property (weak, nonatomic) IBOutlet UIButton *mapButton;
 
 @end
 
@@ -77,6 +78,11 @@
 
     
     self.hashtagView.backgroundColor = [UIColor whiteColor];
+    
+    //map rounded edges
+    CALayer * l = [self.mapButton layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:7.0];
     //self.hashtagView.scrollEnabled = NO;
 
     
@@ -156,15 +162,18 @@
     
     //set button text and assign to hashtagToggle
     [button setTitle:temp.text forState:UIControlStateNormal];
- 
+    
     myCell.hashtagToggle = button;
     
     //play with cells
-    [myCell.layer setBorderWidth:2];
-    [myCell.layer setBorderColor:[UIColor grayColor].CGColor];
-    [myCell.layer setCornerRadius:10];
-    
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 
+    
+    /*[myCell.layer setBorderWidth:2];
+    [myCell.layer setBorderColor:[UIColor grayColor].CGColor];
+    [myCell.layer setCornerRadius:10];*/
+    
+    
     return myCell;
 }
 
@@ -179,20 +188,31 @@
     // TODO: Deselect item
 }
 
-/*#pragma mark – UICollectionViewDelegateFlowLayout
-- (CGSize)collectionView:(UICollectionView *)collectionView sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    Hashtag *temp = self.place.hashtagList[indexPath.row];
-    
-    //find the hashtag we're trying to size
-    UIButton *button = [[UIButton alloc] init];
-    [button setTitle:temp.text forState:UIControlStateNormal];
 
-    //set the size and add a border, if we would like.
-    CGSize retval = CGSizeMake(button.frame.size.width, button.frame.size.height);
-    NSLog(@"done with setting button/text size..");
-    return retval;
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    Hashtag *temp = self.place.hashtagList[indexPath.row];
+    UIButton *button = [[UIButton alloc]init];
+    
+    //set button text and assign to hashtagToggle
+    [button setTitle:temp.text forState:UIControlStateNormal];
+    [button sizeToFit];
+
+    
+    return CGSizeMake(button.frame.size.width, 20);
+    
 }
-*/
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 0; // This is the minimum inter item spacing, can be more
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 5;
+    // space between cells on different lines
+}
 
 
 @end

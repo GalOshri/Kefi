@@ -14,6 +14,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *reviewDetailLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *firstEnergyCircle;
+@property (weak, nonatomic) IBOutlet UIImageView *secondEnergyCircle;
+@property (weak, nonatomic) IBOutlet UIImageView *thirdEnergyCircle;
 @end
 
 @implementation SubmitReviewDetailView
@@ -26,6 +29,9 @@
     [super viewDidLoad];
     self.reviewDetailLabel.text = [NSString stringWithFormat:@"S: %d  E: %d", self.sentimentLevel, self.energyLevel];
     self.placeLabel.text = self.place.name;
+    [self.placeLabel sizeToFit];
+    self.placeLabel.textAlignment = NSTextAlignmentLeft;
+    self.reviewDetailLabel.textAlignment = NSTextAlignmentLeft;
 }
 
 // Adjust layout to match previous view
@@ -38,12 +44,11 @@
                                                 @3:@"semiHappy.png",
                                                 @4:@"soHappy.png"};
     
+    NSArray *energyLevels = @[self.firstEnergyCircle, self.secondEnergyCircle, self.thirdEnergyCircle];
+    
+    
     self.placeLabel.frame = self.placeLabelFrame;
     self.reviewDetailLabel.frame = self.reviewDetailLabelFrame;
-    
-    self.placeLabel.textAlignment = NSTextAlignmentCenter;
-    self.reviewDetailLabel.textAlignment = NSTextAlignmentCenter;
-
 
     self.sentimentImage.frame = self.imageFrame;
     self.sentimentImage.image = [UIImage imageNamed:[horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:self.sentimentLevel]]];
@@ -52,9 +57,30 @@
     //animate placeName and reviewdetail labels down
     
     [UIView animateWithDuration:0.5 animations:^{
-        self.placeLabel.center = CGPointMake(self.view.center.x , self.sentimentImage.frame.origin.y + 17);
-        self.reviewDetailLabel.center = CGPointMake(self.view.center.x, self.placeLabel.frame.origin.y + 35);
+        self.placeLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width + 15, self.sentimentImage.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
+        
+        self.reviewDetailLabel.frame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y + 15, self.reviewDetailLabel.frame.size.width, self.reviewDetailLabel.frame.size.height);
+    }completion:^(BOOL finished){
+        //change label to energy levels
+        for (int count = 0; count < 3; count++){
+            UIImageView *imageView = [energyLevels objectAtIndex:count];
+            
+            if (self.energyLevel > count) {
+                [imageView setImage:[UIImage imageNamed:@"smallCircleFull.png"]];
+            }
+            
+            else
+                [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
+            
+            //position circles and make label disappear
+            imageView.frame = CGRectMake(count * 40 + self.reviewDetailLabel.frame.origin.x, self.reviewDetailLabel.frame.origin.y + 10, imageView.frame.size.width, imageView.frame.size.height);
+            
+            [self.reviewDetailLabel setHidden:YES];
+
+        }
+        
     }];
+
     
 }
 
