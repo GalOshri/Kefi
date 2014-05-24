@@ -11,11 +11,16 @@
 #import "Hashtag.h"
 #import "Place.h"
 
+
 @interface KefiService : NSObject
 
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView;
+
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withSearchTerm:(NSString *)searchTerm;
-+ (void) AddReviewforPlace:(Place *)place withReview: (Review *) review;
+
++ (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings;
+
++ (NSString *) GrabParseIdForPlace: (Place *)place;
 
 
 @end

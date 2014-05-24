@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Place.h"
+#import "Review.h"
 
 @interface SubmitReviewDetailView : UIViewController
 

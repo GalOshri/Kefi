@@ -125,7 +125,6 @@
     self.tableView.tableHeaderView = nil;
 
     
-    self.kefiService = [[KefiService alloc] init];
     [KefiService PopulatePlaceList:self.placeList withTable:self.tableView];
     
     

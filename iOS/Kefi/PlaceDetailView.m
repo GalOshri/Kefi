@@ -144,7 +144,6 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView
     numberOfItemsInSection:(NSInteger)section
 {
-    NSLog(@"number of items: %lu", (unsigned long)self.place.hashtagList.count);
     return self.place.hashtagList.count;
 }
 

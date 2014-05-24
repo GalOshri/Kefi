@@ -13,6 +13,7 @@
 
 // Place details
 @property (nonatomic, strong) NSString *fsId;
+@property (nonatomic, strong) NSString *pId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *crossStreet;

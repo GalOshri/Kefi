@@ -8,7 +8,8 @@
 
 #import "SubmitReviewDetailView.h"
 #import "Place.h"
-#import <Parse/Parse.h>
+#import "KefiService.h"
+
 
 @interface SubmitReviewDetailView ()
 
@@ -21,6 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelBUtton;
+
+@property (nonatomic, strong) KefiService *kefiService;
 
 @end
 
@@ -101,25 +104,9 @@
     [self.place submitEnergy:self.energyLevel];
     [self.place updateLastReviewTime];
     
-    // Address hashtags
+    //Add hashtags to client side view
     NSArray *hashtags = @[@"BeenHereDoneThat", @"Ain'tNobodyGotTimeForThis", @"LustyIntentions", @"CasualBlackout"];
     bool isExisting;
-    
-    
-    Hashtag *tag = [self.place.hashtagList objectAtIndex:0];
-    
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    [dict setValue:tag.text forKeyPath:@"text"];
-    [dict setValue: @"bar" forKeyPath:@"foo"];
-    
-    PFObject *placeObject = [PFObject objectWithClassName:@"Place"];
-    placeObject[@"fsID"] = self.place.fsId;
-    placeObject[@"hashtagList"] = [[NSMutableArray alloc] init];
-    [placeObject[@"hashtagList"] addObject:dict];
-    
-    [placeObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        NSLog(@"hi I saved this ish");
-    }];
     
     for (NSString *hashtagString in hashtags)
     {
@@ -141,6 +128,9 @@
             [self.place addHashtag:hashtagString];
         }
     }
+
+    [KefiService AddReviewforPlace:self.place withSentiment:self.sentimentLevel withEnergy:self.energyLevel withHashtagStrings:hashtags];
+    
 }
 
 

@@ -7,6 +7,8 @@
 //
 
 #import "KefiService.h"
+#import <Parse/Parse.h>
+
 
 @implementation KefiService
 
@@ -93,6 +95,9 @@ int radius = 1000;
                     }
                     
                     [placeList.places addObject:place];
+                    
+                    //grab pId, if vailable
+                    place.pId = [self GrabParseIdForPlace:place];
                 }
                 
                 
@@ -101,5 +106,55 @@ int radius = 1000;
                 
             }] resume];
 }
+
++ (NSString *) GrabParseIdForPlace: (Place *) place
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+    [query getFirstObject];
+    
+    [query whereKey:@"fsID" equalTo:place.fsId];
+    NSString *pIdString = @"";
+    
+    if(query.countObjects > 0){
+        pIdString = [NSString stringWithFormat:@"%@",[query getFirstObject].objectId];
+    }
+
+    return pIdString;
+}
+
++ (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings
+{
+    //create review PFObject
+    PFObject *reviewObject = [PFObject objectWithClassName: @"Review"];
+    
+    //store sentiment, energy, pId
+    reviewObject[@"sentiment"] = [NSNumber numberWithInt:sentiment];
+    reviewObject[@"energy"] = [NSNumber numberWithInt:energy];
+    reviewObject[@"hashtagstrings"] = hashtagStrings;
+   
+    if (![place.pId isEqualToString:@""])
+    {
+        reviewObject[@"place"] = [PFObject objectWithoutDataWithClassName:@"Place" objectId:place.pId];
+        
+        //TODO: update lastUpdated, scores for Place
+    }
+    
+    else
+    {
+        //create new place and save in background.
+        //TODO: move server side
+        PFObject *placeObject = [PFObject objectWithClassName:@"Place"];
+        placeObject[@"fsID"] = place.fsId;
+        [placeObject saveInBackground];
+        
+        reviewObject[@"place"] = placeObject;
+
+    }
+    
+    //reviewObject SaveInBackground
+    [reviewObject saveInBackground];
+    
+}
+
 
 @end

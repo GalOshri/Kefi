@@ -74,7 +74,6 @@ NSMutableSet *activatedEnergyCircles;
         {
             // Pass information to next view to tell where to place UI elements
             SubmitReviewDetailView *srdv = (SubmitReviewDetailView *)segue.destinationViewController;
- 
             srdv.sentimentLevel = activatedSentiment;
             srdv.energyLevel = activatedEnergy;
             
@@ -211,10 +210,6 @@ NSMutableSet *activatedEnergyCircles;
     CGPoint point = [[[event allTouches] anyObject] locationInView:self.drawView];
     if (CGRectContainsPoint(self.drawView.frame, CGPointMake(point.x + self.drawView.frame.origin.x, point.y + self.drawView.frame.origin.y)))
         sender.center = point;
-    int horizontalCellIndex = floor(sender.frame.origin.x / cellWidth);
-    int verticalCellIndex = floor((self.drawView.frame.size.height - sender.frame.origin.y) / cellHeight);
-    
-    NSLog(@"hor: %d, ver: %d",horizontalCellIndex,verticalCellIndex);
     
     if (activatedSentiment != -1 && activatedEnergy != -1)
     {
