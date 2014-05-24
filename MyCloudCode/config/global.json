@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "Kefi": {
+            "applicationId": "oXaRo5X3EtGIcGOBJ99XrjKOOoRx0uNmmImozk0f", 
+            "masterKey": "D0pgBLU4fr1Fsu0sdDPUPUKlh3LQjhKxFIXvEIyu"
+        }, 
+        "_default": {
+            "link": "Kefi"
+        }
+    }
+}
