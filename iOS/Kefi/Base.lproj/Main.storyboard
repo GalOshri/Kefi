@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vVz-uH-k2V">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vVz-uH-k2V">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -440,7 +440,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3b2-gf-ehG">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3b2-gf-ehG">
                                 <rect key="frame" x="253" y="35" width="47" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="submit">
@@ -451,7 +451,7 @@
                                     <segue destination="Rj0-8q-Owb" kind="unwind" unwindAction="unwindToPlaceDetail:" id="taY-l9-nu8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BII-Sw-Gbq">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BII-Sw-Gbq">
                                 <rect key="frame" x="32" y="35" width="45" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="cancel">
@@ -520,11 +520,13 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Job-ce-A9p"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelBUtton" destination="BII-Sw-Gbq" id="8Xi-5E-l5Q"/>
                         <outlet property="firstEnergyCircle" destination="IuE-ps-ChE" id="7xg-RI-dnm"/>
                         <outlet property="placeLabel" destination="v2z-pL-4Bx" id="P1x-z4-1dK"/>
                         <outlet property="reviewDetailLabel" destination="2rz-6A-s5f" id="32H-Y6-W8M"/>
                         <outlet property="secondEnergyCircle" destination="tm0-1j-opD" id="yCq-p0-MZV"/>
                         <outlet property="sentimentImage" destination="7U7-hs-pa9" id="LdU-Af-GEJ"/>
+                        <outlet property="submitButton" destination="3b2-gf-ehG" id="nH9-NW-Od9"/>
                         <outlet property="thirdEnergyCircle" destination="dul-Ru-DE7" id="UP7-tF-g6N"/>
                     </connections>
                 </viewController>
@@ -566,7 +568,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="#Tag" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKk-uu-IyW">
-                                            <rect key="frame" x="141" y="64" width="178" height="31"/>
+                                            <rect key="frame" x="141" y="63" width="178" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

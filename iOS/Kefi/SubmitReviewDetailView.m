@@ -8,6 +8,7 @@
 
 #import "SubmitReviewDetailView.h"
 #import "Place.h"
+#import <Parse/Parse.h>
 
 @interface SubmitReviewDetailView ()
 
@@ -17,6 +18,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *firstEnergyCircle;
 @property (weak, nonatomic) IBOutlet UIImageView *secondEnergyCircle;
 @property (weak, nonatomic) IBOutlet UIImageView *thirdEnergyCircle;
+
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelBUtton;
+
 @end
 
 @implementation SubmitReviewDetailView
@@ -75,7 +80,11 @@
             //position circles and make label disappear
             imageView.frame = CGRectMake(count * 40 + self.reviewDetailLabel.frame.origin.x, self.reviewDetailLabel.frame.origin.y + 10, imageView.frame.size.width, imageView.frame.size.height);
             
+            
+            //hide or unhide things
             [self.reviewDetailLabel setHidden:YES];
+            [self.cancelBUtton setHidden:NO];
+            [self.submitButton setHidden:NO];
 
         }
         
@@ -114,6 +123,10 @@
         if (!isExisting)
         {
             [self.place addHashtag:hashtagString];
+            
+            PFObject *testObject = [PFObject objectWithClassName:@"hashtag"];
+            testObject[@"foo"] = @"bar";
+            [testObject saveInBackground];
         }
     }
 }

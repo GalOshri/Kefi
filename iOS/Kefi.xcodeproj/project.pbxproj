@@ -18,7 +18,6 @@
 		0D4F4A0918F0B66A00F901AE /* PlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4A0818F0B66A00F901AE /* PlaceCell.m */; };
 		0D4F4A0D18F0B78100F901AE /* bar_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F4A0C18F0B78100F901AE /* bar_64.png */; };
 		0D727EA318F099F1008310FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D727EA218F099F1008310FC /* Foundation.framework */; };
-		0D727EA518F099F1008310FC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D727EA418F099F1008310FC /* CoreGraphics.framework */; };
 		0D727EA718F099F1008310FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D727EA618F099F1008310FC /* UIKit.framework */; };
 		0D727EAD18F099F1008310FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D727EAB18F099F1008310FC /* InfoPlist.strings */; };
 		0D727EAF18F099F1008310FC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D727EAE18F099F1008310FC /* main.m */; };
@@ -34,7 +33,6 @@
 		0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466618F10DD90072702B /* PlaceDetailView.m */; };
 		0D81466D18F1259F0072702B /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466C18F1259F0072702B /* SearchView.m */; };
 		0DB0B4381921D8DF008D5624 /* SubmitReviewDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */; };
-		0DFE223F18F3C8F5002693D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */; };
 		DA089B38192016120055FD31 /* smallCircleFull.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B31192016120055FD31 /* smallCircleFull.png */; };
 		DA089B39192016120055FD31 /* smallCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B32192016120055FD31 /* smallCircle.png */; };
 		DA089B3A192016120055FD31 /* fullCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B33192016120055FD31 /* fullCircle.png */; };
@@ -48,6 +46,17 @@
 		DA97F992192DB8AC006C745E /* KefiNoBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = DA97F991192DB8AC006C745E /* KefiNoBorder.png */; };
 		DA9EB651191EDF4F00C375B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9EB650191EDF4F00C375B3 /* MapKit.framework */; };
 		DAD9F20A192DDE80005AA082 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD9F209192DDE80005AA082 /* map.png */; };
+		DAE95AAA193012B300109E75 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AA9193012B300109E75 /* AudioToolbox.framework */; };
+		DAE95AAC193012BC00109E75 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AAB193012BC00109E75 /* CFNetwork.framework */; };
+		DAE95AAE193012D300109E75 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AAD193012D300109E75 /* libz.dylib */; };
+		DAE95AB0193012DF00109E75 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AAF193012DF00109E75 /* MobileCoreServices.framework */; };
+		DAE95AB2193012E800109E75 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AB1193012E800109E75 /* QuartzCore.framework */; };
+		DAE95AB4193012F000109E75 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AB3193012F000109E75 /* Security.framework */; };
+		DAE95AB6193012FA00109E75 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AB5193012FA00109E75 /* StoreKit.framework */; };
+		DAE95AB81930130900109E75 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AB71930130900109E75 /* SystemConfiguration.framework */; };
+		DAE95ABE193017F000109E75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95ABD193017F000109E75 /* CoreGraphics.framework */; };
+		DAE95AC0193017F600109E75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95ABF193017F600109E75 /* CoreLocation.framework */; };
+		DAE95AC219301A6D00109E75 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AC119301A6D00109E75 /* Parse.framework */; };
 		DAFB18351919E18E00B4A56F /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +90,6 @@
 		0D4F4A0C18F0B78100F901AE /* bar_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_64.png; sourceTree = "<group>"; };
 		0D727E9F18F099F1008310FC /* Kefi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kefi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D727EA218F099F1008310FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		0D727EA418F099F1008310FC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0D727EA618F099F1008310FC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0D727EAA18F099F1008310FC /* Kefi-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Kefi-Info.plist"; sourceTree = "<group>"; };
 		0D727EAC18F099F1008310FC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -104,7 +112,6 @@
 		0D81466C18F1259F0072702B /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 		0DB0B4361921D8DF008D5624 /* SubmitReviewDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitReviewDetailView.h; sourceTree = "<group>"; };
 		0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitReviewDetailView.m; sourceTree = "<group>"; };
-		0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DA089B31192016120055FD31 /* smallCircleFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallCircleFull.png; sourceTree = "<group>"; };
 		DA089B32192016120055FD31 /* smallCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallCircle.png; sourceTree = "<group>"; };
 		DA089B33192016120055FD31 /* fullCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullCircle.png; sourceTree = "<group>"; };
@@ -121,6 +128,17 @@
 		DA97F991192DB8AC006C745E /* KefiNoBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KefiNoBorder.png; path = ../../../../../Dropbox/KEfi/KefiNoBorder.png; sourceTree = "<group>"; };
 		DA9EB650191EDF4F00C375B3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DAD9F209192DDE80005AA082 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map.png; path = ../../../../../Dropbox/KEfi/map.png; sourceTree = "<group>"; };
+		DAE95AA9193012B300109E75 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		DAE95AAB193012BC00109E75 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		DAE95AAD193012D300109E75 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DAE95AAF193012DF00109E75 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		DAE95AB1193012E800109E75 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DAE95AB3193012F000109E75 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DAE95AB5193012FA00109E75 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		DAE95AB71930130900109E75 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DAE95ABD193017F000109E75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DAE95ABF193017F600109E75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DAE95AC119301A6D00109E75 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,10 +146,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE95AC0193017F600109E75 /* CoreLocation.framework in Frameworks */,
+				DAE95ABE193017F000109E75 /* CoreGraphics.framework in Frameworks */,
+				DAE95AB81930130900109E75 /* SystemConfiguration.framework in Frameworks */,
+				DAE95AB6193012FA00109E75 /* StoreKit.framework in Frameworks */,
+				DAE95AC219301A6D00109E75 /* Parse.framework in Frameworks */,
+				DAE95AB4193012F000109E75 /* Security.framework in Frameworks */,
+				DAE95AB2193012E800109E75 /* QuartzCore.framework in Frameworks */,
+				DAE95AB0193012DF00109E75 /* MobileCoreServices.framework in Frameworks */,
+				DAE95AAE193012D300109E75 /* libz.dylib in Frameworks */,
+				DAE95AAC193012BC00109E75 /* CFNetwork.framework in Frameworks */,
+				DAE95AAA193012B300109E75 /* AudioToolbox.framework in Frameworks */,
 				DA9EB651191EDF4F00C375B3 /* MapKit.framework in Frameworks */,
 				DAFB18351919E18E00B4A56F /* WindowsAzureMobileServices.framework in Frameworks */,
-				0DFE223F18F3C8F5002693D6 /* CoreLocation.framework in Frameworks */,
-				0D727EA518F099F1008310FC /* CoreGraphics.framework in Frameworks */,
 				0D727EA718F099F1008310FC /* UIKit.framework in Frameworks */,
 				0D727EA318F099F1008310FC /* Foundation.framework in Frameworks */,
 			);
@@ -209,11 +236,20 @@
 		0D727EA118F099F1008310FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DAE95AC119301A6D00109E75 /* Parse.framework */,
+				DAE95ABF193017F600109E75 /* CoreLocation.framework */,
+				DAE95ABD193017F000109E75 /* CoreGraphics.framework */,
+				DAE95AB71930130900109E75 /* SystemConfiguration.framework */,
+				DAE95AB5193012FA00109E75 /* StoreKit.framework */,
+				DAE95AB3193012F000109E75 /* Security.framework */,
+				DAE95AB1193012E800109E75 /* QuartzCore.framework */,
+				DAE95AAF193012DF00109E75 /* MobileCoreServices.framework */,
+				DAE95AAD193012D300109E75 /* libz.dylib */,
+				DAE95AAB193012BC00109E75 /* CFNetwork.framework */,
+				DAE95AA9193012B300109E75 /* AudioToolbox.framework */,
 				DA9EB650191EDF4F00C375B3 /* MapKit.framework */,
-				0DFE223E18F3C8F5002693D6 /* CoreLocation.framework */,
 				0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */,
 				0D727EA218F099F1008310FC /* Foundation.framework */,
-				0D727EA418F099F1008310FC /* CoreGraphics.framework */,
 				0D727EA618F099F1008310FC /* UIKit.framework */,
 				0D727EC118F099F2008310FC /* XCTest.framework */,
 			);
@@ -589,6 +625,7 @@
 					/Users/goshri/Documents/Xcode/Kefi/iOS,
 					/Users/pStav/Desktop/Paul/github/Kefi/iOS,
 					"$(PROJECT_DIR)",
+					/Users/paulstavropoulos/Downloads,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kefi/Kefi-Prefix.pch";
@@ -612,6 +649,7 @@
 					/Users/goshri/Documents/Xcode/Kefi/iOS,
 					/Users/pStav/Desktop/Paul/github/Kefi/iOS,
 					"$(PROJECT_DIR)",
+					/Users/paulstavropoulos/Downloads,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kefi/Kefi-Prefix.pch";

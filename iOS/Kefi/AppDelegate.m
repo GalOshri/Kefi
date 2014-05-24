@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 @implementation AppDelegate
 
@@ -15,6 +16,13 @@
     // Override point for customization after application launch.
     self.client = [MSClient clientWithApplicationURLString:@"https://kefi.azure-mobile.net/"
                                             applicationKey:@"KMlHKeDqpniWhUtxqxAxChFWKNkBfQ66"];
+    
+    [Parse setApplicationId:@"oXaRo5X3EtGIcGOBJ99XrjKOOoRx0uNmmImozk0f"
+                  clientKey:@"g0EwuP2GwxBQDlzzBAcHBQ0ur3NLZqlv2FYSsxHE"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    
     return YES;
 }
 							

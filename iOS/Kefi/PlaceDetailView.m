@@ -66,8 +66,8 @@
     Hashtag *hashtag4 = [[Hashtag alloc] initWithText: @"LustyIntentions"];
     Hashtag *hashtag5 = [[Hashtag alloc] initWithText: @"TurnUp"];
     Hashtag *hashtag6 = [[Hashtag alloc] initWithText: @"IsThatMyMom?"];
-    Hashtag *hashtag7 = [[Hashtag alloc] initWithText: @"That'sNO"];
-    Hashtag *hashtag8 = [[Hashtag alloc] initWithText: @"CasualBlackout"];
+    Hashtag *hashtag7 = [[Hashtag alloc] initWithText: @"Crickets"];
+    Hashtag *hashtag8 = [[Hashtag alloc] initWithText: @"RageMode"];
     
     [self.place.hashtagList addObject:hashtag3];
     [self.place.hashtagList addObject:hashtag4];
