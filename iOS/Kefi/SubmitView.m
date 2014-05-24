@@ -74,6 +74,7 @@ NSMutableSet *activatedEnergyCircles;
         {
             // Pass information to next view to tell where to place UI elements
             SubmitReviewDetailView *srdv = (SubmitReviewDetailView *)segue.destinationViewController;
+ 
             srdv.sentimentLevel = activatedSentiment;
             srdv.energyLevel = activatedEnergy;
             

@@ -15,5 +15,7 @@
 
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView;
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withSearchTerm:(NSString *)searchTerm;
++ (void) AddReviewforPlace:(Place *)place withReview: (Review *) review;
+
 
 @end

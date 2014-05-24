@@ -105,6 +105,22 @@
     NSArray *hashtags = @[@"BeenHereDoneThat", @"Ain'tNobodyGotTimeForThis", @"LustyIntentions", @"CasualBlackout"];
     bool isExisting;
     
+    
+    Hashtag *tag = [self.place.hashtagList objectAtIndex:0];
+    
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setValue:tag.text forKeyPath:@"text"];
+    [dict setValue: @"bar" forKeyPath:@"foo"];
+    
+    PFObject *placeObject = [PFObject objectWithClassName:@"Place"];
+    placeObject[@"fsID"] = self.place.fsId;
+    placeObject[@"hashtagList"] = [[NSMutableArray alloc] init];
+    [placeObject[@"hashtagList"] addObject:dict];
+    
+    [placeObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        NSLog(@"hi I saved this ish");
+    }];
+    
     for (NSString *hashtagString in hashtags)
     {
         isExisting = NO;
@@ -123,11 +139,6 @@
         if (!isExisting)
         {
             [self.place addHashtag:hashtagString];
-            
-            PFObject *testObject = [PFObject objectWithClassName:@"testObject"];
-            testObject[@"foo"] = @"bar";
-            testObject[@"hashtag"] = [NSString stringWithFormat:@"%@", hashtagString];
-            [testObject saveInBackground];
         }
     }
 }
