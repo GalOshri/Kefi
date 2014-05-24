@@ -124,8 +124,9 @@
         {
             [self.place addHashtag:hashtagString];
             
-            PFObject *testObject = [PFObject objectWithClassName:@"hashtag"];
+            PFObject *testObject = [PFObject objectWithClassName:@"testObject"];
             testObject[@"foo"] = @"bar";
+            testObject[@"hashtag"] = [NSString stringWithFormat:@"%@", hashtagString];
             [testObject saveInBackground];
         }
     }
