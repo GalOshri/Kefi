@@ -52,14 +52,10 @@
 
     //set some more variables here
     self.placeAddress.text = self.place.address;
-    self.placeCrossStreets.text = self.place.crossStreet;
-    
-    //modifications to print sigFigs for distance. NEED TO ROUND
-    NSString *distanceString = [self.place.currentDistance stringValue];
-    distanceString = [distanceString substringToIndex:4];
-    self.distanceMi.text = [NSString stringWithFormat:@"%@ mi",distanceString];
     
 
+    
+    
 
     //temporary assignment of hashtagList. Right now, there are two hashtags. Add some more.
     Hashtag *hashtag3 = [[Hashtag alloc] initWithText: @"HowYouLikeThemApples"];
@@ -115,6 +111,27 @@
      [mapView setRegion:MKCoordinateRegionMakeWithDistance(startCoord, 200, 200) animated:YES];
      */
 }
+
+
+- (void)viewDidLayoutSubviews
+{
+    //modifications to print sigFigs for distance. NEED TO ROUND
+    NSString *distanceString = [self.place.currentDistance stringValue];
+    distanceString = [distanceString substringToIndex:4];
+    self.distanceMi.text = [NSString stringWithFormat:@"%@ mi",distanceString];
+    
+    //deal with UI showing crossStreets if not null
+    if (![self.place.crossStreet isEqual:@"(null)"])
+        self.placeCrossStreets.text = self.place.crossStreet;
+    else
+    {
+        CGRect moveCrossStreetFrame = CGRectMake(self.placeCrossStreets.frame.origin.x, self.placeCrossStreets.frame.origin.y, self.distanceMi.frame.size.width, self.distanceMi.frame.size.height);
+        NSLog(@"crossStreetframe is %f, distanceMi frame %f, movecrossstreetframe is %f", self.placeCrossStreets.frame.origin.y, self.distanceMi.frame.origin.y, moveCrossStreetFrame.origin.y);
+        self.distanceMi.frame = moveCrossStreetFrame;
+        self.placeCrossStreets.hidden = YES;
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {

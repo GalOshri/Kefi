@@ -135,8 +135,9 @@ int radius = 1000;
                     //set pId in correct place in placeList.places
                     [placeList.places[placeIndex] setValue:object.objectId forKey:@"pId"];
                     
-                    //grab lastReview Time.  We can only have lastReviewTime if we have the pID
+                    //grab lastReview Time and hashtag list.  We can only have lastReviewTime if we have the pID
                     [placeList.places[placeIndex] setValue:object.updatedAt forKey:@"lastReviewedTime"];
+                    //[placeList.places[placeIndex] setValue:[object valueForKey:@"hashtagList"] forKey:@"hashtagList"];
                     
                     
                     //NSLog(@"%@ is fsId %@", [placeList.places[placeIndex] valueForKey:@"pId"], [placeList.places[placeIndex] valueForKey:@"fsId"]);
