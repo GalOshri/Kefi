@@ -4,6 +4,42 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
+        <!--Place Map View View Controller-->
+        <scene sceneID="yvV-QI-aBV">
+            <objects>
+                <viewController id="Y6T-oR-Iet" customClass="PlaceMapViewViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lxQ-GD-Aqc"/>
+                        <viewControllerLayoutGuide type="bottom" id="mhW-YH-fFL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qL3-Ap-bDi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xMV-V0-8xA">
+                                <rect key="frame" x="0.0" y="127" width="320" height="513"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="85E-d3-uEG">
+                                <rect key="frame" x="0.0" y="11" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="E7q-PT-xgC">
+                                        <barButtonItem key="backBarButtonItem" title="back" id="VSF-Rx-Pzi"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="xMV-V0-8xA" id="NaG-3d-pZS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vqQ-MC-gyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1330" y="-644"/>
+        </scene>
         <!--Place Detail View-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
@@ -91,6 +127,9 @@
                                 <state key="normal" image="map.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Y6T-oR-Iet" kind="modal" identifier="mapViewSegue" modalTransitionStyle="flipHorizontal" id="aOO-yX-g6u"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="172 Pine st" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbv-Lm-mTN">
                                 <rect key="frame" x="20" y="248" width="139" height="21"/>

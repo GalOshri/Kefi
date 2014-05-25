@@ -57,6 +57,8 @@
 		DAE95ABE193017F000109E75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95ABD193017F000109E75 /* CoreGraphics.framework */; };
 		DAE95AC0193017F600109E75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95ABF193017F600109E75 /* CoreLocation.framework */; };
 		DAE95AC219301A6D00109E75 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AC119301A6D00109E75 /* Parse.framework */; };
+		DAE95ACD1932725700109E75 /* PlaceMapViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE95ACC1932725700109E75 /* PlaceMapViewViewController.m */; };
+		DAE95AD319327EAF00109E75 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE95AD219327EAF00109E75 /* MapAnnotation.m */; };
 		DAFB18351919E18E00B4A56F /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +141,10 @@
 		DAE95ABD193017F000109E75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		DAE95ABF193017F600109E75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DAE95AC119301A6D00109E75 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		DAE95ACB1932725700109E75 /* PlaceMapViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceMapViewViewController.h; path = ../PlaceMapViewViewController.h; sourceTree = "<group>"; };
+		DAE95ACC1932725700109E75 /* PlaceMapViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceMapViewViewController.m; path = ../PlaceMapViewViewController.m; sourceTree = "<group>"; };
+		DAE95AD119327EAF00109E75 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapAnnotation.h; path = ../MapAnnotation.h; sourceTree = "<group>"; };
+		DAE95AD219327EAF00109E75 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapAnnotation.m; path = ../MapAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,6 +344,10 @@
 			children = (
 				0D81466518F10DD90072702B /* PlaceDetailView.h */,
 				0D81466618F10DD90072702B /* PlaceDetailView.m */,
+				DAE95ACB1932725700109E75 /* PlaceMapViewViewController.h */,
+				DAE95ACC1932725700109E75 /* PlaceMapViewViewController.m */,
+				DAE95AD119327EAF00109E75 /* MapAnnotation.h */,
+				DAE95AD219327EAF00109E75 /* MapAnnotation.m */,
 			);
 			name = "Place Detail View";
 			sourceTree = "<group>";
@@ -482,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D0C131118F65DDD00C90A5F /* Hashtag.m in Sources */,
+				DAE95AD319327EAF00109E75 /* MapAnnotation.m in Sources */,
 				0D81466D18F1259F0072702B /* SearchView.m in Sources */,
 				0D81466418F0E3670072702B /* KefiService.m in Sources */,
 				0DB0B4381921D8DF008D5624 /* SubmitReviewDetailView.m in Sources */,
@@ -491,6 +502,7 @@
 				DA089B8E192707B90055FD31 /* HashtagList.m in Sources */,
 				0D727EB318F099F1008310FC /* AppDelegate.m in Sources */,
 				DA089B8B1925CFF80055FD31 /* HashtagCollectionCell.m in Sources */,
+				DAE95ACD1932725700109E75 /* PlaceMapViewViewController.m in Sources */,
 				0D4F4A0318F0ADF700F901AE /* Place.m in Sources */,
 				0D4F49FC18F0ACA000F901AE /* PlaceListView.m in Sources */,
 				0D727EAF18F099F1008310FC /* main.m in Sources */,

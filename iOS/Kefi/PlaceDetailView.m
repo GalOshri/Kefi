@@ -9,6 +9,7 @@
 #import "PlaceDetailView.h"
 #import "SubmitView.h"
 #import "KefiService.h"
+#import "PlaceMapViewViewController.h"
 
 @interface PlaceDetailView ()
 @property (nonatomic, strong) KefiService *kefiService;
@@ -31,6 +32,24 @@
             sv.place = self.place;
         }
     }
+
+    if ([segue.identifier isEqualToString:@"mapViewSegue"]) {
+        if ([segue.destinationViewController isKindOfClass:[PlaceMapViewViewController class]])
+        {
+            PlaceMapViewViewController *pdmv = (PlaceMapViewViewController *) segue.destinationViewController;
+            
+            MKCoordinateRegion startCoord;
+            startCoord.center.latitude = [[self.place.latLong objectAtIndex:0] doubleValue];
+            startCoord.center.longitude = [[self.place.latLong objectAtIndex:1] doubleValue];
+            startCoord.span.latitudeDelta = 0.02;
+            startCoord.span.longitudeDelta = 0.02;
+            
+            
+            pdmv.region = startCoord;
+            pdmv.placeName = self.place.name;
+        }
+    }
+
 }
 
 - (IBAction)unwindToPlaceDetail:(UIStoryboardSegue *)segue
