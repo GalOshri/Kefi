@@ -43,9 +43,7 @@
 		DA089B4119235C210055FD31 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = DA089B4019235C210055FD31 /* Review.m */; };
 		DA089B8B1925CFF80055FD31 /* HashtagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA089B8A1925CFF80055FD31 /* HashtagCollectionCell.m */; };
 		DA089B8E192707B90055FD31 /* HashtagList.m in Sources */ = {isa = PBXBuildFile; fileRef = DA089B8D192707B90055FD31 /* HashtagList.m */; };
-		DA97F992192DB8AC006C745E /* KefiNoBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = DA97F991192DB8AC006C745E /* KefiNoBorder.png */; };
 		DA9EB651191EDF4F00C375B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9EB650191EDF4F00C375B3 /* MapKit.framework */; };
-		DAD9F20A192DDE80005AA082 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD9F209192DDE80005AA082 /* map.png */; };
 		DAE95AAA193012B300109E75 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AA9193012B300109E75 /* AudioToolbox.framework */; };
 		DAE95AAC193012BC00109E75 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AAB193012BC00109E75 /* CFNetwork.framework */; };
 		DAE95AAE193012D300109E75 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AAD193012D300109E75 /* libz.dylib */; };
@@ -59,6 +57,8 @@
 		DAE95AC219301A6D00109E75 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AC119301A6D00109E75 /* Parse.framework */; };
 		DAE95ACD1932725700109E75 /* PlaceMapViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE95ACC1932725700109E75 /* PlaceMapViewViewController.m */; };
 		DAE95AD319327EAF00109E75 /* MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE95AD219327EAF00109E75 /* MapAnnotation.m */; };
+		DAE95AD61932A29C00109E75 /* KefiNoBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = DAE95AD41932A29C00109E75 /* KefiNoBorder.png */; };
+		DAE95AD71932A29C00109E75 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = DAE95AD51932A29C00109E75 /* map.png */; };
 		DAFB18351919E18E00B4A56F /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,9 +127,7 @@
 		DA089B8A1925CFF80055FD31 /* HashtagCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashtagCollectionCell.m; sourceTree = "<group>"; };
 		DA089B8C192707B90055FD31 /* HashtagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashtagList.h; sourceTree = "<group>"; };
 		DA089B8D192707B90055FD31 /* HashtagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashtagList.m; sourceTree = "<group>"; };
-		DA97F991192DB8AC006C745E /* KefiNoBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KefiNoBorder.png; path = ../../../../../Dropbox/KEfi/KefiNoBorder.png; sourceTree = "<group>"; };
 		DA9EB650191EDF4F00C375B3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		DAD9F209192DDE80005AA082 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = map.png; path = ../../../../../Dropbox/KEfi/map.png; sourceTree = "<group>"; };
 		DAE95AA9193012B300109E75 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DAE95AAB193012BC00109E75 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAE95AAD193012D300109E75 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -145,6 +143,8 @@
 		DAE95ACC1932725700109E75 /* PlaceMapViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceMapViewViewController.m; path = ../PlaceMapViewViewController.m; sourceTree = "<group>"; };
 		DAE95AD119327EAF00109E75 /* MapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapAnnotation.h; path = ../MapAnnotation.h; sourceTree = "<group>"; };
 		DAE95AD219327EAF00109E75 /* MapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapAnnotation.m; path = ../MapAnnotation.m; sourceTree = "<group>"; };
+		DAE95AD41932A29C00109E75 /* KefiNoBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KefiNoBorder.png; sourceTree = "<group>"; };
+		DAE95AD51932A29C00109E75 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,11 +186,11 @@
 		0D0C131818FB7F9000C90A5F /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				DAD9F209192DDE80005AA082 /* map.png */,
+				DAE95AD41932A29C00109E75 /* KefiNoBorder.png */,
+				DAE95AD51932A29C00109E75 /* map.png */,
 				DA089B31192016120055FD31 /* smallCircleFull.png */,
 				DA089B32192016120055FD31 /* smallCircle.png */,
 				DA089B33192016120055FD31 /* fullCircle.png */,
-				DA97F991192DB8AC006C745E /* KefiNoBorder.png */,
 				DA089B34192016120055FD31 /* semiHappy.png */,
 				DA089B35192016120055FD31 /* soHappy.png */,
 				DA089B36192016120055FD31 /* eh.png */,
@@ -460,12 +460,12 @@
 				DA089B3D192016120055FD31 /* eh.png in Resources */,
 				DA089B3E192016120055FD31 /* soPissed.png in Resources */,
 				0D727EBB18F099F1008310FC /* Images.xcassets in Resources */,
-				DA97F992192DB8AC006C745E /* KefiNoBorder.png in Resources */,
+				DAE95AD61932A29C00109E75 /* KefiNoBorder.png in Resources */,
 				0D0C131418FB72B600C90A5F /* FavFilled.png in Resources */,
 				DA089B3C192016120055FD31 /* soHappy.png in Resources */,
 				DA089B3B192016120055FD31 /* semiHappy.png in Resources */,
 				DA089B3A192016120055FD31 /* fullCircle.png in Resources */,
-				DAD9F20A192DDE80005AA082 /* map.png in Resources */,
+				DAE95AD71932A29C00109E75 /* map.png in Resources */,
 				0D0C131518FB72B600C90A5F /* FavUnfilled.png in Resources */,
 				DA089B39192016120055FD31 /* smallCircle.png in Resources */,
 				0D727EAD18F099F1008310FC /* InfoPlist.strings in Resources */,
