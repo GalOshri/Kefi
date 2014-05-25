@@ -7,10 +7,10 @@
 //
 
 #import "PlaceMapViewViewController.h"
-#import "MapAnnotation.h"
 
 @interface PlaceMapViewViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *placeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *placeLabel;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -18,53 +18,51 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
+    self.mapView.delegate = self;
+    
     self.mapView.mapType = MKMapTypeStandard;
-     
+    
+    // Current location
+    [self.mapView setShowsUserLocation:YES];
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    
+    [self.locationManager setDelegate:self];
+    
+    [self.locationManager setDistanceFilter:kCLDistanceFilterNone];
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    
+    // Annotation
     //load default location
     [self.mapView setRegion:self.region animated:YES];
     
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(self.region.center.latitude, self.region.center.longitude);
+
     
-    MapAnnotation *placePin = [[MapAnnotation alloc] initWithCoordinates:coordinate placeName:self.placeName description:nil];
+    MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+    point.coordinate = coordinate;
+    point.title = @"Where am I?";
+    point.subtitle = @"I'm here!!!";
     
     //add a marker at point
-    [self.mapView addAnnotation:placePin];
+    [self.mapView addAnnotation:point];
     self.placeLabel.text = self.placeName;
 }
 
--(void)viewDidUnload {
-    self.mapView = nil;
-}
-
--(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+/*- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
 {
-    if ([annotation isKindOfClass:[MKUserLocation class]])
-    {
-        return nil;
-    }
-    
-    static NSString* myIdentifier = @"myIndentifier";
-    MKPinAnnotationView* pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:myIdentifier];
-    pinView.pinColor = MKPinAnnotationColorPurple;
-    
-    if (!pinView)
-    {
-        pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:myIdentifier];
-        pinView.pinColor = MKPinAnnotationColorPurple;
-        pinView.animatesDrop = NO;
-    }
-    return pinView;
-}
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
+    [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+}*/
 
-/*
-#pragma mark - Navigation
+/*- (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views {
+    MKCoordinateRegion region;
+    region = MKCoordinateRegionMakeWithDistance(self.locationManager.location.coordinate, 1000, 1000);
+    
+    [mv setRegion:region animated:YES];
+}*/
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
