@@ -10,6 +10,7 @@
 #import "MapAnnotation.h"
 
 @interface PlaceMapViewViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *placeLabel;
 
 @end
 
@@ -29,6 +30,7 @@
     
     //add a marker at point
     [self.mapView addAnnotation:placePin];
+    self.placeLabel.text = self.placeName;
 }
 
 -(void)viewDidUnload {
