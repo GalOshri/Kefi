@@ -27,6 +27,8 @@ int radius = 1000;
 
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withSearchTerm:(NSString *)searchTerm
 {
+    NSMutableArray *pIdCandidates = [[NSMutableArray alloc]init];
+    
     NSString *fsURLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&radius=%d&intent=browse&categoryId=%@&client_id=%@&client_secret=%@&v=%d",
                              47.615925,
                              -122.326968,
@@ -94,31 +96,55 @@ int radius = 1000;
                         [place.hashtagList addObject:hashtag];
                     }
                     
+                    //set pid to nil
+                    place.pId = @"";
+                    
                     [placeList.places addObject:place];
                     
-                    //grab pId, if vailable
-                    place.pId = [self GrabParseIdForPlace:place];
+                    //add item in pId candidate array
+                    [pIdCandidates addObject:place.fsId];
                 }
                 
-                
+                //make call to add pId
+                [self GrabParseIds:pIdCandidates forPlaces:placeList];
                 
                 [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
                 
             }] resume];
 }
 
-+ (NSString *) GrabParseIdForPlace: (Place *) place
++ (void) GrabParseIds: (NSMutableArray *)fsIds forPlaces:(PlaceList *)placeList
 {
-    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+    //query to grab pIds from Parse
+    PFQuery *queryItems = [PFQuery queryWithClassName:@"Place"];
+    [queryItems whereKey:@"fsID" containedIn:fsIds];
     
-    [query whereKey:@"fsID" equalTo:place.fsId];
-    NSString *pIdString = @"";
-    
-    if(query.countObjects > 0){
-        pIdString = [NSString stringWithFormat:@"%@",[query getFirstObject].objectId];
-    }
-
-    return pIdString;
+    //perform actions to update placeList.places
+    [queryItems findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            //grab all fsIds for placeList.places
+            NSArray *onlyFsIds = [placeList.places valueForKey:@"fsId"];
+            
+            for (PFObject *object in objects) {
+                
+               
+                if([onlyFsIds containsObject:[object objectForKey:@"fsID"]]) {
+                    //find index in onlyFsIds to matchwith placeList.places
+                    int placeIndex = (int)[onlyFsIds indexOfObject:[object valueForKey:@"fsID"]];
+                    
+                    //set pId in correct place in placeList.places
+                    [placeList.places[placeIndex] setValue:object.objectId forKey:@"pId"];
+                    
+                    //NSLog(@"%@ is fsId %@", [placeList.places[placeIndex] valueForKey:@"pId"], [placeList.places[placeIndex] valueForKey:@"fsId"]);
+                }
+            }
+        }
+        
+        else {
+            NSLog(@"%@", [error userInfo]);
+        }
+    }];
 }
 
 + (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings
@@ -130,7 +156,9 @@ int radius = 1000;
     reviewObject[@"sentiment"] = [NSNumber numberWithInt:sentiment];
     reviewObject[@"energy"] = [NSNumber numberWithInt:energy];
     reviewObject[@"hashtagstrings"] = hashtagStrings;
-   
+
+    NSLog(@"pid is %@", place.pId);
+    
     if (![place.pId isEqualToString:@""])
     {
         reviewObject[@"place"] = [PFObject objectWithoutDataWithClassName:@"Place" objectId:place.pId];
@@ -147,7 +175,7 @@ int radius = 1000;
         [placeObject saveInBackground];
         
         reviewObject[@"place"] = placeObject;
-
+        NSLog(@"we save the place");
     }
     
     //reviewObject SaveInBackground
