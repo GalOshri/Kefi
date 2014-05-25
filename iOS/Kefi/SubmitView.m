@@ -64,6 +64,10 @@ NSDictionary *horizontalToEnergyCirclesDict;
 NSDictionary *verticalToEnergyCirclesDict;
 NSMutableSet *activatedEnergyCircles;
 
+NSDictionary *sentimentStrings;
+NSDictionary *energyStrings;
+NSString *coordinateLabelDefault;
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -82,6 +86,7 @@ NSMutableSet *activatedEnergyCircles;
             srdv.imageFrame = CGRectMake(currentButton.frame.origin.x, currentButton.frame.origin.y + self.drawView.frame.origin.y, currentButton.frame.size.width, currentButton.frame.size.height);
             
             srdv.placeLabelFrame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
+            srdv.reviewDetailLabelText = self.coordinateLabel.text;
             srdv.reviewDetailLabelFrame = CGRectMake(self.coordinateLabel.frame.origin.x, self.coordinateLabel.frame.origin.y, self.coordinateLabel.frame.size.width, self.coordinateLabel.frame.size.height);
             
             srdv.place = self.place;
@@ -123,11 +128,24 @@ NSMutableSet *activatedEnergyCircles;
     activatedSentiment = -1;
     activatedEnergy = -1;
     
+    //set dictionaries for coordinateLabel
+    //TODO: move server-side
+    sentimentStrings = @{@0:@"Get me outta here!",
+                         @1: @"not diggin' it...",
+                         @2: @"",
+                         @3: @"It's pretty good",
+                         @4: @"Love it!"};
+    
+    energyStrings = @{@0: @"",
+                      @1: @"chill",
+                      @2: @"buzzin'",
+                      @3: @"ragin'!"};
+    coordinateLabelDefault = @"How do you feel?";
 }
+
 
 #pragma mark - Button Moving Methods
 
-    
 - (IBAction)reviewButtonDragged:(UIButton *)sender forEvent:(UIEvent *)event {
     
     // Which segment are we in?
@@ -140,14 +158,13 @@ NSMutableSet *activatedEnergyCircles;
     int horizontalCellIndex = floor(sender.frame.origin.x / cellWidth);
     int verticalCellIndex = floor((self.drawView.frame.size.height - sender.frame.origin.y) / cellHeight);
     
-   // if (horizontalCellIndex == -1)
-     //   horizontalCellIndex = 0;
-    
-    self.coordinateLabel.text = [NSString stringWithFormat:@"e: %d   s: %d",horizontalCellIndex, verticalCellIndex];
-    self.coordinateLabel.textAlignment = NSTextAlignmentCenter;
   
     if (activatedSentiment == -1)
     {
+        self.coordinateLabel.text = [NSString stringWithFormat:@"%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]]];
+        
+        self.coordinateLabel.textAlignment = NSTextAlignmentCenter;
+
         if((115 < sender.frame.origin.x < 165) && (verticalCellIndex != 2) && selectedSentimentIndex != verticalCellIndex)
         {
             [timer invalidate];
@@ -159,6 +176,8 @@ NSMutableSet *activatedEnergyCircles;
     
     else
     {
+        self.coordinateLabel.text = [NSString stringWithFormat:@"%@\n%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]], [energyStrings objectForKey:[NSNumber numberWithInt:horizontalCellIndex]]];
+        
         if (activatedSentiment != verticalCellIndex)
         {
             // Choose different sentiment
@@ -280,6 +299,8 @@ NSMutableSet *activatedEnergyCircles;
             currentButton.center= CGPointMake(currentButton.center.x * 3, currentButton.center.y );
             [currentButton setAlpha:1];
         }
+    }    completion:^(BOOL finished){
+        self.coordinateLabel.text = coordinateLabelDefault;
     }];
     
     activatedSentiment = -1;
@@ -358,7 +379,7 @@ NSMutableSet *activatedEnergyCircles;
 
 - (void)HideAllExceptSentiment:(int)sentiment
 {
-    self.coordinateLabel.hidden = YES;
+    //self.coordinateLabel.hidden = YES;
     self.reviewButton.hidden = YES;
     [self DeactivateEnergyLevel:0];
     [self DeactivateEnergyLevel:1];

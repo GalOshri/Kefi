@@ -110,7 +110,6 @@ int radius = 1000;
 + (NSString *) GrabParseIdForPlace: (Place *) place
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Place"];
-    [query getFirstObject];
     
     [query whereKey:@"fsID" equalTo:place.fsId];
     NSString *pIdString = @"";

@@ -14,12 +14,12 @@
 @interface SubmitReviewDetailView ()
 
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *reviewDetailLabel;
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *firstEnergyCircle;
 @property (weak, nonatomic) IBOutlet UIImageView *secondEnergyCircle;
 @property (weak, nonatomic) IBOutlet UIImageView *thirdEnergyCircle;
-
+@property (strong, nonatomic) IBOutlet UILabel *reviewDetailLabel;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelBUtton;
 
@@ -35,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.reviewDetailLabel.text = [NSString stringWithFormat:@"S: %d  E: %d", self.sentimentLevel, self.energyLevel];
+    self.reviewDetailLabel.text = self.reviewDetailLabelText;
     self.placeLabel.text = self.place.name;
     [self.placeLabel sizeToFit];
     self.placeLabel.textAlignment = NSTextAlignmentLeft;

@@ -16,11 +16,12 @@
 @property (nonatomic, strong) Place *place;
 @property (nonatomic) int energyLevel;
 @property (nonatomic) int sentimentLevel;
-
+@property (nonatomic, strong) NSString *reviewDetailLabelText;
 // UI
 @property (strong, nonatomic) IBOutlet UIImageView *sentimentImage;
 @property (nonatomic) CGRect imageFrame;
 @property (nonatomic) CGRect placeLabelFrame;
 @property (nonatomic) CGRect reviewDetailLabelFrame;
+
 
 @end
