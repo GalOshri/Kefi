@@ -88,7 +88,6 @@ int radius = 1000;
                     place.categoryType = [NSString stringWithFormat:@"%@", [[[venue objectForKey:@"categories"] objectAtIndex:0] objectForKey:@"name"]];
                     
                     
-                    
                     for (int j = 0; j < 2; j++)
                     {
                         Hashtag *hashtag = [[Hashtag alloc] init];
@@ -135,6 +134,10 @@ int radius = 1000;
                     
                     //set pId in correct place in placeList.places
                     [placeList.places[placeIndex] setValue:object.objectId forKey:@"pId"];
+                    
+                    //grab lastReview Time.  We can only have lastReviewTime if we have the pID
+                    [placeList.places[placeIndex] setValue:object.updatedAt forKey:@"lastReviewedTime"];
+                    
                     
                     //NSLog(@"%@ is fsId %@", [placeList.places[placeIndex] valueForKey:@"pId"], [placeList.places[placeIndex] valueForKey:@"fsId"]);
                 }
