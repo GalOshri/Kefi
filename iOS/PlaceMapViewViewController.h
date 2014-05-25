@@ -9,14 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface PlaceMapViewViewController : UIViewController <MKMapViewDelegate> {
-    MKMapView *mapView;
-}
+@interface PlaceMapViewViewController : UIViewController <MKMapViewDelegate>
 
 @property (nonatomic) IBOutlet MKMapView *mapView;
 
-
-@property MKCoordinateRegion region;
+@property (nonatomic) MKCoordinateRegion region;
 @property (nonatomic, strong) NSString *placeName;
 
 @end

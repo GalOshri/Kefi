@@ -15,7 +15,6 @@
 @end
 
 @implementation PlaceMapViewViewController
-@synthesize mapView;
 
 - (void)viewDidLoad
 {
