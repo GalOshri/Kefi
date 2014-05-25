@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "Place.h"
 #import "HashtagCollectionCell.h"
-#import "HashtagList.h"
+
 
 
 @interface PlaceDetailView : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>{

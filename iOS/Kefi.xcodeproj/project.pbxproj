@@ -42,7 +42,6 @@
 		DA089B3E192016120055FD31 /* soPissed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B37192016120055FD31 /* soPissed.png */; };
 		DA089B4119235C210055FD31 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = DA089B4019235C210055FD31 /* Review.m */; };
 		DA089B8B1925CFF80055FD31 /* HashtagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA089B8A1925CFF80055FD31 /* HashtagCollectionCell.m */; };
-		DA089B8E192707B90055FD31 /* HashtagList.m in Sources */ = {isa = PBXBuildFile; fileRef = DA089B8D192707B90055FD31 /* HashtagList.m */; };
 		DA9EB651191EDF4F00C375B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9EB650191EDF4F00C375B3 /* MapKit.framework */; };
 		DAE95AAA193012B300109E75 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AA9193012B300109E75 /* AudioToolbox.framework */; };
 		DAE95AAC193012BC00109E75 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AAB193012BC00109E75 /* CFNetwork.framework */; };
@@ -124,8 +123,6 @@
 		DA089B4019235C210055FD31 /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
 		DA089B891925CFF80055FD31 /* HashtagCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashtagCollectionCell.h; sourceTree = "<group>"; };
 		DA089B8A1925CFF80055FD31 /* HashtagCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashtagCollectionCell.m; sourceTree = "<group>"; };
-		DA089B8C192707B90055FD31 /* HashtagList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashtagList.h; sourceTree = "<group>"; };
-		DA089B8D192707B90055FD31 /* HashtagList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashtagList.m; sourceTree = "<group>"; };
 		DA9EB650191EDF4F00C375B3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DAE95AA9193012B300109E75 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DAE95AAB193012BC00109E75 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -207,8 +204,6 @@
 				DA089B4019235C210055FD31 /* Review.m */,
 				0D4F49FE18F0AD8100F901AE /* PlaceList.h */,
 				0D4F49FF18F0AD8100F901AE /* PlaceList.m */,
-				DA089B8C192707B90055FD31 /* HashtagList.h */,
-				DA089B8D192707B90055FD31 /* HashtagList.m */,
 				0D4F4A0118F0ADF700F901AE /* Place.h */,
 				0D4F4A0218F0ADF700F901AE /* Place.m */,
 				0D0C130F18F65DDD00C90A5F /* Hashtag.h */,
@@ -493,7 +488,6 @@
 				0D4F4A0918F0B66A00F901AE /* PlaceCell.m in Sources */,
 				0D4F4A0018F0AD8100F901AE /* PlaceList.m in Sources */,
 				DA089B4119235C210055FD31 /* Review.m in Sources */,
-				DA089B8E192707B90055FD31 /* HashtagList.m in Sources */,
 				0D727EB318F099F1008310FC /* AppDelegate.m in Sources */,
 				DA089B8B1925CFF80055FD31 /* HashtagCollectionCell.m in Sources */,
 				DAE95ACD1932725700109E75 /* PlaceMapViewViewController.m in Sources */,
