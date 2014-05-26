@@ -62,19 +62,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-	// Do any additional setup after loading the view.
-    
     
     //sets name to view?
     [self.navigationController.viewControllers[self.navigationController.viewControllers.count -1] setTitle:self.place.name];
 
     //set some more variables here
     self.placeAddress.text = self.place.address;
-    
-
-    
-    
 
     //temporary assignment of hashtagList. Right now, there are two hashtags. Add some more.
     Hashtag *hashtag3 = [[Hashtag alloc] initWithText: @"HowYouLikeThemApples"];
@@ -98,11 +91,8 @@
     CALayer * l = [self.mapButton layer];
     [l setMasksToBounds:YES];
     [l setCornerRadius:7.0];
+    
     //self.hashtagView.scrollEnabled = NO;
-
-    
-    
-    //[self.navigationController.viewControllers[self.navigationController.viewControllers.count -2] setTitle:@"Bac"];
     
     // table stuff
     /*self.tableView.dataSource = self;
@@ -110,24 +100,6 @@
      self.tableView.delegate = self;
      self.tableView.sectionHeaderHeight = 0.0f;
      [self.tableView reloadData];
-     */
-    
-    //Kefi Service instance
-    //self.kefiService = [[KefiService alloc] init];
-    
-    //this will be a call to get necessary information from Foursquare venue API --> All necessary info is part of Place model now!
-    //[KefiService PopulatePlaceDetailView:self.place withPlaceAddress: self.placeAddress withPlaceCrossStreet: self.placeCrossStreets];
-    /*
-     //adjust map
-     CLLocationCoordinate2D startCoord;
-     startCoord.latitude = [[self.place.latLong objectAtIndex:0] doubleValue];
-     startCoord.longitude = [[self.place.latLong objectAtIndex:0] doubleValue];
-     
-     MKPointAnnotation *point = [[MKPointAnnotation alloc]init];
-     point.coordinate = startCoord;
-     [self.mapView addAnnotation:point];
-     
-     [mapView setRegion:MKCoordinateRegionMakeWithDistance(startCoord, 200, 200) animated:YES];
      */
 }
 
@@ -145,7 +117,6 @@
     else
     {
         CGRect moveCrossStreetFrame = CGRectMake(self.placeCrossStreets.frame.origin.x, self.placeCrossStreets.frame.origin.y, self.distanceMi.frame.size.width, self.distanceMi.frame.size.height);
-        NSLog(@"crossStreetframe is %f, distanceMi frame %f, movecrossstreetframe is %f", self.placeCrossStreets.frame.origin.y, self.distanceMi.frame.origin.y, moveCrossStreetFrame.origin.y);
         self.distanceMi.frame = moveCrossStreetFrame;
         self.placeCrossStreets.hidden = YES;
     }

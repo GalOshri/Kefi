@@ -21,30 +21,23 @@
     [super viewDidLoad];
     
     self.mapView.delegate = self;
-    
     self.mapView.mapType = MKMapTypeStandard;
     
     // Current location
     [self.mapView setShowsUserLocation:YES];
     
     self.locationManager = [[CLLocationManager alloc] init];
-    
     [self.locationManager setDelegate:self];
-    
     [self.locationManager setDistanceFilter:kCLDistanceFilterNone];
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-    
-    // Annotation
-    //load default location
+
     [self.mapView setRegion:self.region animated:YES];
     
     CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(self.region.center.latitude, self.region.center.longitude);
 
-    
     MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
     point.coordinate = coordinate;
-    point.title = @"Where am I?";
-    point.subtitle = @"I'm here!!!";
+    point.title = self.placeName;
     
     //add a marker at point
     [self.mapView addAnnotation:point];
