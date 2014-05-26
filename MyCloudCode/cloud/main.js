@@ -1,40 +1,54 @@
-//jquery
-var script = document.createElement('script');
-script.src = 'http://code.jquery.com/jquery-1.11.0.min.js';
-script.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild(script);
-
+var MINIMUM_SCORE = 30;
 
 // Use Parse.Cloud.define to define as many cloud functions as you want.
 // For example:
-Parse.Cloud.job("updateCurrentHashtags", function(request, response) {
-  //new interval, at two hours
-  var currentDate = new Date.now();
-  var timeInterval = 2*60*60*1000;
+Parse.Cloud.define("updateHashtags", function(request, response) {
+  
+  //cutoff time
+  var currentDate = Date.now();
+  var timeInterval = 10*60*60*1000;
   var compareDate = currentDate - timeInterval;
 
   //query for places
   var place = Parse.Object.extend("Place");
-  var placeQuery = new Parse.query(place);
-  placeQuery.greaterThan("updatedAt", compareDate);
+  var queryInInterval = new Parse.Query(place);
+  queryInInterval.equalTo("objectId", "rJf8bERFCb");
 
-  placeQuery.find({
+  //here is where we grab all hashtags and update
+  queryInInterval.find({
   	
   	success: function(results) {
+	  	for (var i = 0; i < results.length; i++) {
+	  		var place = results[i];
+	  		var hashtags = place.get("hashtagList");
 
-	  	for (var i = 0; i > placeQuery.length; i++) {
-	  		var object = placeQuery[i];
+	  		var newTagsArray = [];
+	  		for(var j=0; j<hashtags.length; j++) {
+	  			if (hashtags[j]["score"] > MINIMUM_SCORE) {
+	  				console.log(hashtags[j]["score"]);
+	  				//add item to new array
+	  				newTagsArray.push(hashtags[j]);
+	  			}
+
+	  		}
+	  		place.set("hashtagList",newTagsArray);
+
+	  		place.save();
+
 	  	}
+		response.success("currentDate " + currentDate + "    compareDate " + compareDate + "    results length " + results.length + " newTagsArray " + newTagsArray);
 	},
-  	error: function(error) {
-    	alert("Error: " + error.code + " " + error.message);
+  	error: function() {
+    	response.error("uh oh");
   	}	
 
   });
 
-  //set current time, and grab desired interval
+//
+//query for items before two hour interval
+//
+/*var queryOutInterval = new Parse.query(place);
+queryOutInterval.lessThan("updatedAt", compareDate);
+query.OutInterval.*/
 
-  //grab all places whos updatedAt falls within interval
-  var query = new Parse.query("Place");
-  query.equalTo 
 });
