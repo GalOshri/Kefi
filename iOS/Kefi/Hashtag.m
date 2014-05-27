@@ -32,6 +32,19 @@
     self.lastSubmitTime = [NSDate date];
 }
 
+- (id)initWithText:(NSString *)text withScore:(NSNumber *)score
+{
+    self = [super init];
+    
+    if (self)
+    {
+        self.text = [NSString stringWithString:text];
+        self.score = score;
+    }
+    
+    return self;
+}
+
 
 
 @end

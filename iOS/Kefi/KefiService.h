@@ -20,7 +20,5 @@
 
 + (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings;
 
-+ (void) GrabParseIds: (NSMutableArray *) pIds forPlaces:(PlaceList *)placeList;
-
 
 @end

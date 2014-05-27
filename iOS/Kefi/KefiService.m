@@ -27,8 +27,6 @@ int radius = 1000;
 
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withSearchTerm:(NSString *)searchTerm
 {
-    NSMutableArray *pIdCandidates = [[NSMutableArray alloc]init];
-    
     NSString *fsURLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&radius=%d&intent=browse&categoryId=%@&client_id=%@&client_secret=%@&v=%d",
                              47.615925,
                              -122.326968,
@@ -88,60 +86,50 @@ int radius = 1000;
                     place.categoryType = [NSString stringWithFormat:@"%@", [[[venue objectForKey:@"categories"] objectAtIndex:0] objectForKey:@"name"]];
                     
                     
-                    for (int j = 0; j < 2; j++)
-                    {
-                        Hashtag *hashtag = [[Hashtag alloc] init];
-                        hashtag.text = [NSString stringWithFormat:@"Hashtag%d", j];
-                        [place.hashtagList addObject:hashtag];
-                    }
-                    
                     //set pid to nil
                     place.pId = @"";
                     
                     [placeList.places addObject:place];
                     
-                    //add item in pId candidate array
-                    [pIdCandidates addObject:place.fsId];
+                    
                 }
+                //make call to populate with parse data
+                [self PopulateWithParseData: placeList];
                 
-                //make call to add pId
-                [self GrabParseIds:pIdCandidates forPlaces:placeList];
                 
                 [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
                 
             }] resume];
 }
 
-+ (void) GrabParseIds: (NSMutableArray *)fsIds forPlaces:(PlaceList *)placeList
++ (void) PopulateWithParseData:(PlaceList *)placeList
 {
+    //grab all fsIds for placeList.places
+    NSArray *fsIdArray = [placeList.places valueForKey:@"fsId"];
+    
     //query to grab pIds from Parse
     PFQuery *queryItems = [PFQuery queryWithClassName:@"Place"];
-    [queryItems whereKey:@"fsID" containedIn:fsIds];
+    [queryItems whereKey:@"fsID" containedIn:fsIdArray];
     
     //perform actions to update placeList.places
     [queryItems findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
-            //grab all fsIds for placeList.places
-            NSArray *onlyFsIds = [placeList.places valueForKey:@"fsId"];
-            
             for (PFObject *object in objects) {
+                NSArray *matchedPlaceArray = [placeList.places filteredArrayUsingPredicate:[NSPredicate
+                                                      predicateWithFormat:@"fsId == %@", [object objectForKey:@"fsID"]]];
+                if ([matchedPlaceArray count] == 0)
+                    continue;
                 
-               
-                if([onlyFsIds containsObject:[object objectForKey:@"fsID"]]) {
-                    //find index in onlyFsIds to matchwith placeList.places
-                    int placeIndex = (int)[onlyFsIds indexOfObject:[object valueForKey:@"fsID"]];
-                    
-                    //set pId in correct place in placeList.places
-                    [placeList.places[placeIndex] setValue:object.objectId forKey:@"pId"];
-                    
-                    //grab lastReview Time and hashtag list.  We can only have lastReviewTime if we have the pID
-                    [placeList.places[placeIndex] setValue:object.updatedAt forKey:@"lastReviewedTime"];
-                    //[placeList.places[placeIndex] setValue:[object valueForKey:@"hashtagList"] forKey:@"hashtagList"];
-                    
-                    
-                    //NSLog(@"%@ is fsId %@", [placeList.places[placeIndex] valueForKey:@"pId"], [placeList.places[placeIndex] valueForKey:@"fsId"]);
+                Place *place = [matchedPlaceArray objectAtIndex:0];
+                place.pId = [object valueForKey:@"objectId"];
+                place.lastReviewedTime = [object valueForKey:@"updatedAt"];
+                for (id hashtagObject in [object valueForKey:@"hashtagList"])
+                {
+                    Hashtag *hashtag = [[Hashtag alloc] initWithText:[hashtagObject valueForKey:@"text"] withScore:[hashtagObject valueForKey:@"score"]];
+                    [place.hashtagList addObject:hashtag];
                 }
+
             }
         }
         

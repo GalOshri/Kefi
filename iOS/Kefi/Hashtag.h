@@ -19,6 +19,8 @@
 
 - (id)initWithText:(NSString *)text;
 
+- (id)initWithText:(NSString *)text withScore:(NSNumber *)score;
+
 - (void)addReview;
 
 
