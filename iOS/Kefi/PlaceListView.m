@@ -197,14 +197,13 @@
     cell.placeType.text = displayType;
     
     NSString *hashtagText = @"";
-    Hashtag *currentHashtag;
+//    Hashtag *currentHashtag;
     
-    for (int j = 0; j < 1; j++)
+    for (Hashtag *currentHashtag in currentPlace.hashtagList)
     {
-        currentHashtag = [currentPlace.hashtagList objectAtIndex:j];
         hashtagText = [hashtagText stringByAppendingFormat:@"#%@",currentHashtag.text];
     }
-    
+ 
    
     
     cell.placeHashtags.text = hashtagText;
