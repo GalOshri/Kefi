@@ -164,6 +164,7 @@ int radius = 1000;
         //TODO: move server side
         PFObject *placeObject = [PFObject objectWithClassName:@"Place"];
         placeObject[@"fsID"] = place.fsId;
+        placeObject[@"lastReviewed"] = placeObject.updatedAt;
         [placeObject saveInBackground];
         
         reviewObject[@"place"] = placeObject;

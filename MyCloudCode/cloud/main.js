@@ -1,5 +1,6 @@
 var MINIMUM_SCORE = 30;
 var NUM_HOURS_CUTOFF = 2;
+var INITIAL_SCORE = 50;
 
 // Use Parse.Cloud.define to define as many cloud functions as you want.
 // For example:
@@ -55,9 +56,7 @@ Parse.Cloud.define("cleanHashtags", function(request, response) {
   	}	
   });
 
-  ///////////////////////////////////////
   //query Outside of time interval
-  ///////////////////////////////////////
   var queryOutTimeInterval = new Parse.Query(Place);
   queryOutTimeInterval.lessThan("updatedAt", {"__type":"Date","iso":cutoffDate});
 
@@ -82,9 +81,44 @@ Parse.Cloud.define("cleanHashtags", function(request, response) {
 });
 
 
+/******
+	addHashtags called after a review save. updates Place object
+*******/
+Parse.Cloud.afterSave("Review", function(request, response) {
+	//grab right Place object
+	var Place = Parse.Object.extend("Place");
+	query.get(request.object.get("place").id, {
 
-/*
+		success:function(place) {
+			//update lastReviewed
+			var updateTime = Date.now();
+			place.set("lastReviewed", updateTime);
+
+			//grab hashtags and set score
+			var hashtags = request.object.get("hashtagStrings");
+			hashtagList = [];
+
+			for (var i = 0; i < hashtags.length; i++) {
+				hashtagsList.push({
+					text : hashtags[i],
+					score : INITIAL_SCORE
+				});
+			};
+
+			place.save();
+
+		},
+
+		error: function(error){
+			response.error(error.message);
+		}
+	});
+	
+
+});
+
+
 Parse.Cloud.define("updateSentimentEnergy", function(request, response) {
 
 
-});*/
+});
