@@ -147,7 +147,7 @@ int radius = 1000;
     //store sentiment, energy, pId
     reviewObject[@"sentiment"] = [NSNumber numberWithInt:sentiment];
     reviewObject[@"energy"] = [NSNumber numberWithInt:energy];
-    reviewObject[@"hashtagstrings"] = hashtagStrings;
+    reviewObject[@"hashtagStrings"] = hashtagStrings;
 
     NSLog(@"pid is %@", place.pId);
     
@@ -164,7 +164,6 @@ int radius = 1000;
         //TODO: move server side
         PFObject *placeObject = [PFObject objectWithClassName:@"Place"];
         placeObject[@"fsID"] = place.fsId;
-        placeObject[@"lastReviewed"] = placeObject.updatedAt;
         [placeObject saveInBackground];
         
         reviewObject[@"place"] = placeObject;
