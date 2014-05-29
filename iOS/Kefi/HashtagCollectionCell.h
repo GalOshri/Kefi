@@ -13,5 +13,9 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *hashtagToggle;
 @property (strong, nonatomic) Hashtag *hashtag;
+@property (nonatomic) BOOL isSelected;
+
+
+-(id)setBool:(BOOL)selected;
 
 @end

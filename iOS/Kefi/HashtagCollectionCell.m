@@ -19,6 +19,14 @@
     return self;
 }
 
+
+-(id)setBool:(BOOL)selected {
+    self.isSelected = selected;
+    return self;
+    
+}
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

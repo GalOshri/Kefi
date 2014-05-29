@@ -100,8 +100,7 @@
     
 }
 
-#pragma mark - Submission Methods
-
+#pragma mark - Submission methods
 - (IBAction)submitReview:(UIButton *)sender {
     // Update place's sentiment and energy
     [self.place submitSentiment:self.sentimentLevel];
@@ -137,8 +136,33 @@
     
 }
 
-#pragma mark Collection View Methods
 
+#pragma mark - Selecting/Deslecting hashtags
+- (IBAction)selectHashtags:(UIButton *)hashtagButton {
+    HashtagCollectionCell *hashtagCell = (HashtagCollectionCell *)hashtagButton.superview.superview;
+
+    //if not selected, select it
+    if (hashtagCell.isSelected) {
+        hashtagCell.isSelected = NO;
+        [hashtagCell.hashtagToggle setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        
+        //remove from selected arrays
+    }
+
+    //if selected, deselect it
+    else {
+        hashtagCell.isSelected = YES;
+        [hashtagButton setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
+        
+        //add to selected arrays
+        
+    }
+    
+    
+    
+}
+
+#pragma mark Collection View Methods
 -(NSInteger)numberOfSectionsInCollectionView:
 (UICollectionView *)collectionView
 {
@@ -166,7 +190,10 @@
     [button setTitle:temp.text forState:UIControlStateNormal];
 
     
-     myCell.hashtagToggle = button;
+    myCell.hashtagToggle = button;
+    NSLog(@"%@", myCell.hashtagToggle.titleLabel);
+    myCell.isSelected = NO;
+    myCell.hashtag = temp;
     
     //play with cells
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
@@ -177,8 +204,6 @@
     [myCell.layer setCornerRadius:10];
      */
     
-    NSLog(@"%@ tag in UICollectionView in submitreviewdetail", temp.text);
-    
     return myCell;
 }
 
@@ -188,6 +213,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     // TODO: Select Item
+    NSLog(@"selecting works Now");
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     // TODO: Deselect item
