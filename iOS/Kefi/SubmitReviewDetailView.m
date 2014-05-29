@@ -9,6 +9,7 @@
 #import "SubmitReviewDetailView.h"
 #import "Place.h"
 #import "KefiService.h"
+#import "HashtagCollectionCell.h"
 
 
 @interface SubmitReviewDetailView ()
@@ -92,6 +93,9 @@
         }
         
     }];
+    
+    //uicollectionview background color
+    self.hashtagView.backgroundColor = [UIColor whiteColor];
 
     
 }
@@ -131,6 +135,88 @@
 
     [KefiService AddReviewforPlace:self.place withSentiment:self.sentimentLevel withEnergy:self.energyLevel withHashtagStrings:hashtags];
     
+}
+
+#pragma mark Collection View Methods
+
+-(NSInteger)numberOfSectionsInCollectionView:
+(UICollectionView *)collectionView
+{
+    //always 1 section
+    return 1;
+}
+
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView
+    numberOfItemsInSection:(NSInteger)section
+{
+    return self.place.hashtagList.count;
+}
+
+#pragma mark - UICollectionView Datasource
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    HashtagCollectionCell *myCell = [collectionView
+                                     dequeueReusableCellWithReuseIdentifier:@"hashtagCell"
+                                     forIndexPath:indexPath];
+    
+    Hashtag *temp = self.place.hashtagList[indexPath.row];
+    UIButton *button = (UIButton *)[myCell viewWithTag:100];
+    //set button text and assign to hashtagToggle
+    [button setTitle:temp.text forState:UIControlStateNormal];
+
+    
+     myCell.hashtagToggle = button;
+    
+    //play with cells
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+
+    /*
+    [myCell.layer setBorderWidth:2];
+    [myCell.layer setBorderColor:[UIColor grayColor].CGColor];
+    [myCell.layer setCornerRadius:10];
+     */
+    
+    NSLog(@"%@ tag in UICollectionView in submitreviewdetail", temp.text);
+    
+    return myCell;
+}
+
+
+
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    // TODO: Select Item
+}
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    // TODO: Deselect item
+}
+
+
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    Hashtag *temp = self.place.hashtagList[indexPath.row];
+    UIButton *button = [[UIButton alloc]init];
+    
+    //set button text and assign to hashtagToggle
+    [button setTitle:temp.text forState:UIControlStateNormal];
+    [button sizeToFit];
+    
+    
+    return CGSizeMake(button.frame.size.width, 20);
+    
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    return 0; // This is the minimum inter item spacing, can be more
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 5;
+    // space between cells on different lines
 }
 
 
