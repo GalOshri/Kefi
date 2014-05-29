@@ -87,12 +87,13 @@ Parse.Cloud.define("cleanHashtags", function(request, response) {
 /******
 	called after a review save. updates Place object
 *******/
+
 Parse.Cloud.afterSave("Review", function(request, response) {
 	console.log("function successfully called!");	
 
 	var currentDate = Date.now();
 	var Place = Parse.Object.extend("Place");
-
+	var updateTime = new Date ();
 	//ToDo: check to see if there is a race condition of creating review before place
 	var query = new Parse.Query(Place);
 
@@ -100,26 +101,27 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 
 		success:function(place) {
 			console.log ("successfully enter place ");
-			//update lastReviewed
-			var updateTime = Date.now();
 
+			var lastReviewed = place.get("lastReviewed");
+			var deltaT = currentDate - new Date(lastReviewed);
+			
 			// grab hashtags and set score
 			var existingHashtags = place.get("hashtagList");
 			
-			/*
-			var existingHashtagLower = [];
-			for (var tag in existingHashtags)
-				existingHashtagsLower.push(tag["text"].toLowerCase()); 
-			*/
+			
+			//var existingHashtagLower = [];
+			//for (var tag in existingHashtags)
+			//	existingHashtagsLower.push(tag["text"].toLowerCase()); 
+			//
 
 			var hashtags = request.object.get("hashtagStrings");
-			/*
-			var hashtagsLower = [];
-			for(var tag in hashtags)
-				hashtagsLower.push(tag.toLowerCase());
-			*/
-			var lastReviewed = place.get("lastReviewed");
-			var deltaT = currentDate - new Date(lastReviewed);
+			
+			//var hashtagsLower = [];
+			//for(var tag in hashtags)
+			//	hashtagsLower.push(tag.toLowerCase());
+			//
+			
+			
 
 			var hashtagsToAdd = [];
 			for (var i=0; i < hashtags.length; i++) {
@@ -160,9 +162,9 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 
 			place.set("hashtagList", existingHashtags);
 
-			
 
 			// DEAL WITH SENTIMENT & ENERGY
+			
 			var oldScore = place.get("confidence");
 			oldScore = oldScore * Math.exp(-1 * deltaT * EXPONENTIAL_CONSTANT_SENTIMENT_AND_ENERGY);
 
@@ -178,10 +180,12 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 			place.set("sentiment", newSentiment);
 			place.set("energy", newEnergy);
 			place.set("confidence", totalScore);
-
+			
 			console.log("just sent sentiment, energy confidence");
-
+			
+			console.log("currentDate " + updateTime + ", " + typeof(currentDate) + "lastReviewed is " + place.get("lastReviewed") + " type of " + typeof(place.get("lastReviewed")));
 			place.set("lastReviewed", updateTime);
+
 			place.save();
 
 
