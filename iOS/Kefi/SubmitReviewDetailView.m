@@ -144,7 +144,7 @@
     //if not selected, select it
     if (hashtagCell.isSelected) {
         hashtagCell.isSelected = NO;
-        [hashtagCell.hashtagToggle setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [hashtagCell.hashtagToggle setTitleColor:self.view.tintColor forState:UIControlStateNormal];
         
         //remove from selected arrays
     }
