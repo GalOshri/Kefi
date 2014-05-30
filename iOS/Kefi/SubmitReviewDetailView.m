@@ -24,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelBUtton;
 
+@property (strong, nonatomic) NSMutableArray *hashtags;
+
+
 @property (nonatomic, strong) KefiService *kefiService;
 
 @end
@@ -41,6 +44,8 @@
     [self.placeLabel sizeToFit];
     self.placeLabel.textAlignment = NSTextAlignmentLeft;
     self.reviewDetailLabel.textAlignment = NSTextAlignmentLeft;
+    
+    self.hashtags = [[NSMutableArray alloc] initWithObjects:nil];
 }
 
 // Adjust layout to match previous view
@@ -113,11 +118,9 @@
     [self.place submitEnergy:self.energyLevel];
     [self.place updateLastReviewTime];
     
-    //Add hashtags to client side view
-    NSArray *hashtags = @[@"BeenHereDoneThat", @"Ain'tNobodyGotTimeForThis", @"LustyIntentions", @"CasualBlackout"];
     bool isExisting;
     
-    for (NSString *hashtagString in hashtags)
+    for (NSString *hashtagString in self.hashtags)
     {
         isExisting = NO;
         // Address existing hashtags
@@ -138,7 +141,7 @@
         }
     }
 
-    [KefiService AddReviewforPlace:self.place withSentiment:self.sentimentLevel withEnergy:self.energyLevel withHashtagStrings:hashtags];
+    [KefiService AddReviewforPlace:self.place withSentiment:self.sentimentLevel withEnergy:self.energyLevel withHashtagStrings:self.hashtags];
     
 }
 
@@ -152,7 +155,11 @@
         hashtagCell.isSelected = NO;
         [hashtagCell.hashtagToggle setTitleColor:self.view.tintColor forState:UIControlStateNormal];
         
-        //remove from selected arrays
+        //remove from hashtags
+        NSString *hashtagString = [[NSString alloc] init];
+        hashtagString = [NSString stringWithFormat:@"%@", hashtagCell.hashtag.text];
+        NSUInteger index = [self.hashtags indexOfObject:[NSString stringWithFormat:@"%@", hashtagCell.hashtag.text]];
+        [self.hashtags removeObjectAtIndex:index];
     }
 
     //if selected, deselect it
@@ -161,11 +168,12 @@
         [hashtagButton setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
         
         //add to selected arrays
+        [self.hashtags addObject:hashtagCell.hashtag.text];
         
     }
     
     
-    
+    NSLog(@"%@", self.hashtags);
 }
 
 #pragma mark Collection View Methods

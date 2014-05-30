@@ -70,7 +70,7 @@
     self.placeAddress.text = self.place.address;
 
     //temporary assignment of hashtagList. Right now, there are two hashtags. Add some more.
-    Hashtag *hashtag3 = [[Hashtag alloc] initWithText: @"HowYouLikeThemApples"];
+    /*Hashtag *hashtag3 = [[Hashtag alloc] initWithText: @"HowYouLikeThemApples"];
     Hashtag *hashtag4 = [[Hashtag alloc] initWithText: @"LustyIntentions"];
     Hashtag *hashtag5 = [[Hashtag alloc] initWithText: @"TurnUp"];
     Hashtag *hashtag6 = [[Hashtag alloc] initWithText: @"IsThatMyMom?"];
@@ -82,7 +82,7 @@
     [self.place.hashtagList addObject:hashtag5];
     [self.place.hashtagList addObject:hashtag6];
     [self.place.hashtagList addObject:hashtag7];
-    [self.place.hashtagList addObject:hashtag8];
+    [self.place.hashtagList addObject:hashtag8];*/
 
     
     self.hashtagView.backgroundColor = [UIColor whiteColor];
