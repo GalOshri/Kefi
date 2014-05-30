@@ -126,7 +126,7 @@ int radius = 1000;
                 place.lastReviewedTime = [object valueForKey:@"updatedAt"];
                 for (id hashtagObject in [object valueForKey:@"hashtagList"])
                 {
-                    Hashtag *hashtag = [[Hashtag alloc] initWithText:[hashtagObject valueForKey:@"text"] withScore:[hashtagObject valueForKey:@"score"]];
+                    Hashtag *hashtag = [[Hashtag alloc] initWithText:[hashtagObject valueForKey:@"text"] withScore:[hashtagObject valueForKey:@"score"] withSelection:(BOOL) NO];
                     [place.hashtagList addObject:hashtag];
                 }
 

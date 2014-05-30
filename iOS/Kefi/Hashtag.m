@@ -32,7 +32,7 @@
     self.lastSubmitTime = [NSDate date];
 }
 
-- (id)initWithText:(NSString *)text withScore:(NSNumber *)score
+- (id)initWithText:(NSString *)text withScore:(NSNumber *)score withSelection:(BOOL) selection
 {
     self = [super init];
     
@@ -40,8 +40,8 @@
     {
         self.text = [NSString stringWithString:text];
         self.score = score;
+        self.isSelected = selection;
     }
-    
     return self;
 }
 

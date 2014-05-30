@@ -450,11 +450,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What's going on here?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D1E-54-9MT">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What's going on here?" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="D1E-54-9MT">
                                 <rect key="frame" x="43" y="187" width="235" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                                <connections>
+                                    <outlet property="delegate" destination="d9R-wC-4Vk" id="M7F-j6-0OJ"/>
+                                </connections>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3iZ-El-dRr">
                                 <rect key="frame" x="43" y="473" width="51" height="31"/>
@@ -558,6 +561,7 @@
                     <connections>
                         <outlet property="cancelBUtton" destination="BII-Sw-Gbq" id="8Xi-5E-l5Q"/>
                         <outlet property="firstEnergyCircle" destination="IuE-ps-ChE" id="7xg-RI-dnm"/>
+                        <outlet property="hashtagTextField" destination="D1E-54-9MT" id="fBZ-Ld-Nu6"/>
                         <outlet property="hashtagView" destination="Ddy-aK-kfn" id="o7r-mu-C3q"/>
                         <outlet property="placeLabel" destination="v2z-pL-4Bx" id="P1x-z4-1dK"/>
                         <outlet property="reviewDetailLabel" destination="2rz-6A-s5f" id="32H-Y6-W8M"/>

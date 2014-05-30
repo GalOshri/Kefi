@@ -25,11 +25,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelBUtton;
 
 @property (strong, nonatomic) NSMutableArray *hashtags;
+@property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 
 
 @property (nonatomic, strong) KefiService *kefiService;
-
 @end
+
 
 @implementation SubmitReviewDetailView
 
@@ -150,30 +151,15 @@
 - (IBAction)selectHashtags:(UIButton *)hashtagButton {
     HashtagCollectionCell *hashtagCell = (HashtagCollectionCell *)hashtagButton.superview.superview;
 
-    //if not selected, select it
-    if (hashtagCell.isSelected) {
-        hashtagCell.isSelected = NO;
-        [hashtagCell.hashtagToggle setTitleColor:self.view.tintColor forState:UIControlStateNormal];
-        
-        //remove from hashtags
-        NSString *hashtagString = [[NSString alloc] init];
-        hashtagString = [NSString stringWithFormat:@"%@", hashtagCell.hashtag.text];
-        NSUInteger index = [self.hashtags indexOfObject:[NSString stringWithFormat:@"%@", hashtagCell.hashtag.text]];
-        [self.hashtags removeObjectAtIndex:index];
-    }
+    // if not selected, select it
+    if (hashtagCell.hashtag.isSelected)
+        [self deselectHashtag:hashtagCell];
 
-    //if selected, deselect it
-    else {
-        hashtagCell.isSelected = YES;
-        [hashtagButton setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
-        
-        //add to selected arrays
-        [self.hashtags addObject:hashtagCell.hashtag.text];
-        
-    }
+    // if selected, deselect it
+    else
+        [self selectHashtag:hashtagCell withButton:hashtagButton];
     
-    
-    NSLog(@"%@", self.hashtags);
+     NSLog(@"%@", self.hashtags);
 }
 
 #pragma mark Collection View Methods
@@ -205,13 +191,17 @@
 
     
     myCell.hashtagToggle = button;
-    NSLog(@"%@", myCell.hashtagToggle.titleLabel);
-    myCell.isSelected = NO;
     myCell.hashtag = temp;
+    
+    if (!myCell.hashtag.isSelected)
+        [myCell.hashtagToggle setTitleColor:self.view.tintColor forState:UIControlStateNormal];
+    else
+        [self selectHashtag:myCell withButton:button];
     
     //play with cells
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 
+    
     /*
     [myCell.layer setBorderWidth:2];
     [myCell.layer setBorderColor:[UIColor grayColor].CGColor];
@@ -220,20 +210,6 @@
     
     return myCell;
 }
-
-
-
-#pragma mark - UICollectionViewDelegate
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    // TODO: Select Item
-    NSLog(@"selecting works Now");
-}
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Deselect item
-}
-
-
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 
@@ -259,5 +235,57 @@
     // space between cells on different lines
 }
 
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    //send to addHashtagToCollection to add to collection view as selected
+    NSString *text = textField.text;
+    
+    if (![text  isEqual: @""]) {
+        //add place to self.place.hashtagList if it doesn't exist
+        //it also may exist, but isn't displayed. If that's the case, then need to show it.
+        
+        //loop through hashtagItems in place, check to see if hashtag.text isn't in there
+        
+        BOOL notAHashtag = NO;
+        for(Hashtag *hashtag in self.place.hashtagList) {
+            if ([[text lowercaseString] isEqual:[hashtag.text lowercaseString]]) {
+                notAHashtag = YES;
+                
+                
+                NSLog(@"same");
+                // if it is, select it and reload data
+                return NO;
+            }
+        }
+        
+        // if it isn't add and add to UICollectionView
+        Hashtag *newHashtag = [[Hashtag alloc] initWithText:text withScore:nil withSelection:YES];
+        
+        [self.place.hashtagList addObject:newHashtag];
+        [self.hashtagView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:[self.place.hashtagList count]-1 inSection:0]]];
+    }
+    return YES;
+}
+
+
+-(void)deselectHashtag:(HashtagCollectionCell *) cell {
+    cell.hashtag.isSelected = NO;
+    [cell.hashtagToggle setTitleColor:self.view.tintColor forState:UIControlStateNormal];
+    
+    //remove from hashtags
+    NSString *hashtagString = [[NSString alloc] init];
+    hashtagString = [NSString stringWithFormat:@"%@", cell.hashtag.text];
+    NSUInteger index = [self.hashtags indexOfObject:[NSString stringWithFormat:@"%@", cell.hashtag.text]];
+    [self.hashtags removeObjectAtIndex:index];
+}
+
+-(void)selectHashtag:(HashtagCollectionCell *)cell withButton:(UIButton *) button {
+    cell.hashtag.isSelected = YES;
+    [button setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
+    
+    //add to selected arrays
+    [self.hashtags addObject:cell.hashtag.text];
+
+}
 
 @end

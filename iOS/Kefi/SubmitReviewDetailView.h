@@ -10,7 +10,7 @@
 #import "Place.h"
 #import "Review.h"
 
-@interface SubmitReviewDetailView : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>{
+@interface SubmitReviewDetailView : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate>{
     
 }
 
