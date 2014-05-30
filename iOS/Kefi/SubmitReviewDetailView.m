@@ -69,36 +69,42 @@
         self.placeLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width + 15, self.sentimentImage.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
         
         self.reviewDetailLabel.frame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y + 15, self.reviewDetailLabel.frame.size.width, self.reviewDetailLabel.frame.size.height);
+        
+        
     }completion:^(BOOL finished){
         //change label to energy levels
-        for (int count = 0; count < 3; count++){
-            UIImageView *imageView = [energyLevels objectAtIndex:count];
+        if (finished) {
+        
+            for (int count = 0; count < 3; count++){
+                UIImageView *imageView = [energyLevels objectAtIndex:count];
             
-            if (self.energyLevel > count) {
-                [imageView setImage:[UIImage imageNamed:@"smallCircleFull.png"]];
+                if (self.energyLevel > count) {
+                    [imageView setImage:[UIImage imageNamed:@"smallCircleFull.png"]];
+                }
+            
+                else
+                    [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
+            
+                //position circles and make label disappear
+                imageView.frame = CGRectMake(count * 40 + self.reviewDetailLabel.frame.origin.x, self.reviewDetailLabel.frame.origin.y + 10, imageView.frame.size.width, imageView.frame.size.height);
+            
+                [imageView setHidden:NO];
+            
             }
-            
-            else
-                [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
-            
-            //position circles and make label disappear
-            imageView.frame = CGRectMake(count * 40 + self.reviewDetailLabel.frame.origin.x, self.reviewDetailLabel.frame.origin.y + 10, imageView.frame.size.width, imageView.frame.size.height);
-            
-            
+        
             //hide or unhide things
             [self.reviewDetailLabel setHidden:YES];
             [self.cancelBUtton setHidden:NO];
             [self.submitButton setHidden:NO];
-
         }
-        
     }];
     
     //uicollectionview background color
     self.hashtagView.backgroundColor = [UIColor whiteColor];
 
-    
+        
 }
+    
 
 #pragma mark - Submission methods
 - (IBAction)submitReview:(UIButton *)sender {
