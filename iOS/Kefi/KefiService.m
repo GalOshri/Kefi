@@ -163,11 +163,16 @@ int radius = 1000;
         //TODO: move server side
         PFObject *placeObject = [PFObject objectWithClassName:@"Place"];
         placeObject[@"fsID"] = place.fsId;
-        placeObject[@"hashtagList"] = [[NSArray alloc] initWithObjects: nil];
+        placeObject[@"hashtagList"] = [[NSArray alloc] initWithObjects:nil];
+        placeObject[@"sentiment"] = [NSNumber numberWithInt:0];
+        placeObject[@"energy"] = [NSNumber numberWithInt:0];
+        placeObject[@"lastReviewed"] = [NSDate new];
+        placeObject[@"confidence"] = [NSNumber numberWithInt:0];
+        
         [placeObject saveInBackground];
         
         reviewObject[@"place"] = placeObject;
-        NSLog(@"we save the place");
+        
     }
     
     NSLog(@"pid is %@ with hashtags %@", place.pId, hashtagStrings);

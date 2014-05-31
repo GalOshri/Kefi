@@ -100,22 +100,14 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 	query.get(request.object.get("place").id, {
 
 		success:function(place) {
-			console.log ("successfully enter place ");
-
 			var lastReviewed = place.get("lastReviewed");
 			var deltaT = currentDate - new Date(lastReviewed);
-			
+			console.log("lastReviewed is " + lastReviewed +" and currentDate is " + currentDate);
+
 			// grab hashtags
 			existingHashtags = place.get("hashtagList");
 			console.log("hashtagList is " + existingHashtags);
 			var hashtags = request.object.get("hashtagStrings");
-			
-			//var hashtagsLower = [];
-			//for(var tag in hashtags)
-			//	hashtagsLower.push(tag.toLowerCase());
-			//
-			
-			
 
 			var hashtagsToAdd = [];
 			for (var i=0; i < hashtags.length; i++) {
@@ -127,7 +119,7 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 					for (var j=0; j < existingHashtags.length; j++)
 					{
 						// This hashtag already exists
-						console.log("existingHashtag is " + existingHashtags[j]["text"] + "and hashtag is " + hashtags[i]);
+						// console.log("existingHashtag is " + existingHashtags[j]["text"] + " and hashtag is " + hashtags[i]);
 
 						if (existingHashtags[j]["text"].toLowerCase() == hashtags[i].toLowerCase())
 						{
@@ -144,13 +136,13 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 						}
 					}
 				}
-				
+
 				if (isExisting == 0) {
 			
 					// FUNCTION CREATE NEW HASHTAG
 					var newHashtag = {"text" : hashtags[i], "score" : ADDITIONAL_REVIEW_SCORE};
 					hashtagsToAdd.push(newHashtag);
-					console.log("created new tag with text " + newHashtag["text"] + " and score " + newHashtag["score"]);
+					// console.log("created new tag with text " + newHashtag["text"] + " and score " + newHashtag["score"]);
 				}
 				
 			}
@@ -172,15 +164,15 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 			var newSentiment = (oldScore / totalScore) * place.get("sentiment") + (addedScore / totalScore) * request.object.get("sentiment");
 			var newEnergy = (oldScore / totalScore) * place.get("energy") + (addedScore / totalScore) * request.object.get("energy");
 
-			console.log("old sentiment and energy were " + place.get("sentiment") + " " + place.get("energy") + "and are now " + newSentiment + " " + newEnergy);
+			console.log("old sentiment and energy were " + place.get("sentiment") + " " + place.get("energy") + " and are now " + newSentiment + " " + newEnergy);
 			console.log("score was " + place.get("confidence") + " and is now " + totalScore);
-			console.log("addedScore is " + addedScore + " and oldScore is " +oldScore + "deltaT is " + deltaT)
+			console.log("addedScore is " + addedScore + " and oldScore is " +oldScore);
 			
 			place.set("sentiment", newSentiment);
 			place.set("energy", newEnergy);
 			place.set("confidence", totalScore);
 			
-			console.log("currentDate " + updateTime + ", " + typeof(currentDate) + "lastReviewed is " + place.get("lastReviewed") + " type of " + typeof(place.get("lastReviewed")));
+			console.log("currentDate " + updateTime + ", " + typeof(currentDate) + " lastReviewed is " + place.get("lastReviewed") + " type of " + typeof(place.get("lastReviewed")));
 			place.set("lastReviewed", updateTime);
 
 			place.save();
