@@ -149,7 +149,6 @@ int radius = 1000;
     reviewObject[@"energy"] = [NSNumber numberWithInt:energy];
     reviewObject[@"hashtagStrings"] = hashtagStrings;
 
-    NSLog(@"pid is %@", place.pId);
     
     if (![place.pId isEqualToString:@""])
     {
@@ -164,11 +163,14 @@ int radius = 1000;
         //TODO: move server side
         PFObject *placeObject = [PFObject objectWithClassName:@"Place"];
         placeObject[@"fsID"] = place.fsId;
+        placeObject[@"hashtagList"] = [[NSArray alloc] initWithObjects: nil];
         [placeObject saveInBackground];
         
         reviewObject[@"place"] = placeObject;
         NSLog(@"we save the place");
     }
+    
+    NSLog(@"pid is %@ with hashtags %@", place.pId, hashtagStrings);
     
     //reviewObject SaveInBackground
     [reviewObject saveInBackground];

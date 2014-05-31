@@ -105,15 +105,9 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 			var lastReviewed = place.get("lastReviewed");
 			var deltaT = currentDate - new Date(lastReviewed);
 			
-			// grab hashtags and set score
-			var existingHashtags = place.get("hashtagList");
-			
-			
-			//var existingHashtagLower = [];
-			//for (var tag in existingHashtags)
-			//	existingHashtagsLower.push(tag["text"].toLowerCase()); 
-			//
-
+			// grab hashtags
+			existingHashtags = place.get("hashtagList");
+			console.log("hashtagList is " + existingHashtags);
 			var hashtags = request.object.get("hashtagStrings");
 			
 			//var hashtagsLower = [];
@@ -128,25 +122,29 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 				// check to see if this hashtag exists. undo case sensitivity
 				// var hashtagIndex = existingHashtagLower.indexOf(hashtagsLower[i]);
 				var isExisting = 0;
-				for (var j=0; j < existingHashtags.length; j++)
-				{
-					// This hashtag already exists
-					console.log("existingHashtag is " + existingHashtags[j]["text"] + "and hashtag is " + hashtags[i]);
-
-					if (existingHashtags[j]["text"].toLowerCase() == hashtags[i].toLowerCase())
+				if (existingHashtags != null)
+				{	
+					for (var j=0; j < existingHashtags.length; j++)
 					{
-						console.log("entered here with hashtag " + hashtags[i]);
-						// FUNCTION INCREASE HASHTAG SCORE 
-						var currentTagScore = existingHashtags[j]["score"];
+						// This hashtag already exists
+						console.log("existingHashtag is " + existingHashtags[j]["text"] + "and hashtag is " + hashtags[i]);
+
+						if (existingHashtags[j]["text"].toLowerCase() == hashtags[i].toLowerCase())
+						{
+							console.log("entered here with hashtag " + hashtags[i]);
+							// FUNCTION INCREASE HASHTAG SCORE 
+							var currentTagScore = existingHashtags[j]["score"];
 
 
-						var newHashtagScore = existingHashtags[j]["score"] * Math.exp(-1 * EXPONENTIAL_CONSTANT_HASHTAG * deltaT) + ADDITIONAL_REVIEW_SCORE;
-						existingHashtags[j]["score"] = newHashtagScore;
+							var newHashtagScore = existingHashtags[j]["score"] * Math.exp(-1 * EXPONENTIAL_CONSTANT_HASHTAG * deltaT) + ADDITIONAL_REVIEW_SCORE;
+							existingHashtags[j]["score"] = newHashtagScore;
 
-						isExisting = 1;
-						break;
+							isExisting = 1;
+							break;
+						}
 					}
 				}
+				
 				if (isExisting == 0) {
 			
 					// FUNCTION CREATE NEW HASHTAG
@@ -154,6 +152,7 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 					hashtagsToAdd.push(newHashtag);
 					console.log("created new tag with text " + newHashtag["text"] + " and score " + newHashtag["score"]);
 				}
+				
 			}
 
 
@@ -180,8 +179,6 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 			place.set("sentiment", newSentiment);
 			place.set("energy", newEnergy);
 			place.set("confidence", totalScore);
-			
-			console.log("just sent sentiment, energy confidence");
 			
 			console.log("currentDate " + updateTime + ", " + typeof(currentDate) + "lastReviewed is " + place.get("lastReviewed") + " type of " + typeof(place.get("lastReviewed")));
 			place.set("lastReviewed", updateTime);

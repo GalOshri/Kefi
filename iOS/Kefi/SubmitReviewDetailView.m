@@ -127,6 +127,7 @@
         // Address existing hashtags
         for (Hashtag *existingHashtag in self.place.hashtagList)
         {
+            NSLog(@"%@", existingHashtag.text);
             if ([existingHashtag.text isEqualToString:hashtagString])
             {
                 [existingHashtag addReview];
@@ -159,7 +160,7 @@
     else
         [self selectHashtag:hashtagCell withButton:hashtagButton];
     
-     NSLog(@"%@", self.hashtags);
+    NSLog(@"%@", self.hashtags);
 }
 
 #pragma mark Collection View Methods
@@ -241,27 +242,24 @@
     NSString *text = textField.text;
     
     if (![text  isEqual: @""]) {
-        //add place to self.place.hashtagList if it doesn't exist
-        //it also may exist, but isn't displayed. If that's the case, then need to show it.
         
         //loop through hashtagItems in place, check to see if hashtag.text isn't in there
-        
-        BOOL notAHashtag = NO;
         for(Hashtag *hashtag in self.place.hashtagList) {
             if ([[text lowercaseString] isEqual:[hashtag.text lowercaseString]]) {
-                notAHashtag = YES;
+                // NSLog(@"same");
                 
+                // ToDo: UI to say already selected
                 
-                NSLog(@"same");
-                // if it is, select it and reload data
                 return NO;
             }
         }
         
         // if it isn't add and add to UICollectionView
-        Hashtag *newHashtag = [[Hashtag alloc] initWithText:text withScore:nil withSelection:YES];
+        Hashtag *newHashtag = [[Hashtag alloc] initWithText:text withScore:0 withSelection:YES];
         
+        //[self.hashtags addObject:newHashtag.text];
         [self.place.hashtagList addObject:newHashtag];
+
         [self.hashtagView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:[self.place.hashtagList count]-1 inSection:0]]];
     }
     return YES;
