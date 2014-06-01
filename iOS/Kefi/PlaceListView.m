@@ -256,6 +256,7 @@
         [cell.sentimentImage setHidden:NO];
 
         cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@"none"]];
+        [cell.sentimentImage setAlpha:0.5];
         
         for (int i=0; i<[energyLevels count]; i++)
             [energyLevels[i] setHidden:YES];

@@ -165,8 +165,8 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 
 			console.log("old sentiment and energy were " + place.get("sentiment") + " " + place.get("energy") + " and are now " + newSentiment + " " + newEnergy);
 			console.log("score was " + place.get("confidence") + " and is now " + totalScore);
-			console.log("addedScore is " + addedScore + " and oldScore is " +oldScore);
-			
+			// console.log("addedScore is " + addedScore + " and oldScore is " +oldScore);
+
 			place.set("sentiment", Math.round(newSentiment));
 			place.set("energy", Math.round(newEnergy));
 			place.set("confidence", totalScore);
@@ -174,8 +174,6 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 			place.set("lastReviewed", updateTime);
 
 			place.save();
-
-
 			
 		},
 

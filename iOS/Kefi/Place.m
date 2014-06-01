@@ -44,6 +44,8 @@
 - (void)submitSentiment:(int)newSentiment
 {
     double sentiment = [self.sentiment doubleValue];
+    
+    
     sentiment = (sentiment + newSentiment) / 2.0; // TODO: GET THIS FROM THE SERVICE
     self.sentiment = [NSNumber numberWithDouble:sentiment];
 }
