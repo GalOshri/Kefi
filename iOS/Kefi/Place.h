@@ -28,6 +28,7 @@
 @property (nonatomic, strong) NSNumber *sentiment;
 @property (nonatomic, strong) NSNumber *energy;
 @property (nonatomic, strong) NSDate *lastReviewedTime;
+@property (nonatomic) BOOL isInInterval;
 
 - (id)initWithId:(NSString *)fsId
         WithName:(NSString *)placeName;

@@ -123,17 +123,10 @@
     
     self.tableHeader = self.tableView.tableHeaderView;
     self.tableView.tableHeaderView = nil;
-
     
     [KefiService PopulatePlaceList:self.placeList withTable:self.tableView];
     
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}	
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -176,6 +169,12 @@
 
 - (PlaceCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // set Dictionary for sentiment picture
+    NSDictionary *horizontalToSentimentDict = @{@0:@"soPissed.png",
+                                                @1:@"eh.png",
+                                                @3:@"semiHappy.png",
+                                                @4:@"soHappy.png"};
+    
     static NSString *CellIdentifier = @"PlaceCell";
     PlaceCell *cell = (PlaceCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
@@ -197,18 +196,53 @@
     cell.placeType.text = displayType;
     
     NSString *hashtagText = @"";
-//    Hashtag *currentHashtag;
     
+    
+    // TODO: determine which hashtag(s) to show, if any (currently hidden)
     for (Hashtag *currentHashtag in currentPlace.hashtagList)
     {
         hashtagText = [hashtagText stringByAppendingFormat:@"#%@",currentHashtag.text];
     }
  
-   
-    
     cell.placeHashtags.text = hashtagText;
     cell.placeHashtags.font= [UIFont fontWithName:@"Helvetica Neue" size:14];
     cell.placeHashtags.textAlignment = NSTextAlignmentCenter;
+    
+    // set sentiment / Energy Level and active/inactive states
+    //define dictionary:
+    NSArray *energyLevels = @[cell.energyLevel1, cell.energyLevel2, cell.energyLevel3];
+    
+    if(!(cell.place.sentiment == nil)) {
+        [cell.sentimentImage setHidden:NO];
+        
+        cell.sentimentImage.image = [UIImage imageNamed:[horizontalToSentimentDict objectForKey: cell.place.sentiment]];
+       
+        for (int i=0; i<[energyLevels count]; i++) {
+            [energyLevels[i] setHidden:NO];
+            
+            UIImageView *imageView = [energyLevels objectAtIndex:i];
+            
+            if ([cell.place.energy integerValue]  > i) {
+                [imageView setImage:[UIImage imageNamed:@"smallCircleFull.png"]];
+                NSLog(@"%@, %@, %d", cell.place.name, cell.place.energy, i);
+            }
+            
+            else
+                [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
+        }
+        
+        
+        
+        if (cell.place.isInInterval) {
+            [cell.sentimentImage setAlpha:1.0];
+            
+            for (int j=0; j<[energyLevels count]; j++) {
+                [energyLevels[j] setAlpha:1.0];
+            }
+            
+        }
+    }
+    
     
     return cell;
 }

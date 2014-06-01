@@ -19,7 +19,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *placeDistance;
 @property (weak, nonatomic) IBOutlet UILabel *placeType;
 
+@property (weak, nonatomic) IBOutlet UIImageView *sentimentImage;
+@property (weak, nonatomic) IBOutlet UIImageView *energyLevel1;
+@property (weak, nonatomic) IBOutlet UIImageView *energyLevel2;
+@property (weak, nonatomic) IBOutlet UIImageView *energyLevel3;
 
-//@property (strong, nonatomic) IBOutlet UIImageView *placeTypeImage;
+// @property (strong, nonatomic) IBOutlet UIImageView *placeTypeImage;
 
 @end

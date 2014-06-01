@@ -88,8 +88,7 @@ Parse.Cloud.define("cleanHashtags", function(request, response) {
 	called after a review save. updates Place object
 *******/
 
-Parse.Cloud.afterSave("Review", function(request, response) {
-	console.log("function successfully called!");	
+Parse.Cloud.afterSave("Review", function(request, response) {	
 
 	var currentDate = Date.now();
 	var Place = Parse.Object.extend("Place");
@@ -172,7 +171,6 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 			place.set("energy", newEnergy);
 			place.set("confidence", totalScore);
 			
-			console.log("currentDate " + updateTime + ", " + typeof(currentDate) + " lastReviewed is " + place.get("lastReviewed") + " type of " + typeof(place.get("lastReviewed")));
 			place.set("lastReviewed", updateTime);
 
 			place.save();

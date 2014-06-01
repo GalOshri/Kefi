@@ -104,6 +104,9 @@ int radius = 1000;
 
 + (void) PopulateWithParseData:(PlaceList *)placeList
 {
+    // get date within time interval
+    NSDate *beginningTimeInterval = [[NSDate alloc] initWithTimeInterval:(NSTimeInterval)-7200 sinceDate:[NSDate new]];
+    
     //grab all fsIds for placeList.places
     NSArray *fsIdArray = [placeList.places valueForKey:@"fsId"];
     
@@ -123,13 +126,27 @@ int radius = 1000;
                 
                 Place *place = [matchedPlaceArray objectAtIndex:0];
                 place.pId = [object valueForKey:@"objectId"];
-                place.lastReviewedTime = [object valueForKey:@"updatedAt"];
+                place.lastReviewedTime = [object valueForKey:@"lastReviewed"];
+                place.sentiment = [object valueForKey:@"sentiment"];
+                place.energy = [object valueForKey:@"energy"];
+                
+                //hashtags
                 for (id hashtagObject in [object valueForKey:@"hashtagList"])
                 {
                     Hashtag *hashtag = [[Hashtag alloc] initWithText:[hashtagObject valueForKey:@"text"] withScore:[hashtagObject valueForKey:@"score"] withSelection:(BOOL) NO];
                     [place.hashtagList addObject:hashtag];
                 }
 
+                // isInInterval to see if cell in active/inactive state
+                place.isInInterval = NO;
+                
+                NSDate *earlierDate = [beginningTimeInterval earlierDate:place.lastReviewedTime];
+                if ([earlierDate isEqualToDate:beginningTimeInterval]) {
+                    place.isInInterval = YES;
+                }
+                // NSLog(@"%d, lastreviewed %@ and begtimeinterval is %@", place.isInInterval, place.lastReviewedTime, beginningTimeInterval);
+                
+                // NSLog(@"%d", place.isInInterval);
             }
         }
         
@@ -164,10 +181,12 @@ int radius = 1000;
         PFObject *placeObject = [PFObject objectWithClassName:@"Place"];
         placeObject[@"fsID"] = place.fsId;
         placeObject[@"hashtagList"] = [[NSArray alloc] initWithObjects:nil];
+        
         placeObject[@"sentiment"] = [NSNumber numberWithInt:0];
         placeObject[@"energy"] = [NSNumber numberWithInt:0];
-        placeObject[@"lastReviewed"] = [NSDate new];
         placeObject[@"confidence"] = [NSNumber numberWithInt:0];
+        
+        placeObject[@"lastReviewed"] = [NSDate new];
         
         [placeObject saveInBackground];
         
