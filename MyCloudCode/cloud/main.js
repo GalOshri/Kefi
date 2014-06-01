@@ -100,8 +100,8 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 
 		success:function(place) {
 			var lastReviewed = place.get("lastReviewed");
-			var deltaT = currentDate - new Date(lastReviewed);
-			console.log("lastReviewed is " + lastReviewed +" and currentDate is " + currentDate);
+			var deltaT = (currentDate - new Date(lastReviewed))/60000;
+			console.log("lastReviewed is " + lastReviewed +" and currentDate is " + currentDate + " deltaT is " + deltaT);
 
 			// grab hashtags
 			existingHashtags = place.get("hashtagList");
@@ -167,8 +167,8 @@ Parse.Cloud.afterSave("Review", function(request, response) {
 			console.log("score was " + place.get("confidence") + " and is now " + totalScore);
 			console.log("addedScore is " + addedScore + " and oldScore is " +oldScore);
 			
-			place.set("sentiment", newSentiment);
-			place.set("energy", newEnergy);
+			place.set("sentiment", Math.round(newSentiment));
+			place.set("energy", Math.round(newEnergy));
 			place.set("confidence", totalScore);
 			
 			place.set("lastReviewed", updateTime);

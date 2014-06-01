@@ -70,10 +70,12 @@
     
     // define sentiment level dictionary
     // set Dictionary/arrays for sentiment/energy
-    NSDictionary *horizontalToSentimentDict = @{@0:@"soPissed.png",
-                                                @1:@"eh.png",
-                                                @3:@"semiHappy.png",
-                                                @4:@"soHappy.png"};
+    NSDictionary *sentimentToImageDict = @{@"none":@"question.png",
+                                           @0:@"soPissed.png",
+                                           @1:@"eh.png",
+                                           @2:@"semiHappy.png",
+                                           @3:@"soHappy.png"};
+    
     NSArray *energyLevels = @[self.energyLevel1, self.energyLevel2, self.energyLevel3];
     
     //sets name to view?
@@ -108,10 +110,10 @@
     //self.hashtagView.scrollEnabled = NO;
     
     // set sentiment/energy images
-    if (!(self.place.sentiment == nil)) {
+    if ((long)[self.place.sentiment integerValue] != -1) {
         [self.sentimentImage setHidden:NO];
         
-        self.sentimentImage.image = [UIImage imageNamed:[horizontalToSentimentDict objectForKey: self.place.sentiment]];
+        self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey: self.place.sentiment]];
         
         for (int i=0; i<[energyLevels count]; i++) {
             
@@ -135,6 +137,15 @@
             
         }
         
+    }
+    
+    else {
+        [self.sentimentImage setHidden:NO];
+        
+        self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@"none"]];
+        
+        for (int i=0; i<[energyLevels count]; i++)
+            [energyLevels[i] setHidden:YES];
     }
 }
 

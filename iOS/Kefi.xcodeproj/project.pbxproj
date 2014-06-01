@@ -57,6 +57,7 @@
 		DAE95ACD1932725700109E75 /* PlaceMapViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE95ACC1932725700109E75 /* PlaceMapViewViewController.m */; };
 		DAE95AD61932A29C00109E75 /* KefiNoBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = DAE95AD41932A29C00109E75 /* KefiNoBorder.png */; };
 		DAE95AD71932A29C00109E75 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = DAE95AD51932A29C00109E75 /* map.png */; };
+		DAE95ADC193BD1D300109E75 /* question.png in Resources */ = {isa = PBXBuildFile; fileRef = DAE95ADB193BD1D300109E75 /* question.png */; };
 		DAFB18351919E18E00B4A56F /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4F49F818F09CBC00F901AE /* WindowsAzureMobileServices.framework */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +140,7 @@
 		DAE95ACC1932725700109E75 /* PlaceMapViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceMapViewViewController.m; path = ../PlaceMapViewViewController.m; sourceTree = "<group>"; };
 		DAE95AD41932A29C00109E75 /* KefiNoBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KefiNoBorder.png; sourceTree = "<group>"; };
 		DAE95AD51932A29C00109E75 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		DAE95ADB193BD1D300109E75 /* question.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = question.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 		0D0C131818FB7F9000C90A5F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DAE95ADB193BD1D300109E75 /* question.png */,
 				DAE95AD41932A29C00109E75 /* KefiNoBorder.png */,
 				DAE95AD51932A29C00109E75 /* map.png */,
 				DA089B31192016120055FD31 /* smallCircleFull.png */,
@@ -456,6 +459,7 @@
 				DA089B3B192016120055FD31 /* semiHappy.png in Resources */,
 				DA089B3A192016120055FD31 /* fullCircle.png in Resources */,
 				DAE95AD71932A29C00109E75 /* map.png in Resources */,
+				DAE95ADC193BD1D300109E75 /* question.png in Resources */,
 				0D0C131518FB72B600C90A5F /* FavUnfilled.png in Resources */,
 				DA089B39192016120055FD31 /* smallCircle.png in Resources */,
 				0D727EAD18F099F1008310FC /* InfoPlist.strings in Resources */,

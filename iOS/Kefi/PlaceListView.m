@@ -170,10 +170,11 @@
 - (PlaceCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // set Dictionary for sentiment picture
-    NSDictionary *horizontalToSentimentDict = @{@0:@"soPissed.png",
-                                                @1:@"eh.png",
-                                                @3:@"semiHappy.png",
-                                                @4:@"soHappy.png"};
+    NSDictionary *sentimentToImageDict = @{@"none":@"question.png",
+                                           @0:@"soPissed.png",
+                                           @1:@"eh.png",
+                                           @2:@"semiHappy.png",
+                                           @3:@"soHappy.png"};
     
     static NSString *CellIdentifier = @"PlaceCell";
     PlaceCell *cell = (PlaceCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -213,12 +214,12 @@
     NSArray *energyLevels = @[cell.energyLevel1, cell.energyLevel2, cell.energyLevel3];
     
     
-    if(!(cell.place.sentiment  == nil)) {
+    if((long)[cell.place.sentiment integerValue] != -1) {
         NSLog(@"%@ is in Interval: %d with s: %ld, e: %ld", cell.place.name, cell.place.isInInterval, (long)[cell.place.sentiment integerValue], (long)[cell.place.energy integerValue]);
 
         [cell.sentimentImage setHidden:NO];
         
-        cell.sentimentImage.image = [UIImage imageNamed:[horizontalToSentimentDict objectForKey: cell.place.sentiment]];
+        cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey: cell.place.sentiment]];
        
         for (int i=0; i<[energyLevels count]; i++) {
             [energyLevels[i] setHidden:NO];
@@ -252,7 +253,9 @@
     }
     
     else {
-        [cell.sentimentImage setHidden:YES];
+        [cell.sentimentImage setHidden:NO];
+
+        cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@"none"]];
         
         for (int i=0; i<[energyLevels count]; i++)
             [energyLevels[i] setHidden:YES];

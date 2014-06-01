@@ -54,10 +54,10 @@
 {
     [super viewDidLayoutSubviews];
     
-    NSDictionary *horizontalToSentimentDict = @{@0:@"soPissed.png",
+    NSDictionary *sentimentToImageDict = @{@0:@"soPissed.png",
                                                 @1:@"eh.png",
-                                                @3:@"semiHappy.png",
-                                                @4:@"soHappy.png"};
+                                                @2:@"semiHappy.png",
+                                                @3:@"soHappy.png"};
     
     NSArray *energyLevels = @[self.firstEnergyCircle, self.secondEnergyCircle, self.thirdEnergyCircle];
     
@@ -67,7 +67,7 @@
 
     self.sentimentImage.frame = self.imageFrame;
     
-    self.sentimentImage.image = [UIImage imageNamed:[horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:self.sentimentLevel]]];
+    self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:[NSNumber numberWithInt:self.sentimentLevel]]];
     
     
     //animate placeName and reviewdetail labels down
