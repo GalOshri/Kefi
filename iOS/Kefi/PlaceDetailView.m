@@ -15,6 +15,11 @@
 @property (nonatomic, strong) KefiService *kefiService;
 @property (weak, nonatomic) IBOutlet UIButton *mapButton;
 
+@property (weak, nonatomic) IBOutlet UIImageView *sentimentImage;
+@property (weak, nonatomic) IBOutlet UIImageView *energyLevel1;
+@property (weak, nonatomic) IBOutlet UIImageView *energyLevel2;
+@property (weak, nonatomic) IBOutlet UIImageView *energyLevel3;
+
 @end
 
 @implementation PlaceDetailView
@@ -63,13 +68,21 @@
 {
     [super viewDidLoad];
     
+    // define sentiment level dictionary
+    // set Dictionary/arrays for sentiment/energy
+    NSDictionary *horizontalToSentimentDict = @{@0:@"soPissed.png",
+                                                @1:@"eh.png",
+                                                @3:@"semiHappy.png",
+                                                @4:@"soHappy.png"};
+    NSArray *energyLevels = @[self.energyLevel1, self.energyLevel2, self.energyLevel3];
+    
     //sets name to view?
     [self.navigationController.viewControllers[self.navigationController.viewControllers.count -1] setTitle:self.place.name];
 
     //set some more variables here
     self.placeAddress.text = self.place.address;
 
-    //temporary assignment of hashtagList. Right now, there are two hashtags. Add some more.
+    // temporary assignment of hashtagList. Right now, there are two hashtags. Add some more.
     /*Hashtag *hashtag3 = [[Hashtag alloc] initWithText: @"HowYouLikeThemApples"];
     Hashtag *hashtag4 = [[Hashtag alloc] initWithText: @"LustyIntentions"];
     Hashtag *hashtag5 = [[Hashtag alloc] initWithText: @"TurnUp"];
@@ -94,13 +107,34 @@
     
     //self.hashtagView.scrollEnabled = NO;
     
-    // table stuff
-    /*self.tableView.dataSource = self;
-     //[self.tableView registerClass:[ContactCell class] forCellReuseIdentifier:@"cell"];
-     self.tableView.delegate = self;
-     self.tableView.sectionHeaderHeight = 0.0f;
-     [self.tableView reloadData];
-     */
+    // set sentiment/energy images
+    if (!(self.place.sentiment == nil)) {
+        [self.sentimentImage setHidden:NO];
+        self.sentimentImage.image = [UIImage imageNamed:[horizontalToSentimentDict objectForKey: self.place.sentiment]];
+        
+        for (int i=0; i<[energyLevels count]; i++) {
+            
+            UIImageView *imageView = [energyLevels objectAtIndex:i];
+            
+            if ([self.place.energy integerValue]  > i)
+                [imageView setImage:[UIImage imageNamed:@"smallCircleFull.png"]];
+            
+            else
+                [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
+        }
+        
+        
+        
+        if (self.place.isInInterval) {
+            [self.sentimentImage setAlpha:1.0];
+            
+            for (int j=0; j<[energyLevels count]; j++) {
+                [energyLevels[j] setAlpha:1.0];
+            }
+            
+        }
+        
+    }
 }
 
 

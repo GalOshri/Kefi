@@ -115,15 +115,15 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="3fP-GS-AAo"/>
                                 </connections>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="semiHappy.png" translatesAutoresizingMaskIntoConstraints="NO" id="08Q-dA-O5E">
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="semiHappy.png" translatesAutoresizingMaskIntoConstraints="NO" id="08Q-dA-O5E">
                                 <rect key="frame" x="20" y="72" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="smallCircleFull.png" translatesAutoresizingMaskIntoConstraints="NO" id="TgH-Ny-MAj">
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="smallCircleFull.png" translatesAutoresizingMaskIntoConstraints="NO" id="TgH-Ny-MAj">
                                 <rect key="frame" x="77" y="86" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="smallCircleFull.png" translatesAutoresizingMaskIntoConstraints="NO" id="bEg-fF-ifs">
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="smallCircleFull.png" translatesAutoresizingMaskIntoConstraints="NO" id="bEg-fF-ifs">
                                 <rect key="frame" x="105" y="86" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -179,10 +179,14 @@
                     <connections>
                         <outlet property="allView" destination="kh9-bI-dsS" id="cni-Xq-gdd"/>
                         <outlet property="distanceMi" destination="1b3-7j-1ZK" id="v5S-sn-3dh"/>
+                        <outlet property="energyLevel1" destination="TgH-Ny-MAj" id="tPu-T3-ejk"/>
+                        <outlet property="energyLevel2" destination="bEg-fF-ifs" id="8bV-6c-DcJ"/>
+                        <outlet property="energyLevel3" destination="MzB-Ka-lD7" id="nbb-d8-zUk"/>
                         <outlet property="hashtagView" destination="za6-dq-RZT" id="ihe-Dg-Vjk"/>
                         <outlet property="mapButton" destination="qin-61-ZkP" id="IU5-mF-MZC"/>
                         <outlet property="placeAddress" destination="Qbv-Lm-mTN" id="Tvv-oH-geV"/>
                         <outlet property="placeCrossStreets" destination="3jD-h4-ckB" id="Duf-Bo-qMN"/>
+                        <outlet property="sentimentImage" destination="08Q-dA-O5E" id="omi-po-EBH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

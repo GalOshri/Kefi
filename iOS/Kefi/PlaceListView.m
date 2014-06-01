@@ -222,10 +222,8 @@
             
             UIImageView *imageView = [energyLevels objectAtIndex:i];
             
-            if ([cell.place.energy integerValue]  > i) {
+            if ([cell.place.energy integerValue]  > i)
                 [imageView setImage:[UIImage imageNamed:@"smallCircleFull.png"]];
-                NSLog(@"%@, %@, %d", cell.place.name, cell.place.energy, i);
-            }
             
             else
                 [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
