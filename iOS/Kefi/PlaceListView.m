@@ -212,7 +212,10 @@
     //define dictionary:
     NSArray *energyLevels = @[cell.energyLevel1, cell.energyLevel2, cell.energyLevel3];
     
-    if(!(cell.place.sentiment == nil)) {
+    
+    if(!(cell.place.sentiment  == nil)) {
+        NSLog(@"%@ is in Interval: %d with s: %ld, e: %ld", cell.place.name, cell.place.isInInterval, (long)[cell.place.sentiment integerValue], (long)[cell.place.energy integerValue]);
+
         [cell.sentimentImage setHidden:NO];
         
         cell.sentimentImage.image = [UIImage imageNamed:[horizontalToSentimentDict objectForKey: cell.place.sentiment]];
@@ -234,11 +237,25 @@
         if (cell.place.isInInterval) {
             [cell.sentimentImage setAlpha:1.0];
             
-            for (int j=0; j<[energyLevels count]; j++) {
+            for (int j=0; j<[energyLevels count]; j++)
                 [energyLevels[j] setAlpha:1.0];
-            }
+        }
+        
+        else {
+            [cell.sentimentImage setAlpha:0.5];
+            
+            for (int j=0; j<[energyLevels count]; j++)
+                [energyLevels[j] setAlpha:0.5];
             
         }
+            
+    }
+    
+    else {
+        [cell.sentimentImage setHidden:YES];
+        
+        for (int i=0; i<[energyLevels count]; i++)
+            [energyLevels[i] setHidden:YES];
     }
     
     

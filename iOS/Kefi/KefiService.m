@@ -86,8 +86,9 @@ int radius = 1000;
                     place.categoryType = [NSString stringWithFormat:@"%@", [[[venue objectForKey:@"categories"] objectAtIndex:0] objectForKey:@"name"]];
                     
                     
-                    //set pid to nil
+                    //set pid, sentiment, energy to values for checking later
                     place.pId = @"";
+                    
                     
                     [placeList.places addObject:place];
                     

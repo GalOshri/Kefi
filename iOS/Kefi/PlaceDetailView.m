@@ -110,6 +110,7 @@
     // set sentiment/energy images
     if (!(self.place.sentiment == nil)) {
         [self.sentimentImage setHidden:NO];
+        
         self.sentimentImage.image = [UIImage imageNamed:[horizontalToSentimentDict objectForKey: self.place.sentiment]];
         
         for (int i=0; i<[energyLevels count]; i++) {
