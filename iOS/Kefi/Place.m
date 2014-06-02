@@ -7,6 +7,7 @@
 //
 
 #import "Place.h"
+#import <Parse/Parse.h>
 
 @implementation Place
 
@@ -41,26 +42,29 @@
 }
 
 // TODO: Actually do something useful
-- (void)submitSentiment:(int)newSentiment
+- (void)updatePlaceAfterReview
 {
-    double sentiment = [self.sentiment doubleValue];
+    //query to grab pIds from Parse
+    PFQuery *queryItems = [PFQuery queryWithClassName:@"Place"];
+    [queryItems whereKey:@"fsID" equalTo:self.fsId];
     
-    
-    sentiment = (sentiment + newSentiment) / 2.0; // TODO: GET THIS FROM THE SERVICE
-    self.sentiment = [NSNumber numberWithDouble:sentiment];
+    //perform actions to update placeList.places
+    [queryItems getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!object) {
+            NSLog(@"error executing lookup to get new sentiment after submit");
+        }
+        
+        // success
+        else {
+            self.sentiment = [object objectForKey:@"sentiment"];
+            self.energy = [object objectForKey:@"energy"];
+            self.lastReviewedTime = [NSDate date];
+
+        }
+        
+   
+    }];
 }
 
-// TODO: Actually do something useful
-- (void)submitEnergy:(int)newEnergy
-{
-    double energy = [self.energy doubleValue];
-    energy = (energy + newEnergy) / 2.0; // TODO: GET THIS FROM THE SERVICE
-    self.energy = [NSNumber numberWithDouble:energy];
-}
-
-- (void)updateLastReviewTime
-{
-    self.lastReviewedTime = [NSDate date];
-}
 
 @end

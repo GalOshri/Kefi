@@ -35,8 +35,6 @@
 
 - (void)addHashtag:(NSString *)text;
 
-- (void)submitSentiment:(int)newSentiment;
-- (void)submitEnergy:(int)newEnergy;
-- (void)updateLastReviewTime;
+- (void)updatePlaceAfterReview;
 
 @end

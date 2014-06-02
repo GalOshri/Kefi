@@ -40,6 +40,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // manually change sentiment if greater than 2 to sentiment - 1
+    // because our "2" is merely a placeholder and this messes up calculation
+    if (self.sentimentLevel > 2)
+        self.sentimentLevel -= 1;
+    
     self.reviewDetailLabel.text = self.reviewDetailLabelText;
     self.placeLabel.text = self.place.name;
     [self.placeLabel sizeToFit];
@@ -47,6 +53,8 @@
     self.reviewDetailLabel.textAlignment = NSTextAlignmentLeft;
     
     self.hashtags = [[NSMutableArray alloc] initWithObjects:nil];
+    
+    
 }
 
 // Adjust layout to match previous view
@@ -68,7 +76,6 @@
     self.sentimentImage.frame = self.imageFrame;
     
     self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:[NSNumber numberWithInt:self.sentimentLevel]]];
-    
     
     //animate placeName and reviewdetail labels down
     
@@ -115,12 +122,7 @@
 
 #pragma mark - Submission methods
 - (IBAction)submitReview:(UIButton *)sender {
-    // Update place's sentiment and energy
-    [self.place submitSentiment:self.sentimentLevel];
-    [self.place submitEnergy:self.energyLevel];
-    [self.place updateLastReviewTime];
-    
-    bool isExisting;
+     bool isExisting;
     
     for (NSString *hashtagString in self.hashtags)
     {
@@ -145,6 +147,9 @@
     }
 
     [KefiService AddReviewforPlace:self.place withSentiment:self.sentimentLevel withEnergy:self.energyLevel withHashtagStrings:self.hashtags];
+    
+    // Update place's sentiment and energy, and lastReviewedTime
+    [self.place updatePlaceAfterReview];
     
 }
 

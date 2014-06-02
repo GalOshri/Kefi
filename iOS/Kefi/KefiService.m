@@ -160,13 +160,6 @@ int radius = 1000;
 
 + (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings
 {
-    // manually change sentiment if greater than 2 to sentiment - 1
-    // because our "2" is merely a placeholder and this messes up calculation
-    if (sentiment > 2)
-        sentiment -= 1;
-    
-    
-    
     //create review PFObject
     PFObject *reviewObject = [PFObject objectWithClassName: @"Review"];
     
@@ -210,5 +203,10 @@ int radius = 1000;
     
 }
 
+
++(void)updateSentimentAndEnergyForPlace:(Place *) place {
+    
+    
+}
 
 @end

@@ -20,5 +20,7 @@
 
 + (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings;
 
++(void)updateSentimentAndEnergyForPlace:(Place *) place;
+
 
 @end
