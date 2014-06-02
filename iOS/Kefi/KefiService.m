@@ -199,14 +199,12 @@ int radius = 1000;
     NSLog(@"pid is %@ with hashtags %@", place.pId, hashtagStrings);
     
     //reviewObject SaveInBackground
-    [reviewObject saveInBackground];
+    [reviewObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        // Update place's sentiment and energy, and lastReviewedTime
+        [place updatePlaceAfterReview];
+    }];
     
 }
 
-
-+(void)updateSentimentAndEnergyForPlace:(Place *) place {
-    
-    
-}
 
 @end

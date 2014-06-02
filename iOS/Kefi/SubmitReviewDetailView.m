@@ -130,7 +130,6 @@
         // Address existing hashtags
         for (Hashtag *existingHashtag in self.place.hashtagList)
         {
-            NSLog(@"%@", existingHashtag.text);
             if ([existingHashtag.text isEqualToString:hashtagString])
             {
                 [existingHashtag addReview];
@@ -147,9 +146,9 @@
     }
 
     [KefiService AddReviewforPlace:self.place withSentiment:self.sentimentLevel withEnergy:self.energyLevel withHashtagStrings:self.hashtags];
-    
-    // Update place's sentiment and energy, and lastReviewedTime
-    [self.place updatePlaceAfterReview];
+
+    // manually segue here to PlaceDetailView
+
     
 }
 

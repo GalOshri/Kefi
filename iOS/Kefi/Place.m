@@ -44,6 +44,7 @@
 // TODO: Actually do something useful
 - (void)updatePlaceAfterReview
 {
+    NSLog(@"updatePlaceAfterReview");
     //query to grab pIds from Parse
     PFQuery *queryItems = [PFQuery queryWithClassName:@"Place"];
     [queryItems whereKey:@"fsID" equalTo:self.fsId];
@@ -58,7 +59,9 @@
         else {
             self.sentiment = [object objectForKey:@"sentiment"];
             self.energy = [object objectForKey:@"energy"];
-            self.lastReviewedTime = [NSDate date];
+            self.lastReviewedTime = [NSDate date]; // do we need this?
+            self.isInInterval = YES;
+            NSLog(@"grabbed place after review with sentiment %@ and energy %@", self.sentiment, self.energy);
 
         }
         

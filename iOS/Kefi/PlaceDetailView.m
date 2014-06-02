@@ -59,7 +59,12 @@
 
 - (IBAction)unwindToPlaceDetail:(UIStoryboardSegue *)segue
 {
-    // SubmitView *source = [segue sourceViewController];
+    NSLog(@"unwindtoplacedetail");
+    
+    // logic for if new submit was done --> target
+    [self setSentimentImage];
+    
+    
 }
 
 #pragma mark - View Methods
@@ -68,15 +73,6 @@
 {
     [super viewDidLoad];
     
-    // define sentiment level dictionary
-    // set Dictionary/arrays for sentiment/energy
-    NSDictionary *sentimentToImageDict = @{@"none":@"question.png",
-                                           @0:@"soPissed.png",
-                                           @1:@"eh.png",
-                                           @2:@"semiHappy.png",
-                                           @3:@"soHappy.png"};
-    
-    NSArray *energyLevels = @[self.energyLevel1, self.energyLevel2, self.energyLevel3];
     
     //sets name to view?
     [self.navigationController.viewControllers[self.navigationController.viewControllers.count -1] setTitle:self.place.name];
@@ -107,48 +103,10 @@
     [l setMasksToBounds:YES];
     [l setCornerRadius:7.0];
     
-    //self.hashtagView.scrollEnabled = NO;
+    // load sentiment/energy images
+    [self setSentimentImage];
     
-    // set sentiment/energy images
-    if ((long)[self.place.sentiment integerValue] != -1) {
-        [self.sentimentImage setHidden:NO];
-        
-        self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey: self.place.sentiment]];
-        
-        for (int i=0; i<[energyLevels count]; i++) {
-            
-            UIImageView *imageView = [energyLevels objectAtIndex:i];
-            
-            if ([self.place.energy integerValue]  > i)
-                [imageView setImage:[UIImage imageNamed:@"smallCircleFull.png"]];
-            
-            else
-                [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
-        }
-        
-        
-        
-        if (self.place.isInInterval) {
-            [self.sentimentImage setAlpha:1.0];
-            
-            for (int j=0; j<[energyLevels count]; j++) {
-                [energyLevels[j] setAlpha:1.0];
-            }
-            
-        }
-        
-    }
-    
-    else {
-        [self.sentimentImage setHidden:NO];
-        
-        self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@"none"]];
-        
-        for (int i=0; i<[energyLevels count]; i++)
-            [energyLevels[i] setHidden:YES];
-    }
 }
-
 
 - (void)viewDidLayoutSubviews
 {
@@ -184,8 +142,61 @@
 
 
 
-#pragma mark Collection View Methods
+-(void)setSentimentImage {
+    NSLog(@"setSentimentImage");
+    // TODO: move this dictionary to a better place
+    // define sentiment level dictionary
+    // set Dictionary/arrays for sentiment/energy
+    NSDictionary *sentimentToImageDict = @{@"none":@"question.png",
+                                           @0:@"soPissed.png",
+                                           @1:@"eh.png",
+                                           @2:@"semiHappy.png",
+                                           @3:@"soHappy.png"};
+    
+    NSArray *energyLevels = @[self.energyLevel1, self.energyLevel2, self.energyLevel3];
+    
+    
+    // set sentiment/energy images
+    if ((long)[self.place.sentiment integerValue] != -1) {
+        [self.sentimentImage setHidden:NO];
+        
+        self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey: self.place.sentiment]];
+        
+        for (int i=0; i<[energyLevels count]; i++) {
+            
+            UIImageView *imageView = [energyLevels objectAtIndex:i];
+            
+            if ([self.place.energy integerValue]  > i)
+                [imageView setImage:[UIImage imageNamed:@"smallCircleFull.png"]];
+            
+            else
+                [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
+        }
+        
+        if (self.place.isInInterval) {
+            [self.sentimentImage setAlpha:1.0];
+            
+            for (int j=0; j<[energyLevels count]; j++) {
+                [energyLevels[j] setAlpha:1.0];
+            }
+            
+        }
+    }
+    
+    else {
+        [self.sentimentImage setHidden:NO];
+        
+        self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@"none"]];
+        
+        for (int i=0; i<[energyLevels count]; i++)
+            [energyLevels[i] setHidden:YES];
+    }
+    
+}
 
+
+
+#pragma mark Collection View Methods
 -(NSInteger)numberOfSectionsInCollectionView:
 (UICollectionView *)collectionView
 {

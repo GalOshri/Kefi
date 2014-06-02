@@ -503,7 +503,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="submitReview:" destination="d9R-wC-4Vk" eventType="touchUpInside" id="rLH-Kh-lb4"/>
+                                    <action selector="submitReview:" destination="d9R-wC-4Vk" eventType="touchUpInside" id="Bqk-G3-ctr"/>
                                     <segue destination="Rj0-8q-Owb" kind="unwind" unwindAction="unwindToPlaceDetail:" id="taY-l9-nu8"/>
                                 </connections>
                             </button>
@@ -514,6 +514,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="unwindToPlaceDetail:" destination="EvM-Cd-43n" eventType="touchUpInside" id="CaK-ag-JlA"/>
                                     <segue destination="Rj0-8q-Owb" kind="unwind" unwindAction="unwindToPlaceDetail:" id="LI0-Tb-YHu"/>
                                 </connections>
                             </button>
