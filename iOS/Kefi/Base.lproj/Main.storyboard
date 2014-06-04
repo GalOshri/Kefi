@@ -613,12 +613,12 @@
                                             <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="20"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="#Tag" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKk-uu-IyW">
-                                            <rect key="frame" x="114" y="50" width="178" height="45"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="#Tag11123134234123412341#Tag2223423423423423423" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKk-uu-IyW">
+                                            <rect key="frame" x="129" y="52" width="178" height="45"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.2 mi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lgi-Cu-kSw">
@@ -636,19 +636,19 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="semiHappy.png" translatesAutoresizingMaskIntoConstraints="NO" id="XGg-jq-YeH">
-                                            <rect key="frame" x="74" y="51" width="40" height="40"/>
+                                            <rect key="frame" x="43" y="48" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="smallCircleFull.png" translatesAutoresizingMaskIntoConstraints="NO" id="dwx-45-Mmw">
-                                            <rect key="frame" x="119" y="59" width="24" height="24"/>
+                                            <rect key="frame" x="20" y="88" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="smallCircleFull.png" translatesAutoresizingMaskIntoConstraints="NO" id="RcV-tB-WXg">
-                                            <rect key="frame" x="152" y="59" width="24" height="24"/>
+                                            <rect key="frame" x="53" y="88" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="smallCircle.png" translatesAutoresizingMaskIntoConstraints="NO" id="3RM-fz-yy1">
-                                            <rect key="frame" x="185" y="59" width="24" height="24"/>
+                                            <rect key="frame" x="86" y="88" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>

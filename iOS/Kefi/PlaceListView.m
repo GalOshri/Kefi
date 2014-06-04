@@ -197,17 +197,19 @@
     cell.placeType.text = displayType;
     
     NSString *hashtagText = @"";
-    
-    
-    // TODO: determine which hashtag(s) to show, if any (currently hidden)
-    for (Hashtag *currentHashtag in currentPlace.hashtagList)
+        
+    for (int i=0; i<2; i++)
     {
-        hashtagText = [hashtagText stringByAppendingFormat:@"#%@",currentHashtag.text];
+        if ([cell.place.hashtagList count] > i) {
+            Hashtag *currentTag = cell.place.hashtagList[i];
+            hashtagText = [hashtagText stringByAppendingFormat:@"#%@\n",currentTag.text];
+        }
     }
- 
+    
     cell.placeHashtags.text = hashtagText;
-    cell.placeHashtags.font= [UIFont fontWithName:@"Helvetica Neue" size:14];
-    cell.placeHashtags.textAlignment = NSTextAlignmentCenter;
+    cell.placeHashtags.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
+    cell.placeHashtags.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
+    // cell.placeHashtags.textAlignment = NSTextAlignmentCenter;
     
     // set sentiment / Energy Level and active/inactive states
     //define dictionary:

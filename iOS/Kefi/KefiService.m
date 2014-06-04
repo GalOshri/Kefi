@@ -138,7 +138,10 @@ int radius = 1000;
                     Hashtag *hashtag = [[Hashtag alloc] initWithText:[hashtagObject valueForKey:@"text"] withScore:[hashtagObject valueForKey:@"score"] withSelection:(BOOL) NO];
                     [place.hashtagList addObject:hashtag];
                 }
-
+                
+                // sort hashtags
+                [place sortHashtags];
+                
                 // isInInterval to see if cell in active/inactive state
                 place.isInInterval = NO;
                 
@@ -202,6 +205,8 @@ int radius = 1000;
     [reviewObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // Update place's sentiment and energy, and lastReviewedTime
         [place updatePlaceAfterReview];
+        [place sortHashtags];
+        
     }];
     
 }

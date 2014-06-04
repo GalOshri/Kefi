@@ -69,5 +69,12 @@
     }];
 }
 
+-(void)sortHashtags {
+    // sort hashtags
+    NSSortDescriptor *hashtagSorter = [[NSSortDescriptor alloc] initWithKey:@"score" ascending:FALSE];
+    NSArray *sortedHashtags = [NSArray arrayWithObject:hashtagSorter];
+    [self.hashtagList sortUsingDescriptors:sortedHashtags];
+    
+}
 
 @end

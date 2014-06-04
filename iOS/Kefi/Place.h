@@ -37,4 +37,6 @@
 
 - (void)updatePlaceAfterReview;
 
+-(void)sortHashtags;
+
 @end
