@@ -292,7 +292,7 @@
 }
 
 - (IBAction)removeHashtagsFromList:(id)sender {
-    NSMutableArray *newPlaceList;
+    NSMutableArray *newPlaceList = [[NSMutableArray alloc] init];
     
     for (int i=0; i<[self.place.hashtagList count]; i++) {
         Hashtag *hashtag = self.place.hashtagList[i];
