@@ -57,28 +57,31 @@
     
 }
 
-// Adjust layout to match previous view
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSLog(@"viewdidappear");
     
     NSDictionary *sentimentToImageDict = @{@0:@"soPissed.png",
-                                                @1:@"eh.png",
-                                                @2:@"semiHappy.png",
-                                                @3:@"soHappy.png"};
+                                           @1:@"eh.png",
+                                           @2:@"semiHappy.png",
+                                           @3:@"soHappy.png"};
     
     NSArray *energyLevels = @[self.firstEnergyCircle, self.secondEnergyCircle, self.thirdEnergyCircle];
     
     
     self.placeLabel.frame = self.placeLabelFrame;
     self.reviewDetailLabel.frame = self.reviewDetailLabelFrame;
-
+    
     self.sentimentImage.frame = self.imageFrame;
     
     self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:[NSNumber numberWithInt:self.sentimentLevel]]];
     
-    //animate placeName and reviewdetail labels down
+    // uicollectionview background color
+    self.hashtagView.backgroundColor = [UIColor whiteColor];
     
+    
+    // animate placeName and reviewdetail labels down
+    NSLog(@"animating");
     [UIView animateWithDuration:0.5 animations:^{
         self.placeLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width + 15, self.sentimentImage.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
         
@@ -88,37 +91,32 @@
     }completion:^(BOOL finished){
         //change label to energy levels
         if (finished) {
-        
+            
             for (int count = 0; count < 3; count++){
                 UIImageView *imageView = [energyLevels objectAtIndex:count];
-            
+                
                 if (self.energyLevel > count) {
                     [imageView setImage:[UIImage imageNamed:@"smallCircleFull.png"]];
                 }
-            
+                
                 else
                     [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
-            
+                
                 //position circles and make label disappear
                 imageView.frame = CGRectMake(count * 40 + self.reviewDetailLabel.frame.origin.x, self.reviewDetailLabel.frame.origin.y + 10, imageView.frame.size.width, imageView.frame.size.height);
-            
+                
                 [imageView setHidden:NO];
-            
+                
             }
-        
+            
             //hide or unhide things
             [self.reviewDetailLabel setHidden:YES];
             [self.cancelBUtton setHidden:NO];
             [self.submitButton setHidden:NO];
         }
     }];
-    
-    //uicollectionview background color
-    self.hashtagView.backgroundColor = [UIColor whiteColor];
 
-        
 }
-    
 
 #pragma mark - Submission methods
 - (IBAction)submitReview:(UIButton *)sender {
@@ -267,6 +265,7 @@
 
         [self.hashtagView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:[self.place.hashtagList count]-1 inSection:0]]];
     }
+    
     return YES;
 }
 
