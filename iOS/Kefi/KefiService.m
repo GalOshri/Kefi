@@ -135,7 +135,7 @@ int radius = 1000;
                 //hashtags
                 for (id hashtagObject in [object valueForKey:@"hashtagList"])
                 {
-                    Hashtag *hashtag = [[Hashtag alloc] initWithText:[hashtagObject valueForKey:@"text"] withScore:[hashtagObject valueForKey:@"score"] withSelection:(BOOL) NO];
+                    Hashtag *hashtag = [[Hashtag alloc] initWithText:[hashtagObject valueForKey:@"text"] withScore:[hashtagObject valueForKey:@"score"]];
                     [place.hashtagList addObject:hashtag];
                 }
                 

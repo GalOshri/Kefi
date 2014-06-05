@@ -11,8 +11,9 @@
 
 @interface HashtagCollectionCell : UICollectionViewCell
 
-@property (strong, nonatomic) IBOutlet UIButton *hashtagToggle;
-@property (strong, nonatomic) Hashtag *hashtag;
+//@property (strong, nonatomic) IBOutlet UIButton *hashtagToggle;
+@property (strong, nonatomic) NSString *text;
+@property (strong, nonatomic) IBOutlet UILabel *textLabel;
 
 
 @end
