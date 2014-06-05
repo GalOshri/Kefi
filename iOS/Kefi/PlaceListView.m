@@ -217,7 +217,7 @@
     
     
     if((long)[cell.place.sentiment integerValue] != -1) {
-        NSLog(@"%@ is in Interval: %d with s: %ld, e: %ld", cell.place.name, cell.place.isInInterval, (long)[cell.place.sentiment integerValue], (long)[cell.place.energy integerValue]);
+        // NSLog(@"%@ is in Interval: %d with s: %ld, e: %ld", cell.place.name, cell.place.isInInterval, (long)[cell.place.sentiment integerValue], (long)[cell.place.energy integerValue]);
 
         [cell.sentimentImage setHidden:NO];
         

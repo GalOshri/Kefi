@@ -15,7 +15,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *coordinateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
-@property (strong, nonatomic) IBOutlet UIButton *moveButton;
 @property (strong, nonatomic) IBOutlet UIView *drawView;
 @property (strong, nonatomic) IBOutlet UIButton *reviewButton;
 @property (weak, nonatomic) IBOutlet UILabel *PlaceName;
@@ -51,6 +50,10 @@ int numVerticalCells = 5;
 int numHorizontalCells = 4;
 CGFloat cellWidth;
 CGFloat cellHeight;
+
+// global bools for checking if need to animate sentiments back right
+bool isAnimating = NO;
+bool slideBackRight = NO;
 
 //needed for finding change
 int selectedSentimentIndex = -1;
@@ -220,8 +223,9 @@ NSString *coordinateLabelDefault;
     if (activatedSentiment != -1)
         return;
     
-    [self SlideAllSentimentsLeft:(int)selectedSentiment];
     activatedSentiment = (int)selectedSentiment;
+    [self SlideAllSentimentsLeft:(int)selectedSentiment];
+   
 }
 
 - (IBAction)reviewButtonTouchUp:(UIButton *)sender forEvent:(UIEvent *)event {
@@ -230,7 +234,7 @@ NSString *coordinateLabelDefault;
     if (CGRectContainsPoint(self.drawView.frame, CGPointMake(point.x + self.drawView.frame.origin.x, point.y + self.drawView.frame.origin.y)))
         sender.center = point;
     
-    if (activatedSentiment != -1 && activatedEnergy != -1)
+    if (activatedSentiment != -1 && activatedEnergy > 0)
     {
         // TODO: SUBMIT REVIEW
         [self HideAllExceptSentiment:activatedSentiment];
@@ -246,12 +250,17 @@ NSString *coordinateLabelDefault;
         return;
         
     }
-    else if (activatedSentiment != -1)
+    
+    else if (isAnimating == YES) {
+        slideBackRight = YES;
+        
+    }
+    else if (activatedSentiment != -1 && isAnimating == NO)
     {
         [self SlideAllSentimentsRight];
         [self resetReviewButton];
     }
-    else
+    else if( isAnimating == NO)
     {
         [self resetReviewButton];
     }
@@ -274,6 +283,8 @@ NSString *coordinateLabelDefault;
 - (void)SlideAllSentimentsLeft:(int)selectedSentiment
 {
     [UIView animateWithDuration:0.5 animations:^{
+        isAnimating = YES;
+        
         for (id key in horizontalToSentimentDict)
         {
             UIButton *currentButton = [horizontalToSentimentDict objectForKey:key];
@@ -283,11 +294,17 @@ NSString *coordinateLabelDefault;
                 [currentButton setAlpha:0.4];
         }
     }
-                     completion:^(BOOL finished) {
-                         [self ActivateSentiment:selectedSentiment];
-                     }];
-    
-    activatedSentiment = selectedSentiment;
+        completion:^(BOOL finished) {
+            if (!slideBackRight)
+                [self ActivateSentiment:selectedSentiment];
+            else {
+                [self SlideAllSentimentsRight];
+                    [self resetReviewButton];
+            }
+                         
+            isAnimating = NO;
+            slideBackRight = NO;
+        }];
 }
 
 - (void)SlideAllSentimentsRight

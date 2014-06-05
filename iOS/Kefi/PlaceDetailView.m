@@ -231,11 +231,11 @@
     //play with cells
     button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 
-    
-    /*[myCell.layer setBorderWidth:2];
+    /*
+    [myCell.layer setBorderWidth:2];
     [myCell.layer setBorderColor:[UIColor grayColor].CGColor];
-    [myCell.layer setCornerRadius:10];*/
-    
+    [myCell.layer setCornerRadius:10];
+    */
     
     return myCell;
 }
@@ -245,6 +245,7 @@
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"hi");
     // TODO: Select Item
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -261,10 +262,11 @@
     
     //set button text and assign to hashtagToggle
     [button setTitle:temp.text forState:UIControlStateNormal];
+    button.titleLabel.font =  [UIFont systemFontOfSize:13];
     [button sizeToFit];
 
     
-    return CGSizeMake(button.frame.size.width, 20);
+    return CGSizeMake(button.frame.size.width + 5, 20);
     
 }
 
