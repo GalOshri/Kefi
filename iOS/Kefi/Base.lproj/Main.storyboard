@@ -9,8 +9,8 @@
             <objects>
                 <viewController id="Y6T-oR-Iet" customClass="PlaceMapViewViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lxQ-GD-Aqc"/>
-                        <viewControllerLayoutGuide type="bottom" id="mhW-YH-fFL"/>
+                        <viewControllerLayoutGuide type="top" id="iAS-oU-Q3U"/>
+                        <viewControllerLayoutGuide type="bottom" id="GJg-Gm-peC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qL3-Ap-bDi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -55,8 +55,8 @@
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="PlaceDetailView" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="q7t-s9-epC"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZiN-Hg-gFS"/>
+                        <viewControllerLayoutGuide type="top" id="SCK-sM-3U3"/>
+                        <viewControllerLayoutGuide type="bottom" id="2j9-ua-DaZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -198,8 +198,8 @@
             <objects>
                 <viewController id="wCa-SH-iDl" customClass="SubmitView" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0zW-Wc-HvD"/>
-                        <viewControllerLayoutGuide type="bottom" id="59F-7d-sBp"/>
+                        <viewControllerLayoutGuide type="top" id="9iC-Bf-aHZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="c7E-7l-j9o"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Icd-g3-ASP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -417,8 +417,8 @@
             <objects>
                 <viewController id="d9R-wC-4Vk" customClass="SubmitReviewDetailView" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="X7U-fs-ClN"/>
-                        <viewControllerLayoutGuide type="bottom" id="uuk-FF-bZh"/>
+                        <viewControllerLayoutGuide type="top" id="nKu-gO-SBJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="jhi-QQ-yBO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleAspectFit" id="YD8-wE-5Fh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -693,8 +693,8 @@
             <objects>
                 <viewController id="UnE-lY-y3g" customClass="SearchView" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="doT-Kk-LEI"/>
-                        <viewControllerLayoutGuide type="bottom" id="2Uo-3R-e9B"/>
+                        <viewControllerLayoutGuide type="top" id="1gO-AO-xwJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="vpP-aN-sVt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="raW-ZP-jNQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>

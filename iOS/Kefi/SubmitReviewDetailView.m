@@ -85,13 +85,13 @@
     [UIView animateWithDuration:0.5 animations:^{
         self.placeLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width + 15, self.sentimentImage.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
         
-        self.reviewDetailLabel.frame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y + 15, self.reviewDetailLabel.frame.size.width, self.reviewDetailLabel.frame.size.height);
+        self.reviewDetailLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x, self.sentimentImage.frame.origin.y + 30, self.reviewDetailLabel.frame.size.width, self.reviewDetailLabel.frame.size.height);
         
         
     }completion:^(BOOL finished){
         //change label to energy levels
         if (finished) {
-            
+
             for (int count = 0; count < 3; count++){
                 UIImageView *imageView = [energyLevels objectAtIndex:count];
                 
@@ -103,7 +103,7 @@
                     [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
                 
                 //position circles and make label disappear
-                imageView.frame = CGRectMake(count * 40 + self.reviewDetailLabel.frame.origin.x, self.reviewDetailLabel.frame.origin.y + 10, imageView.frame.size.width, imageView.frame.size.height);
+                imageView.frame = CGRectMake(count * 40 + self.reviewDetailLabel.frame.origin.x + 10, self.sentimentImage.frame.origin.y + 30, imageView.frame.size.width, imageView.frame.size.height);
                 
                 [imageView setHidden:NO];
                 
@@ -115,8 +115,9 @@
             [self.submitButton setHidden:NO];
         }
     }];
-
 }
+
+
 
 #pragma mark - Submission methods
 - (IBAction)submitReview:(UIButton *)sender {
