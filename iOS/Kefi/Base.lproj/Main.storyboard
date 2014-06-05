@@ -514,6 +514,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="removeHashtagsFromList:" destination="d9R-wC-4Vk" eventType="touchUpInside" id="n3Z-Rc-cgu"/>
                                     <action selector="unwindToPlaceDetail:" destination="EvM-Cd-43n" eventType="touchUpInside" id="CaK-ag-JlA"/>
                                     <segue destination="Rj0-8q-Owb" kind="unwind" unwindAction="unwindToPlaceDetail:" id="LI0-Tb-YHu"/>
                                 </connections>

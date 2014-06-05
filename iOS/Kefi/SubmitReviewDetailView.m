@@ -291,4 +291,19 @@
 
 }
 
+- (IBAction)removeHashtagsFromList:(id)sender {
+    NSMutableArray *newPlaceList;
+    
+    for (int i=0; i<[self.place.hashtagList count]; i++) {
+        Hashtag *hashtag = self.place.hashtagList[i];
+        NSLog(@"working with hashtag %@, index %d", hashtag.text, i);
+        if ([hashtag.score integerValue] != (int)0) {
+            [newPlaceList addObject:[self.place.hashtagList objectAtIndex:i]];
+            NSLog(@"adding hashtag %@", self.place.hashtagList[i]);
+            }
+    }
+    
+    self.place.hashtagList = newPlaceList;
+}
+
 @end
