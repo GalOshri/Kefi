@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *thirdEnergyCircle;
 @property (strong, nonatomic) IBOutlet UILabel *reviewDetailLabel;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
-@property (weak, nonatomic) IBOutlet UIButton *cancelBUtton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @property (strong, nonatomic) NSMutableArray *hashtags;
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
@@ -52,7 +52,15 @@
     self.placeLabel.textAlignment = NSTextAlignmentLeft;
     self.reviewDetailLabel.textAlignment = NSTextAlignmentLeft;
     
-    self.hashtags = [[NSMutableArray alloc] initWithObjects:nil];
+    self.hashtags = [[NSMutableArray alloc] init];
+    for (Hashtag *hashtag in self.place.hashtagList)
+    {
+        [self.hashtags addObject:hashtag.text];
+    }
+    
+    self.hashtagView.delegate = self;
+    
+    self.hashtagView.allowsMultipleSelection = YES;
     
     
 }
@@ -111,7 +119,7 @@
             
             //hide or unhide things
             [self.reviewDetailLabel setHidden:YES];
-            [self.cancelBUtton setHidden:NO];
+            [self.cancelButton setHidden:NO];
             [self.submitButton setHidden:NO];
         }
     }];
@@ -123,8 +131,17 @@
 - (IBAction)submitReview:(UIButton *)sender {
      bool isExisting;
     
-    for (NSString *hashtagString in self.hashtags)
+    NSMutableArray *selectedHashtagStrings = [[NSMutableArray alloc] init];
+    for (NSIndexPath *indexPath in [self.hashtagView indexPathsForSelectedItems])
     {
+        NSString *hashtagString = [self.hashtags objectAtIndex:[indexPath row]];
+        [selectedHashtagStrings addObject:hashtagString];
+    }
+
+    
+    for (NSString *hashtagString in selectedHashtagStrings)
+    {
+       
         isExisting = NO;
         // Address existing hashtags
         for (Hashtag *existingHashtag in self.place.hashtagList)
@@ -143,15 +160,17 @@
             [self.place addHashtag:hashtagString];
         }
     }
+    
+    
 
-    [KefiService AddReviewforPlace:self.place withSentiment:self.sentimentLevel withEnergy:self.energyLevel withHashtagStrings:self.hashtags];
+    [KefiService AddReviewforPlace:self.place withSentiment:self.sentimentLevel withEnergy:self.energyLevel withHashtagStrings:selectedHashtagStrings];
 
     // manually segue here to PlaceDetailView
 
     
 }
 
-
+/*
 #pragma mark - Selecting/Deslecting hashtags
 - (IBAction)selectHashtags:(UIButton *)hashtagButton {
     HashtagCollectionCell *hashtagCell = (HashtagCollectionCell *)hashtagButton.superview.superview;
@@ -166,6 +185,7 @@
     
     NSLog(@"%@", self.hashtags);
 }
+ */
 
 #pragma mark Collection View Methods
 -(NSInteger)numberOfSectionsInCollectionView:
@@ -179,7 +199,7 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView
     numberOfItemsInSection:(NSInteger)section
 {
-    return self.place.hashtagList.count;
+    return self.hashtags.count;
 }
 
 #pragma mark - UICollectionView Datasource
@@ -189,22 +209,22 @@
                                      dequeueReusableCellWithReuseIdentifier:@"hashtagCell"
                                      forIndexPath:indexPath];
     
-    Hashtag *temp = self.place.hashtagList[indexPath.row];
-    UIButton *button = (UIButton *)[myCell viewWithTag:100];
+    NSString *temp = self.hashtags[indexPath.row];
+ //   UIButton *button = (UIButton *)[myCell viewWithTag:100];
     //set button text and assign to hashtagToggle
-    [button setTitle:temp.text forState:UIControlStateNormal];
+  //  [button setTitle:temp forState:UIControlStateNormal];
 
+//    myCell.hashtagToggle = button;
+//    myCell.text = temp;
+    myCell.textLabel.text = temp;
     
-    myCell.hashtagToggle = button;
-    myCell.hashtag = temp;
-    
-    if (!myCell.hashtag.isSelected)
-        [myCell.hashtagToggle setTitleColor:self.view.tintColor forState:UIControlStateNormal];
-    else
-        [self selectHashtag:myCell withButton:button];
+ //   if (!myCell.hashtag.isSelected)
+ //       [myCell.hashtagToggle setTitleColor:self.view.tintColor forState:UIControlStateNormal];
+ //   else
+ //       [self selectHashtag:myCell withButton:button];
     
     //play with cells
-    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+ //   button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
 
     
     /*
@@ -216,6 +236,7 @@
     return myCell;
 }
 
+/* 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 
 {
@@ -229,7 +250,7 @@
     
     return CGSizeMake(button.frame.size.width, 20);
     
-}
+} */
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 0; // This is the minimum inter item spacing, can be more
@@ -259,17 +280,45 @@
         }
         
         // if it isn't add and add to UICollectionView
-        Hashtag *newHashtag = [[Hashtag alloc] initWithText:text withScore:0 withSelection:YES];
+        //Hashtag *newHashtag = [[Hashtag alloc] initWithText:text withScore:0];
         
         //[self.hashtags addObject:newHashtag.text];
-        [self.place.hashtagList addObject:newHashtag];
+        //[self.place.hashtagList addObject:newHashtag];
+        
+        [self.hashtags addObject:text];
+        
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[self.hashtags count]-1 inSection:0];
 
-        [self.hashtagView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:[self.place.hashtagList count]-1 inSection:0]]];
+        [self.hashtagView insertItemsAtIndexPaths:@[indexPath]];
+        
+        HashtagCollectionCell *cell = (HashtagCollectionCell *)[self.hashtagView cellForItemAtIndexPath:indexPath];
+        
+        [self.hashtagView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+        
+        cell.textLabel.textColor = [UIColor redColor];
+        
     }
     
     return YES;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"HI");
+    HashtagCollectionCell *cell = (HashtagCollectionCell *)[self.hashtagView cellForItemAtIndexPath:indexPath];
+    
+    cell.textLabel.textColor = [UIColor redColor];
+}
+
+- (void) collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    HashtagCollectionCell *cell = (HashtagCollectionCell *)[self.hashtagView cellForItemAtIndexPath:indexPath];
+    
+    cell.textLabel.textColor = [UIColor blueColor];
+}
+
+/*
 
 -(void)deselectHashtag:(HashtagCollectionCell *) cell {
     cell.hashtag.isSelected = NO;
@@ -304,6 +353,6 @@
     }
     
     self.place.hashtagList = newPlaceList;
-}
+}*/
 
 @end

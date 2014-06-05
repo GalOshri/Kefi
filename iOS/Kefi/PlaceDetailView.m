@@ -221,16 +221,16 @@
     
     Hashtag *temp = self.place.hashtagList[indexPath.row];
     
-    UIButton *button = (UIButton *)[myCell viewWithTag:100];
+ //   UIButton *button = (UIButton *)[myCell viewWithTag:100];
     
     //set button text and assign to hashtagToggle
-    [button setTitle:temp.text forState:UIControlStateNormal];
+ //   [button setTitle:temp.text forState:UIControlStateNormal];
     
-    myCell.hashtagToggle = button;
+ //   myCell.hashtagToggle = button;
     
     //play with cells
-    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-
+ //   button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    myCell.textLabel.text = temp.text;
     
     /*[myCell.layer setBorderWidth:2];
     [myCell.layer setBorderColor:[UIColor grayColor].CGColor];
@@ -241,18 +241,8 @@
 }
 
 
-
-#pragma mark - UICollectionViewDelegate
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    // TODO: Select Item
-}
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Deselect item
-}
-
-
-
+// TODO: SIZING
+/*
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 
 {
@@ -266,7 +256,7 @@
     
     return CGSizeMake(button.frame.size.width, 20);
     
-}
+} */
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 0; // This is the minimum inter item spacing, can be more

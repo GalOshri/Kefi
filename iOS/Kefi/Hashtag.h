@@ -16,11 +16,10 @@
 // @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSNumber *score;
 @property (nonatomic, strong) NSDate *lastSubmitTime;
-@property (nonatomic) BOOL isSelected;
 
 - (id)initWithText:(NSString *)text;
 
-- (id)initWithText:(NSString *)text withScore:(NSNumber *)score withSelection: (BOOL) selection;
+- (id)initWithText:(NSString *)text withScore:(NSNumber *)score;
 
 - (void)addReview;
 
