@@ -29,4 +29,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *placeCrossStreets;
 @property (weak, nonatomic) IBOutlet UILabel *distanceMi;
 
+-(void)setSentimentImage;
+
 @end

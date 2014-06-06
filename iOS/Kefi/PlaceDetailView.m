@@ -8,6 +8,7 @@
 
 #import "PlaceDetailView.h"
 #import "SubmitView.h"
+#import "SubmitReviewDetailView.h"
 #import "KefiService.h"
 #import "PlaceMapViewViewController.h"
 
@@ -19,8 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel1;
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel2;
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel3;
-
-@property (strong, nonatomic) NSMutableArray *hashtags;
 
 @end
 
@@ -61,12 +60,13 @@
 
 - (IBAction)unwindToPlaceDetail:(UIStoryboardSegue *)segue
 {
-    NSLog(@"unwindtoplacedetail");
-    
-    // logic for if new submit was done --> target
-    [self setSentimentImage];
-    
-    
+    if ([segue.sourceViewController isKindOfClass:[SubmitReviewDetailView class]]) {
+        SubmitReviewDetailView *srdv = segue.sourceViewController;
+        // if the user clicked Cancel, we don't want to change the color
+        if (srdv.selectedHashtagStrings != nil) {
+            [KefiService AddReviewforPlace:self.place withSentiment:srdv.sentimentLevel withEnergy:srdv.energyLevel withHashtagStrings:srdv.selectedHashtagStrings withPlaceDetailView:self];
+        }
+    }
 }
 
 #pragma mark - View Methods
@@ -81,44 +81,19 @@
 
     //set some more variables here
     self.placeAddress.text = self.place.address;
-
-    // temporary assignment of hashtagList. Right now, there are two hashtags. Add some more.
-    /*Hashtag *hashtag3 = [[Hashtag alloc] initWithText: @"HowYouLikeThemApples"];
-    Hashtag *hashtag4 = [[Hashtag alloc] initWithText: @"LustyIntentions"];
-    Hashtag *hashtag5 = [[Hashtag alloc] initWithText: @"TurnUp"];
-    Hashtag *hashtag6 = [[Hashtag alloc] initWithText: @"IsThatMyMom?"];
-    Hashtag *hashtag7 = [[Hashtag alloc] initWithText: @"Crickets"];
-    Hashtag *hashtag8 = [[Hashtag alloc] initWithText: @"RageMode"];
-    
-    [self.place.hashtagList addObject:hashtag3];
-    [self.place.hashtagList addObject:hashtag4];
-    [self.place.hashtagList addObject:hashtag5];
-    [self.place.hashtagList addObject:hashtag6];
-    [self.place.hashtagList addObject:hashtag7];
-    [self.place.hashtagList addObject:hashtag8];*/
-
     
     self.hashtagView.backgroundColor = [UIColor whiteColor];
     
     //map rounded edges
-    CALayer * l = [self.mapButton layer];
+    CALayer *l = [self.mapButton layer];
     [l setMasksToBounds:YES];
     [l setCornerRadius:7.0];
     
     // load sentiment/energy images
     [self setSentimentImage];
-    
-    
-    self.hashtags = [[NSMutableArray alloc] init];
-    for (Hashtag *hashtag in self.place.hashtagList)
-    {
-        [self.hashtags addObject:hashtag.text];
-    }
 
     self.hashtagView.delegate = self;
     self.hashtagView.dataSource = self;
-    
-    self.hashtagView.allowsMultipleSelection = YES;
     
 }
 
@@ -141,12 +116,6 @@
 }
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 
 //favorite/unfavorite this place
@@ -157,7 +126,6 @@
 
 
 -(void)setSentimentImage {
-    NSLog(@"setSentimentImage");
     // TODO: move this dictionary to a better place
     // define sentiment level dictionary
     // set Dictionary/arrays for sentiment/energy
@@ -231,7 +199,8 @@
                                     dequeueReusableCellWithReuseIdentifier:@"hashtagCell"
                                     forIndexPath:indexPath];
     
-    NSString *temp = self.hashtags[indexPath.row];
+    Hashtag *hashtag = self.place.hashtagList[indexPath.row];
+    NSString *temp = hashtag.text;
 
     [myCell.textLabel setText:temp];
     [myCell.textLabel setFont:[UIFont systemFontOfSize:12]];
@@ -246,24 +215,13 @@
     return myCell;
 }
 
-
-#pragma mark - UICollectionViewDelegate
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    // TODO: Select Item
-}
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    // TODO: Deselect item
-}
-
-
-
 // TODO: SIZING
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 
 {
-    NSString *temp = self.hashtags[indexPath.row];
+    Hashtag *hashtag = self.place.hashtagList[indexPath.row];
+    NSString *temp = hashtag.text;
     UILabel *label = [[UILabel alloc]init];
     
     //set button text and assign to hashtagToggle

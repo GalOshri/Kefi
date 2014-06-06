@@ -96,15 +96,15 @@ int radius = 1000;
                     
                 }
                 //make call to populate with parse data
-                [self PopulateWithParseData: placeList];
-                
+                [self PopulateWithParseData: placeList withTableView:tableView];
                 
                 [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+                
                 
             }] resume];
 }
 
-+ (void) PopulateWithParseData:(PlaceList *)placeList
++ (void) PopulateWithParseData:(PlaceList *)placeList withTableView:(UITableView *)tableView
 {
     // get date within time interval
     NSDate *beginningTimeInterval = [[NSDate alloc] initWithTimeInterval:(NSTimeInterval)-7200 sinceDate:[NSDate new]];
@@ -153,6 +153,7 @@ int radius = 1000;
                 
                 // NSLog(@"%d", place.isInInterval);
             }
+            [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
         }
         
         else {
@@ -161,7 +162,7 @@ int radius = 1000;
     }];
 }
 
-+ (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings
++ (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings withPlaceDetailView:(PlaceDetailView *)pdv
 {
     //create review PFObject
     PFObject *reviewObject = [PFObject objectWithClassName: @"Review"];
@@ -199,14 +200,36 @@ int radius = 1000;
         
     }
     
-    NSLog(@"pid is %@ with hashtags %@", place.pId, hashtagStrings);
-    
+
     //reviewObject SaveInBackground
     [reviewObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         // Update place's sentiment and energy, and lastReviewedTime
-        [place updatePlaceAfterReview];
-        [place sortHashtags];
         
+        //query to grab pIds from Parse
+        PFQuery *queryItems = [PFQuery queryWithClassName:@"Place"];
+        [queryItems whereKey:@"fsID" equalTo:place.fsId];
+        
+        //perform actions to update placeList.places
+        [queryItems getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+            if (!object) {
+                NSLog(@"error executing lookup to get new sentiment after submit");
+            }
+            
+            // success
+            else {
+                place.sentiment = [object objectForKey:@"sentiment"];
+                place.energy = [object objectForKey:@"energy"];
+                place.lastReviewedTime = [NSDate date]; // do we need this?
+                place.isInInterval = YES;
+                [place sortHashtags];
+                [pdv setSentimentImage];
+                [pdv.hashtagView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+                
+            }
+            
+            
+        }];
+
     }];
     
 }

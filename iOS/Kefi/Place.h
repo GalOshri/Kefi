@@ -35,8 +35,6 @@
 
 - (void)addHashtag:(NSString *)text;
 
-- (void)updatePlaceAfterReview;
-
--(void)sortHashtags;
+- (void)sortHashtags;
 
 @end

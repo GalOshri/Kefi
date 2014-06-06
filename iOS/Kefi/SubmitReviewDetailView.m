@@ -89,7 +89,7 @@
     
     
     // animate placeName and reviewdetail labels down
-    NSLog(@"animating");
+
     [UIView animateWithDuration:0.5 animations:^{
         self.placeLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width + 15, self.sentimentImage.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
         
@@ -131,15 +131,15 @@
 - (IBAction)submitReview:(UIButton *)sender {
      bool isExisting;
     
-    NSMutableArray *selectedHashtagStrings = [[NSMutableArray alloc] init];
+    self.selectedHashtagStrings = [[NSMutableArray alloc] init];
     for (NSIndexPath *indexPath in [self.hashtagView indexPathsForSelectedItems])
     {
         NSString *hashtagString = [self.hashtags objectAtIndex:[indexPath row]];
-        [selectedHashtagStrings addObject:hashtagString];
+        [self.selectedHashtagStrings addObject:hashtagString];
     }
 
     
-    for (NSString *hashtagString in selectedHashtagStrings)
+    for (NSString *hashtagString in self.selectedHashtagStrings)
     {
        
         isExisting = NO;
@@ -160,14 +160,10 @@
             [self.place addHashtag:hashtagString];
         }
     }
-    
-    
-
-    [KefiService AddReviewforPlace:self.place withSentiment:self.sentimentLevel withEnergy:self.energyLevel withHashtagStrings:selectedHashtagStrings];
+        
 
     // manually segue here to PlaceDetailView
-
-    
+    [self performSegueWithIdentifier:@"UnwindDamnit" sender:self];
 }
 
 #pragma mark Collection View Methods
@@ -241,7 +237,6 @@
         //loop through hashtagItems in place, check to see if hashtag.text isn't in there
         for(Hashtag *hashtag in self.place.hashtagList) {
             if ([[text lowercaseString] isEqual:[hashtag.text lowercaseString]]) {
-                // NSLog(@"same");
                 
                 // ToDo: UI to say already selected
                 
@@ -275,41 +270,5 @@
 
 
 
-/*
-
--(void)deselectHashtag:(HashtagCollectionCell *) cell {
-    cell.hashtag.isSelected = NO;
-    [cell.hashtagToggle setTitleColor:self.view.tintColor forState:UIControlStateNormal];
-    
-    //remove from hashtags
-    NSString *hashtagString = [[NSString alloc] init];
-    hashtagString = [NSString stringWithFormat:@"%@", cell.hashtag.text];
-    NSUInteger index = [self.hashtags indexOfObject:[NSString stringWithFormat:@"%@", cell.hashtag.text]];
-    [self.hashtags removeObjectAtIndex:index];
-}
-
--(void)selectHashtag:(HashtagCollectionCell *)cell withButton:(UIButton *) button {
-    cell.hashtag.isSelected = YES;
-    [button setTitleColor:[UIColor purpleColor] forState:UIControlStateNormal];
-    
-    //add to selected arrays
-    [self.hashtags addObject:cell.hashtag.text];
-
-}
-
-- (IBAction)removeHashtagsFromList:(id)sender {
-    NSMutableArray *newPlaceList = [[NSMutableArray alloc] init];
-    
-    for (int i=0; i<[self.place.hashtagList count]; i++) {
-        Hashtag *hashtag = self.place.hashtagList[i];
-        NSLog(@"working with hashtag %@, index %d", hashtag.text, i);
-        if ([hashtag.score integerValue] != (int)0) {
-            [newPlaceList addObject:[self.place.hashtagList objectAtIndex:i]];
-            NSLog(@"adding hashtag %@", self.place.hashtagList[i]);
-            }
-    }
-    
-    self.place.hashtagList = newPlaceList;
-}*/
 
 @end
