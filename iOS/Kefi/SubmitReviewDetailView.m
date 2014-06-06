@@ -40,7 +40,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     // manually change sentiment if greater than 2 to sentiment - 1
     // because our "2" is merely a placeholder and this messes up calculation
     if (self.sentimentLevel > 2)
@@ -48,15 +47,16 @@
     
     self.reviewDetailLabel.text = self.reviewDetailLabelText;
     self.placeLabel.text = self.place.name;
+    
     [self.placeLabel sizeToFit];
+    [self.reviewDetailLabel sizeToFit];
+    
     self.placeLabel.textAlignment = NSTextAlignmentLeft;
     self.reviewDetailLabel.textAlignment = NSTextAlignmentLeft;
     
     self.hashtags = [[NSMutableArray alloc] init];
     for (Hashtag *hashtag in self.place.hashtagList)
-    {
         [self.hashtags addObject:hashtag.text];
-    }
     
     self.hashtagView.delegate = self;
     self.hashtagView.dataSource = self;
@@ -68,7 +68,6 @@
 
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    NSLog(@"viewdidappear");
     
     NSDictionary *sentimentToImageDict = @{@0:@"soPissed.png",
                                            @1:@"eh.png",
@@ -264,9 +263,6 @@
 {
     HashtagCollectionCell *cell = (HashtagCollectionCell *)[self.hashtagView cellForItemAtIndexPath:indexPath];
     cell.textLabel.textColor = [UIColor redColor];
-
-    
-    NSLog(@"%@", self.hashtags);
 }
 
 - (void) collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath

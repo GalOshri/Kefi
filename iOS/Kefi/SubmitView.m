@@ -110,6 +110,8 @@ NSString *coordinateLabelDefault;
     // set title
     self.placeLabel.text = self.place.name;
     self.placeLabel.textAlignment = NSTextAlignmentCenter;
+    [self.placeLabel sizeToFit];
+    NSLog(@"Placelabel width is %f", self.placeLabel.frame.size.width);
     
     
     horizontalToSentimentDict = @{@0:self.L1Sentiment,
