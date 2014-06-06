@@ -221,7 +221,7 @@ NSString *coordinateLabelDefault;
 -(void)InitiateReviewEnergyLevels:(NSTimer *)timer
 {
     NSInteger selectedSentiment = [timer.userInfo integerValue];
-    
+    NSLog(@"activatedSentiment is %ld", (long)selectedSentiment);
     if (activatedSentiment != -1)
         return;
     
@@ -323,6 +323,7 @@ NSString *coordinateLabelDefault;
     }];
     
     activatedSentiment = -1;
+    selectedSentimentIndex = -1;
     for (id key in horizontalToSentimentDict)
     {
         [self DeactivateEnergyLevel:[key intValue]];
