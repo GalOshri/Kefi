@@ -170,23 +170,6 @@
     
 }
 
-/*
-#pragma mark - Selecting/Deslecting hashtags
-- (IBAction)selectHashtags:(UIButton *)hashtagButton {
-    HashtagCollectionCell *hashtagCell = (HashtagCollectionCell *)hashtagButton.superview.superview;
-
-    // if not selected, select it
-    if (hashtagCell.hashtag.isSelected)
-        [self deselectHashtag:hashtagCell];
-
-    // if selected, deselect it
-    else
-        [self selectHashtag:hashtagCell withButton:hashtagButton];
-    
-    NSLog(@"%@", self.hashtags);
-}
- */
-
 #pragma mark Collection View Methods
 -(NSInteger)numberOfSectionsInCollectionView:
 (UICollectionView *)collectionView
@@ -210,47 +193,35 @@
                                      forIndexPath:indexPath];
     
     NSString *temp = self.hashtags[indexPath.row];
- //   UIButton *button = (UIButton *)[myCell viewWithTag:100];
-    //set button text and assign to hashtagToggle
-  //  [button setTitle:temp forState:UIControlStateNormal];
-
-//    myCell.hashtagToggle = button;
-//    myCell.text = temp;
-    myCell.textLabel.text = temp;
-    
- //   if (!myCell.hashtag.isSelected)
- //       [myCell.hashtagToggle setTitleColor:self.view.tintColor forState:UIControlStateNormal];
- //   else
- //       [self selectHashtag:myCell withButton:button];
-    
-    //play with cells
- //   button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-
+ 
+    [myCell.textLabel setText:temp];
+    [myCell.textLabel setFont:[UIFont systemFontOfSize:12]];
+    [myCell.textLabel setTextColor:self.view.tintColor];
+    [myCell.textLabel setTextColor:[UIColor blackColor]];
     
     /*
     [myCell.layer setBorderWidth:2];
     [myCell.layer setBorderColor:[UIColor grayColor].CGColor];
     [myCell.layer setCornerRadius:10];
-     */
+    */
     
     return myCell;
 }
 
-/* 
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 
 {
-    Hashtag *temp = self.place.hashtagList[indexPath.row];
-    UIButton *button = [[UIButton alloc]init];
-    
+    NSString *temp = self.hashtags[indexPath.row];
+    UILabel *label = [[UILabel alloc]init];
+ 
     //set button text and assign to hashtagToggle
-    [button setTitle:temp.text forState:UIControlStateNormal];
-    [button sizeToFit];
-    
-    
-    return CGSizeMake(button.frame.size.width, 20);
-    
-} */
+    [label setText:temp];
+    [label setFont:[UIFont systemFontOfSize:14]];
+    [label sizeToFit];
+ 
+    return CGSizeMake(label.frame.size.width + 4, 20);
+}
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 0; // This is the minimum inter item spacing, can be more
@@ -279,44 +250,34 @@
             }
         }
         
-        // if it isn't add and add to UICollectionView
-        //Hashtag *newHashtag = [[Hashtag alloc] initWithText:text withScore:0];
-        
-        //[self.hashtags addObject:newHashtag.text];
-        //[self.place.hashtagList addObject:newHashtag];
-        
         [self.hashtags addObject:text];
-        
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[self.hashtags count]-1 inSection:0];
-
         [self.hashtagView insertItemsAtIndexPaths:@[indexPath]];
-        
         HashtagCollectionCell *cell = (HashtagCollectionCell *)[self.hashtagView cellForItemAtIndexPath:indexPath];
-        
         [self.hashtagView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-        
         cell.textLabel.textColor = [UIColor redColor];
-        
     }
-    
     return YES;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"HI");
     HashtagCollectionCell *cell = (HashtagCollectionCell *)[self.hashtagView cellForItemAtIndexPath:indexPath];
-    
     cell.textLabel.textColor = [UIColor redColor];
+
+    
+    NSLog(@"%@", self.hashtags);
 }
 
 - (void) collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 
 {
     HashtagCollectionCell *cell = (HashtagCollectionCell *)[self.hashtagView cellForItemAtIndexPath:indexPath];
-    
-    cell.textLabel.textColor = [UIColor blueColor];
+    [cell.textLabel setTextColor:self.view.tintColor];
+
 }
+
+
 
 /*
 

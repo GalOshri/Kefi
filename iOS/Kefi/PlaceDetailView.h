@@ -18,7 +18,6 @@
 }
 
 @property (strong, nonatomic) IBOutlet UIView *allView;
-
 @property (strong, nonatomic) IBOutlet UICollectionView *hashtagView;
 
 

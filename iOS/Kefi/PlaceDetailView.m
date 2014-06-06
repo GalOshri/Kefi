@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel2;
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel3;
 
+@property (strong, nonatomic) NSMutableArray *hashtags;
+
 @end
 
 @implementation PlaceDetailView
@@ -106,6 +108,17 @@
     // load sentiment/energy images
     [self setSentimentImage];
     
+    
+    self.hashtags = [[NSMutableArray alloc] init];
+    for (Hashtag *hashtag in self.place.hashtagList)
+    {
+        [self.hashtags addObject:hashtag.text];
+    }
+
+    self.hashtagView.delegate = self;
+    
+    self.hashtagView.allowsMultipleSelection = YES;
+    
 }
 
 - (void)viewDidLayoutSubviews
@@ -185,9 +198,7 @@
     
     else {
         [self.sentimentImage setHidden:NO];
-        
         self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@"none"]];
-        
         for (int i=0; i<[energyLevels count]; i++)
             [energyLevels[i] setHidden:YES];
     }
@@ -219,27 +230,16 @@
                                     dequeueReusableCellWithReuseIdentifier:@"hashtagCell"
                                     forIndexPath:indexPath];
     
-    Hashtag *temp = self.place.hashtagList[indexPath.row];
-    
- //   UIButton *button = (UIButton *)[myCell viewWithTag:100];
-    
-    //set button text and assign to hashtagToggle
- //   [button setTitle:temp.text forState:UIControlStateNormal];
-    
- //   myCell.hashtagToggle = button;
-    
-    //play with cells
+    NSString *temp = self.hashtags[indexPath.row];
 
-    // button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-
+    [myCell.textLabel setText:temp];
+    [myCell.textLabel setFont:[UIFont systemFontOfSize:12]];
+    [myCell.textLabel setTextColor:[UIColor blackColor]];
+    
     /*
-    [myCell.layer setBorderWidth:2];
-    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    myCell.textLabel.text = temp.text;
-    
-    [myCell.layer setBorderWidth:2];
-    [myCell.layer setBorderColor:[UIColor grayColor].CGColor];
-    [myCell.layer setCornerRadius:10];
+     [myCell.layer setBorderWidth:2];
+     [myCell.layer setBorderColor:[UIColor whiteColor].CGColor];
+     [myCell.layer setCornerRadius:10];
     */
     
     return myCell;
@@ -249,7 +249,6 @@
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"hi");
     // TODO: Select Item
 }
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -259,22 +258,21 @@
 
 
 // TODO: SIZING
-/*
+
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 
 {
-    Hashtag *temp = self.place.hashtagList[indexPath.row];
-    UIButton *button = [[UIButton alloc]init];
+    NSString *temp = self.hashtags[indexPath.row];
+    UILabel *label = [[UILabel alloc]init];
     
     //set button text and assign to hashtagToggle
-    [button setTitle:temp.text forState:UIControlStateNormal];
-    button.titleLabel.font =  [UIFont systemFontOfSize:13];
-    [button sizeToFit];
-
+    [label setText:temp];
+    [label setFont:[UIFont systemFontOfSize:14]];
+    [label sizeToFit];
     
-    return CGSizeMake(button.frame.size.width + 5, 20);
+    return CGSizeMake(label.frame.size.width + 4, 20);
     
-} */
+}
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 0; // This is the minimum inter item spacing, can be more

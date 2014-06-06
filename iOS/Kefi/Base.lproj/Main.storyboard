@@ -95,19 +95,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="186" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlZ-ew-8hp">
-                                                    <rect key="frame" x="7" y="1" width="188" height="20"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HzS-EZ-eOm">
+                                                    <rect key="frame" x="2" y="0.0" width="172" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <state key="normal" title="LustyIntentions">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <outlet property="hashtagToggle" destination="KlZ-ew-8hp" id="Uyy-Qm-PuL"/>
+                                            <outlet property="textLabel" destination="HzS-EZ-eOm" id="bEP-mq-28G"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -516,7 +515,6 @@
                                 </state>
                                 <connections>
                                     <action selector="removeHashtagsFromList:" destination="d9R-wC-4Vk" eventType="touchUpInside" id="n3Z-Rc-cgu"/>
-                                    <action selector="unwindToPlaceDetail:" destination="EvM-Cd-43n" eventType="touchUpInside" id="CaK-ag-JlA"/>
                                     <segue destination="Rj0-8q-Owb" kind="unwind" unwindAction="unwindToPlaceDetail:" id="LI0-Tb-YHu"/>
                                 </connections>
                             </button>
@@ -537,21 +535,20 @@
                                             <rect key="frame" x="0.0" y="0.0" width="215" height="30"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" tag="100" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oga-j6-0Vg">
-                                                    <rect key="frame" x="-29" y="0.0" width="244" height="20"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdD-pB-MCi">
+                                                    <rect key="frame" x="4" y="0.0" width="209" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <state key="normal" title="LustyIntentions">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="selectHashtags:" destination="d9R-wC-4Vk" eventType="touchUpInside" id="8m3-w6-Mi6"/>
-                                                    </connections>
-                                                </button>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <size key="customSize" width="215" height="30"/>
+                                        <connections>
+                                            <outlet property="textLabel" destination="vdD-pB-MCi" id="ZUp-Wz-IYf"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -566,7 +563,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Job-ce-A9p"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelBUtton" destination="BII-Sw-Gbq" id="8Xi-5E-l5Q"/>
+                        <outlet property="cancelButton" destination="BII-Sw-Gbq" id="h4B-Cs-pl3"/>
                         <outlet property="firstEnergyCircle" destination="IuE-ps-ChE" id="7xg-RI-dnm"/>
                         <outlet property="hashtagTextField" destination="D1E-54-9MT" id="fBZ-Ld-Nu6"/>
                         <outlet property="hashtagView" destination="Ddy-aK-kfn" id="o7r-mu-C3q"/>
