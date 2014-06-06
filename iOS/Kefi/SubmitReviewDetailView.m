@@ -59,6 +59,7 @@
     }
     
     self.hashtagView.delegate = self;
+    self.hashtagView.dataSource = self;
     
     self.hashtagView.allowsMultipleSelection = YES;
     
@@ -197,7 +198,6 @@
     [myCell.textLabel setText:temp];
     [myCell.textLabel setFont:[UIFont systemFontOfSize:12]];
     [myCell.textLabel setTextColor:self.view.tintColor];
-    [myCell.textLabel setTextColor:[UIColor blackColor]];
     
     /*
     [myCell.layer setBorderWidth:2];
@@ -238,7 +238,7 @@
     NSString *text = textField.text;
     
     if (![text  isEqual: @""]) {
-        
+       
         //loop through hashtagItems in place, check to see if hashtag.text isn't in there
         for(Hashtag *hashtag in self.place.hashtagList) {
             if ([[text lowercaseString] isEqual:[hashtag.text lowercaseString]]) {

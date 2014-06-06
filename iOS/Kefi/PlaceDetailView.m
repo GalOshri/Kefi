@@ -116,6 +116,7 @@
     }
 
     self.hashtagView.delegate = self;
+    self.hashtagView.dataSource = self;
     
     self.hashtagView.allowsMultipleSelection = YES;
     
@@ -234,7 +235,7 @@
 
     [myCell.textLabel setText:temp];
     [myCell.textLabel setFont:[UIFont systemFontOfSize:12]];
-    [myCell.textLabel setTextColor:[UIColor blackColor]];
+    [myCell.textLabel setTextColor:self.view.tintColor];
     
     /*
      [myCell.layer setBorderWidth:2];

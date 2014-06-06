@@ -17,6 +17,7 @@
 		0D4F4A0318F0ADF700F901AE /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4A0218F0ADF700F901AE /* Place.m */; };
 		0D4F4A0918F0B66A00F901AE /* PlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4A0818F0B66A00F901AE /* PlaceCell.m */; };
 		0D4F4A0D18F0B78100F901AE /* bar_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F4A0C18F0B78100F901AE /* bar_64.png */; };
+		0D4FDB2C19416F9300B0F28F /* LeftAlignFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4FDB2B19416F9300B0F28F /* LeftAlignFlowLayout.m */; };
 		0D727EA318F099F1008310FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D727EA218F099F1008310FC /* Foundation.framework */; };
 		0D727EA718F099F1008310FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D727EA618F099F1008310FC /* UIKit.framework */; };
 		0D727EAD18F099F1008310FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D727EAB18F099F1008310FC /* InfoPlist.strings */; };
@@ -89,6 +90,8 @@
 		0D4F4A0718F0B66A00F901AE /* PlaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceCell.h; sourceTree = "<group>"; };
 		0D4F4A0818F0B66A00F901AE /* PlaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceCell.m; sourceTree = "<group>"; };
 		0D4F4A0C18F0B78100F901AE /* bar_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_64.png; sourceTree = "<group>"; };
+		0D4FDB2A19416F9200B0F28F /* LeftAlignFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftAlignFlowLayout.h; sourceTree = "<group>"; };
+		0D4FDB2B19416F9300B0F28F /* LeftAlignFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftAlignFlowLayout.m; sourceTree = "<group>"; };
 		0D727E9F18F099F1008310FC /* Kefi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kefi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D727EA218F099F1008310FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D727EA618F099F1008310FC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -215,6 +218,17 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		0D4FDB2D194170D200B0F28F /* Collection View Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0D4FDB2A19416F9200B0F28F /* LeftAlignFlowLayout.h */,
+				0D4FDB2B19416F9300B0F28F /* LeftAlignFlowLayout.m */,
+				DA089B891925CFF80055FD31 /* HashtagCollectionCell.h */,
+				DA089B8A1925CFF80055FD31 /* HashtagCollectionCell.m */,
+			);
+			name = "Collection View Helpers";
+			sourceTree = "<group>";
+		};
 		0D727E9618F099F1008310FC = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +279,7 @@
 				0DABAFF0192861520018CED9 /* Place Detail View */,
 				0DABAFEE192860950018CED9 /* Review Submission */,
 				0DABAFF11928616A0018CED9 /* Search View */,
+				0D4FDB2D194170D200B0F28F /* Collection View Helpers */,
 				0D4F49FD18F0AD5600F901AE /* Models */,
 				0D81466118F0E1040072702B /* Service */,
 				0D0C131818FB7F9000C90A5F /* Images */,
@@ -368,8 +383,6 @@
 			children = (
 				0DB0B4361921D8DF008D5624 /* SubmitReviewDetailView.h */,
 				0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */,
-				DA089B891925CFF80055FD31 /* HashtagCollectionCell.h */,
-				DA089B8A1925CFF80055FD31 /* HashtagCollectionCell.m */,
 			);
 			name = "Review Detail View";
 			sourceTree = "<group>";
@@ -497,6 +510,7 @@
 				DAE95ACD1932725700109E75 /* PlaceMapViewViewController.m in Sources */,
 				0D4F4A0318F0ADF700F901AE /* Place.m in Sources */,
 				0D4F49FC18F0ACA000F901AE /* PlaceListView.m in Sources */,
+				0D4FDB2C19416F9300B0F28F /* LeftAlignFlowLayout.m in Sources */,
 				0D727EAF18F099F1008310FC /* main.m in Sources */,
 				0D0C131B18FB824600C90A5F /* SubmitView.m in Sources */,
 				0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */,
