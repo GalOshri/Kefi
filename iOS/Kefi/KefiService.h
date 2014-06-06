@@ -10,6 +10,7 @@
 #import "PlaceList.h"
 #import "Hashtag.h"
 #import "Place.h"
+#import "PlaceDetailView.h"
 
 
 @interface KefiService : NSObject
@@ -18,6 +19,6 @@
 
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withSearchTerm:(NSString *)searchTerm;
 
-+ (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings;
++ (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings withPlaceDetailView:(PlaceDetailView *)pdv;
 
 @end
