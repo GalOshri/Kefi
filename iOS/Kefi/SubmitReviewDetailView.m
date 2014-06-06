@@ -89,7 +89,6 @@
     
     
     // animate placeName and reviewdetail labels down
-    NSLog(@"animating");
     [UIView animateWithDuration:0.5 animations:^{
         self.placeLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width + 15, self.sentimentImage.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
         
@@ -255,6 +254,9 @@
         HashtagCollectionCell *cell = (HashtagCollectionCell *)[self.hashtagView cellForItemAtIndexPath:indexPath];
         [self.hashtagView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
         cell.textLabel.textColor = [UIColor redColor];
+        
+        self.hashtagTextField.text = nil;
+        // [self.hashtagTextField resignFirstResponder];
     }
     return YES;
 }
