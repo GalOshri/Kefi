@@ -21,4 +21,6 @@
 
 + (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings withPlaceDetailView:(PlaceDetailView *)pdv;
 
++ (void) GetKefiSettings;
+
 @end

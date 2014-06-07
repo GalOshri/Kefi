@@ -234,5 +234,37 @@ int radius = 1000;
     
 }
 
++ (void) GetKefiSettings
+{
+    NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
+    
+    NSDate *lastUpdated = [userData objectForKey:@"ContactList"];
+    NSDate *currentDate = [NSDate date];
+    
+    // if we recently updated, return
+    if (lastUpdated != nil)
+    {
+        NSTimeInterval secondsSinceUpdate = [currentDate timeIntervalSinceDate:lastUpdated];
+        int numberOfDays = secondsSinceUpdate / 86400.0;
+        if (numberOfDays < 1)
+            return;
+    }
+
+    [PFCloud callFunctionInBackground:@"getConfigObject"
+                       withParameters:@{}
+                                block:^(NSDictionary *result, NSError *error) {
+                                    if (!error) {
+                                        NSNumber *value = [result objectForKey:@"Boo"];
+                                        
+                                        NSLog(@"%d", [value intValue]);
+                                        
+                                    }
+                                }];
+    
+    
+    
+    
+}
+
 
 @end

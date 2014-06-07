@@ -128,7 +128,7 @@
     self.tableHeader = self.tableView.tableHeaderView;
     self.tableView.tableHeaderView = nil;
     
-    
+    [KefiService GetKefiSettings];
     
 }
 
