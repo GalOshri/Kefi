@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *placeAddress;
 @property (weak, nonatomic) IBOutlet UILabel *placeCrossStreets;
 @property (weak, nonatomic) IBOutlet UILabel *distanceMi;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 -(void)setSentimentImage;
 

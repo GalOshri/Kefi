@@ -16,6 +16,7 @@
 @property (nonatomic, strong) KefiService *kefiService;
 @property (weak, nonatomic) IBOutlet UIButton *mapButton;
 
+
 @property (weak, nonatomic) IBOutlet UIImageView *sentimentImage;
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel1;
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel2;

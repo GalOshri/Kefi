@@ -163,6 +163,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Qhb-eL-V5t">
+                                <rect key="frame" x="268" y="86" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -178,6 +182,7 @@
                         <outlet property="placeAddress" destination="Qbv-Lm-mTN" id="Tvv-oH-geV"/>
                         <outlet property="placeCrossStreets" destination="3jD-h4-ckB" id="Duf-Bo-qMN"/>
                         <outlet property="sentimentImage" destination="08Q-dA-O5E" id="omi-po-EBH"/>
+                        <outlet property="spinner" destination="Qhb-eL-V5t" id="yET-nv-Jsc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

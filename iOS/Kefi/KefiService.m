@@ -207,6 +207,9 @@ int radius = 1000;
 
 + (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings withPlaceDetailView:(PlaceDetailView *)pdv
 {
+    pdv.spinner.hidden = NO;
+    [pdv.spinner startAnimating];
+    
     //create review PFObject
     PFObject *reviewObject = [PFObject objectWithClassName: @"Review"];
     
@@ -256,6 +259,8 @@ int radius = 1000;
         [queryItems getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             if (!object) {
                 NSLog(@"error executing lookup to get new sentiment after submit");
+                pdv.spinner.hidden = YES;
+                [pdv.spinner startAnimating];
             }
             
             // success
@@ -266,6 +271,10 @@ int radius = 1000;
                 place.isInInterval = YES;
                 [place sortHashtags];
                 [pdv setSentimentImage];
+                
+                pdv.spinner.hidden = YES;
+                [pdv.spinner startAnimating];
+                
                 [pdv.hashtagView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
                 
             }
