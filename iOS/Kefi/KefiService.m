@@ -18,18 +18,18 @@ NSString *client_secret = @"0P1EQQ3NH102D0R3GNGTG0ZAL0S5T41YDB2NPOOMRMO2I2EO";
 NSString *category_id =  @"4bf58dd8d48988d116941735,50327c8591d4c4b30a586d5d,4bf58dd8d48988d11e941735,4bf58dd8d48988d118941735,4bf58dd8d48988d1d8941735,4bf58dd8d48988d120941735,4bf58dd8d48988d121941735,4bf58dd8d48988d11f941735,4bf58dd8d48988d11b941735,4bf58dd8d48988d1d4941735,4bf58dd8d48988d11d941735,4bf58dd8d48988d122941735,4bf58dd8d48988d123941735";
 int radius = 1000;
 
-+ (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView
++ (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withLocation:(CLLocation *)currentLocation
 {
-    [self PopulatePlaceList:placeList withTable:tableView withSearchTerm:@""];
+    [self PopulatePlaceList:placeList withTable:tableView withSearchTerm:@"" withLocation:currentLocation];
 }
 
 
 
-+ (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withSearchTerm:(NSString *)searchTerm
++ (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withSearchTerm:(NSString *)searchTerm withLocation:(CLLocation *)currentLocation
 {
     NSString *fsURLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&radius=%d&intent=browse&categoryId=%@&client_id=%@&client_secret=%@&v=%d",
-                             47.615925,
-                             -122.326968,
+                             currentLocation.coordinate.latitude,
+                             currentLocation.coordinate.longitude,
                              radius,
                              category_id,
                              client_id,

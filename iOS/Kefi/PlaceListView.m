@@ -81,7 +81,10 @@
     {
         if (![searchTerm isEqualToString:@""]) {
             [self.placeList.places removeAllObjects];
-            [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withSearchTerm:searchTerm];
+            if (locationManager.location != nil)
+                [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withSearchTerm:searchTerm withLocation:locationManager.location];
+            else
+                [locationManager startUpdatingLocation];
             self.tableView.tableHeaderView = self.tableHeader;
         }
     }
@@ -107,16 +110,17 @@
     
     searchTerm = @"";
     
-  /*
+  
     locationManager = [[CLLocationManager alloc] init];
-    geocoder = [[CLGeocoder alloc] init];
+    //geocoder = [[CLGeocoder alloc] init];
     
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
+    [locationManager startUpdatingLocation]; // calls Kefi Service to populate list
     
+ 
     NSLog(@"%g, %g", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
-  */
+  
     
     
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
@@ -124,7 +128,7 @@
     self.tableHeader = self.tableView.tableHeaderView;
     self.tableView.tableHeaderView = nil;
     
-    [KefiService PopulatePlaceList:self.placeList withTable:self.tableView];
+    
     
 }
 
@@ -147,7 +151,10 @@
                      }
                      completion:^(BOOL finished) {
                          [self.placeList.places removeAllObjects];
-                         [KefiService PopulatePlaceList:self.placeList withTable:self.tableView];
+                         if (locationManager.location != nil)
+                             [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:locationManager.location];
+                         else
+                             [locationManager startUpdatingLocation];
                      }];
 }
 
@@ -284,14 +291,13 @@
     CLLocation *currentLocation = newLocation;
     
     if (currentLocation != nil) {
-//        longitudeLabel.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.longitude];
-//        latitudeLabel.text = [NSString stringWithFormat:@"%.8f", currentLocation.coordinate.latitude];
+        [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:currentLocation];
     }
     
     [locationManager stopUpdatingLocation];
     
     // Reverse Geocoding
-    NSLog(@"Resolving the Address");
+    /*NSLog(@"Resolving the Address");
     [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
         if (error == nil && [placemarks count] > 0) {
@@ -306,7 +312,7 @@
         }
     } ];
     NSLog(@"\n");
-    NSLog(@"\n");
+    NSLog(@"\n"); */
 }
 
 
