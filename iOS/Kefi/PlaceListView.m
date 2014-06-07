@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) KefiService *kefiService;
 @property (strong, nonatomic) IBOutlet UIButton *cancelSearchButton;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) UIView *tableHeader;
 
 @end
@@ -82,10 +83,11 @@
         if (![searchTerm isEqualToString:@""]) {
             [self.placeList.places removeAllObjects];
             if (locationManager.location != nil)
-                [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withSearchTerm:searchTerm withLocation:locationManager.location];
+                [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withSearchTerm:searchTerm withLocation:locationManager.location withTableHeader:self.tableHeader withSpinner:self.spinner];
             else
                 [locationManager startUpdatingLocation];
             self.tableView.tableHeaderView = self.tableHeader;
+            self.cancelSearchButton.hidden = NO;
         }
     }
 }
@@ -106,6 +108,11 @@
 {
     [super viewDidLoad];
     
+    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    
+    self.tableHeader = self.tableView.tableHeaderView;
+    self.tableView.tableHeaderView = nil;
+    
     //[self.tableView registerClass:[PlaceCell class] forCellReuseIdentifier:@"PlaceCell"];
     
     searchTerm = @"";
@@ -123,10 +130,7 @@
   
     
     
-    [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-    
-    self.tableHeader = self.tableView.tableHeaderView;
-    self.tableView.tableHeaderView = nil;
+
     
     [KefiService GetKefiSettings];
     
@@ -143,19 +147,29 @@
 #pragma mark - Search Methods
 - (IBAction)searchCancelClick:(UIButton *)sender
 {
+    self.cancelSearchButton.hidden = YES;
+    [self.placeList.places removeAllObjects];
+    if (locationManager.location != nil)
+        [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:locationManager.location withTableHeader:self.tableHeader withSpinner:self.spinner];
+    else
+        [locationManager startUpdatingLocation];
+    
+    /* INSTEAD OF
     [UIView animateWithDuration:1.0
                           delay:0.0
                         options:UIViewAnimationOptionAllowUserInteraction
                      animations:^{
                          self.tableView.tableHeaderView = nil;
+                         
                      }
                      completion:^(BOOL finished) {
+                         self.cancelSearchButton.hidden = YES;
                          [self.placeList.places removeAllObjects];
                          if (locationManager.location != nil)
-                             [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:locationManager.location];
+                             [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:locationManager.location withTableHeader:self.tableHeader withSpinner:self.spinner];
                          else
                              [locationManager startUpdatingLocation];
-                     }];
+                     }]; */
 }
 
 #pragma mark - Table View Data Source
@@ -283,6 +297,7 @@
     UIAlertView *errorAlert = [[UIAlertView alloc]
                                initWithTitle:@"Error" message:@"Failed to Get Your Location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [errorAlert show];
+    [locationManager startUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
@@ -291,7 +306,7 @@
     CLLocation *currentLocation = newLocation;
     
     if (currentLocation != nil) {
-        [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:currentLocation];
+        [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:currentLocation withTableHeader:self.tableHeader withSpinner:self.spinner];
     }
     
     [locationManager stopUpdatingLocation];
