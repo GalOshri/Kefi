@@ -191,7 +191,7 @@
 - (PlaceCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // set Dictionary for sentiment picture
-    NSDictionary *sentimentToImageDict = @{@"none":@"question.png",
+    NSDictionary *sentimentToImageDict = @{@100:@"question.png",
                                            @0:@"soPissed.png",
                                            @1:@"eh.png",
                                            @2:@"semiHappy.png",
@@ -278,7 +278,7 @@
     else {
         [cell.sentimentImage setHidden:NO];
 
-        cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@"none"]];
+        cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@100]];
         [cell.sentimentImage setAlpha:0.5];
         
         for (int i=0; i<[energyLevels count]; i++)

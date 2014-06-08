@@ -14,13 +14,13 @@
 
 @interface SubmitReviewDetailView ()
 
+@property (strong, nonatomic) IBOutlet UILabel *reviewDetailLabel;
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
-
 
 @property (weak, nonatomic) IBOutlet UIImageView *firstEnergyCircle;
 @property (weak, nonatomic) IBOutlet UIImageView *secondEnergyCircle;
 @property (weak, nonatomic) IBOutlet UIImageView *thirdEnergyCircle;
-@property (strong, nonatomic) IBOutlet UILabel *reviewDetailLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
@@ -29,6 +29,8 @@
 
 
 @property (nonatomic, strong) KefiService *kefiService;
+
+@property (nonatomic) BOOL firstRun;
 @end
 
 
@@ -40,88 +42,94 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.firstRun = YES;
+    NSLog(@"didload");
+    
     // manually change sentiment if greater than 2 to sentiment - 1
     // because our "2" is merely a placeholder and this messes up calculation
+
     if (self.sentimentLevel > 2)
         self.sentimentLevel -= 1;
-    
-    self.reviewDetailLabel.text = self.reviewDetailLabelText;
-    self.placeLabel.text = self.place.name;
-    
-    [self.placeLabel sizeToFit];
-    [self.reviewDetailLabel sizeToFit];
-    
-    self.placeLabel.textAlignment = NSTextAlignmentLeft;
-    self.reviewDetailLabel.textAlignment = NSTextAlignmentLeft;
-    
-    self.hashtags = [[NSMutableArray alloc] init];
-    for (Hashtag *hashtag in self.place.hashtagList)
-        [self.hashtags addObject:hashtag.text];
-    
-    self.hashtagView.delegate = self;
-    self.hashtagView.dataSource = self;
-    
-    self.hashtagView.allowsMultipleSelection = YES;
-    
-    
-}
 
--(void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
     NSDictionary *sentimentToImageDict = @{@0:@"soPissed.png",
                                            @1:@"eh.png",
                                            @2:@"semiHappy.png",
                                            @3:@"soHappy.png"};
     
-    NSArray *energyLevels = @[self.firstEnergyCircle, self.secondEnergyCircle, self.thirdEnergyCircle];
-    
-    
-    self.placeLabel.frame = self.placeLabelFrame;
-    self.reviewDetailLabel.frame = self.reviewDetailLabelFrame;
     
     self.sentimentImage.frame = self.imageFrame;
-    
     self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:[NSNumber numberWithInt:self.sentimentLevel]]];
     
     // uicollectionview background color
     self.hashtagView.backgroundColor = [UIColor whiteColor];
-    
-    
-    // animate placeName and reviewdetail labels down
-    [UIView animateWithDuration:0.5 animations:^{
-        self.placeLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width + 15, self.sentimentImage.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
-        
-        self.reviewDetailLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x, self.sentimentImage.frame.origin.y + 30, self.reviewDetailLabel.frame.size.width, self.reviewDetailLabel.frame.size.height);
-        
-        
-    }completion:^(BOOL finished){
-        //change label to energy levels
-        if (finished) {
 
-            for (int count = 0; count < 3; count++){
-                UIImageView *imageView = [energyLevels objectAtIndex:count];
+    self.hashtags = [[NSMutableArray alloc] init];
+    for (Hashtag *hashtag in self.place.hashtagList)
+        [self.hashtags addObject:hashtag.text];
+    
+    
+    self.hashtagView.delegate = self;
+    self.hashtagView.dataSource = self;
+    self.hashtagView.allowsMultipleSelection = YES;
+    
+    
+}
+
+
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    
+    if (self.firstRun) {
+        [self.placeLabel setText:self.place.name];
+        [self.placeLabel setFrame:self.placeLabelFrame];
+        [self.reviewDetailLabel setText: self.reviewDetailLabelText];
+        [self.reviewDetailLabel setFrame:self.reviewDetailLabelFrame];
+        
+        NSLog(@"didlayout");
+
+        self.placeLabel.textAlignment = NSTextAlignmentLeft;
+        self.reviewDetailLabel.textAlignment = NSTextAlignmentLeft;
+        
+
+        
+        NSArray *energyLevels = @[self.firstEnergyCircle, self.secondEnergyCircle, self.thirdEnergyCircle];
+
+        // animate placeName and reviewdetail labels down
+        
+        [UIView animateWithDuration:0.5 animations:^{
+        
+        
+            self.placeLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width + 15, self.sentimentImage.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
+            self.reviewDetailLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width, self.sentimentImage.frame.origin.y + 30, self.reviewDetailLabel.frame.size.width, self.reviewDetailLabel.frame.size.height);
+        }completion:^(BOOL finished){
+            //change label to energy levels
+            if (finished) {
+
+                for (int count = 0; count < 3; count++){
+                    UIImageView *imageView = [energyLevels objectAtIndex:count];
                 
-                if (self.energyLevel > count) {
-                    [imageView setImage:[UIImage imageNamed:@"smallCircleFull.png"]];
+                    if (self.energyLevel > count) {
+                        [imageView setImage:[UIImage imageNamed:@"smallCircleFull.png"]];
+                    }
+                
+                    else
+                        [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
+                
+                    //position circles and make label disappear
+                    imageView.frame = CGRectMake(count * 40 + self.reviewDetailLabel.frame.origin.x + 10, self.sentimentImage.frame.origin.y + 30, imageView.frame.size.width, imageView.frame.size.height);
+                
+                    [imageView setHidden:NO];
                 }
-                
-                else
-                    [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
-                
-                //position circles and make label disappear
-                imageView.frame = CGRectMake(count * 40 + self.reviewDetailLabel.frame.origin.x + 10, self.sentimentImage.frame.origin.y + 30, imageView.frame.size.width, imageView.frame.size.height);
-                
-                [imageView setHidden:NO];
-                
-            }
             
-            //hide or unhide things
-            [self.reviewDetailLabel setHidden:YES];
-            [self.cancelButton setHidden:NO];
-            [self.submitButton setHidden:NO];
-        }
-    }];
+                //hide or unhide things
+                [self.reviewDetailLabel setHidden:YES];
+                [self.cancelButton setHidden:NO];
+                [self.submitButton setHidden:NO];
+            }
+        }];
+        
+        self.firstRun = NO;
+    }
 }
 
 

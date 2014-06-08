@@ -46,21 +46,49 @@ const NSInteger kMaxCellSpacing = 9;
                                               currentFrame.origin.y,
                                               self.collectionView.frame.size.width,
                                               currentFrame.size.height);
+    NSLog(@"previous frame is  x: %f and y: %f",previousFrame.origin.x, previousFrame.origin.y);
     
+    /*
     if (!CGRectIntersectsRect(previousFrame, strecthedCurrentFrame)) { // if current item is the first item on the line
         // the approach here is to take the current frame, left align it to the edge of the view
         // then stretch it the width of the collection view, if it intersects with the previous frame then that means it
         // is on the same line, otherwise it is on it's own new line
         CGRect frame = currentItemAttributes.frame;
-        frame.origin.x = sectionInset.left; // first item on the line should always be left aligned
-        currentItemAttributes.frame = frame;
+        frame.origin.x = sectionInset.left;
+        
+        
+        [currentItemAttributes setFrame:frame];
+        currentFrame = frame;
+        
+        NSLog(@"new line. previous frame has x: %f and y: %f. Current frame has x: %f and y: %f", previousFrame.origin.x, previousFrame.origin.y,frame.origin.x, frame.origin.y);
+        
         return currentItemAttributes;
+    }*/
+    
+   if (previousFrameRightPoint + currentItemAttributes.frame.size.width + kMaxCellSpacing > self.collectionView.frame.size.width) {
+        CGRect frame = CGRectMake(sectionInset.left, currentItemAttributes.frame.origin.y + 25, currentItemAttributes.frame.size.width, currentFrame.size.height);
+        
+        [currentItemAttributes setFrame:frame];
+        currentFrame = frame;
+        
+        NSLog(@"new line due to text being too long. New frame has x: %f and y: %f",currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
+        
+        return currentItemAttributes;
+        
     }
     
-    CGRect frame = currentItemAttributes.frame;
-    frame.origin.x = previousFrameRightPoint;
-    currentItemAttributes.frame = frame;
-    return currentItemAttributes;
+    else {
+        
+        CGRect frame = currentItemAttributes.frame;
+        frame.origin.x = previousFrameRightPoint;
+        [currentItemAttributes setFrame:frame];
+        currentFrame = frame;
+        
+        NSLog(@"continue same line");
+        
+        return currentItemAttributes;
+    }
+
 }
 
 

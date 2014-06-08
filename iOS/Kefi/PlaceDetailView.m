@@ -130,7 +130,7 @@
     // TODO: move this dictionary to a better place
     // define sentiment level dictionary
     // set Dictionary/arrays for sentiment/energy
-    NSDictionary *sentimentToImageDict = @{@"none":@"question.png",
+    NSDictionary *sentimentToImageDict = @{@100:@"question.png",
                                            @0:@"soPissed.png",
                                            @1:@"eh.png",
                                            @2:@"semiHappy.png",
@@ -168,7 +168,7 @@
     
     else {
         [self.sentimentImage setHidden:NO];
-        self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@"none"]];
+        self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@100]];
         for (int i=0; i<[energyLevels count]; i++)
             [energyLevels[i] setHidden:YES];
     }

@@ -89,6 +89,8 @@ NSString *coordinateLabelDefault;
             srdv.imageFrame = CGRectMake(currentButton.frame.origin.x, currentButton.frame.origin.y + self.drawView.frame.origin.y, currentButton.frame.size.width, currentButton.frame.size.height);
             
             srdv.placeLabelFrame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
+            
+            [self.coordinateLabel sizeToFit];
             srdv.reviewDetailLabelText = self.coordinateLabel.text;
             srdv.reviewDetailLabelFrame = CGRectMake(self.coordinateLabel.frame.origin.x, self.coordinateLabel.frame.origin.y, self.coordinateLabel.frame.size.width, self.coordinateLabel.frame.size.height);
             
@@ -106,13 +108,6 @@ NSString *coordinateLabelDefault;
     
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
-    
-    // set title
-    self.placeLabel.text = self.place.name;
-    self.placeLabel.textAlignment = NSTextAlignmentCenter;
-    [self.placeLabel sizeToFit];
-    NSLog(@"Placelabel width is %f", self.placeLabel.frame.size.width);
-    
     
     horizontalToSentimentDict = @{@0:self.L1Sentiment,
                                                 @1:self.L2Sentiment,
@@ -135,7 +130,7 @@ NSString *coordinateLabelDefault;
     
     //set dictionaries for coordinateLabel
     //TODO: move server-side
-    sentimentStrings = @{@0:@"Get me outta here!",
+    sentimentStrings = @{@0:@"Save me!",
                          @1: @"not diggin' it...",
                          @2: @"",
                          @3: @"It's pretty good",
@@ -146,6 +141,16 @@ NSString *coordinateLabelDefault;
                       @2: @"buzzin'",
                       @3: @"ragin'!"};
     coordinateLabelDefault = @"How do you feel?";
+}
+
+-(void) viewDidLayoutSubviews {
+    // set title
+    [self.placeLabel setText: self.place.name];
+    [self.placeLabel sizeToFit];
+    [self.placeLabel setCenter: CGPointMake(self.view.center.x, 45.5)];
+    
+    
+    
 }
 
 
@@ -221,7 +226,6 @@ NSString *coordinateLabelDefault;
 -(void)InitiateReviewEnergyLevels:(NSTimer *)timer
 {
     NSInteger selectedSentiment = [timer.userInfo integerValue];
-    NSLog(@"activatedSentiment is %ld", (long)selectedSentiment);
     if (activatedSentiment != -1)
         return;
     
