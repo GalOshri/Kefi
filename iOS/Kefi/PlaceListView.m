@@ -237,7 +237,7 @@
     NSArray *energyLevels = @[cell.energyLevel1, cell.energyLevel2, cell.energyLevel3];
     
     
-    if((long)[cell.place.sentiment integerValue] != -1) {
+    if((long)[cell.place.sentiment integerValue] != 100) {
         // NSLog(@"%@ is in Interval: %d with s: %ld, e: %ld", cell.place.name, cell.place.isInInterval, (long)[cell.place.sentiment integerValue], (long)[cell.place.energy integerValue]);
 
         [cell.sentimentImage setHidden:NO];
