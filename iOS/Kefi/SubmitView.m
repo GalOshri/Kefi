@@ -149,9 +149,6 @@ NSString *coordinateLabelDefault;
     [self.placeLabel setText: self.place.name];
     [self.placeLabel sizeToFit];
     [self.placeLabel setCenter: CGPointMake(self.view.center.x, 45.5)];
-    
-    
-    
 }
 
 

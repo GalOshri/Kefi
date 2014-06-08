@@ -86,22 +86,22 @@
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
+    [self.placeLabel setText:self.place.name];
+    [self.reviewDetailLabel setText: self.reviewDetailLabelText];
+    [self.placeLabel sizeToFit];
+    [self.reviewDetailLabel sizeToFit];
     
     if (self.firstRun) {
-        [self.placeLabel setText:self.place.name];
+        
         [self.placeLabel setFrame:self.placeLabelFrame];
-        [self.reviewDetailLabel setText: self.reviewDetailLabelText];
         [self.reviewDetailLabel setFrame:self.reviewDetailLabelFrame];
 
         self.placeLabel.textAlignment = NSTextAlignmentLeft;
         self.reviewDetailLabel.textAlignment = NSTextAlignmentLeft;
         
-
-        
         NSArray *energyLevels = @[self.firstEnergyCircle, self.secondEnergyCircle, self.thirdEnergyCircle];
 
         // animate placeName and reviewdetail labels down
-        
         [UIView animateWithDuration:0.5 animations:^{
         
         
@@ -122,7 +122,7 @@
                         [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
                 
                     //position circles and make label disappear
-                    imageView.frame = CGRectMake(count * 40 + self.reviewDetailLabel.frame.origin.x + 10, self.sentimentImage.frame.origin.y + 30, imageView.frame.size.width, imageView.frame.size.height);
+                    imageView.frame = CGRectMake(count * 43 + self.reviewDetailLabel.frame.origin.x - 2, self.sentimentImage.frame.origin.y + 31, imageView.frame.size.width, imageView.frame.size.height);
                 
                     [imageView setHidden:NO];
                 }

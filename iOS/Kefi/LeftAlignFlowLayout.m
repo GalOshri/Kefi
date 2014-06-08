@@ -47,7 +47,7 @@ const NSInteger kMaxCellSpacing = 9;
                                               self.collectionView.frame.size.width,
                                               currentFrame.size.height);
     
-    NSLog(@"previous frame is  x: %f and y: %f",previousFrame.origin.x, previousFrame.origin.y);
+    // NSLog(@"previous frame is  x: %f and y: %f",previousFrame.origin.x, previousFrame.origin.y);
     
     if (!CGRectIntersectsRect(previousFrame, strecthedCurrentFrame)) {
         CGRect frame = CGRectMake(sectionInset.left, currentItemAttributes.frame.origin.y, currentItemAttributes.frame.size.width, currentFrame.size.height);
@@ -55,7 +55,7 @@ const NSInteger kMaxCellSpacing = 9;
         [currentItemAttributes setFrame:frame];
         currentFrame = frame;
         
-        NSLog(@"new line. New frame has x: %f and y: %f",currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
+        // NSLog(@"new line. New frame has x: %f and y: %f",currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
         
         return currentItemAttributes;
 
@@ -67,21 +67,20 @@ const NSInteger kMaxCellSpacing = 9;
         [currentItemAttributes setFrame:frame];
         currentFrame = frame;
         
-        NSLog(@"new line due to text being too long. New frame has x: %f and y: %f",currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
+        // NSLog(@"new line due to text being too long. New frame has x: %f and y: %f",currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
         
         return currentItemAttributes;
         
     }
     
     else {
-        
         CGRect frame = currentItemAttributes.frame;
         frame.origin.x = previousFrameRightPoint;
         frame.origin.y = previousFrame.origin.y;
         [currentItemAttributes setFrame:frame];
         currentFrame = frame;
         
-        NSLog(@"continue same line");
+        // NSLog(@"continue same line");
         
         return currentItemAttributes;
     }
