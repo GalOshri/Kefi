@@ -42,10 +42,26 @@ const NSInteger kMaxCellSpacing = 9;
     CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width + kMaxCellSpacing;
     
     CGRect currentFrame = currentItemAttributes.frame;
+    CGRect strecthedCurrentFrame = CGRectMake(0,
+                                              currentFrame.origin.y,
+                                              self.collectionView.frame.size.width,
+                                              currentFrame.size.height);
     
     NSLog(@"previous frame is  x: %f and y: %f",previousFrame.origin.x, previousFrame.origin.y);
     
-   if (previousFrameRightPoint + currentItemAttributes.frame.size.width + kMaxCellSpacing > self.collectionView.frame.size.width) {
+    if (!CGRectIntersectsRect(previousFrame, strecthedCurrentFrame)) {
+        CGRect frame = CGRectMake(sectionInset.left, currentItemAttributes.frame.origin.y, currentItemAttributes.frame.size.width, currentFrame.size.height);
+        
+        [currentItemAttributes setFrame:frame];
+        currentFrame = frame;
+        
+        NSLog(@"new line. New frame has x: %f and y: %f",currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
+        
+        return currentItemAttributes;
+
+    }
+
+    else if (previousFrameRightPoint + currentItemAttributes.frame.size.width + kMaxCellSpacing > self.collectionView.frame.size.width) {
         CGRect frame = CGRectMake(sectionInset.left, currentItemAttributes.frame.origin.y + 25, currentItemAttributes.frame.size.width, currentFrame.size.height);
         
         [currentItemAttributes setFrame:frame];

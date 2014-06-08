@@ -92,8 +92,6 @@
         [self.placeLabel setFrame:self.placeLabelFrame];
         [self.reviewDetailLabel setText: self.reviewDetailLabelText];
         [self.reviewDetailLabel setFrame:self.reviewDetailLabelFrame];
-        
-        NSLog(@"didlayout");
 
         self.placeLabel.textAlignment = NSTextAlignmentLeft;
         self.reviewDetailLabel.textAlignment = NSTextAlignmentLeft;
