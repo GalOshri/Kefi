@@ -207,7 +207,6 @@ int radius = 1000;
 
 + (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings withPlaceDetailView:(PlaceDetailView *)pdv
 {
-    pdv.spinner.hidden = NO;
     [pdv.spinner startAnimating];
     
     //create review PFObject
@@ -272,7 +271,6 @@ int radius = 1000;
                 [place sortHashtags];
                 [pdv setSentimentImage];
                 
-                pdv.spinner.hidden = YES;
                 [pdv.spinner startAnimating];
                 
                 [pdv.hashtagView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
@@ -310,6 +308,10 @@ int radius = 1000;
                                         
                                         NSLog(@"%d", [value intValue]);
                                         
+                                        NSArray *kefiHashtags = [result objectForKey:@"kefiHashtags"];
+                                        
+                                        [userData setObject:kefiHashtags forKey:@"kefiHashtags"];
+                                        [userData synchronize];
                                     }
                                 }];   
 }

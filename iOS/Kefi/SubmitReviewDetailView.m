@@ -67,6 +67,14 @@
     for (Hashtag *hashtag in self.place.hashtagList)
         [self.hashtags addObject:hashtag.text];
     
+    // Add Kefi hashtags
+    NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
+    NSArray *kefiHashtags = [userData objectForKey:@"kefiHashtags"];
+    for (NSString *hashtag in kefiHashtags)
+    {
+        [self.hashtags addObject:hashtag];
+    }
+    
     
     self.hashtagView.delegate = self;
     self.hashtagView.dataSource = self;

@@ -95,7 +95,7 @@
 
     self.hashtagView.delegate = self;
     self.hashtagView.dataSource = self;
-    
+        
 }
 
 - (void)viewDidLayoutSubviews
