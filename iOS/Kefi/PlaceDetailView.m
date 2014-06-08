@@ -79,6 +79,7 @@
     
     //sets name to view?
     [self.navigationController.viewControllers[self.navigationController.viewControllers.count -1] setTitle:self.place.name];
+    [self.navigationController.viewControllers[self.navigationController.viewControllers.count -2] setTitle:@"Back"];
 
     //set some more variables here
     self.placeAddress.text = self.place.address;

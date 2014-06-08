@@ -72,7 +72,8 @@
     NSArray *kefiHashtags = [userData objectForKey:@"kefiHashtags"];
     for (NSString *hashtag in kefiHashtags)
     {
-        [self.hashtags addObject:hashtag];
+        if (![self.hashtags containsObject:hashtag])
+            [self.hashtags addObject:hashtag];
     }
     
     
