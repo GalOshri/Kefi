@@ -1,30 +1,90 @@
 var MINIMUM_SCORE = 30;
 var NUM_HOURS_CUTOFF = 2;
 var ADDITIONAL_REVIEW_SCORE = 50;
-var EXPONENTIAL_CONSTANT_HASHTAG = 0.1;
+var EXPONENTIAL_CONSTANT_HASHTAG = 0.0000001;
 var EXPONENTIAL_CONSTANT_SENTIMENT_AND_ENERGY = 0.1;
 var ADDITIONAL_SENTIMENT_AND_ENERGY_SCORE = 10;
+var DAYS_CUTOFF_SENTIMENT_AND_ENERGY = 2;
 
-// Use Parse.Cloud.define to define as many cloud functions as you want.
-// For example:
-Parse.Cloud.define("cleanHashtags", function(request, response) {
+Parse.Cloud.job("UpdatePlaces", function(request, status) {
   
-  //cutoff time
-  var currentDate = Date.now();
-  
-  var timeInterval = NUM_HOURS_CUTOFF*60*60*1000;
-  var cutoffDate = currentDate - timeInterval;
-  cutoffDate = new Date(cutoffDate).toISOString();
+	//cutoff time
+	var currentDate = Date.now();
 
-  //query for places
-  var Place = Parse.Object.extend("Place");
-  var queryInTimeInterval = new Parse.Query(Place);
- 
-  //queryInInterval.equalTo("objectId", "rJf8bERFCb");
-  queryInTimeInterval.greaterThan("updatedAt", {"__type":"Date","iso":cutoffDate});
- 
-  //here is where we grab all hashtags and update
-  queryInTimeInterval.find({
+	var timeInterval = NUM_HOURS_CUTOFF*60*60*1000;
+	var cutoffDate = currentDate - timeInterval;
+	cutoffDate = new Date(cutoffDate).toISOString();
+
+	
+
+	//query for places
+	var Place = Parse.Object.extend("Place");
+	var query = new Parse.Query(Place);
+	
+	query.each(function(place) {
+      // Update to place
+
+      var hashtags = place.get("hashtagList");
+
+      var updatedAt = place.updatedAt;
+	  var deltaT = (currentDate - new Date(updatedAt));
+
+
+      // if array is empty, we don't need to do anything to this place
+      if (hashtags.length != 0)
+      {
+	      var newTagsArray = [];
+	      // if array is not empty, update scores of the hashtags
+	      for (var i = 0; i < hashtags.length; i++)
+	      {
+	      	var hashtag = hashtags[i];
+
+	      	// Update Hashtag score
+	      	var newHashtagScore = hashtag["score"] * Math.exp(-1 * EXPONENTIAL_CONSTANT_HASHTAG * deltaT);
+			hashtag["score"] = newHashtagScore;
+			console.log(newHashtagScore);
+
+	      	// Remove poor hashtags
+	      	if (hashtag["score"] > MINIMUM_SCORE) 
+	      	{
+				//add item to new array
+				newTagsArray.push(hashtags[i]);
+			}
+	      }
+
+	      place.set("hashtagList",newTagsArray);
+  		}
+
+  		// Update Sentiment and Energy if this is old
+  		if ((deltaT / * (1000 * 60 * 60 * 24) > DAYS_CUTOFF_SENTIMENT_AND_ENERGY)
+  		{
+  			place.set("sentiment", 100);
+  			place.set("energy", 100);
+  			place.set("confidence", 0);
+  		}
+
+      return place.save();
+  }).then(function() {
+    // Set the job's success status
+    status.success("Hashtags cleaned successfully.");
+  }, function(error) {
+    // Set the job's error status
+    status.error("Uh oh, something went wrong.");
+  });
+});
+
+
+
+
+
+/*
+	var queryInTimeInterval = new Parse.Query(Place);
+
+	//queryInInterval.equalTo("objectId", "rJf8bERFCb");
+	queryInTimeInterval.greaterThan("updatedAt", {"__type":"Date","iso":cutoffDate});
+
+	//here is where we grab all hashtags and update
+	queryInTimeInterval.find({
   	
   	success: function(results) {
 	  	for (var i = 0; i < results.length; i++) {
@@ -80,8 +140,8 @@ Parse.Cloud.define("cleanHashtags", function(request, response) {
 	error:function() {
     	response.error("uh oh");
     }
-  });
-});
+  }); */
+
 
 
 /******
