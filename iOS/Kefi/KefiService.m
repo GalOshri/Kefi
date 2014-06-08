@@ -234,8 +234,8 @@ int radius = 1000;
         placeObject[@"fsID"] = place.fsId;
         placeObject[@"hashtagList"] = [[NSArray alloc] initWithObjects:nil];
         
-        placeObject[@"sentiment"] = [NSNumber numberWithInt:0];
-        placeObject[@"energy"] = [NSNumber numberWithInt:0];
+        placeObject[@"sentiment"] = [NSNumber numberWithInt:100];
+        placeObject[@"energy"] = [NSNumber numberWithInt:100];
         placeObject[@"confidence"] = [NSNumber numberWithInt:0];
         
         placeObject[@"lastReviewed"] = [NSDate new];

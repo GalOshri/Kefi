@@ -27,7 +27,10 @@ Parse.Cloud.job("UpdatePlaces", function(request, status) {
       var hashtags = place.get("hashtagList");
 
       var updatedAt = place.updatedAt;
-	  var deltaT = (currentDate - new Date(updatedAt));
+	  var deltaTUpdated = (currentDate - new Date(updatedAt));
+	  var lastReviewed = place.get("lastReviewed");
+		var deltaTReviewed = (currentDate - new Date(lastReviewed))
+
 
 
       // if array is empty, we don't need to do anything to this place
@@ -40,7 +43,7 @@ Parse.Cloud.job("UpdatePlaces", function(request, status) {
 	      	var hashtag = hashtags[i];
 
 	      	// Update Hashtag score
-	      	var newHashtagScore = hashtag["score"] * Math.exp(-1 * EXPONENTIAL_CONSTANT_HASHTAG * deltaT);
+	      	var newHashtagScore = hashtag["score"] * Math.exp(-1 * EXPONENTIAL_CONSTANT_HASHTAG * deltaTUpdated);
 			hashtag["score"] = newHashtagScore;
 			console.log(newHashtagScore);
 
@@ -56,7 +59,8 @@ Parse.Cloud.job("UpdatePlaces", function(request, status) {
   		}
 
   		// Update Sentiment and Energy if this is old
-  		if ((deltaT / * (1000 * 60 * 60 * 24) > DAYS_CUTOFF_SENTIMENT_AND_ENERGY)
+
+  		if ((deltaTReviewed / (1000 * 60 * 60 * 24)) > DAYS_CUTOFF_SENTIMENT_AND_ENERGY)
   		{
   			place.set("sentiment", 100);
   			place.set("energy", 100);
@@ -66,7 +70,7 @@ Parse.Cloud.job("UpdatePlaces", function(request, status) {
       return place.save();
   }).then(function() {
     // Set the job's success status
-    status.success("Hashtags cleaned successfully.");
+    status.success("Place update cleaned successfully.");
   }, function(error) {
     // Set the job's error status
     status.error("Uh oh, something went wrong.");
