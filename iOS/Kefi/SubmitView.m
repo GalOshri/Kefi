@@ -127,6 +127,7 @@ NSString *coordinateLabelDefault;
     
     activatedSentiment = -1;
     activatedEnergy = -1;
+    selectedSentimentIndex = -1;
     
     //set dictionaries for coordinateLabel
     //TODO: move server-side
