@@ -38,6 +38,8 @@
     MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
     point.coordinate = coordinate;
     point.title = self.placeName;
+
+
     
     //add a marker at point
     [self.mapView addAnnotation:point];
