@@ -43,7 +43,6 @@
 {
     [super viewDidLoad];
     self.firstRun = YES;
-    NSLog(@"didload");
     
     // manually change sentiment if greater than 2 to sentiment - 1
     // because our "2" is merely a placeholder and this messes up calculation
@@ -249,11 +248,11 @@
     if (![text  isEqual: @""]) {
        
         //loop through hashtagItems in place, check to see if hashtag.text isn't in there
-        for(Hashtag *hashtag in self.place.hashtagList) {
-            if ([[text lowercaseString] isEqual:[hashtag.text lowercaseString]]) {
+        for(NSString *hashtag in self.hashtags) {
+            if ([[text lowercaseString] isEqual:[hashtag lowercaseString]]) {
                 
                 // ToDo: UI to say already selected
-                
+
                 return NO;
             }
         }

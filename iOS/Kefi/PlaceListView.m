@@ -317,24 +317,6 @@
     }
     
     [locationManager stopUpdatingLocation];
-    
-    // Reverse Geocoding
-    /*NSLog(@"Resolving the Address");
-    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
-        if (error == nil && [placemarks count] > 0) {
-            placemark = [placemarks lastObject];
-            NSLog(@"%@", [NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@",
-                                 placemark.subThoroughfare, placemark.thoroughfare,
-                                 placemark.postalCode, placemark.locality,
-                                 placemark.administrativeArea,
-                                 placemark.country]);
-        } else {
-            NSLog(@"%@", error.debugDescription);
-        }
-    } ];
-    NSLog(@"\n");
-    NSLog(@"\n"); */
 }
 
 
