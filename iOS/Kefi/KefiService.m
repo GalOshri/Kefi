@@ -271,7 +271,7 @@ int radius = 1000;
                 [place sortHashtags];
                 [pdv setSentimentImage];
                 
-                [pdv.spinner startAnimating];
+                [pdv.spinner stopAnimating];
                 
                 [pdv.hashtagView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
                 
