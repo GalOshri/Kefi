@@ -266,7 +266,7 @@
         cell.textLabel.textColor = [UIColor redColor];
         
         self.hashtagTextField.text = nil;
-        // [self.hashtagTextField resignFirstResponder];
+        [self.hashtagTextField resignFirstResponder];
     }
     return YES;
 }
