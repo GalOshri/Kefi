@@ -188,6 +188,11 @@
     return [self.placeList.places count];
 }
 
+- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 125.0;
+            
+}
+
 - (PlaceCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // set Dictionary for sentiment picture
@@ -281,8 +286,10 @@
         cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@100]];
         [cell.sentimentImage setAlpha:0.5];
         
-        for (int i=0; i<[energyLevels count]; i++)
-            [energyLevels[i] setHidden:YES];
+        for (int i=0; i<[energyLevels count]; i++) {
+            [energyLevels[i] setHidden:NO];
+            [energyLevels[i] setImage:[UIImage imageNamed:@"smallCircle.png"]];
+        }
     }
     
     

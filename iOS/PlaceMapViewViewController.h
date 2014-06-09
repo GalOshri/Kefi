@@ -16,5 +16,7 @@
 
 @property (nonatomic) MKCoordinateRegion region;
 @property (nonatomic, strong) NSString *placeName;
+@property (strong, nonatomic) NSString *placeAddressText;
+@property (strong, nonatomic) NSString *placeCrossStreetsText;
 
 @end

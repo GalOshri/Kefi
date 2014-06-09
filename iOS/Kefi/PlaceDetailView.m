@@ -54,6 +54,8 @@
             
             pdmv.region = startCoord;
             pdmv.placeName = self.place.name;
+            pdmv.placeAddressText = self.place.address;
+            pdmv.placeCrossStreetsText = self.place.crossStreet;
         }
     }
 
@@ -81,7 +83,7 @@
     [self.navigationController.viewControllers[self.navigationController.viewControllers.count -1] setTitle:self.place.name];
     
     //set some more variables here
-    self.placeAddress.text = self.place.address;
+    // self.placeAddress.text = self.place.address;
     
     self.hashtagView.backgroundColor = [UIColor whiteColor];
     
@@ -106,7 +108,8 @@
     self.distanceMi.text = [NSString stringWithFormat:@"%@ mi",distanceString];
     
     //deal with UI showing crossStreets if not null
-    if (![self.place.crossStreet isEqual:@"(null)"])
+    /*
+     if (![self.place.crossStreet isEqual:@"(null)"])
         self.placeCrossStreets.text = self.place.crossStreet;
     else
     {
@@ -114,6 +117,7 @@
         self.distanceMi.frame = moveCrossStreetFrame;
         self.placeCrossStreets.hidden = YES;
     }
+    */
 }
 
 
@@ -140,7 +144,7 @@
     
     
     // set sentiment/energy images
-    if ((long)[self.place.sentiment integerValue] != -1) {
+    if ((long)[self.place.sentiment integerValue] != 100) {
         [self.sentimentImage setHidden:NO];
         
         self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey: self.place.sentiment]];
@@ -169,8 +173,11 @@
     else {
         [self.sentimentImage setHidden:NO];
         self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@100]];
-        for (int i=0; i<[energyLevels count]; i++)
-            [energyLevels[i] setHidden:YES];
+        
+        for (int i=0; i<[energyLevels count]; i++) {
+            [energyLevels[i] setHidden:NO];
+            [energyLevels[i] setImage:[UIImage imageNamed:@"smallCircle.png"]];
+        }
     }
     
 }
@@ -216,7 +223,6 @@
     return myCell;
 }
 
-// TODO: SIZING
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 

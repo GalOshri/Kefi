@@ -106,7 +106,7 @@ int radius = 1000;
                     
                     //set pid, sentiment, energy to values for checking later
                     place.pId = @"";
-                    place.sentiment = [NSNumber numberWithInt:-1];
+                    place.sentiment = [NSNumber numberWithInt:100];
                     place.energy = [NSNumber numberWithInt:-1];
                     
                     [placeList.places addObject:place];

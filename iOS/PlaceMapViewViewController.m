@@ -9,7 +9,9 @@
 #import "PlaceMapViewViewController.h"
 
 @interface PlaceMapViewViewController ()
-@property (strong, nonatomic) IBOutlet UILabel *placeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *placeAddress;
+@property (weak, nonatomic) IBOutlet UILabel *placeCrossStreets;
+
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
@@ -43,7 +45,14 @@
     
     //add a marker at point
     [self.mapView addAnnotation:point];
-    self.placeLabel.text = self.placeName;
+    [self.mapView selectAnnotation:point animated:YES];
+    
+    self.placeAddress.text = self.placeAddressText;
+    
+    if (![self.placeCrossStreetsText isEqual:@"(null)"])
+        self.placeCrossStreets.text = self.placeCrossStreetsText;
+    else
+        [self.placeCrossStreets setHidden:YES];
 }
 
 /*- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation

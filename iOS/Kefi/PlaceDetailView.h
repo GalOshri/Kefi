@@ -24,11 +24,14 @@
 //@property (strong, nonatomic) HashtagList *hashtagList;
 
 @property (nonatomic, strong) Place *place;
-
-@property (weak, nonatomic) IBOutlet UILabel *placeAddress;
-@property (weak, nonatomic) IBOutlet UILabel *placeCrossStreets;
 @property (weak, nonatomic) IBOutlet UILabel *distanceMi;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+
+
+/*
+ @property (weak, nonatomic) IBOutlet UILabel *placeAddress;
+ @property (weak, nonatomic) IBOutlet UILabel *placeCrossStreets;
+*/
 
 -(void)setSentimentImage;
 
