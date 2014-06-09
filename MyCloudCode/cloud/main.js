@@ -263,7 +263,7 @@ Parse.Cloud.define("updateSentimentAndEnergy", function(request, response) {
 	Return object of our custom values
 *******/
 Parse.Cloud.define("getConfigObject", function(request, response) {
-	var kefiHashtags = ["LustyIntentions", "CasualBlackout"];
+	var kefiHashtags = ["LustyIntentions", "TurnDownForWhat", "Crickets", "TooSoberForThis", "GenerousBartender", "DanceAllNight", "LinesForDays", "CasualBlackout"];
 	var configObject = {"Hi" : 5, "Boo" : 10, "kefiHashtags" : kefiHashtags};
 	response.success(configObject);
 
