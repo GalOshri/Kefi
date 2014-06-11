@@ -518,6 +518,16 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wES-bi-qAm">
+                                <rect key="frame" x="45" y="536" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="facebook">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didSubmitFacebook:" destination="d9R-wC-4Vk" eventType="touchUpInside" id="Yd9-iT-M6J"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -526,6 +536,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="BII-Sw-Gbq" id="LwJ-JE-aq8"/>
+                        <outlet property="fbTest" destination="wES-bi-qAm" id="J0p-kH-bKm"/>
                         <outlet property="firstEnergyCircle" destination="IuE-ps-ChE" id="7xg-RI-dnm"/>
                         <outlet property="hashtagTextField" destination="D1E-54-9MT" id="fBZ-Ld-Nu6"/>
                         <outlet property="hashtagView" destination="Ddy-aK-kfn" id="o7r-mu-C3q"/>

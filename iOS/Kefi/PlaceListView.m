@@ -127,10 +127,6 @@
     
  
     NSLog(@"%g, %g", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude);
-  
-    
-    
-
     
     [KefiService GetKefiSettings];
     

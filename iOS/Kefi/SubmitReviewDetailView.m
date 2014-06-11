@@ -10,6 +10,8 @@
 #import "Place.h"
 #import "KefiService.h"
 #import "HashtagCollectionCell.h"
+#import <Parse/Parse.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 
 @interface SubmitReviewDetailView ()
@@ -27,6 +29,7 @@
 @property (strong, nonatomic) NSMutableArray *hashtags;
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 
+@property (weak, nonatomic) IBOutlet UIButton *fbTest;
 
 @property (nonatomic, strong) KefiService *kefiService;
 
@@ -283,6 +286,14 @@
     [cell.textLabel setTextColor:self.view.tintColor];
 
 }
+
+
+- (IBAction)didSubmitFacebook:(id)sender {
+    
+    
+    
+}
+
 
 
 

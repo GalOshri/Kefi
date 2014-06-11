@@ -23,4 +23,7 @@
 
 + (void) GetKefiSettings;
 
+
++(void) loginTosocialNetwork;
+
 @end

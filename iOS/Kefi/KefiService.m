@@ -21,6 +21,7 @@ int radius = 1000;
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withLocation:(CLLocation *)currentLocation withTableHeader:(UIView *)tableHeader withSpinner:(UIActivityIndicatorView *)spinner
 {
     [self PopulatePlaceList:placeList withTable:tableView withSearchTerm:@"" withLocation:currentLocation withTableHeader:tableHeader withSpinner:spinner];
+    [self loginTosocialNetwork];
 }
 
 
@@ -314,6 +315,22 @@ int radius = 1000;
                                         [userData synchronize];
                                     }
                                 }];   
+}
+
++(void) loginTosocialNetwork {
+    [PFFacebookUtils logInWithPermissions:[NSArray arrayWithObjects:@"publish_actions", nil] block:^(PFUser *user, NSError *error) {
+        // user
+        
+        
+        if (!user) {
+            NSLog(@"User is not in database");
+        } else if (user.isNew) {
+            NSLog(@"User signed up and logged in through Facebook!");
+        } else {
+            NSLog(@"User logged in through Facebook!");
+        }
+    }];
+    
 }
 
 
