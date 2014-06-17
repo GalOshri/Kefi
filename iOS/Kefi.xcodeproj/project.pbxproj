@@ -18,6 +18,7 @@
 		0D4F4A0918F0B66A00F901AE /* PlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4F4A0818F0B66A00F901AE /* PlaceCell.m */; };
 		0D4F4A0D18F0B78100F901AE /* bar_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4F4A0C18F0B78100F901AE /* bar_64.png */; };
 		0D4FDB2C19416F9300B0F28F /* LeftAlignFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4FDB2B19416F9300B0F28F /* LeftAlignFlowLayout.m */; };
+		0D61950319500F30000314A3 /* PoweredByFoursquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D61950219500F30000314A3 /* PoweredByFoursquare.png */; };
 		0D727EA318F099F1008310FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D727EA218F099F1008310FC /* Foundation.framework */; };
 		0D727EA718F099F1008310FC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D727EA618F099F1008310FC /* UIKit.framework */; };
 		0D727EAD18F099F1008310FC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D727EAB18F099F1008310FC /* InfoPlist.strings */; };
@@ -32,7 +33,6 @@
 		0D727ECE18F099F2008310FC /* KefiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D727ECD18F099F2008310FC /* KefiTests.m */; };
 		0D75A59E194E2E930056630C /* KefiLogInView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D75A59D194E2E930056630C /* KefiLogInView.m */; };
 		0D75A5A1194E32300056630C /* KefiSignUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D75A5A0194E32300056630C /* KefiSignUpView.m */; };
-		0D75A5A4194E6A550056630C /* PoweredByFoursquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D75A5A3194E6A550056630C /* PoweredByFoursquare.png */; };
 		0D77304C194AC6D700F86611 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D77304B194AC6D700F86611 /* Social.framework */; };
 		0D77304E194AC6EA00F86611 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D77304D194AC6EA00F86611 /* Accounts.framework */; };
 		0D81466418F0E3670072702B /* KefiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466318F0E3660072702B /* KefiService.m */; };
@@ -98,6 +98,7 @@
 		0D4F4A0C18F0B78100F901AE /* bar_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar_64.png; sourceTree = "<group>"; };
 		0D4FDB2A19416F9200B0F28F /* LeftAlignFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftAlignFlowLayout.h; sourceTree = "<group>"; };
 		0D4FDB2B19416F9300B0F28F /* LeftAlignFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftAlignFlowLayout.m; sourceTree = "<group>"; };
+		0D61950219500F30000314A3 /* PoweredByFoursquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PoweredByFoursquare.png; sourceTree = "<group>"; };
 		0D727E9F18F099F1008310FC /* Kefi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kefi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D727EA218F099F1008310FC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D727EA618F099F1008310FC /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -118,7 +119,6 @@
 		0D75A59D194E2E930056630C /* KefiLogInView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KefiLogInView.m; sourceTree = "<group>"; };
 		0D75A59F194E32300056630C /* KefiSignUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KefiSignUpView.h; sourceTree = "<group>"; };
 		0D75A5A0194E32300056630C /* KefiSignUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KefiSignUpView.m; sourceTree = "<group>"; };
-		0D75A5A3194E6A550056630C /* PoweredByFoursquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PoweredByFoursquare.png; path = ../../../../../Desktop/PoweredByFoursquare.png; sourceTree = "<group>"; };
 		0D77304B194AC6D700F86611 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		0D77304D194AC6EA00F86611 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		0D81466218F0E3660072702B /* KefiService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KefiService.h; sourceTree = "<group>"; };
@@ -202,7 +202,7 @@
 		0D0C131818FB7F9000C90A5F /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				0D75A5A3194E6A550056630C /* PoweredByFoursquare.png */,
+				0D61950219500F30000314A3 /* PoweredByFoursquare.png */,
 				DAE95ADB193BD1D300109E75 /* question.png */,
 				DAE95AD41932A29C00109E75 /* KefiNoBorder.png */,
 				DAE95AD51932A29C00109E75 /* map.png */,
@@ -498,7 +498,7 @@
 			files = (
 				DA089B3D192016120055FD31 /* eh.png in Resources */,
 				DA089B3E192016120055FD31 /* soPissed.png in Resources */,
-				0D75A5A4194E6A550056630C /* PoweredByFoursquare.png in Resources */,
+				0D61950319500F30000314A3 /* PoweredByFoursquare.png in Resources */,
 				0D727EBB18F099F1008310FC /* Images.xcassets in Resources */,
 				DAE95AD61932A29C00109E75 /* KefiNoBorder.png in Resources */,
 				0D0C131418FB72B600C90A5F /* FavFilled.png in Resources */,
