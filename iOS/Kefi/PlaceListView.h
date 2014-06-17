@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "PlaceList.h"
+#import <Parse/Parse.h>
 
-@interface PlaceListView : UITableViewController <CLLocationManagerDelegate>
+@interface PlaceListView : UITableViewController <CLLocationManagerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @property (nonatomic, strong) PlaceList *placeList;
 @property (nonatomic, strong) NSMutableArray *hashtagList;

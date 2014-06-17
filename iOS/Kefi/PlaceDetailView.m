@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *mapButton;
 
 
+
 @property (weak, nonatomic) IBOutlet UIImageView *sentimentImage;
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel1;
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel2;
@@ -247,6 +248,13 @@
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
     return 5;
     // space between cells on different lines
+}
+
+
+- (IBAction)clickFoursquareLink:(UIButton *)sender {
+    NSString *urlString = [NSString stringWithFormat:@"http://foursquare.com/v/%@?ref=T4XPWMEQAID11W0CSQLCP2P0NXGEUSDZRV4COSBJH2QEMC2O", self.place.fsId];
+    NSURL *url = [NSURL URLWithString:urlString];
+    [[UIApplication sharedApplication] openURL:url];
 }
 
 

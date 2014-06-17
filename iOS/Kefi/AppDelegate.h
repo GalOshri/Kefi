@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <WindowsAzureMobileServices/WindowsAzureMobileServices.h>
+#import <Parse/Parse.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

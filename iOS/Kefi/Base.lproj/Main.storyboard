@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vVz-uH-k2V">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vVz-uH-k2V">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -147,6 +147,17 @@
                                 <rect key="frame" x="150" y="74" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LH5-TS-eiW">
+                                <rect key="frame" x="233" y="113" width="78" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Foursquare">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickFoursquareLink:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2jS-pU-4GA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -436,12 +447,12 @@
                                     <outlet property="delegate" destination="d9R-wC-4Vk" id="M7F-j6-0OJ"/>
                                 </connections>
                             </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3iZ-El-dRr">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3iZ-El-dRr">
                                 <rect key="frame" x="43" y="473" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tzm-5D-iJP">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Tzm-5D-iJP">
                                 <rect key="frame" x="136" y="473" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -536,6 +547,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="BII-Sw-Gbq" id="LwJ-JE-aq8"/>
+                        <outlet property="facebookPostSwitch" destination="3iZ-El-dRr" id="0Q6-u9-Ulr"/>
                         <outlet property="fbTest" destination="wES-bi-qAm" id="J0p-kH-bKm"/>
                         <outlet property="firstEnergyCircle" destination="IuE-ps-ChE" id="7xg-RI-dnm"/>
                         <outlet property="hashtagTextField" destination="D1E-54-9MT" id="fBZ-Ld-Nu6"/>
@@ -546,6 +558,7 @@
                         <outlet property="sentimentImage" destination="7U7-hs-pa9" id="LdU-Af-GEJ"/>
                         <outlet property="submitButton" destination="3b2-gf-ehG" id="nH9-NW-Od9"/>
                         <outlet property="thirdEnergyCircle" destination="dul-Ru-DE7" id="UP7-tF-g6N"/>
+                        <outlet property="twitterPostSwitch" destination="Tzm-5D-iJP" id="nmi-Qd-tvE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EvM-Cd-43n" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -582,6 +595,10 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
+                        <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PoweredByFoursquare.png" id="yeI-2K-bk8">
+                            <rect key="frame" x="0.0" y="268" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlaceCell" rowHeight="138" id="y6L-nO-hlX" customClass="PlaceCell">
                                 <rect key="frame" x="0.0" y="130" width="320" height="138"/>
@@ -760,6 +777,7 @@
     <resources>
         <image name="FavUnfilled.png" width="100" height="100"/>
         <image name="KefItIcon.png" width="250" height="250"/>
+        <image name="PoweredByFoursquare.png" width="482" height="121"/>
         <image name="eh.png" width="107" height="107"/>
         <image name="fullCircle.png" width="107" height="107"/>
         <image name="map.png" width="100" height="100"/>

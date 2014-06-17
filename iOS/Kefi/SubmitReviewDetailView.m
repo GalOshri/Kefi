@@ -34,6 +34,11 @@
 @property (nonatomic, strong) KefiService *kefiService;
 
 @property (nonatomic) BOOL firstRun;
+
+@property (strong, nonatomic) IBOutlet UISwitch *twitterPostSwitch;
+@property (strong, nonatomic) IBOutlet UISwitch *facebookPostSwitch;
+
+
 @end
 
 
@@ -174,6 +179,60 @@
         if (!isExisting)
         {
             [self.place addHashtag:hashtagString];
+        }
+    }
+    
+    // Submit to Twitter
+    if (self.twitterPostSwitch.on)
+    {
+        if ([PFTwitterUtils isLinkedWithUser:[PFUser currentUser]])
+        {
+            NSString *tweet = [NSString stringWithFormat:@"I'm at %@ and it's ", self.place.name];
+            for (NSString *hashtag in self.selectedHashtagStrings)
+            {
+                if ([tweet length] + [hashtag length] < 140)
+                    tweet = [tweet stringByAppendingFormat:@"#%@ ", hashtag];
+                
+            }
+            
+            NSURL *submitTweet = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/update.json"];
+            
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:submitTweet];
+            NSString *postString = [NSString stringWithFormat:@"status=%@", tweet];
+            postString = [postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            postString = [postString stringByReplacingOccurrencesOfString:@"'" withString:@"%27"];
+            NSData *parameters = [postString dataUsingEncoding:NSUTF8StringEncoding];
+            [request setHTTPBody:parameters];
+            [request setHTTPMethod:@"POST"];
+            [[PFTwitterUtils twitter] signRequest:request];
+            NSURLResponse *response = nil;
+            NSError *error = nil;
+            NSData *data = [NSURLConnection sendSynchronousRequest:request
+                                                 returningResponse:&response
+                                                             error:&error];
+
+        }
+    }
+    
+    // Submit to Facebook
+    if (self.facebookPostSwitch.on)
+    {
+        if ([PFFacebookUtils isLinkedWithUser:[PFUser currentUser]])
+        {
+            NSString *status = [NSString stringWithFormat:@"I'm at %@ and it's ", self.place.name];
+            for (NSString *hashtag in self.selectedHashtagStrings)
+            {
+                if ([status length] + [hashtag length] < 300)
+                    status = [status stringByAppendingFormat:@"#%@ ", hashtag];
+                
+            }
+            
+            FBRequest *request = [FBRequest requestForPostStatusUpdate:status];
+            // Send request to Facebook
+            [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                // handle response
+            }];
+
         }
     }
         

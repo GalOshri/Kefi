@@ -21,7 +21,6 @@ int radius = 1000;
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withLocation:(CLLocation *)currentLocation withTableHeader:(UIView *)tableHeader withSpinner:(UIActivityIndicatorView *)spinner
 {
     [self PopulatePlaceList:placeList withTable:tableView withSearchTerm:@"" withLocation:currentLocation withTableHeader:tableHeader withSpinner:spinner];
-    [self loginTosocialNetwork];
 }
 
 

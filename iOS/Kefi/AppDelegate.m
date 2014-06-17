@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <Parse/Parse.h>
+
 
 @implementation AppDelegate
 
@@ -19,6 +19,9 @@
     
     [Parse setApplicationId:@"oXaRo5X3EtGIcGOBJ99XrjKOOoRx0uNmmImozk0f"
                   clientKey:@"g0EwuP2GwxBQDlzzBAcHBQ0ur3NLZqlv2FYSsxHE"];
+    
+    [PFTwitterUtils initializeWithConsumerKey:@"LwnmbO1Aykyqfui1IUTVndxvZ"
+                               consumerSecret:@"VFc0lHRNW0ci4rPM31uC7I09S3bZh3xzvcnbBi0Epd9GX2NXYf"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
