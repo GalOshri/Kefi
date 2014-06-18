@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SearchView : UIViewController
+@interface SearchView : UIViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) NSString *searchTerm;
 

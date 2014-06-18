@@ -722,6 +722,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <segue destination="GKO-KP-OHu" kind="unwind" unwindAction="unwindToList:" id="v7v-ri-ROS"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x81-3O-AoA">
                                 <rect key="frame" x="136" y="154" width="48" height="30"/>
@@ -744,6 +747,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="ZDB-38-zCm" id="AN8-7k-Hkj"/>
                         <outlet property="searchButton" destination="x81-3O-AoA" id="2NN-am-KJs"/>
                         <outlet property="searchTextField" destination="Ozf-KJ-56F" id="vdU-yd-E0J"/>
                     </connections>

@@ -273,10 +273,7 @@ int radius = 1000;
                        withParameters:@{}
                                 block:^(NSDictionary *result, NSError *error) {
                                     if (!error) {
-                                        NSNumber *value = [result objectForKey:@"Boo"];
-                                        
-                                        NSLog(@"%d", [value intValue]);
-                                        
+
                                         NSArray *kefiHashtags = [result objectForKey:@"kefiHashtags"];
                                         
                                         [userData setObject:kefiHashtags forKey:@"kefiHashtags"];
