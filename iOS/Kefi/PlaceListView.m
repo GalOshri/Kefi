@@ -31,6 +31,7 @@
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
     NSString *searchTerm;
+    BOOL pageControlBeingUsed;
 }
 
 # pragma mark - Lazy Instantiations
@@ -133,6 +134,10 @@
     
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
+    pageControlBeingUsed = YES;
+    
+
+    
     self.spotlightView.delegate = self;
     
     NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], nil];
@@ -146,6 +151,9 @@
         subview.backgroundColor = [colors objectAtIndex:i];
         [self.spotlightView addSubview:subview];
     }
+    
+    self.spotlightPageControl.currentPage = 0;
+	self.spotlightPageControl.numberOfPages = colors.count;
     
     self.spotlightView.contentSize = CGSizeMake(self.spotlightView.frame.size.width * colors.count, self.spotlightView.frame.size.height);
     
@@ -389,19 +397,32 @@
 
 #pragma mark - Spotlight
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
-    // Update the page when more than 50% of the previous/next page is visible
-    CGFloat pageWidth = self.spotlightView.frame.size.width;
-    int page = floor((self.spotlightView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    self.spotlightPageControl.currentPage = page;
+    if  (!pageControlBeingUsed)
+    {
+        // Update the page when more than 50% of the previous/next page is visible
+        CGFloat pageWidth = self.spotlightView.frame.size.width;
+        int page = floor((self.spotlightView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+        self.spotlightPageControl.currentPage = page;
+    }
 }
 
 - (IBAction)spotlightPageSelect:(UIPageControl *)sender {
     // update the scroll view to the appropriate page
+
     CGRect frame;
     frame.origin.x = self.spotlightView.frame.size.width * self.spotlightPageControl.currentPage;
     frame.origin.y = 0;
     frame.size = self.spotlightView.frame.size;
     [self.spotlightView scrollRectToVisible:frame animated:YES];
+    pageControlBeingUsed = YES;
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    pageControlBeingUsed = NO;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    pageControlBeingUsed = NO;
 }
 
 
