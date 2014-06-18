@@ -18,32 +18,16 @@ NSString *client_secret = @"0P1EQQ3NH102D0R3GNGTG0ZAL0S5T41YDB2NPOOMRMO2I2EO";
 NSString *category_id =  @"4bf58dd8d48988d116941735,50327c8591d4c4b30a586d5d,4bf58dd8d48988d11e941735,4bf58dd8d48988d118941735,4bf58dd8d48988d1d8941735,4bf58dd8d48988d120941735,4bf58dd8d48988d121941735,4bf58dd8d48988d11f941735,4bf58dd8d48988d11b941735,4bf58dd8d48988d1d4941735,4bf58dd8d48988d11d941735,4bf58dd8d48988d122941735,4bf58dd8d48988d123941735";
 int radius = 1000;
 
-+ (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withLocation:(CLLocation *)currentLocation withTableHeader:(UIView *)tableHeader withSpinner:(UIActivityIndicatorView *)spinner
++ (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withLocation:(CLLocation *)currentLocation withSpinner:(UIActivityIndicatorView *)spinner
 {
-    [self PopulatePlaceList:placeList withTable:tableView withSearchTerm:@"" withLocation:currentLocation withTableHeader:tableHeader withSpinner:spinner];
+    [self PopulatePlaceList:placeList withTable:tableView withSearchTerm:@"" withLocation:currentLocation withSpinner:spinner];
 }
 
 
 
-+ (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withSearchTerm:(NSString *)searchTerm withLocation:(CLLocation *)currentLocation withTableHeader:(UIView *)tableHeader withSpinner:(UIActivityIndicatorView *)spinner
++ (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withSearchTerm:(NSString *)searchTerm withLocation:(CLLocation *)currentLocation withSpinner:(UIActivityIndicatorView *)spinner
 {
-    // Start spinner
-    [UIView animateWithDuration:0.5
-                          delay:0.0
-                        options:UIViewAnimationOptionAllowUserInteraction
-                     animations:^{
-                         tableView.tableHeaderView = tableHeader;
-                         spinner.hidden = NO;
-                         [spinner startAnimating];
-                     }
-                     completion:^(BOOL finished) {
-                         
-                     }];
-    /*
-    tableView.tableHeaderView = tableHeader;
-    spinner.hidden = NO;
     [spinner startAnimating];
-    */
     
     NSString *fsURLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&radius=%d&intent=browse&categoryId=%@&client_id=%@&client_secret=%@&v=%d",
                              currentLocation.coordinate.latitude,
@@ -115,9 +99,9 @@ int radius = 1000;
                 }
                 //make call to populate with parse data
                 if (![searchTerm isEqualToString:@""])
-                    [self PopulateWithParseData: placeList withTableView:tableView withTableHeader:nil withSpinner:spinner];
+                    [self PopulateWithParseData: placeList withTableView:tableView withSpinner:spinner];
                 else
-                    [self PopulateWithParseData: placeList withTableView:tableView withTableHeader:tableHeader withSpinner:spinner];
+                    [self PopulateWithParseData: placeList withTableView:tableView withSpinner:spinner];
                 
                 [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
                 
@@ -125,7 +109,7 @@ int radius = 1000;
             }] resume];
 }
 
-+ (void) PopulateWithParseData:(PlaceList *)placeList withTableView:(UITableView *)tableView withTableHeader:(UIView *)tableHeader withSpinner:(UIActivityIndicatorView *)spinner
++ (void) PopulateWithParseData:(PlaceList *)placeList withTableView:(UITableView *)tableView withSpinner:(UIActivityIndicatorView *)spinner
 {
     // get date within time interval
     NSDate *beginningTimeInterval = [[NSDate alloc] initWithTimeInterval:(NSTimeInterval)-7200 sinceDate:[NSDate new]];
@@ -174,26 +158,11 @@ int radius = 1000;
                 
                 // NSLog(@"%d", place.isInInterval);
             }
-            if (tableHeader == nil)
-            {
-                [spinner stopAnimating];
-                spinner.hidden = YES;
-                [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-            }
-            else
-            {
-                [UIView animateWithDuration:0.5
-                                  delay:0.0
-                                options:UIViewAnimationOptionAllowUserInteraction
-                             animations:^{
-                                 tableView.tableHeaderView = nil;
-                                 [spinner stopAnimating];
-                                 spinner.hidden = YES;
-                             }
-                             completion:^(BOOL finished) {
-                                 [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-                             }];
-            }
+            
+            [spinner stopAnimating];
+            [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+            
+        
             
             
             

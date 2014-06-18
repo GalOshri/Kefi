@@ -21,7 +21,8 @@
 @property (nonatomic, strong) KefiService *kefiService;
 @property (strong, nonatomic) IBOutlet UIButton *cancelSearchButton;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
-@property (strong, nonatomic) UIView *tableHeader;
+@property (strong, nonatomic) IBOutlet UIScrollView *spotlightView;
+@property (strong, nonatomic) IBOutlet UIPageControl *spotlightPageControl;
 
 @end
 
@@ -85,10 +86,9 @@
         if (![searchTerm isEqualToString:@""]) {
             [self.placeList.places removeAllObjects];
             if (locationManager.location != nil)
-                [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withSearchTerm:searchTerm withLocation:locationManager.location withTableHeader:self.tableHeader withSpinner:self.spinner];
+                [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withSearchTerm:searchTerm withLocation:locationManager.location withSpinner:self.spinner];
             else
                 [locationManager startUpdatingLocation];
-            self.tableView.tableHeaderView = self.tableHeader;
             self.cancelSearchButton.hidden = NO;
         }
     }
@@ -133,8 +133,21 @@
     
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
-    self.tableHeader = self.tableView.tableHeaderView;
-    self.tableView.tableHeaderView = nil;
+    self.spotlightView.delegate = self;
+    
+    NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], nil];
+    for (int i = 0; i < colors.count; i++) {
+        CGRect frame;
+        frame.origin.x = self.spotlightView.frame.size.width * i;
+        frame.origin.y = 0;
+        frame.size = self.spotlightView.frame.size;
+        
+        UIView *subview = [[UIView alloc] initWithFrame:frame];
+        subview.backgroundColor = [colors objectAtIndex:i];
+        [self.spotlightView addSubview:subview];
+    }
+    
+    self.spotlightView.contentSize = CGSizeMake(self.spotlightView.frame.size.width * colors.count, self.spotlightView.frame.size.height);
     
     //[self.tableView registerClass:[PlaceCell class] forCellReuseIdentifier:@"PlaceCell"];
     
@@ -172,7 +185,7 @@
     self.cancelSearchButton.hidden = YES;
     [self.placeList.places removeAllObjects];
     if (locationManager.location != nil)
-        [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:locationManager.location withTableHeader:self.tableHeader withSpinner:self.spinner];
+        [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:locationManager.location withSpinner:self.spinner];
     else
         [locationManager startUpdatingLocation];
     
@@ -335,7 +348,7 @@
     CLLocation *currentLocation = newLocation;
     
     if (currentLocation != nil) {
-        [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:currentLocation withTableHeader:self.tableHeader withSpinner:self.spinner];
+        [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:currentLocation withSpinner:self.spinner];
     }
     
     [locationManager stopUpdatingLocation];
@@ -372,6 +385,23 @@
 // Sent to the delegate when the log in screen is dismissed.
 - (void)logInViewControllerDidCancelLogIn:(PFLogInViewController *)logInController {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - Spotlight
+- (void)scrollViewDidScroll:(UIScrollView *)sender {
+    // Update the page when more than 50% of the previous/next page is visible
+    CGFloat pageWidth = self.spotlightView.frame.size.width;
+    int page = floor((self.spotlightView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.spotlightPageControl.currentPage = page;
+}
+
+- (IBAction)spotlightPageSelect:(UIPageControl *)sender {
+    // update the scroll view to the appropriate page
+    CGRect frame;
+    frame.origin.x = self.spotlightView.frame.size.width * self.spotlightPageControl.currentPage;
+    frame.origin.y = 0;
+    frame.size = self.spotlightView.frame.size;
+    [self.spotlightView scrollRectToVisible:frame animated:YES];
 }
 
 
