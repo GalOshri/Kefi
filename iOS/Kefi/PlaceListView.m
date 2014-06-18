@@ -146,10 +146,13 @@
         frame.origin.x = self.spotlightView.frame.size.width * i;
         frame.origin.y = 0;
         frame.size = self.spotlightView.frame.size;
+        UILabel *label = [[UILabel alloc] initWithFrame:frame];
+        label.text = @"GALILEO!";
         
         UIView *subview = [[UIView alloc] initWithFrame:frame];
         subview.backgroundColor = [colors objectAtIndex:i];
         [self.spotlightView addSubview:subview];
+        [self.spotlightView addSubview:label];
     }
     
     self.spotlightPageControl.currentPage = 0;
