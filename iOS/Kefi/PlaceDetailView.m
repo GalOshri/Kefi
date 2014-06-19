@@ -15,6 +15,8 @@
 @interface PlaceDetailView ()
 @property (nonatomic, strong) KefiService *kefiService;
 @property (weak, nonatomic) IBOutlet UIButton *mapButton;
+@property (nonatomic) BOOL isFavorite;
+@property (strong, nonatomic) IBOutlet UIButton *favoriteButton;
 
 
 
@@ -119,14 +121,38 @@
         self.placeCrossStreets.hidden = YES;
     }
     */
+    
+    if ([KefiService isFavorite:self.place.fsId])
+    {
+        self.isFavorite = YES;
+        [self.favoriteButton setImage:[UIImage imageNamed:@"FavFilled.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.favoriteButton setImage:[UIImage imageNamed:@"FavUnfilled.png"] forState:UIControlStateNormal];
+        self.isFavorite = NO;
+    }
 }
 
 
 
 
-//favorite/unfavorite this place
+// favorite/unfavorite this place
 - (IBAction)favoritePlace:(UIButton *)sender {
     
+    if (self.isFavorite)
+    {
+        [KefiService removeFavorite:self.place.fsId];
+        [self.favoriteButton setImage:[UIImage imageNamed:@"FavUnfilled.png"] forState:UIControlStateNormal];
+        self.isFavorite = NO;
+    }
+    
+    else
+    {
+        [KefiService addFavorite:self.place.fsId];
+        [self.favoriteButton setImage:[UIImage imageNamed:@"FavFilled.png"] forState:UIControlStateNormal];
+        self.isFavorite = YES;
+    }
 }
 
 

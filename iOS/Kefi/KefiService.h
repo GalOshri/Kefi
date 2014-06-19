@@ -23,6 +23,12 @@
 
 + (void) GetKefiSettings;
 
++ (void) addFavorite:(NSString *)fsId;
+
++ (void) removeFavorite:(NSString *)fsId;
+
++ (BOOL) isFavorite:(NSString *)fsId;
+
 
 +(void) loginTosocialNetwork;
 

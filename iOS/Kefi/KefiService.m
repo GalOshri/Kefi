@@ -282,6 +282,59 @@ int radius = 1000;
                                 }];   
 }
 
++ (void) addFavorite:(NSString *)fsId
+{
+    NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *favoritePlaces = [[userData objectForKey:@"FavoritePlaces"] mutableCopy];
+    if (favoritePlaces == nil)
+    {
+        favoritePlaces = [[NSMutableArray alloc] initWithObjects:fsId, nil];
+    }
+    else
+    {
+        if (![favoritePlaces containsObject:fsId])
+            [favoritePlaces addObject:fsId];
+    }
+    [userData setObject:favoritePlaces forKey:@"FavoritePlaces"];
+    [userData synchronize];
+}
+
++ (void) removeFavorite:(NSString *)fsId
+{
+    NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *favoritePlaces = [[userData objectForKey:@"FavoritePlaces"] mutableCopy];
+    if (favoritePlaces == nil)
+    {
+        favoritePlaces = [[NSMutableArray alloc] init];
+    }
+    else
+    {
+        if ([favoritePlaces containsObject:fsId])
+            [favoritePlaces removeObject:fsId];
+    }
+    [userData setObject:favoritePlaces forKey:@"FavoritePlaces"];
+    [userData synchronize];
+}
+
++ (BOOL) isFavorite:(NSString *)fsId
+{
+    NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
+    NSArray *favoritePlaces = [userData objectForKey:@"FavoritePlaces"];
+    if (favoritePlaces == nil)
+    {
+        return NO;
+    }
+    else
+    {
+        if ([favoritePlaces containsObject:fsId])
+            return YES;
+        else
+            return NO;
+    }
+    
+}
+
+
 +(void) loginTosocialNetwork {
     [PFFacebookUtils logInWithPermissions:[NSArray arrayWithObjects:@"publish_actions", nil] block:^(PFUser *user, NSError *error) {
         // user

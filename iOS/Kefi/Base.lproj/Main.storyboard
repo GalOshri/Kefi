@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hRx-cM-0YU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hRx-cM-0YU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -68,10 +68,15 @@
                                     <segue destination="wCa-SH-iDl" kind="modal" identifier="SubmitReviewSegue" id="nW2-hB-lgf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7b-Rq-64T">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7b-Rq-64T">
                                 <rect key="frame" x="256" y="219" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="FavUnfilled.png"/>
+                                <state key="normal" image="FavUnfilled.png">
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="favoritePlace:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Xba-kP-FAF"/>
                                 </connections>
@@ -168,6 +173,7 @@
                         <outlet property="energyLevel1" destination="TgH-Ny-MAj" id="tPu-T3-ejk"/>
                         <outlet property="energyLevel2" destination="bEg-fF-ifs" id="8bV-6c-DcJ"/>
                         <outlet property="energyLevel3" destination="MzB-Ka-lD7" id="nbb-d8-zUk"/>
+                        <outlet property="favoriteButton" destination="V7b-Rq-64T" id="0jj-cA-ztV"/>
                         <outlet property="hashtagView" destination="za6-dq-RZT" id="ihe-Dg-Vjk"/>
                         <outlet property="mapButton" destination="qin-61-ZkP" id="IU5-mF-MZC"/>
                         <outlet property="sentimentImage" destination="08Q-dA-O5E" id="omi-po-EBH"/>
