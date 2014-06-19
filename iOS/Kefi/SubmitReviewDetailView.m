@@ -207,7 +207,7 @@
             [[PFTwitterUtils twitter] signRequest:request];
             NSURLResponse *response = nil;
             NSError *error = nil;
-            NSData *data = [NSURLConnection sendSynchronousRequest:request
+            [NSURLConnection sendSynchronousRequest:request
                                                  returningResponse:&response
                                                              error:&error];
 

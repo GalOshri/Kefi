@@ -227,8 +227,7 @@ int radius = 1000;
         [queryItems getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
             if (!object) {
                 NSLog(@"error executing lookup to get new sentiment after submit");
-                pdv.spinner.hidden = YES;
-                [pdv.spinner startAnimating];
+                [pdv.spinner stopAnimating];
             }
             
             // success
