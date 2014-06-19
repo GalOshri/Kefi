@@ -599,7 +599,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </activityIndicatorView>
                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmF-57-y88">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+                                    <rect key="frame" x="0.0" y="34" width="320" height="54"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <color key="backgroundColor" red="0.00039693573640000001" green="0.74388586960000003" blue="0.4264720508" alpha="1" colorSpace="calibratedRGB"/>
                                 </scrollView>
@@ -612,6 +612,17 @@
                                         <action selector="spotlightPageSelect:" destination="VsO-TP-dNB" eventType="valueChanged" id="6jC-HQ-znO"/>
                                     </connections>
                                 </pageControl>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RTM-PN-RaB">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <segments>
+                                        <segment title="Nearby"/>
+                                        <segment title="Favorites"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="segmentChanged:" destination="VsO-TP-dNB" eventType="valueChanged" id="MXx-cH-F1t"/>
+                                    </connections>
+                                </segmentedControl>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
@@ -702,6 +713,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelSearchButton" destination="P34-La-VSr" id="fBI-x6-sWm"/>
+                        <outlet property="segmentControl" destination="RTM-PN-RaB" id="gA8-h1-Wrg"/>
                         <outlet property="sidebarButton" destination="oqg-Iq-bKW" id="kAH-E0-lEd"/>
                         <outlet property="spinner" destination="Sae-Bi-fEX" id="0lL-BD-cGM"/>
                         <outlet property="spotlightPageControl" destination="zT6-Ga-8hR" id="Cuf-um-1cr"/>

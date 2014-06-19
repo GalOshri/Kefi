@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) IBOutlet UIScrollView *spotlightView;
 @property (strong, nonatomic) IBOutlet UIPageControl *spotlightPageControl;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 
 @end
 
@@ -430,6 +431,32 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     pageControlBeingUsed = NO;
 }
+
+
+
+- (IBAction)segmentChanged:(UISegmentedControl *)sender {
+    switch (self.segmentControl.selectedSegmentIndex)
+    {
+        // Nearby places
+        case 0:
+            self.cancelSearchButton.hidden = YES;
+            [self.placeList.places removeAllObjects];
+            if (locationManager.location != nil)
+                [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:locationManager.location withSpinner:self.spinner];
+            else
+                [locationManager startUpdatingLocation];
+            break;
+        // Favorites
+        case 1:
+            self.cancelSearchButton.hidden = YES;
+            [self.placeList.places removeAllObjects];
+            [KefiService PopulateFavoritePlaceList:self.placeList withTable:self.tableView withLocation:locationManager.location withSpinner:self.spinner];
+            break;
+        default: 
+            break; 
+    }
+}
+
 
 
 @end

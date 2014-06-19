@@ -109,6 +109,89 @@ int radius = 1000;
             }] resume];
 }
 
++ (void) PopulateFavoritePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withLocation:(CLLocation *)currentLocation withSpinner:(UIActivityIndicatorView *)spinner
+{
+    [spinner startAnimating];
+    
+    NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
+    NSArray *favoritePlaces = [userData objectForKey:@"FavoritePlaces"];
+    
+    int __block counter = 0;
+    
+    for (NSString *favoritePlaceFsId in favoritePlaces)
+    {
+        NSString *fsURLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/%@?ll=%f,%f&client_id=%@&client_secret=%@&v=%d",
+                                 
+                                 favoritePlaceFsId,
+                                 currentLocation.coordinate.latitude,
+                                 currentLocation.coordinate.longitude,
+                                 client_id,
+                                 client_secret,
+                                 20140306];
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        [[session dataTaskWithURL:[NSURL URLWithString:fsURLString]
+            completionHandler:^(NSData *data,
+                                NSURLResponse *response,
+                                NSError *error) {
+                
+                NSError *jsonError;
+                NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+                NSDictionary *responseDict = [jsonDict objectForKey:@"response"];
+                NSDictionary *venue = [responseDict objectForKey:@"venue"];
+                
+
+                NSDictionary *location = [venue objectForKey:@"location"];
+                
+                Place *place = [[Place alloc] init];
+                place.fsId = [NSString stringWithFormat:@"%@",[venue objectForKey:@"id"]];
+                place.name = [NSString stringWithFormat:@"%@",[venue objectForKey:@"name"]];
+                place.address = [NSString stringWithFormat:@"%@",[location objectForKey:@"address"]];
+                place.crossStreet = [NSString stringWithFormat:@"%@", [location objectForKey:@"crossStreet"]];
+                place.currentDistance = [location objectForKey:@"distance"];
+                place.latLong = @[[location objectForKey: @"lat"],[location objectForKey:@"lng"]];
+                
+                
+                
+                //modify currentDistance to represent miles
+                place.currentDistance =  @([place.currentDistance doubleValue]* 0.000621371192);
+                
+                //grab image url
+                /* NSString *imageURL = [NSString stringWithFormat:@"%@%@%@",
+                 [[[[venue objectForKey:@"categories"] objectAtIndex:0] objectForKey:@"icon"] objectForKey:@"prefix"],
+                 @"bg_64",
+                 [[[[venue objectForKey:@"categories"] objectAtIndex:0]objectForKey:@"icon"]objectForKey:@"suffix"]
+                 ];
+                 
+                 NSURL *imageURLConcat = [NSURL URLWithString:imageURL];
+                 NSData *imageData = [NSData dataWithContentsOfURL:imageURLConcat];
+                 place.imageType = [UIImage imageWithData:imageData];*/
+                
+                //grab category type
+                place.categoryType = [NSString stringWithFormat:@"%@", [[[venue objectForKey:@"categories"] objectAtIndex:0] objectForKey:@"name"]];
+                
+                
+                //set pid, sentiment, energy to values for checking later
+                place.pId = @"";
+                place.sentiment = [NSNumber numberWithInt:100];
+                place.energy = [NSNumber numberWithInt:-1];
+                
+                [placeList.places addObject:place];
+                
+                counter = counter + 1;
+                
+                if (counter == (int)[favoritePlaces count])
+                {
+                    [self PopulateWithParseData: placeList withTableView:tableView withSpinner:spinner];
+                    
+                    [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+                        
+                }
+            }] resume];
+        
+    }
+}
+
 + (void) PopulateWithParseData:(PlaceList *)placeList withTableView:(UITableView *)tableView withSpinner:(UIActivityIndicatorView *)spinner
 {
     // get date within time interval
