@@ -15,6 +15,7 @@
 #import "Hashtag.h"
 #import "KefiLogInView.h"
 #import "KefiSignUpView.h"
+#import "SWRevealViewController.h"
 
 @interface PlaceListView ()
 
@@ -133,11 +134,7 @@
     }
     
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-    
     pageControlBeingUsed = YES;
-    
-
-    
     self.spotlightView.delegate = self;
     
     NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], nil];
@@ -161,7 +158,7 @@
     self.spotlightView.contentSize = CGSizeMake(self.spotlightView.frame.size.width * colors.count, self.spotlightView.frame.size.height);
     
     //[self.tableView registerClass:[PlaceCell class] forCellReuseIdentifier:@"PlaceCell"];
-    
+
     searchTerm = @"";
     
   
@@ -174,7 +171,16 @@
     
     [KefiService GetKefiSettings];
     
+    ////////slidebar menu
+    // Change button color
+    // _sidebarButton.tintColor = [UIColor colorWithWhite:0.96f alpha:0.2f];
     
+    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
+    _sidebarButton.target = self.revealViewController;
+    _sidebarButton.action = @selector(revealToggle:);
+    
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 
     
 }
