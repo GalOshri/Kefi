@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     
-    _accountTypes = @[@"Facebook",@"Twitter",@"Foursquare"];
+    self.accountTypes = @[@"Facebook",@"Twitter",@"Foursquare"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -61,7 +61,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_accountTypes count];
+    return [self.accountTypes count];
 }
 
 
@@ -78,6 +78,47 @@
     return 100.0;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch ([indexPath row])
+    {
+        // Facebook
+        case 0:
+            if (![PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+                [PFFacebookUtils linkUser:[PFUser currentUser] permissions:nil block:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        NSLog(@"Linked to Facebook");
+                    }
+                }];
+            }
+            else
+                NSLog(@"Already linked to Facebook");
+            break;
+        // Twitter
+        case 1:
+            if ([PFUser user])
+            {
+                if (![PFTwitterUtils isLinkedWithUser:[PFUser currentUser]]) {
+                    [PFTwitterUtils linkUser:[PFUser currentUser] block:^(BOOL succeeded, NSError *error) {
+                        if ([PFTwitterUtils isLinkedWithUser:[PFUser currentUser]]) {
+                            NSLog(@"Woohoo, user logged in with Twitter!");
+                        }
+                    }];
+                }
+                else
+                    NSLog(@"Already linked to Twitter");
+            }
+            break;
+        // Foursquare
+        case 2:
+            NSLog(@"No Foursquare for you. NEXT!");
+            break;
+        default:
+            break;
+
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 /*
 // Override to support conditional editing of the table view.

@@ -161,7 +161,7 @@
     
     numSpotlightTiles = 3;
     
-    [NSTimer scheduledTimerWithTimeInterval:0.4f
+    [NSTimer scheduledTimerWithTimeInterval:4.0f
                                      target:self
                                    selector:@selector(scrollSpotlight:)
                                    userInfo:nil
