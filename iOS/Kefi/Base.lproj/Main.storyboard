@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vqQ-MC-gyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2388" y="-652"/>
+            <point key="canvasLocation" x="2914" y="-652"/>
         </scene>
         <!--Place Detail View-->
         <scene sceneID="ufC-wZ-h7g">
@@ -824,7 +824,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="lB8-tF-TAN" kind="custom" identifier="accountsSegue" customClass="SWRevealViewControllerSegue" id="wJk-yU-MWH"/>
+                                    <segue destination="lB8-tF-TAN" kind="custom" identifier="accountsSegue" customClass="SWRevealViewControllerSegue" id="VmT-0n-5ob"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settings" textLabel="KEp-JT-xAd" style="IBUITableViewCellStyleDefault" id="fj7-vA-2gR">
@@ -877,8 +877,11 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="QEk-F9-Ywf" kind="modal" identifier="contactsSegue" id="zf3-OZ-ZI3"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="usePrivacy" textLabel="wKY-Yx-IRK" style="IBUITableViewCellStyleDefault" id="3Qw-e2-03l">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="privacy" textLabel="wKY-Yx-IRK" style="IBUITableViewCellStyleDefault" id="3Qw-e2-03l">
                                 <rect key="frame" x="0.0" y="198" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Qw-e2-03l" id="gpq-C3-4cK">
@@ -922,6 +925,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yt6-RR-G81" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="308" y="-1169"/>
+        </scene>
+        <!--View Controller - Contact Us-->
+        <scene sceneID="fRK-Qm-1zu">
+            <objects>
+                <viewController id="gBE-sW-dDd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J9G-S6-oIc"/>
+                        <viewControllerLayoutGuide type="bottom" id="SfW-u7-Fca"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YIq-yw-4NF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yie-Y5-xss">
+                                <rect key="frame" x="20" y="127" width="14" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Contact Us" id="wnl-2W-laS">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Eqe-DX-qK0">
+                            <connections>
+                                <segue destination="MBj-4J-AzN" kind="unwind" unwindAction="unwindToList:" id="Dic-rn-OD5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ae6-Qo-TDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="MBj-4J-AzN" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1319" y="-828"/>
         </scene>
         <!--Social Network Accounts Table View Controller - Connect User Accounts-->
         <scene sceneID="Jpj-H5-dno">
@@ -1051,6 +1088,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NUN-bS-F1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1330" y="735"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BN0-mo-ihb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QEk-F9-Ywf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CFm-iV-DP6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gBE-sW-dDd" kind="relationship" relationship="rootViewController" id="Ez6-OX-2eK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YgJ-Bl-xV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="793" y="-828"/>
         </scene>
     </scenes>
     <resources>

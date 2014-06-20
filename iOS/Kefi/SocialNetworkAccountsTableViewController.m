@@ -7,6 +7,7 @@
 //
 
 #import "SocialNetworkAccountsTableViewController.h"
+#import "SWRevealViewController.h"
 
 @interface SocialNetworkAccountsTableViewController ()
 
@@ -36,6 +37,11 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+
+        
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,6 +71,11 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     return cell;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 100.0;
 }
 
 
