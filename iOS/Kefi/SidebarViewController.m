@@ -20,25 +20,25 @@
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
     // Set the title of navigation bar by using the menu items
-     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    // NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
      UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
-     destViewController.title = [[_menuItems objectAtIndex:indexPath.row] capitalizedString];
+    // destViewController.title = [[_menuItems objectAtIndex:indexPath.row] capitalizedString];
     
     
-    // set bar button items
-    UIImage *menuImg = [UIImage imageNamed:@"menu.png"];
-    UIButton *imgButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    imgButton.bounds = CGRectMake(0,0, menuImg.size.width, menuImg.size.height);
-    
-    [imgButton setImage:menuImg forState:UIControlStateNormal];
-    UIBarButtonItem *menuBarBtn = [[UIBarButtonItem alloc]initWithCustomView:imgButton];
-    menuBarBtn.target = self.revealViewController;
-    menuBarBtn.action = @selector(revealToggle:);
-    
-    destViewController.navigationItem.leftBarButtonItem = menuBarBtn;
-
     
      if ([segue.identifier isEqualToString:@"accountsSegue"]) {
+         // set bar button items
+         UIImage *menuImg = [UIImage imageNamed:@"menu.png"];
+         UIButton *imgButton = [UIButton buttonWithType:UIButtonTypeCustom];
+         imgButton.bounds = CGRectMake(0,0, menuImg.size.width, menuImg.size.height);
+         
+         [imgButton setImage:menuImg forState:UIControlStateNormal];
+         UIBarButtonItem *menuBarBtn = [[UIBarButtonItem alloc]initWithCustomView:imgButton];
+         menuBarBtn.target = self.revealViewController;
+         menuBarBtn.action = @selector(revealToggle:);
+         
+         destViewController.navigationItem.leftBarButtonItem = menuBarBtn;
+         
          NSLog(@"we prepare for accounts segue");
      }
     
@@ -81,7 +81,7 @@
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.3f];
     
-    _menuItems = @[@"accounts", @"settings", @"invites", @"contact", @"privacy", @"logout"];
+    _menuItems = @[@"home", @"accounts", @"settings", @"invites", @"contact", @"privacy", @"logout"];
 
 }
 

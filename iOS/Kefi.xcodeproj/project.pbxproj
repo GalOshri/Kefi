@@ -49,6 +49,7 @@
 		DA089B4119235C210055FD31 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = DA089B4019235C210055FD31 /* Review.m */; };
 		DA089B8B1925CFF80055FD31 /* HashtagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA089B8A1925CFF80055FD31 /* HashtagCollectionCell.m */; };
 		DA2AB1331946E4920010BE81 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA2AB1311946E3EE0010BE81 /* FacebookSDK.framework */; };
+		DA359793195416F600432057 /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA359792195416F600432057 /* ContactUsViewController.m */; };
 		DA9EB651191EDF4F00C375B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9EB650191EDF4F00C375B3 /* MapKit.framework */; };
 		DAAAB4A319529D3B004D2DB1 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = DAAAB4A219529D3B004D2DB1 /* menu.png */; };
 		DAAAB4A719529DF5004D2DB1 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAAB4A619529DF5004D2DB1 /* SWRevealViewController.m */; };
@@ -145,6 +146,8 @@
 		DA089B891925CFF80055FD31 /* HashtagCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashtagCollectionCell.h; sourceTree = "<group>"; };
 		DA089B8A1925CFF80055FD31 /* HashtagCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashtagCollectionCell.m; sourceTree = "<group>"; };
 		DA2AB1311946E3EE0010BE81 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		DA359791195416F600432057 /* ContactUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsViewController.h; sourceTree = "<group>"; };
+		DA359792195416F600432057 /* ContactUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsViewController.m; sourceTree = "<group>"; };
 		DA9EB650191EDF4F00C375B3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DAAAB4A219529D3B004D2DB1 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		DAAAB4A519529DF5004D2DB1 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -436,6 +439,8 @@
 		DAAAB4A419529D90004D2DB1 /* slide menu */ = {
 			isa = PBXGroup;
 			children = (
+				DA359791195416F600432057 /* ContactUsViewController.h */,
+				DA359792195416F600432057 /* ContactUsViewController.m */,
 				DAAAB4AE1952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.h */,
 				DAAAB4AF1952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.m */,
 				DAAAB4AB19529F82004D2DB1 /* SidebarViewController.h */,
@@ -566,6 +571,7 @@
 				0D75A59E194E2E930056630C /* KefiLogInView.m in Sources */,
 				0D81466418F0E3670072702B /* KefiService.m in Sources */,
 				0DB0B4381921D8DF008D5624 /* SubmitReviewDetailView.m in Sources */,
+				DA359793195416F600432057 /* ContactUsViewController.m in Sources */,
 				0D4F4A0918F0B66A00F901AE /* PlaceCell.m in Sources */,
 				DAAAB4B01952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.m in Sources */,
 				0D4F4A0018F0AD8100F901AE /* PlaceList.m in Sources */,
