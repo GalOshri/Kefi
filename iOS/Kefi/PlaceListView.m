@@ -34,6 +34,7 @@
     CLPlacemark *placemark;
     NSString *searchTerm;
     BOOL pageControlBeingUsed;
+    int numSpotlightTiles;
 }
 
 # pragma mark - Lazy Instantiations
@@ -157,6 +158,14 @@
 	self.spotlightPageControl.numberOfPages = colors.count;
     
     self.spotlightView.contentSize = CGSizeMake(self.spotlightView.frame.size.width * colors.count, self.spotlightView.frame.size.height);
+    
+    numSpotlightTiles = 3;
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.4f
+                                     target:self
+                                   selector:@selector(scrollSpotlight:)
+                                   userInfo:nil
+                                    repeats:YES];
     
     //[self.tableView registerClass:[PlaceCell class] forCellReuseIdentifier:@"PlaceCell"];
 
@@ -457,6 +466,20 @@
     }
 }
 
+- (void)scrollSpotlight:(NSTimer *)theTimer {
+    
+    CGRect frame;
+    self.spotlightPageControl.currentPage = (self.spotlightPageControl.currentPage + 1) % numSpotlightTiles;
+    
+    frame.origin.x = self.spotlightView.frame.size.width * self.spotlightPageControl.currentPage;
+    frame.origin.y = 0;
+    frame.size = self.spotlightView.frame.size;
+    [self.spotlightView scrollRectToVisible:frame animated:YES];
+    pageControlBeingUsed = YES;
+    
+    
+    return;
+}
 
 
 @end
