@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hRx-cM-0YU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hRx-cM-0YU">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -581,7 +581,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="EKv-xI-seI">
-                            <rect key="frame" x="0.0" y="64" width="320" height="116"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="116"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P34-La-VSr">
@@ -627,12 +627,12 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PoweredByFoursquare.png" id="yeI-2K-bk8">
-                            <rect key="frame" x="0.0" y="340" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="276" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlaceCell" rowHeight="138" id="y6L-nO-hlX" customClass="PlaceCell">
-                                <rect key="frame" x="0.0" y="202" width="320" height="138"/>
+                                <rect key="frame" x="0.0" y="138" width="320" height="138"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y6L-nO-hlX" id="fe3-xY-eHw">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
@@ -918,14 +918,34 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="logout" textLabel="hX5-Jm-nyO" style="IBUITableViewCellStyleDefault" id="sUk-bs-ZL8">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="aboutKefi" textLabel="hX5-Jm-nyO" style="IBUITableViewCellStyleDefault" id="sUk-bs-ZL8">
                                 <rect key="frame" x="0.0" y="286" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sUk-bs-ZL8" id="KT1-8m-a4g">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Log Out" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hX5-Jm-nyO">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="About Kefi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hX5-Jm-nyO">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="dxV-yo-q01" kind="modal" identifier="AboutKefiSegue" id="4Qk-Ho-eeq"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="logout" textLabel="YZC-Q4-xbh" style="IBUITableViewCellStyleDefault" id="gUv-0p-sgv">
+                                <rect key="frame" x="0.0" y="330" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gUv-0p-sgv" id="7S6-mn-4B7">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Log Out" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YZC-Q4-xbh">
                                             <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -958,24 +978,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="hi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yie-Y5-xss">
-                                <rect key="frame" x="20" y="127" width="14" height="21"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="Send us your feedback here, or email kefiapp@gmail.com" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9k-V8-cv6">
+                                <rect key="frame" x="20" y="98" width="280" height="78"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Add your feedback here..." translatesAutoresizingMaskIntoConstraints="NO" id="krT-Yc-rh3">
+                                <rect key="frame" x="20" y="184" width="280" height="291"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Contact Us" id="wnl-2W-laS">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Eqe-DX-qK0">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Eqe-DX-qK0">
                             <connections>
                                 <action selector="cancelModal:" destination="gBE-sW-dDd" id="rEM-cg-yY8"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Submit" id="NU4-Zl-ceB">
+                            <connections>
+                                <action selector="submitFeedback:" destination="gBE-sW-dDd" id="V3x-Ax-7ap"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelButton" destination="Eqe-DX-qK0" id="K2i-DK-xzw"/>
+                        <outlet property="feedbackTextView" destination="krT-Yc-rh3" id="kOl-UW-WyF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ae6-Qo-TDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1073,7 +1106,56 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxH-p9-FIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845" y="-1939"/>
+            <point key="canvasLocation" x="845" y="-2515"/>
+        </scene>
+        <!--About Kefi View - About Kefi-->
+        <scene sceneID="hJk-95-k0V">
+            <objects>
+                <viewController id="7Qu-36-OYq" customClass="AboutKefiView" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TvD-GJ-Etc"/>
+                        <viewControllerLayoutGuide type="bottom" id="g3Y-fv-4J0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="goG-3A-XZQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5O-RE-ejr">
+                                <rect key="frame" x="20" y="109" width="280" height="439"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">We want you to find the best places to dance, grab drinks, and catch up with friends when you decide to go out.
+The places we go to have constantly changing atmospheres. The club you like to #DanceYourFaceOff might be #Crickets tonight. That bar that usually serves #WeakDrinks might have a new #GenerousBartender. Or perhaps you're looking for a place with #LustyIntentions or #EasyLikeSundayMorning. Let's find it.
+So use Kefi to find a place that matches your mood for tonight, then get out there and have a blast sharing your thoughts about it.
+
+That's why we called this app "Kefi"; it means "fun" in Hebrew and "the spirit of joy" in Greek.
+
+Bring the Kefi tonight,
+Gal and Paul.</string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="About Kefi" id="bHa-Rh-Loi">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="dnv-sh-8vr">
+                            <connections>
+                                <action selector="cancelModal:" destination="7Qu-36-OYq" id="Q9C-tV-WS5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="li1-ZC-pXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1323" y="-1836"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fUp-YI-cYN">
@@ -1129,6 +1211,24 @@
             </objects>
             <point key="canvasLocation" x="845" y="-1169"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0Xb-SS-SV4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dxV-yo-q01" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UyY-Dc-glh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7Qu-36-OYq" kind="relationship" relationship="rootViewController" id="cwl-Lh-aVI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gsz-Cn-TVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="845" y="-1836"/>
+        </scene>
     </scenes>
     <resources>
         <image name="FavUnfilled.png" width="100" height="100"/>
@@ -1150,6 +1250,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pVW-Nx-drD"/>
+        <segue reference="qkL-qH-Kra"/>
     </inferredMetricsTieBreakers>
 </document>

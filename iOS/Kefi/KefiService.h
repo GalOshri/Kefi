@@ -31,6 +31,8 @@
 
 + (BOOL) isFavorite:(NSString *)fsId;
 
++ (void) submitFeedback:(NSString *)feedback;
+
 
 +(void) loginTosocialNetwork;
 

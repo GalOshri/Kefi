@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ContactUsViewController : UIViewController
+@interface ContactUsViewController : UIViewController <UITextViewDelegate>
 
 @end

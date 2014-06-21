@@ -38,6 +38,7 @@
 		0D81466418F0E3670072702B /* KefiService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466318F0E3660072702B /* KefiService.m */; };
 		0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466618F10DD90072702B /* PlaceDetailView.m */; };
 		0D81466D18F1259F0072702B /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466C18F1259F0072702B /* SearchView.m */; };
+		0D87999D195566D300C0973F /* AboutKefiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D87999C195566D300C0973F /* AboutKefiView.m */; };
 		0DB0B4381921D8DF008D5624 /* SubmitReviewDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */; };
 		DA089B38192016120055FD31 /* smallCircleFull.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B31192016120055FD31 /* smallCircleFull.png */; };
 		DA089B39192016120055FD31 /* smallCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B32192016120055FD31 /* smallCircle.png */; };
@@ -132,6 +133,8 @@
 		0D81466618F10DD90072702B /* PlaceDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceDetailView.m; sourceTree = "<group>"; };
 		0D81466B18F1259F0072702B /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
 		0D81466C18F1259F0072702B /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
+		0D87999B195566D300C0973F /* AboutKefiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutKefiView.h; sourceTree = "<group>"; };
+		0D87999C195566D300C0973F /* AboutKefiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutKefiView.m; sourceTree = "<group>"; };
 		0DB0B4361921D8DF008D5624 /* SubmitReviewDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitReviewDetailView.h; sourceTree = "<group>"; };
 		0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitReviewDetailView.m; sourceTree = "<group>"; };
 		DA089B31192016120055FD31 /* smallCircleFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallCircleFull.png; sourceTree = "<group>"; };
@@ -392,7 +395,7 @@
 				0D4F49FB18F0ACA000F901AE /* PlaceListView.m */,
 				0D4F4A0718F0B66A00F901AE /* PlaceCell.h */,
 				0D4F4A0818F0B66A00F901AE /* PlaceCell.m */,
-				DAAAB4A419529D90004D2DB1 /* slide menu */,
+				DAAAB4A419529D90004D2DB1 /* Menu */,
 				0D75A5A2194E374B0056630C /* Log In and Sign Up */,
 			);
 			name = "Home View";
@@ -436,19 +439,21 @@
 			name = "Review Detail View";
 			sourceTree = "<group>";
 		};
-		DAAAB4A419529D90004D2DB1 /* slide menu */ = {
+		DAAAB4A419529D90004D2DB1 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
 				DA359791195416F600432057 /* ContactUsViewController.h */,
 				DA359792195416F600432057 /* ContactUsViewController.m */,
 				DAAAB4AE1952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.h */,
 				DAAAB4AF1952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.m */,
+				0D87999B195566D300C0973F /* AboutKefiView.h */,
+				0D87999C195566D300C0973F /* AboutKefiView.m */,
 				DAAAB4AB19529F82004D2DB1 /* SidebarViewController.h */,
 				DAAAB4AC19529F82004D2DB1 /* SidebarViewController.m */,
 				DAAAB4A519529DF5004D2DB1 /* SWRevealViewController.h */,
 				DAAAB4A619529DF5004D2DB1 /* SWRevealViewController.m */,
 			);
-			name = "slide menu";
+			name = Menu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -571,6 +576,7 @@
 				0D75A59E194E2E930056630C /* KefiLogInView.m in Sources */,
 				0D81466418F0E3670072702B /* KefiService.m in Sources */,
 				0DB0B4381921D8DF008D5624 /* SubmitReviewDetailView.m in Sources */,
+				0D87999D195566D300C0973F /* AboutKefiView.m in Sources */,
 				DA359793195416F600432057 /* ContactUsViewController.m in Sources */,
 				0D4F4A0918F0B66A00F901AE /* PlaceCell.m in Sources */,
 				DAAAB4B01952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.m in Sources */,

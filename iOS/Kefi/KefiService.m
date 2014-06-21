@@ -416,6 +416,18 @@ int radius = 1000;
     
 }
 
++ (void) submitFeedback:(NSString *)feedback
+{
+    PFUser *user = [PFUser currentUser];
+    
+    // Make a new post
+    PFObject *feedbackObject = [PFObject objectWithClassName:@"Feedback"];
+    feedbackObject[@"text"] = feedback;
+    if ([PFUser currentUser])
+        feedbackObject[@"user"] = user;
+    [feedbackObject save];
+}
+
 
 +(void) loginTosocialNetwork {
     [PFFacebookUtils logInWithPermissions:[NSArray arrayWithObjects:@"publish_actions", nil] block:^(PFUser *user, NSError *error) {
