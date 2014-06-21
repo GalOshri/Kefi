@@ -87,7 +87,27 @@
     self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.3f];
     
     _menuItems = @[@"home", @"accounts", @"settings", @"invites", @"contact", @"privacy", @"aboutKefi", @"logout"];
+    
+    SWRevealViewController *revealController = [self revealViewController];
+    [revealController panGestureRecognizer];
+    [revealController tapGestureRecognizer];
 
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.revealViewController.frontViewController.view setUserInteractionEnabled:NO];
+    [self.revealViewController.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.revealViewController.frontViewController.view setUserInteractionEnabled:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning

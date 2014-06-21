@@ -12,7 +12,7 @@
 @interface SocialNetworkAccountsTableViewController ()
 
 @property (nonatomic, strong) NSArray *accountTypes;
-
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @end
 
 @implementation SocialNetworkAccountsTableViewController
@@ -32,11 +32,11 @@
     
     self.accountTypes = @[@"Facebook",@"Twitter",@"Foursquare"];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
+    _sidebarButton.target = self.revealViewController;
+    _sidebarButton.action = @selector(revealToggle:);
+
+
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
