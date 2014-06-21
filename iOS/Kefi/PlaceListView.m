@@ -49,17 +49,6 @@
     return _placeList;
 }
 
-/* - (NSMutableArray *)hashtagList
-{
-    if (!_hashtagList)
-    {
-        _hashtagList = [[NSMutableArray alloc] init];
-    }
-    
-    return _hashtagList;
-}*/
-
-
  #pragma mark - Navigation
  
  // In a story board-based application, you will often want to do a little preparation before navigation
@@ -148,25 +137,52 @@
     pageControlBeingUsed = YES;
     self.spotlightView.delegate = self;
     
-    NSArray *colors = [NSArray arrayWithObjects:[UIColor redColor], [UIColor greenColor], [UIColor blueColor], nil];
-    for (int i = 0; i < colors.count; i++) {
+    NSArray *imageURLs = [NSArray arrayWithObjects:@"http://i.imgur.com/X8Y8ENE.png", @"http://i.imgur.com/VebP6Ol.jpg", @"http://i.imgur.com/YOcINMK.jpg", nil];
+    
+    for (int i = 0; i < imageURLs.count; i++) {
         CGRect frame;
         frame.origin.x = self.spotlightView.frame.size.width * i;
         frame.origin.y = 0;
         frame.size = self.spotlightView.frame.size;
-        UILabel *label = [[UILabel alloc] initWithFrame:frame];
-        label.text = @"GALILEO!";
+  
+        // Asynchornous image loading
+        NSURLSession *session = [NSURLSession sharedSession];
+        UIActivityIndicatorView *spotlightSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        spotlightSpinner.center = CGPointMake(frame.origin.x + (frame.size.width / 2.0), frame.origin.y + (frame.size.height / 2.0));
+        [self.spotlightView addSubview:spotlightSpinner];
+        [spotlightSpinner startAnimating];
+        [[session dataTaskWithURL:[NSURL URLWithString:[imageURLs objectAtIndex:i]]
+                completionHandler:^(NSData *data,
+                                    NSURLResponse *response,
+                                    NSError *error) {
+            
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    UIImage *img = [[UIImage alloc] initWithData:data];
+                    UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+                    imgView.frame = frame;
+                    [self.spotlightView addSubview:imgView];
+                    [spotlightSpinner stopAnimating];
+                    [spotlightSpinner removeFromSuperview];
+                    }];
+                }] resume];
         
-        UIView *subview = [[UIView alloc] initWithFrame:frame];
-        subview.backgroundColor = [colors objectAtIndex:i];
-        [self.spotlightView addSubview:subview];
-        [self.spotlightView addSubview:label];
+        // Synchronous image loading
+        /*
+        NSURL *url = [NSURL URLWithString:@"http://i.imgur.com/VebP6Ol.jpg"];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        UIImage *img = [[UIImage alloc] initWithData:data];
+        //UIView *subview = [[UIView alloc] initWithFrame:frame];
+        //subview.backgroundColor = [colors objectAtIndex:i];
+        //[self.spotlightView addSubview:subview];
+        UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+        imgView.frame = frame;
+        [self.spotlightView addSubview:imgView]; */
     }
     
     self.spotlightPageControl.currentPage = 0;
-	self.spotlightPageControl.numberOfPages = colors.count;
+	self.spotlightPageControl.numberOfPages = imageURLs.count;
     
-    self.spotlightView.contentSize = CGSizeMake(self.spotlightView.frame.size.width * colors.count, self.spotlightView.frame.size.height);
+    self.spotlightView.contentSize = CGSizeMake(self.spotlightView.frame.size.width * imageURLs.count, self.spotlightView.frame.size.height);
     
     numSpotlightTiles = 3;
     
