@@ -13,12 +13,9 @@
 #import "PlaceMapViewViewController.h"
 
 @interface PlaceDetailView ()
-@property (nonatomic, strong) KefiService *kefiService;
 @property (weak, nonatomic) IBOutlet UIButton *mapButton;
 @property (nonatomic) BOOL isFavorite;
 @property (strong, nonatomic) IBOutlet UIButton *favoriteButton;
-
-
 
 @property (weak, nonatomic) IBOutlet UIImageView *sentimentImage;
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel1;
@@ -28,7 +25,6 @@
 @end
 
 @implementation PlaceDetailView
-//@synthesize mapView;
 
 #pragma mark - Navigation
 
@@ -75,12 +71,11 @@
     }
 }
 
-#pragma mark - View Methods
+#pragma mark - View Load Methods
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     
     //sets name to view?
     [self.navigationController.viewControllers[self.navigationController.viewControllers.count -1] setTitle:self.place.name];
@@ -108,7 +103,7 @@
     //modifications to print sigFigs for distance. NEED TO ROUND
     NSString *distanceString = [self.place.currentDistance stringValue];
     distanceString = [distanceString substringToIndex:4];
-    self.distanceMi.text = [NSString stringWithFormat:@"%@ mi",distanceString];
+    self.distanceLabel.text = [NSString stringWithFormat:@"%@ mi",distanceString];
     
     //deal with UI showing crossStreets if not null
     /*
@@ -133,28 +128,6 @@
         self.isFavorite = NO;
     }
 }
-
-
-
-
-// favorite/unfavorite this place
-- (IBAction)favoritePlace:(UIButton *)sender {
-    
-    if (self.isFavorite)
-    {
-        [KefiService removeFavorite:self.place.fsId];
-        [self.favoriteButton setImage:[UIImage imageNamed:@"FavUnfilled.png"] forState:UIControlStateNormal];
-        self.isFavorite = NO;
-    }
-    
-    else
-    {
-        [KefiService addFavorite:self.place.fsId];
-        [self.favoriteButton setImage:[UIImage imageNamed:@"FavFilled.png"] forState:UIControlStateNormal];
-        self.isFavorite = YES;
-    }
-}
-
 
 
 -(void)setSentimentImage {
@@ -209,6 +182,33 @@
     
 }
 
+#pragma mark - Actions
+
+// Favorite/unfavorite this place
+- (IBAction)favoritePlace:(UIButton *)sender {
+    
+    if (self.isFavorite)
+    {
+        [KefiService removeFavorite:self.place.fsId];
+        [self.favoriteButton setImage:[UIImage imageNamed:@"FavUnfilled.png"] forState:UIControlStateNormal];
+        self.isFavorite = NO;
+    }
+    
+    else
+    {
+        [KefiService addFavorite:self.place.fsId];
+        [self.favoriteButton setImage:[UIImage imageNamed:@"FavFilled.png"] forState:UIControlStateNormal];
+        self.isFavorite = YES;
+    }
+}
+
+// Go to Foursquare page
+- (IBAction)clickFoursquareLink:(UIButton *)sender {
+    NSString *urlString = [NSString stringWithFormat:@"http://foursquare.com/v/%@?ref=T4XPWMEQAID11W0CSQLCP2P0NXGEUSDZRV4COSBJH2QEMC2O", self.place.fsId];
+    NSURL *url = [NSURL URLWithString:urlString];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 
 
 #pragma mark Collection View Methods
@@ -252,7 +252,6 @@
 
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-
 {
     Hashtag *hashtag = self.place.hashtagList[indexPath.row];
     NSString *temp = hashtag.text;
@@ -277,11 +276,7 @@
 }
 
 
-- (IBAction)clickFoursquareLink:(UIButton *)sender {
-    NSString *urlString = [NSString stringWithFormat:@"http://foursquare.com/v/%@?ref=T4XPWMEQAID11W0CSQLCP2P0NXGEUSDZRV4COSBJH2QEMC2O", self.place.fsId];
-    NSURL *url = [NSURL URLWithString:urlString];
-    [[UIApplication sharedApplication] openURL:url];
-}
+
 
 
 @end

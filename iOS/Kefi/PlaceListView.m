@@ -30,11 +30,9 @@
 
 @implementation PlaceListView {
     CLLocationManager *locationManager;
-    CLGeocoder *geocoder;
-    CLPlacemark *placemark;
     NSString *searchTerm;
     BOOL pageControlBeingUsed;
-    int numSpotlightTiles;
+    NSUInteger numSpotlightTiles;
 }
 
 # pragma mark - Lazy Instantiations
@@ -89,53 +87,71 @@
 }
 
 
-#pragma mark - View Methods
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - View Load Methods
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    
-    // Log in / sign up
-    if (![PFUser currentUser]) { // No user logged in
-        // Create the log in view controller
-        KefiLogInView *logInViewController = [[KefiLogInView alloc] init];
-        [logInViewController setDelegate:self]; // Set ourselves as the delegate
-        [logInViewController setFacebookPermissions:[NSArray arrayWithObjects:@"friends_about_me", nil]];
-        [logInViewController setFields: PFLogInFieldsDefault | PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsDismissButton];
-        
-        
-        // Create the sign up view controller
-        KefiSignUpView *signUpViewController = [[KefiSignUpView alloc] init];
-        [signUpViewController setDelegate:self]; // Set ourselves as the delegate
-        
-        // Assign our sign up controller to be displayed from the login controller
-        [logInViewController setSignUpController:signUpViewController];
-        
-        // Present the log in view controller
-        [self presentViewController:logInViewController animated:YES completion:NULL];
+    // Log in / sign up if no user signed in
+    if (![PFUser currentUser])
+    {
+        [self showLogInAndSignUpView];
     }
     
+    // Change table separators
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
     
+    // Set up refresh control
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refreshList)
              forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
     
+    // Set up Spotlight
+    [self setUpSpotlight];
+    
+    //searchTerm = @"";
+    
+    // Set up location manager
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation]; // calls Kefi Service to populate list
+    
+    // Get settings
+    [KefiService GetKefiSettings];
+    
+    // Set the side bar button action. When it's tapped, it'll show the menu.
+    self.menuButton.target = self.revealViewController;
+    self.menuButton.action = @selector(revealToggle:);
+    
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+}
+
+- (void)showLogInAndSignUpView
+{
+    // Create the log in view controller
+    KefiLogInView *logInViewController = [[KefiLogInView alloc] init];
+    [logInViewController setDelegate:self]; // Set ourselves as the delegate
+    [logInViewController setFacebookPermissions:[NSArray arrayWithObjects:@"friends_about_me", nil]];
+    [logInViewController setFields: PFLogInFieldsDefault | PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsDismissButton];
     
     
+    // Create the sign up view controller
+    KefiSignUpView *signUpViewController = [[KefiSignUpView alloc] init];
+    [signUpViewController setDelegate:self]; // Set ourselves as the delegate
     
-    pageControlBeingUsed = YES;
+    // Assign our sign up controller to be displayed from the login controller
+    [logInViewController setSignUpController:signUpViewController];
+    
+    // Present the log in view controller
+    [self presentViewController:logInViewController animated:YES completion:NULL];
+}
+
+- (void)setUpSpotlight
+{
     self.spotlightView.delegate = self;
     
     NSArray *imageURLs = [NSArray arrayWithObjects:@"http://i.imgur.com/X8Y8ENE.png", @"http://i.imgur.com/VebP6Ol.jpg", @"http://i.imgur.com/YOcINMK.jpg", nil];
@@ -146,7 +162,7 @@
         frame.origin.x = self.spotlightView.frame.size.width * i;
         frame.origin.y = 0;
         frame.size = self.spotlightView.frame.size;
-  
+        
         // Asynchornous image loading
         NSURLSession *session = [NSURLSession sharedSession];
         UIActivityIndicatorView *spotlightSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -157,14 +173,14 @@
                 completionHandler:^(NSData *data,
                                     NSURLResponse *response,
                                     NSError *error) {
-            
+                    
                     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    UIImage *img = [[UIImage alloc] initWithData:data];
-                    UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-                    imgView.frame = frame;
-                    [self.spotlightView addSubview:imgView];
-                    [spotlightSpinner stopAnimating];
-                    [spotlightSpinner removeFromSuperview];
+                        UIImage *img = [[UIImage alloc] initWithData:data];
+                        UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+                        imgView.frame = frame;
+                        [self.spotlightView addSubview:imgView];
+                        [spotlightSpinner stopAnimating];
+                        [spotlightSpinner removeFromSuperview];
                         UILabel *imgLabel = [[UILabel alloc] initWithFrame:frame];
                         imgLabel.text = [spotlightStrings objectAtIndex:i];
                         imgLabel.textColor = [UIColor redColor];
@@ -174,15 +190,15 @@
         
         // Synchronous image loading
         /*
-        NSURL *url = [NSURL URLWithString:@"http://i.imgur.com/VebP6Ol.jpg"];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        UIImage *img = [[UIImage alloc] initWithData:data];
-        //UIView *subview = [[UIView alloc] initWithFrame:frame];
-        //subview.backgroundColor = [colors objectAtIndex:i];
-        //[self.spotlightView addSubview:subview];
-        UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-        imgView.frame = frame;
-        [self.spotlightView addSubview:imgView]; */
+         NSURL *url = [NSURL URLWithString:@"http://i.imgur.com/VebP6Ol.jpg"];
+         NSData *data = [NSData dataWithContentsOfURL:url];
+         UIImage *img = [[UIImage alloc] initWithData:data];
+         //UIView *subview = [[UIView alloc] initWithFrame:frame];
+         //subview.backgroundColor = [colors objectAtIndex:i];
+         //[self.spotlightView addSubview:subview];
+         UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+         imgView.frame = frame;
+         [self.spotlightView addSubview:imgView]; */
     }
     
     self.spotlightPageControl.currentPage = 0;
@@ -190,34 +206,15 @@
     
     self.spotlightView.contentSize = CGSizeMake(self.spotlightView.frame.size.width * imageURLs.count, self.spotlightView.frame.size.height);
     
-    numSpotlightTiles = 3;
+    numSpotlightTiles = imageURLs.count;
     
     [NSTimer scheduledTimerWithTimeInterval:4.0f
                                      target:self
                                    selector:@selector(scrollSpotlight:)
                                    userInfo:nil
                                     repeats:YES];
-    
-    //[self.tableView registerClass:[PlaceCell class] forCellReuseIdentifier:@"PlaceCell"];
+    pageControlBeingUsed = YES;
 
-    searchTerm = @"";
-    
-  
-    locationManager = [[CLLocationManager alloc] init];
-    //geocoder = [[CLGeocoder alloc] init];
-    
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation]; // calls Kefi Service to populate list
-    
-    [KefiService GetKefiSettings];
-    
-    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
-    self.sidebarButton.target = self.revealViewController;
-    self.sidebarButton.action = @selector(revealToggle:);
-    
-    // Set the gesture
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
 #pragma mark - Search Methods
@@ -229,23 +226,6 @@
         [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:locationManager.location withSpinner:self.spinner];
     else
         [locationManager startUpdatingLocation];
-    
-    /* INSTEAD OF
-    [UIView animateWithDuration:1.0
-                          delay:0.0
-                        options:UIViewAnimationOptionAllowUserInteraction
-                     animations:^{
-                         self.tableView.tableHeaderView = nil;
-                         
-                     }
-                     completion:^(BOOL finished) {
-                         self.cancelSearchButton.hidden = YES;
-                         [self.placeList.places removeAllObjects];
-                         if (locationManager.location != nil)
-                             [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:locationManager.location withTableHeader:self.tableHeader withSpinner:self.spinner];
-                         else
-                             [locationManager startUpdatingLocation];
-                     }]; */
 }
 
 #pragma mark - Table View Data Source
@@ -260,7 +240,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    
     return [self.placeList.places count];
 }
 
@@ -284,10 +263,8 @@
     // Set cell
     Place *currentPlace = [self.placeList.places objectAtIndex:indexPath.row];
     cell.place = currentPlace;
-
     cell.placeName.text = cell.place.name;
 
-    
     //display category name and distance
     NSString *distanceString = [cell.place.currentDistance stringValue];
     distanceString = [distanceString substringToIndex:4];
@@ -317,12 +294,10 @@
     //define dictionary:
     NSArray *energyLevels = @[cell.energyLevel1, cell.energyLevel2, cell.energyLevel3];
     
-    
     if((long)[cell.place.sentiment integerValue] != 100) {
         // NSLog(@"%@ is in Interval: %d with s: %ld, e: %ld", cell.place.name, cell.place.isInInterval, (long)[cell.place.sentiment integerValue], (long)[cell.place.energy integerValue]);
 
         [cell.sentimentImage setHidden:NO];
-        
         cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey: cell.place.sentiment]];
        
         for (int i=0; i<[energyLevels count]; i++) {
@@ -336,8 +311,6 @@
             else
                 [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
         }
-        
-        
         
         if (cell.place.isInInterval) {
             [cell.sentimentImage setAlpha:1.0];
@@ -353,7 +326,6 @@
                 [energyLevels[j] setAlpha:0.5];
             
         }
-            
     }
     
     else {
@@ -368,10 +340,10 @@
         }
     }
     
-    
     return cell;
 }
 
+// Refresh table on pull down
 - (void)refreshList {
     [self.placeList.places removeAllObjects];
     if (locationManager.location != nil)
@@ -406,7 +378,7 @@
 }
 
 
-#pragma mark - User Identity
+#pragma mark - User Identity Views
 
 // Sent to the delegate to determine whether the log in request should be submitted to the server.
 - (BOOL)logInViewController:(PFLogInViewController *)logInController shouldBeginLogInWithUsername:(NSString *)username password:(NSString *)password {
@@ -438,7 +410,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - Spotlight
+#pragma mark - Spotlight UI Methods
 - (void)scrollViewDidScroll:(UIScrollView *)sender {
     if  (!pageControlBeingUsed)
     {
@@ -468,7 +440,22 @@
     pageControlBeingUsed = NO;
 }
 
+- (void)scrollSpotlight:(NSTimer *)theTimer {
+    
+    CGRect frame;
+    self.spotlightPageControl.currentPage = (self.spotlightPageControl.currentPage + 1) % numSpotlightTiles;
+    
+    frame.origin.x = self.spotlightView.frame.size.width * self.spotlightPageControl.currentPage;
+    frame.origin.y = 0;
+    frame.size = self.spotlightView.frame.size;
+    [self.spotlightView scrollRectToVisible:frame animated:YES];
+    pageControlBeingUsed = YES;
+    
+    
+    return;
+}
 
+#pragma  mark - Segment Control for Nearby or Favorite Places
 
 - (IBAction)segmentChanged:(UISegmentedControl *)sender {
     switch (self.segmentControl.selectedSegmentIndex)
@@ -492,21 +479,5 @@
             break; 
     }
 }
-
-- (void)scrollSpotlight:(NSTimer *)theTimer {
-    
-    CGRect frame;
-    self.spotlightPageControl.currentPage = (self.spotlightPageControl.currentPage + 1) % numSpotlightTiles;
-    
-    frame.origin.x = self.spotlightView.frame.size.width * self.spotlightPageControl.currentPage;
-    frame.origin.y = 0;
-    frame.size = self.spotlightView.frame.size;
-    [self.spotlightView scrollRectToVisible:frame animated:YES];
-    pageControlBeingUsed = YES;
-    
-    
-    return;
-}
-
 
 @end

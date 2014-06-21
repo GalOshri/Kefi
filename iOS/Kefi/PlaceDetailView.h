@@ -17,16 +17,11 @@
     
 }
 
-@property (strong, nonatomic) IBOutlet UIView *allView;
-@property (strong, nonatomic) IBOutlet UICollectionView *hashtagView;
-
-
-//@property (strong, nonatomic) HashtagList *hashtagList;
-
 @property (nonatomic, strong) Place *place;
-@property (weak, nonatomic) IBOutlet UILabel *distanceMi;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
+@property (strong, nonatomic) IBOutlet UICollectionView *hashtagView;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 /*
  @property (weak, nonatomic) IBOutlet UILabel *placeAddress;

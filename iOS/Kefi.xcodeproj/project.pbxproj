@@ -47,7 +47,6 @@
 		DA089B3C192016120055FD31 /* soHappy.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B35192016120055FD31 /* soHappy.png */; };
 		DA089B3D192016120055FD31 /* eh.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B36192016120055FD31 /* eh.png */; };
 		DA089B3E192016120055FD31 /* soPissed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B37192016120055FD31 /* soPissed.png */; };
-		DA089B4119235C210055FD31 /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = DA089B4019235C210055FD31 /* Review.m */; };
 		DA089B8B1925CFF80055FD31 /* HashtagCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA089B8A1925CFF80055FD31 /* HashtagCollectionCell.m */; };
 		DA2AB1331946E4920010BE81 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA2AB1311946E3EE0010BE81 /* FacebookSDK.framework */; };
 		DA359793195416F600432057 /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA359792195416F600432057 /* ContactUsViewController.m */; };
@@ -144,8 +143,6 @@
 		DA089B35192016120055FD31 /* soHappy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soHappy.png; sourceTree = "<group>"; };
 		DA089B36192016120055FD31 /* eh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eh.png; sourceTree = "<group>"; };
 		DA089B37192016120055FD31 /* soPissed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soPissed.png; sourceTree = "<group>"; };
-		DA089B3F19235C210055FD31 /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
-		DA089B4019235C210055FD31 /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
 		DA089B891925CFF80055FD31 /* HashtagCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HashtagCollectionCell.h; sourceTree = "<group>"; };
 		DA089B8A1925CFF80055FD31 /* HashtagCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HashtagCollectionCell.m; sourceTree = "<group>"; };
 		DA2AB1311946E3EE0010BE81 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
@@ -242,8 +239,6 @@
 		0D4F49FD18F0AD5600F901AE /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DA089B3F19235C210055FD31 /* Review.h */,
-				DA089B4019235C210055FD31 /* Review.m */,
 				0D4F49FE18F0AD8100F901AE /* PlaceList.h */,
 				0D4F49FF18F0AD8100F901AE /* PlaceList.m */,
 				0D4F4A0118F0ADF700F901AE /* Place.h */,
@@ -581,7 +576,6 @@
 				0D4F4A0918F0B66A00F901AE /* PlaceCell.m in Sources */,
 				DAAAB4B01952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.m in Sources */,
 				0D4F4A0018F0AD8100F901AE /* PlaceList.m in Sources */,
-				DA089B4119235C210055FD31 /* Review.m in Sources */,
 				0D727EB318F099F1008310FC /* AppDelegate.m in Sources */,
 				DA089B8B1925CFF80055FD31 /* HashtagCollectionCell.m in Sources */,
 				DAE95ACD1932725700109E75 /* PlaceMapViewViewController.m in Sources */,

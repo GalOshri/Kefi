@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "Place.h"
-#import "Review.h"
 
 @interface SubmitReviewDetailView : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate>{
     
@@ -28,7 +27,5 @@
 @property (nonatomic) CGRect imageFrame;
 @property (nonatomic) CGRect placeLabelFrame;
 @property (nonatomic) CGRect reviewDetailLabelFrame;
-
-
 
 @end

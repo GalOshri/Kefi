@@ -41,9 +41,7 @@
     point.coordinate = coordinate;
     point.title = self.placeName;
 
-
-    
-    //add a marker at point
+    //add a marker at place
     [self.mapView addAnnotation:point];
     [self.mapView selectAnnotation:point animated:YES];
     
@@ -59,13 +57,6 @@
 {
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 800, 800);
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
-}*/
-
-/*- (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views {
-    MKCoordinateRegion region;
-    region = MKCoordinateRegionMakeWithDistance(self.locationManager.location.coordinate, 1000, 1000);
-    
-    [mv setRegion:region animated:YES];
 }*/
 
 

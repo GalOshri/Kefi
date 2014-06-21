@@ -18,12 +18,11 @@ NSString *client_secret = @"0P1EQQ3NH102D0R3GNGTG0ZAL0S5T41YDB2NPOOMRMO2I2EO";
 NSString *category_id =  @"4bf58dd8d48988d116941735,50327c8591d4c4b30a586d5d,4bf58dd8d48988d11e941735,4bf58dd8d48988d118941735,4bf58dd8d48988d1d8941735,4bf58dd8d48988d120941735,4bf58dd8d48988d121941735,4bf58dd8d48988d11f941735,4bf58dd8d48988d11b941735,4bf58dd8d48988d1d4941735,4bf58dd8d48988d11d941735,4bf58dd8d48988d122941735,4bf58dd8d48988d123941735";
 int radius = 1000;
 
+#pragma mark - Populate Place List View
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withLocation:(CLLocation *)currentLocation withSpinner:(UIActivityIndicatorView *)spinner
 {
     [self PopulatePlaceList:placeList withTable:tableView withSearchTerm:@"" withLocation:currentLocation withSpinner:spinner];
 }
-
-
 
 + (void) PopulatePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withSearchTerm:(NSString *)searchTerm withLocation:(CLLocation *)currentLocation withSpinner:(UIActivityIndicatorView *)spinner
 {
@@ -257,6 +256,7 @@ int radius = 1000;
     }];
 }
 
+#pragma mark - Add Review
 + (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings withPlaceDetailView:(PlaceDetailView *)pdv
 {
     [pdv.spinner startAnimating];
@@ -335,6 +335,8 @@ int radius = 1000;
     
 }
 
+#pragma mark - Get Settings
+
 + (void) GetKefiSettings
 {
     NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
@@ -363,6 +365,8 @@ int radius = 1000;
                                     }
                                 }];   
 }
+
+#pragma mark - Favorites
 
 + (void) addFavorite:(NSString *)fsId
 {
@@ -416,6 +420,8 @@ int radius = 1000;
     
 }
 
+#pragma mark - Feedback
+
 + (void) submitFeedback:(NSString *)feedback
 {
     PFUser *user = [PFUser currentUser];
@@ -427,23 +433,5 @@ int radius = 1000;
         feedbackObject[@"user"] = user;
     [feedbackObject save];
 }
-
-
-+(void) loginTosocialNetwork {
-    [PFFacebookUtils logInWithPermissions:[NSArray arrayWithObjects:@"publish_actions", nil] block:^(PFUser *user, NSError *error) {
-        // user
-        
-        
-        if (!user) {
-            NSLog(@"User is not in database");
-        } else if (user.isNew) {
-            NSLog(@"User signed up and logged in through Facebook!");
-        } else {
-            NSLog(@"User logged in through Facebook!");
-        }
-    }];
-    
-}
-
 
 @end

@@ -16,7 +16,7 @@
 @property (nonatomic, strong) PlaceList *placeList;
 @property (nonatomic, strong) NSMutableArray *hashtagList;
 @property (nonatomic, strong) NSMutableArray *hashtagCatList;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue;
 
