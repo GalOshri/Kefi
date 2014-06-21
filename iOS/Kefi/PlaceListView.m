@@ -82,6 +82,7 @@
                 [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withSearchTerm:searchTerm withLocation:locationManager.location withSpinner:self.spinner];
             else
                 [locationManager startUpdatingLocation];
+            
             self.cancelSearchButton.hidden = NO;
         }
     }
