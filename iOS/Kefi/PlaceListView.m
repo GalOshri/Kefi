@@ -136,6 +136,15 @@
     }
     
     [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshList)
+             forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
+    
+    
+    
+    
     pageControlBeingUsed = YES;
     self.spotlightView.delegate = self;
     
@@ -353,6 +362,16 @@
     
     
     return cell;
+}
+
+- (void)refreshList {
+    [self.placeList.places removeAllObjects];
+    if (locationManager.location != nil)
+        [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:locationManager.location withSpinner:self.spinner];
+    else
+        [locationManager startUpdatingLocation];
+    
+    [self.refreshControl endRefreshing];
 }
 
 #pragma mark - Location
