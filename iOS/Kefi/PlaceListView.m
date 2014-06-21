@@ -138,6 +138,7 @@
     self.spotlightView.delegate = self;
     
     NSArray *imageURLs = [NSArray arrayWithObjects:@"http://i.imgur.com/X8Y8ENE.png", @"http://i.imgur.com/VebP6Ol.jpg", @"http://i.imgur.com/YOcINMK.jpg", nil];
+    NSArray *spotlightStrings = [NSArray arrayWithObjects:@"Cat in space!", @"Missile Defence", @"Wave", nil];
     
     for (int i = 0; i < imageURLs.count; i++) {
         CGRect frame;
@@ -163,6 +164,10 @@
                     [self.spotlightView addSubview:imgView];
                     [spotlightSpinner stopAnimating];
                     [spotlightSpinner removeFromSuperview];
+                        UILabel *imgLabel = [[UILabel alloc] initWithFrame:frame];
+                        imgLabel.text = [spotlightStrings objectAtIndex:i];
+                        imgLabel.textColor = [UIColor redColor];
+                        [self.spotlightView addSubview:imgLabel];
                     }];
                 }] resume];
         
