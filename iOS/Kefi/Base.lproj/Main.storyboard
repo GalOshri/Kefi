@@ -168,7 +168,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="dvh-km-6fZ"/>
                     <connections>
-                        <outlet property="allView" destination="kh9-bI-dsS" id="cni-Xq-gdd"/>
                         <outlet property="distanceLabel" destination="1b3-7j-1ZK" id="123-Lz-g3I"/>
                         <outlet property="energyLevel1" destination="TgH-Ny-MAj" id="tPu-T3-ejk"/>
                         <outlet property="energyLevel2" destination="bEg-fF-ifs" id="8bV-6c-DcJ"/>
