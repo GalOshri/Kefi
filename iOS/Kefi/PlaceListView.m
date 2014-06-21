@@ -207,19 +207,11 @@
     [KefiService GetKefiSettings];
     
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(revealToggle:);
+    self.sidebarButton.target = self.revealViewController;
+    self.sidebarButton.action = @selector(revealToggle:);
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:YES];
-    
-    [self.tableView reloadData];
-    
 }
 
 #pragma mark - Search Methods
