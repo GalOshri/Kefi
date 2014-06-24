@@ -23,7 +23,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *cancelSearchButton;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) IBOutlet UIScrollView *spotlightView;
-@property (strong, nonatomic) IBOutlet UIPageControl *spotlightPageControl;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 
 @end
@@ -31,7 +30,7 @@
 @implementation PlaceListView {
     CLLocationManager *locationManager;
     NSString *searchTerm;
-    BOOL pageControlBeingUsed;
+    NSInteger currentSpotlightTile;
     NSUInteger numSpotlightTiles;
 }
 
@@ -201,19 +200,16 @@
          [self.spotlightView addSubview:imgView]; */
     }
     
-    self.spotlightPageControl.currentPage = 0;
-	self.spotlightPageControl.numberOfPages = imageURLs.count;
-    
     self.spotlightView.contentSize = CGSizeMake(self.spotlightView.frame.size.width * imageURLs.count, self.spotlightView.frame.size.height);
     
     numSpotlightTiles = imageURLs.count;
+    currentSpotlightTile = 0;
     
     [NSTimer scheduledTimerWithTimeInterval:4.0f
                                      target:self
                                    selector:@selector(scrollSpotlight:)
                                    userInfo:nil
                                     repeats:YES];
-    pageControlBeingUsed = YES;
 
 }
 
@@ -411,46 +407,16 @@
 }
 
 #pragma mark - Spotlight UI Methods
-- (void)scrollViewDidScroll:(UIScrollView *)sender {
-    if  (!pageControlBeingUsed)
-    {
-        // Update the page when more than 50% of the previous/next page is visible
-        CGFloat pageWidth = self.spotlightView.frame.size.width;
-        int page = floor((self.spotlightView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-        self.spotlightPageControl.currentPage = page;
-    }
-}
-
-- (IBAction)spotlightPageSelect:(UIPageControl *)sender {
-    // update the scroll view to the appropriate page
-
-    CGRect frame;
-    frame.origin.x = self.spotlightView.frame.size.width * self.spotlightPageControl.currentPage;
-    frame.origin.y = 0;
-    frame.size = self.spotlightView.frame.size;
-    [self.spotlightView scrollRectToVisible:frame animated:YES];
-    pageControlBeingUsed = YES;
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    pageControlBeingUsed = NO;
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    pageControlBeingUsed = NO;
-}
 
 - (void)scrollSpotlight:(NSTimer *)theTimer {
     
     CGRect frame;
-    self.spotlightPageControl.currentPage = (self.spotlightPageControl.currentPage + 1) % numSpotlightTiles;
+    currentSpotlightTile = (currentSpotlightTile + 1) % numSpotlightTiles;
     
-    frame.origin.x = self.spotlightView.frame.size.width * self.spotlightPageControl.currentPage;
+    frame.origin.x = self.spotlightView.frame.size.width * currentSpotlightTile;
     frame.origin.y = 0;
     frame.size = self.spotlightView.frame.size;
     [self.spotlightView scrollRectToVisible:frame animated:YES];
-    pageControlBeingUsed = YES;
-    
     
     return;
 }
