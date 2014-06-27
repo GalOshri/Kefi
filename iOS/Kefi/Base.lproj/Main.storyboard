@@ -784,7 +784,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lRP-8d-bAG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-201" y="-664"/>
+            <point key="canvasLocation" x="-241" y="-880"/>
         </scene>
         <!--Sidebar View Controller-->
         <scene sceneID="YcB-Qd-HpC">
@@ -918,7 +918,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yt6-RR-G81" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="308" y="-1169"/>
+            <point key="canvasLocation" x="316" y="-1481"/>
         </scene>
         <!--Contact Us View Controller - Contact Us-->
         <scene sceneID="fRK-Qm-1zu">
@@ -967,7 +967,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ae6-Qo-TDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1323" y="-1169"/>
+            <point key="canvasLocation" x="1323" y="-1150"/>
         </scene>
         <!--Social Network Accounts Table View Controller - Accounts & Settings-->
         <scene sceneID="Jpj-H5-dno">
@@ -1163,7 +1163,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxH-p9-FIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1323" y="-2515"/>
+            <point key="canvasLocation" x="2402" y="-1844"/>
         </scene>
         <!--About Kefi View - About Kefi-->
         <scene sceneID="hJk-95-k0V">
@@ -1266,7 +1266,7 @@ Gal and Paul.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgJ-Bl-xV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845" y="-1169"/>
+            <point key="canvasLocation" x="845" y="-1150"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Xb-SS-SV4">
@@ -1396,7 +1396,7 @@ Gal and Paul.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSf-EG-ri3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="308" y="-1860"/>
+            <point key="canvasLocation" x="2402" y="-1150"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="axY-nF-RD6">
@@ -1411,7 +1411,7 @@ Gal and Paul.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfY-3c-vO2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-220" y="-1860"/>
+            <point key="canvasLocation" x="1886" y="-1150"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="igx-Sr-Do6">
@@ -1429,7 +1429,7 @@ Gal and Paul.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9K-94-ebv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845" y="-2521"/>
+            <point key="canvasLocation" x="1886" y="-1836"/>
         </scene>
     </scenes>
     <resources>
