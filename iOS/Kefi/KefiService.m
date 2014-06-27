@@ -340,24 +340,26 @@ int radius = 1000;
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Review"];
     [query whereKey:@"user" equalTo:user];
-    NSArray *userReviews = [query findObjects];
-    
-    for (PFObject *parseReview in userReviews)
-    {
-        Review *review = [[Review alloc] init];
-        review.sentiment = [parseReview[@"sentiment"] intValue];
-        review.energy = [parseReview[@"energy"] intValue];
-        review.reviewTime = parseReview.createdAt;
-        
-        for (NSString *parseHashtag in parseReview[@"hashtagStrings"])
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        for (PFObject *parseReview in objects)
         {
-            NSString *hashtag = [NSString stringWithString:parseHashtag];
-            [review.hashtags addObject:hashtag];
+            Review *review = [[Review alloc] init];
+            review.sentiment = [parseReview[@"sentiment"] intValue];
+            review.energy = [parseReview[@"energy"] intValue];
+            review.reviewTime = parseReview.createdAt;
+            
+            for (NSString *parseHashtag in parseReview[@"hashtagStrings"])
+            {
+                NSString *hashtag = [NSString stringWithString:parseHashtag];
+                [review.hashtags addObject:hashtag];
+            }
+            [reviewList addObject:review];
         }
-        [reviewList addObject:review];
-    }
+        
+        [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    }];
     
-    [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+    
 }
 
 #pragma mark - Get Settings
