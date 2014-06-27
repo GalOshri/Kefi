@@ -55,8 +55,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //picture make circular
-    self.profPic.layer.cornerRadius = self.profPic.frame.size.width / 2;
-    self.profPic.clipsToBounds = YES;
     // self.profPic.layer.borderWidth = 3.0f;
     // self.profPic.layer.borderColor = [UIColor grayColor].CGColor;
     

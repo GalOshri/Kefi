@@ -12,7 +12,7 @@
 
 @interface SubmitView ()
 
-
+@property (weak, nonatomic) IBOutlet UILabel *energyLabel;
 @property (strong, nonatomic) IBOutlet UILabel *coordinateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
 @property (strong, nonatomic) IBOutlet UIView *drawView;
@@ -70,6 +70,7 @@ NSMutableSet *activatedEnergyCircles;
 NSDictionary *sentimentStrings;
 NSDictionary *energyStrings;
 NSString *coordinateLabelDefault;
+NSString *energyLabelDefault;
 
 #pragma mark - Navigation
 
@@ -131,17 +132,19 @@ NSString *coordinateLabelDefault;
     
     //set dictionaries for coordinateLabel
     //TODO: move server-side
+    coordinateLabelDefault = @"How do you feel?";
+    energyLabelDefault = @"What's the Vibe?";
+    
     sentimentStrings = @{@0:@"Save me!",
-                         @1: @"not diggin' it...",
-                         @2: @"",
-                         @3: @"It's pretty good",
+                         @1: @"Meh...",
+                         @2: coordinateLabelDefault,
+                         @3: @"It's fun",
                          @4: @"Love it!"};
     
-    energyStrings = @{@0: @"",
+    energyStrings = @{@0: energyLabelDefault,
                       @1: @"chill",
                       @2: @"buzzin'",
                       @3: @"ragin'!"};
-    coordinateLabelDefault = @"How do you feel?";
 }
 
 -(void) viewDidLayoutSubviews {
@@ -184,7 +187,8 @@ NSString *coordinateLabelDefault;
     
     else
     {
-        self.coordinateLabel.text = [NSString stringWithFormat:@"%@\n%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]], [energyStrings objectForKey:[NSNumber numberWithInt:horizontalCellIndex]]];
+        self.coordinateLabel.text = [NSString stringWithFormat:@"%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]]];
+        self.energyLabel.text = [NSString stringWithFormat:@"%@", [energyStrings objectForKey:[NSNumber numberWithInt:horizontalCellIndex]]];
         
         if (activatedSentiment != verticalCellIndex)
         {
@@ -297,10 +301,15 @@ NSString *coordinateLabelDefault;
             if ([key integerValue] != selectedSentiment)
                 [currentButton setAlpha:0.4];
         }
+        
+        self.coordinateLabel.frame = CGRectMake(self.drawView.frame.origin.x, self.coordinateLabel.frame.origin.y, self.coordinateLabel.frame.size.width, self.coordinateLabel.frame.size.height);
     }
         completion:^(BOOL finished) {
-            if (!slideBackRight)
+            if (!slideBackRight) {
                 [self ActivateSentiment:selectedSentiment];
+                [self.energyLabel setHidden:NO];
+                self.energyLabel.text = energyLabelDefault;
+            }
             else {
                 [self SlideAllSentimentsRight];
                     [self resetReviewButton];
@@ -314,12 +323,16 @@ NSString *coordinateLabelDefault;
 - (void)SlideAllSentimentsRight
 {
     [UIView animateWithDuration:0.5 animations:^{
+        [self.energyLabel setHidden:YES];
         for (id key in horizontalToSentimentDict)
         {
             UIButton *currentButton = [horizontalToSentimentDict objectForKey:key];
             currentButton.center= CGPointMake(currentButton.center.x * 3, currentButton.center.y );
             [currentButton setAlpha:1];
         }
+        
+        self.coordinateLabel.center = CGPointMake(self.drawView.center.x, self.coordinateLabel.center.y);
+        
     }    completion:^(BOOL finished){
         self.coordinateLabel.text = coordinateLabelDefault;
     }];

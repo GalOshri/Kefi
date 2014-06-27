@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel2;
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel3;
 
+@property (weak, nonatomic) IBOutlet UILabel *noTagLabel;
 @end
 
 @implementation PlaceDetailView
@@ -86,16 +87,18 @@
     self.hashtagView.backgroundColor = [UIColor whiteColor];
     
     //map rounded edges
-    CALayer *l = [self.mapButton layer];
-    [l setMasksToBounds:YES];
-    [l setCornerRadius:7.0];
+    self.mapButton.layer.cornerRadius = self.mapButton.frame.size.width / 2;
+    self.mapButton.clipsToBounds = YES;
     
     // load sentiment/energy images
     [self setSentimentImage];
 
     self.hashtagView.delegate = self;
     self.hashtagView.dataSource = self;
-        
+    
+    if (self.place.hashtagList.count <= 0) {
+        [self.noTagLabel setHidden:NO];
+    }
 }
 
 - (void)viewDidLayoutSubviews
