@@ -12,6 +12,9 @@
 @interface SidebarViewController ()
 
 @property (nonatomic, strong) NSArray *menuItems;
+@property (weak, nonatomic) IBOutlet UIView *menuHeader;
+
+
 @end
 
 @implementation SidebarViewController
@@ -85,6 +88,8 @@
     self.view.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.3f];
+    
+    self.menuHeader.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     
     _menuItems = @[@"me", @"settings", @"invites", @"contact", @"aboutKefi", @"logout"];
     

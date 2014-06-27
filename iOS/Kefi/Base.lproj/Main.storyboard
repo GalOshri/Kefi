@@ -794,9 +794,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" alpha="0.94999999999999996" contentMode="scaleToFill" id="9Cq-4V-o9a">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Kefi.png" translatesAutoresizingMaskIntoConstraints="NO" id="aXh-Gx-1im">
+                                    <rect key="frame" x="10" y="36" width="122" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="me" textLabel="TvI-Ls-OeZ" style="IBUITableViewCellStyleDefault" id="Ps9-je-KA3">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="121" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ps9-je-KA3" id="XbN-Oa-dyU">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -816,7 +827,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settings" textLabel="zog-LB-S0r" style="IBUITableViewCellStyleDefault" id="Qov-jP-GaT">
-                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="165" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qov-jP-GaT" id="pL4-Zu-9QN">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -836,7 +847,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="invites" textLabel="Pug-pg-Tsh" style="IBUITableViewCellStyleDefault" id="uAH-lG-NTu">
-                                <rect key="frame" x="0.0" y="110" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="209" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uAH-lG-NTu" id="iXY-rz-kiD">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -853,7 +864,7 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contact" textLabel="Fc3-RE-sg5" style="IBUITableViewCellStyleDefault" id="XnD-su-jI9">
-                                <rect key="frame" x="0.0" y="154" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="253" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XnD-su-jI9" id="6Do-bd-457">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -873,7 +884,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="aboutKefi" textLabel="hX5-Jm-nyO" style="IBUITableViewCellStyleDefault" id="sUk-bs-ZL8">
-                                <rect key="frame" x="0.0" y="198" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="297" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sUk-bs-ZL8" id="KT1-8m-a4g">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -893,7 +904,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="logout" textLabel="YZC-Q4-xbh" style="IBUITableViewCellStyleDefault" id="gUv-0p-sgv">
-                                <rect key="frame" x="0.0" y="242" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="341" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gUv-0p-sgv" id="7S6-mn-4B7">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -915,6 +926,9 @@
                             <outlet property="delegate" destination="nXl-9p-YUh" id="cEw-3O-KLl"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="menuHeader" destination="9Cq-4V-o9a" id="dx7-Vn-VFV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yt6-RR-G81" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1298,19 +1312,25 @@ Gal and Paul.</string>
                             <rect key="frame" x="0.0" y="64" width="320" height="139"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profPicExample.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="XJU-Ex-A5N">
-                                    <rect key="frame" x="10" y="42" width="87" height="87"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="KefItIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="XJU-Ex-A5N">
+                                    <rect key="frame" x="10" y="9" width="87" height="87"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Paul" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoO-dP-c7T">
-                                    <rect key="frame" x="113" y="42" width="187" height="22"/>
+                                    <rect key="frame" x="113" y="24" width="187" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stavropoulos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmY-6w-Yfc">
-                                    <rect key="frame" x="113" y="72" width="187" height="21"/>
+                                    <rect key="frame" x="113" y="54" width="187" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recent Activity:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqX-yA-IjB">
+                                    <rect key="frame" x="100" y="118" width="120" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
@@ -1435,12 +1455,12 @@ Gal and Paul.</string>
     <resources>
         <image name="FavUnfilled.png" width="100" height="100"/>
         <image name="KefItIcon.png" width="250" height="250"/>
+        <image name="Kefi.png" width="546" height="226"/>
         <image name="PoweredByFoursquare.png" width="482" height="121"/>
         <image name="eh.png" width="107" height="107"/>
         <image name="fullCircle.png" width="107" height="107"/>
         <image name="map.png" width="100" height="100"/>
         <image name="menu.png" width="28" height="20"/>
-        <image name="profPicExample.jpg" width="240" height="311"/>
         <image name="semiHappy.png" width="107" height="107"/>
         <image name="settingGear.png" width="20" height="20"/>
         <image name="smallCircle.png" width="40" height="40"/>
