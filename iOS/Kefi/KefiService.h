@@ -11,6 +11,8 @@
 #import "Hashtag.h"
 #import "Place.h"
 #import "PlaceDetailView.h"
+#import "Review.h"
+#import <Parse/Parse.h>
 
 
 @interface KefiService : NSObject
@@ -22,8 +24,10 @@
 
 + (void) PopulateFavoritePlaceList:(PlaceList *)placeList withTable:(UITableView *)tableView withLocation:(CLLocation *)currentLocation withSpinner:(UIActivityIndicatorView *)spinner;
 
-// Review a place
+// Reviews
 + (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings withPlaceDetailView:(PlaceDetailView *)pdv;
+
++ (void) PopulateReviews:(NSMutableArray *)reviewList forUser:(PFUser *)user withTable:(UITableView *)tableView;
 
 // Get Settings
 + (void) GetKefiSettings;

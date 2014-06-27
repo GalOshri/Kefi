@@ -40,6 +40,8 @@
 		0D81466D18F1259F0072702B /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466C18F1259F0072702B /* SearchView.m */; };
 		0D87999D195566D300C0973F /* AboutKefiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D87999C195566D300C0973F /* AboutKefiView.m */; };
 		0DB0B4381921D8DF008D5624 /* SubmitReviewDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */; };
+		0DCF8C8C195D331A005F6CDA /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCF8C8B195D331A005F6CDA /* Review.m */; };
+		0DCF8C8F195D38FE005F6CDA /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCF8C8E195D38FE005F6CDA /* ReviewCell.m */; };
 		DA089B38192016120055FD31 /* smallCircleFull.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B31192016120055FD31 /* smallCircleFull.png */; };
 		DA089B39192016120055FD31 /* smallCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B32192016120055FD31 /* smallCircle.png */; };
 		DA089B3A192016120055FD31 /* fullCircle.png in Resources */ = {isa = PBXBuildFile; fileRef = DA089B33192016120055FD31 /* fullCircle.png */; };
@@ -140,6 +142,10 @@
 		0D87999C195566D300C0973F /* AboutKefiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutKefiView.m; sourceTree = "<group>"; };
 		0DB0B4361921D8DF008D5624 /* SubmitReviewDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitReviewDetailView.h; sourceTree = "<group>"; };
 		0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitReviewDetailView.m; sourceTree = "<group>"; };
+		0DCF8C8A195D331A005F6CDA /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
+		0DCF8C8B195D331A005F6CDA /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
+		0DCF8C8D195D38FE005F6CDA /* ReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
+		0DCF8C8E195D38FE005F6CDA /* ReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
 		DA089B31192016120055FD31 /* smallCircleFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallCircleFull.png; sourceTree = "<group>"; };
 		DA089B32192016120055FD31 /* smallCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallCircle.png; sourceTree = "<group>"; };
 		DA089B33192016120055FD31 /* fullCircle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fullCircle.png; sourceTree = "<group>"; };
@@ -257,6 +263,8 @@
 				0D4F4A0218F0ADF700F901AE /* Place.m */,
 				0D0C130F18F65DDD00C90A5F /* Hashtag.h */,
 				0D0C131018F65DDD00C90A5F /* Hashtag.m */,
+				0DCF8C8A195D331A005F6CDA /* Review.h */,
+				0DCF8C8B195D331A005F6CDA /* Review.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -461,6 +469,8 @@
 				DAAAB4A619529DF5004D2DB1 /* SWRevealViewController.m */,
 				DA109B211959606E002DADDE /* UserPageTableViewController.h */,
 				DA109B221959606E002DADDE /* UserPageTableViewController.m */,
+				0DCF8C8D195D38FE005F6CDA /* ReviewCell.h */,
+				0DCF8C8E195D38FE005F6CDA /* ReviewCell.m */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -586,6 +596,7 @@
 				0D75A5A1194E32300056630C /* KefiSignUpView.m in Sources */,
 				0D81466D18F1259F0072702B /* SearchView.m in Sources */,
 				0D75A59E194E2E930056630C /* KefiLogInView.m in Sources */,
+				0DCF8C8C195D331A005F6CDA /* Review.m in Sources */,
 				0D81466418F0E3670072702B /* KefiService.m in Sources */,
 				DA109B231959606E002DADDE /* UserPageTableViewController.m in Sources */,
 				0DB0B4381921D8DF008D5624 /* SubmitReviewDetailView.m in Sources */,
@@ -595,6 +606,7 @@
 				DAAAB4B01952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.m in Sources */,
 				0D4F4A0018F0AD8100F901AE /* PlaceList.m in Sources */,
 				0D727EB318F099F1008310FC /* AppDelegate.m in Sources */,
+				0DCF8C8F195D38FE005F6CDA /* ReviewCell.m in Sources */,
 				DA089B8B1925CFF80055FD31 /* HashtagCollectionCell.m in Sources */,
 				DAE95ACD1932725700109E75 /* PlaceMapViewViewController.m in Sources */,
 				0D4F4A0318F0ADF700F901AE /* Place.m in Sources */,

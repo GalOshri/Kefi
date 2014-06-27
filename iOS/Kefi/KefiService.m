@@ -7,7 +7,7 @@
 //
 
 #import "KefiService.h"
-#import <Parse/Parse.h>
+
 
 
 @implementation KefiService
@@ -256,7 +256,7 @@ int radius = 1000;
     }];
 }
 
-#pragma mark - Add Review
+#pragma mark - Reviews
 + (void) AddReviewforPlace:(Place *)place withSentiment:(int)sentiment withEnergy:(int)energy withHashtagStrings:(NSArray *)hashtagStrings withPlaceDetailView:(PlaceDetailView *)pdv
 {
     [pdv.spinner startAnimating];
@@ -268,6 +268,7 @@ int radius = 1000;
     reviewObject[@"sentiment"] = [NSNumber numberWithInt:sentiment];
     reviewObject[@"energy"] = [NSNumber numberWithInt:energy];
     reviewObject[@"hashtagStrings"] = hashtagStrings;
+    reviewObject[@"user"] = [PFUser currentUser];
 
     
     if (![place.pId isEqualToString:@""])
@@ -333,6 +334,30 @@ int radius = 1000;
 
     }];
     
+}
+
++ (void) PopulateReviews:(NSMutableArray *)reviewList forUser:(PFUser *)user withTable:(UITableView *)tableView
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"Review"];
+    [query whereKey:@"user" equalTo:user];
+    NSArray *userReviews = [query findObjects];
+    
+    for (PFObject *parseReview in userReviews)
+    {
+        Review *review = [[Review alloc] init];
+        review.sentiment = [parseReview[@"sentiment"] intValue];
+        review.energy = [parseReview[@"energy"] intValue];
+        review.reviewTime = parseReview.createdAt;
+        
+        for (NSString *parseHashtag in parseReview[@"hashtagStrings"])
+        {
+            NSString *hashtag = [NSString stringWithString:parseHashtag];
+            [review.hashtags addObject:hashtag];
+        }
+        [reviewList addObject:review];
+    }
+    
+    [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 #pragma mark - Get Settings

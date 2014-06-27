@@ -1339,7 +1339,7 @@ Gal and Paul.</string>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userHistoryCell" rowHeight="138" id="BjZ-ej-W0C">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReviewCell" rowHeight="138" id="BjZ-ej-W0C" customClass="ReviewCell">
                                 <rect key="frame" x="0.0" y="225" width="320" height="138"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BjZ-ej-W0C" id="xQo-Tv-xIr">
@@ -1375,20 +1375,24 @@ Gal and Paul.</string>
                                             <rect key="frame" x="84" y="99" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#Hashtag1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K95-1n-SIK">
-                                            <rect key="frame" x="145" y="61" width="163" height="21"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Hashtag" translatesAutoresizingMaskIntoConstraints="NO" id="f2O-Ya-6qJ">
+                                            <rect key="frame" x="131" y="48" width="160" height="69"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="#Hashtag2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Clx-6F-Sgd">
-                                            <rect key="frame" x="145" y="89" width="163" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="energyLevel1" destination="yKR-YU-igs" id="aV6-L7-iGU"/>
+                                    <outlet property="energyLevel2" destination="DPY-zj-Bo4" id="MG6-nD-HlC"/>
+                                    <outlet property="energyLevel3" destination="MDe-iI-X3A" id="kSc-qm-5oM"/>
+                                    <outlet property="placeHashtags" destination="f2O-Ya-6qJ" id="PBy-Zo-PsD"/>
+                                    <outlet property="placeName" destination="Q9M-qP-YL2" id="jBG-wb-AS5"/>
+                                    <outlet property="reviewTime" destination="Lut-3O-nfU" id="Ool-mn-AVs"/>
+                                    <outlet property="sentimentImage" destination="gLT-7N-Jxi" id="igf-5F-uQc"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
