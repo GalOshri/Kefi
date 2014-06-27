@@ -12,7 +12,6 @@
 @interface SocialNetworkAccountsTableViewController ()
 
 @property (nonatomic, strong) NSArray *accountTypes;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @end
 
 @implementation SocialNetworkAccountsTableViewController
@@ -33,13 +32,6 @@
    //  self.accountTypes = @[@"Facebook",@"Twitter",@"Foursquare"];
     
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(revealToggle:);
-
-
-    
-    // Set the gesture
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 
         
 }
@@ -78,6 +70,12 @@
     return 100.0;
 }
 */
+
+- (IBAction)cancelModal:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0)

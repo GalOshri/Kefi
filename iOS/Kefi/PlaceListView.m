@@ -91,7 +91,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     // Log in / sign up if no user signed in
     if (![PFUser currentUser])
     {
@@ -127,6 +126,7 @@
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
 }
 
 - (void)showLogInAndSignUpView
@@ -211,6 +211,12 @@
                                    userInfo:nil
                                     repeats:YES];
 
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:YES];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Search Methods

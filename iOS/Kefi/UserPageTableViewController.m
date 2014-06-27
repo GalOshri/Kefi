@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profPic;
 @property (weak, nonatomic) IBOutlet UILabel *firstName;
 @property (weak, nonatomic) IBOutlet UILabel *lastName;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
 
 @end
@@ -47,11 +46,6 @@
     
     //set up menu bar
     // Set the side bar button action. When it's tapped, it'll show the menu.
-    self.menuButton.target = self.revealViewController;
-    self.menuButton.action = @selector(revealToggle:);
-    
-    // Set the gesture
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,11 +54,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)cancelModal:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+
     // Return the number of sections.
     return 1;
 }

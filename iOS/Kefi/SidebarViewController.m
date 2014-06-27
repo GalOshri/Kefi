@@ -86,7 +86,7 @@
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.3f];
     
-    _menuItems = @[@"home",@"me", @"settings", @"invites", @"contact", @"aboutKefi", @"logout"];
+    _menuItems = @[@"me", @"settings", @"invites", @"contact", @"aboutKefi", @"logout"];
     
     SWRevealViewController *revealController = [self revealViewController];
     [revealController panGestureRecognizer];
