@@ -68,6 +68,9 @@
         // if the user clicked Cancel, we don't want to change the color
         if (srdv.selectedHashtagStrings != nil) {
             [KefiService AddReviewforPlace:self.place withSentiment:srdv.sentimentLevel withEnergy:srdv.energyLevel withHashtagStrings:srdv.selectedHashtagStrings withPlaceDetailView:self];
+            
+            if (self.place.hashtagList.count > 0)
+                [self.noTagLabel setHidden:YES];
         }
     }
 }
@@ -96,9 +99,10 @@
     self.hashtagView.delegate = self;
     self.hashtagView.dataSource = self;
     
-    if (self.place.hashtagList.count <= 0) {
+    if (self.place.hashtagList.count <= 0)
         [self.noTagLabel setHidden:NO];
-    }
+    else
+        [self.noTagLabel setHidden:YES];
 }
 
 - (void)viewDidLayoutSubviews
@@ -108,6 +112,9 @@
     distanceString = [distanceString substringToIndex:4];
     self.distanceLabel.text = [NSString stringWithFormat:@"%@ mi",distanceString];
     
+    if (self.place.hashtagList.count <= 0) {
+        [self.noTagLabel setHidden:NO];
+    }
     //deal with UI showing crossStreets if not null
     /*
      if (![self.place.crossStreet isEqual:@"(null)"])

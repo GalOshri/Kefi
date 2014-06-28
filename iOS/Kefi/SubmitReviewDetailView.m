@@ -235,7 +235,6 @@
 
         }
     }
-        
 
     // manually segue here to PlaceDetailView
     [self performSegueWithIdentifier:@"UnwindDamnit" sender:self];

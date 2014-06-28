@@ -181,7 +181,7 @@
                         [spotlightSpinner stopAnimating];
                         [spotlightSpinner removeFromSuperview];
                         UILabel *imgLabel = [[UILabel alloc] init];
-                        imgLabel.frame = CGRectMake(frame.origin.x + 10, frame.origin.y + 88, frame.size.width, 23);
+                        imgLabel.frame = CGRectMake(frame.origin.x + 10, frame.origin.y + 105, frame.size.width, 23);
                         imgLabel.text = [spotlightStrings objectAtIndex:i];
                         imgLabel.textColor = [UIColor whiteColor];
                         [self.spotlightView addSubview:imgLabel];
