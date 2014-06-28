@@ -92,8 +92,8 @@ NSString *energyLabelDefault;
             srdv.placeLabelFrame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
             
             [self.coordinateLabel sizeToFit];
-            srdv.reviewDetailLabelText = self.coordinateLabel.text;
-            srdv.reviewDetailLabelFrame = CGRectMake(self.coordinateLabel.frame.origin.x, self.coordinateLabel.frame.origin.y, self.coordinateLabel.frame.size.width, self.coordinateLabel.frame.size.height);
+            srdv.reviewDetailLabelText = self.energyLabel.text;
+            srdv.reviewDetailLabelFrame = CGRectMake(self.energyLabel.frame.origin.x, self.energyLabel.frame.origin.y, self.energyLabel.frame.size.width, self.energyLabel.frame.size.height);
             
             srdv.place = self.place;
         }
@@ -181,7 +181,7 @@ NSString *energyLabelDefault;
             [timer invalidate];
             selectedSentimentIndex = verticalCellIndex;
             //start/reset the timer.
-            timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(InitiateReviewEnergyLevels:) userInfo:[NSString stringWithFormat:@"%d",verticalCellIndex] repeats:NO];
+            timer = [NSTimer scheduledTimerWithTimeInterval:0.50 target:self selector:@selector(InitiateReviewEnergyLevels:) userInfo:[NSString stringWithFormat:@"%d",verticalCellIndex] repeats:NO];
         }
     }
     
@@ -248,6 +248,7 @@ NSString *energyLabelDefault;
         [self HideAllExceptSentiment:activatedSentiment];
         UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
         [UIView animateWithDuration:0.75 animations:^{
+            [self.coordinateLabel setHidden:YES];
             currentButton.center = CGPointMake(currentButton.center.x, 0);
         }completion:^(BOOL finished){
             [self performSegueWithIdentifier:@"SubmitReviewDetailSegue" sender:self];

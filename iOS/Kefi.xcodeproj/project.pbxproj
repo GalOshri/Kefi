@@ -54,6 +54,9 @@
 		DA109B231959606E002DADDE /* UserPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA109B221959606E002DADDE /* UserPageTableViewController.m */; };
 		DA109B2719596684002DADDE /* settingGear.png in Resources */ = {isa = PBXBuildFile; fileRef = DA109B2619596684002DADDE /* settingGear.png */; };
 		DA109B29195D2816002DADDE /* Kefi.png in Resources */ = {isa = PBXBuildFile; fileRef = DA109B28195D2816002DADDE /* Kefi.png */; };
+		DA109B2D195E9DBE002DADDE /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA109B2A195E9DBE002DADDE /* Icon-40@2x.png */; };
+		DA109B2E195E9DBE002DADDE /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA109B2B195E9DBE002DADDE /* Icon-60@2x.png */; };
+		DA109B2F195E9DBE002DADDE /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA109B2C195E9DBE002DADDE /* Icon-Small@2x.png */; };
 		DA2AB1331946E4920010BE81 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA2AB1311946E3EE0010BE81 /* FacebookSDK.framework */; };
 		DA359793195416F600432057 /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA359792195416F600432057 /* ContactUsViewController.m */; };
 		DA9EB651191EDF4F00C375B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9EB650191EDF4F00C375B3 /* MapKit.framework */; };
@@ -160,6 +163,9 @@
 		DA109B221959606E002DADDE /* UserPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPageTableViewController.m; sourceTree = "<group>"; };
 		DA109B2619596684002DADDE /* settingGear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingGear.png; sourceTree = "<group>"; };
 		DA109B28195D2816002DADDE /* Kefi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kefi.png; sourceTree = "<group>"; };
+		DA109B2A195E9DBE002DADDE /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@2x.png"; path = "appIcons/Icon-40@2x.png"; sourceTree = "<group>"; };
+		DA109B2B195E9DBE002DADDE /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "appIcons/Icon-60@2x.png"; sourceTree = "<group>"; };
+		DA109B2C195E9DBE002DADDE /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "appIcons/Icon-Small@2x.png"; sourceTree = "<group>"; };
 		DA2AB1311946E3EE0010BE81 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		DA359791195416F600432057 /* ContactUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsViewController.h; sourceTree = "<group>"; };
 		DA359792195416F600432057 /* ContactUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsViewController.m; sourceTree = "<group>"; };
@@ -231,6 +237,9 @@
 		0D0C131818FB7F9000C90A5F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DA109B2A195E9DBE002DADDE /* Icon-40@2x.png */,
+				DA109B2B195E9DBE002DADDE /* Icon-60@2x.png */,
+				DA109B2C195E9DBE002DADDE /* Icon-Small@2x.png */,
 				DA109B28195D2816002DADDE /* Kefi.png */,
 				DA109B2619596684002DADDE /* settingGear.png */,
 				DA109B1F19595BF0002DADDE /* profPicExample.jpg */,
@@ -522,6 +531,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Kefi;
 				TargetAttributes = {
+					0D727E9E18F099F1008310FC = {
+						DevelopmentTeam = 6N7U4ZE6AD;
+					};
 					0D727EBF18F099F2008310FC = {
 						TestTargetID = 0D727E9E18F099F1008310FC;
 					};
@@ -554,6 +566,7 @@
 				DA089B3D192016120055FD31 /* eh.png in Resources */,
 				DA089B3E192016120055FD31 /* soPissed.png in Resources */,
 				0D61950319500F30000314A3 /* PoweredByFoursquare.png in Resources */,
+				DA109B2D195E9DBE002DADDE /* Icon-40@2x.png in Resources */,
 				0D727EBB18F099F1008310FC /* Images.xcassets in Resources */,
 				DAE95AD61932A29C00109E75 /* KefiNoBorder.png in Resources */,
 				0D0C131418FB72B600C90A5F /* FavFilled.png in Resources */,
@@ -573,6 +586,8 @@
 				0D0C131718FB762600C90A5F /* KefItIcon.png in Resources */,
 				0D727EB618F099F1008310FC /* Main.storyboard in Resources */,
 				0D4F4A0D18F0B78100F901AE /* bar_64.png in Resources */,
+				DA109B2F195E9DBE002DADDE /* Icon-Small@2x.png in Resources */,
+				DA109B2E195E9DBE002DADDE /* Icon-60@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,6 +755,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/goshri/Documents/Xcode/Kefi/iOS,
@@ -764,6 +780,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/goshri/Documents/Xcode/Kefi/iOS,

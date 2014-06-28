@@ -153,8 +153,8 @@
 {
     self.spotlightView.delegate = self;
     
-    NSArray *imageURLs = [NSArray arrayWithObjects:@"http://i.imgur.com/X8Y8ENE.png", @"http://i.imgur.com/VebP6Ol.jpg", @"http://i.imgur.com/YOcINMK.jpg", nil];
-    NSArray *spotlightStrings = [NSArray arrayWithObjects:@"Cat in space!", @"Missile Defence", @"Wave", nil];
+    NSArray *imageURLs = [NSArray arrayWithObjects:@"http://newjerseysgottalent.com/wp-content/uploads/2014/04/light_show.jpg", @"http://www.earlybirdsclub.com/wp-content/uploads/2013/03/tumblr_m3om90v9OW1rp7zudo1_500.jpg", @"http://justbartending.com/wp-content/uploads/2012/03/colorful-drinks-625.jpg", nil];
+    NSArray *spotlightStrings = [NSArray arrayWithObjects:@"find your scene", @"shots fired", @"welcome to Kefi", nil];
     
     for (int i = 0; i < imageURLs.count; i++) {
         CGRect frame;
@@ -180,9 +180,10 @@
                         [self.spotlightView addSubview:imgView];
                         [spotlightSpinner stopAnimating];
                         [spotlightSpinner removeFromSuperview];
-                        UILabel *imgLabel = [[UILabel alloc] initWithFrame:frame];
+                        UILabel *imgLabel = [[UILabel alloc] init];
+                        imgLabel.frame = CGRectMake(frame.origin.x + 10, frame.origin.y + 88, frame.size.width, 23);
                         imgLabel.text = [spotlightStrings objectAtIndex:i];
-                        imgLabel.textColor = [UIColor redColor];
+                        imgLabel.textColor = [UIColor whiteColor];
                         [self.spotlightView addSubview:imgLabel];
                     }];
                 }] resume];
