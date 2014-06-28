@@ -246,15 +246,15 @@
     
     Hashtag *hashtag = self.place.hashtagList[indexPath.row];
     NSString *temp = hashtag.text;
-
+    
     [myCell.textLabel setText:temp];
-    [myCell.textLabel setFont:[UIFont systemFontOfSize:12]];
+    [myCell.textLabel setFont:[UIFont systemFontOfSize:14]];
     [myCell.textLabel setTextColor:self.view.tintColor];
     
-    /*
-     [myCell.layer setBorderWidth:2];
-     [myCell.layer setBorderColor:[UIColor whiteColor].CGColor];
-     [myCell.layer setCornerRadius:10];
+    /* 
+    [myCell.layer setBorderWidth:2];
+    [myCell.layer setBorderColor:[UIColor blackColor].CGColor];
+    [myCell.layer setCornerRadius:10];
     */
     
     return myCell;
@@ -269,10 +269,10 @@
     
     //set button text and assign to hashtagToggle
     [label setText:temp];
-    [label setFont:[UIFont systemFontOfSize:14]];
+    [label setFont:[UIFont systemFontOfSize:16]];
     [label sizeToFit];
     
-    return CGSizeMake(label.frame.size.width + 4, 20);
+    return CGSizeMake(label.frame.size.width + 10, 20);
     
 }
 

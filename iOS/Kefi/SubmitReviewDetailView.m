@@ -263,9 +263,9 @@
                                      forIndexPath:indexPath];
     
     NSString *temp = self.hashtags[indexPath.row];
- 
+    
     [myCell.textLabel setText:temp];
-    [myCell.textLabel setFont:[UIFont systemFontOfSize:12]];
+    [myCell.textLabel setFont:[UIFont systemFontOfSize:14]];
     [myCell.textLabel setTextColor:self.view.tintColor];
     
     /*

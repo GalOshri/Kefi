@@ -132,7 +132,7 @@ NSString *energyLabelDefault;
     
     //set dictionaries for coordinateLabel
     //TODO: move server-side
-    coordinateLabelDefault = @"How do you feel?";
+    coordinateLabelDefault = @"";
     energyLabelDefault = @"What's the Vibe?";
     
     sentimentStrings = @{@0:@"Save me!",
@@ -188,6 +188,7 @@ NSString *energyLabelDefault;
     else
     {
         self.coordinateLabel.text = [NSString stringWithFormat:@"%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]]];
+        
         self.energyLabel.text = [NSString stringWithFormat:@"%@", [energyStrings objectForKey:[NSNumber numberWithInt:horizontalCellIndex]]];
         
         if (activatedSentiment != verticalCellIndex)
@@ -199,6 +200,8 @@ NSString *energyLabelDefault;
                 [self ActivateSentiment:verticalCellIndex];
             }
             
+            self.energyLabel.text = @"";
+            self.coordinateLabel.text = @"";
             // Deactivate all energy circles
             [self DeactivateAllEnergyCircles];
             activatedEnergy = -1;
