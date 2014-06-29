@@ -181,12 +181,14 @@
             [self.place addHashtag:hashtagString];
         }
     }
-    
+    NSLog(@"Submitting review");
     // Submit to Twitter
     if (self.twitterPostSwitch.on)
     {
+        NSLog(@"Trying to submit to Twitter");
         if ([PFTwitterUtils isLinkedWithUser:[PFUser currentUser]])
         {
+            NSLog(@"I'm linked!");
             NSString *tweet = [NSString stringWithFormat:@"I'm at %@ and it's ", self.place.name];
             for (NSString *hashtag in self.selectedHashtagStrings)
             {
@@ -210,6 +212,7 @@
             [NSURLConnection sendSynchronousRequest:request
                                                  returningResponse:&response
                                                              error:&error];
+            NSLog(@"%@", error);
 
         }
     }

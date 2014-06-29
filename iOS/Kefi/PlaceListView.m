@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) IBOutlet UIScrollView *spotlightView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
+@property (nonatomic) BOOL populatingPlaceList;
 
 @end
 
@@ -112,6 +113,7 @@
     //searchTerm = @"";
     
     // Set up location manager
+    self.populatingPlaceList = NO;
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -373,12 +375,17 @@
     //NSLog(@"didUpdateToLocation: %@", newLocation);
     CLLocation *currentLocation = newLocation;
     
-    if (currentLocation != nil) {
+    if (currentLocation != nil && !self.spinner.isAnimating) {
+        self.populatingPlaceList = YES;
+        [self.spinner startAnimating];
+        [self.placeList.places removeAllObjects];
         [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:currentLocation withSpinner:self.spinner];
     }
     
     [locationManager stopUpdatingLocation];
 }
+
+
 
 
 #pragma mark - User Identity Views
