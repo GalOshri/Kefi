@@ -14,5 +14,6 @@
 @property (nonatomic) int energy;
 @property (nonatomic, strong) NSMutableArray *hashtags;
 @property (nonatomic, strong) NSDate *reviewTime;
+@property (nonatomic, strong) NSString *placeName;
 
 @end

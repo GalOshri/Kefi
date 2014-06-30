@@ -101,7 +101,7 @@
 
     Review *review = [self.reviewList objectAtIndex:indexPath.row];
     //Place *currentPlace = [self.placeList.places objectAtIndex:indexPath.row];
-    cell.placeName.text = @"GALILEO";//cell.place.name;
+    cell.placeName.text = review.placeName;//cell.place.name;
     
     cell.reviewTime.text = [NSDateFormatter localizedStringFromDate:review.reviewTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
     

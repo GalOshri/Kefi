@@ -20,5 +20,7 @@
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue;
 
+- (void)setUpSpotlight;
+
 @end
     

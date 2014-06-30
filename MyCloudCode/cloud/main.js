@@ -264,7 +264,9 @@ Parse.Cloud.define("updateSentimentAndEnergy", function(request, response) {
 *******/
 Parse.Cloud.define("getConfigObject", function(request, response) {
 	var kefiHashtags = ["LustyIntentions", "TurnDownForWhat", "Crickets", "TooSoberForThis", "GenerousBartender", "DanceAllNight", "LinesForDays", "CasualBlackout"];
-	var configObject = {"Hi" : 5, "Boo" : 10, "kefiHashtags" : kefiHashtags};
+	var spotlightURLs = ["http://newjerseysgottalent.com/wp-content/uploads/2014/04/light_show.jpg", "http://www.earlybirdsclub.com/wp-content/uploads/2013/03/tumblr_m3om90v9OW1rp7zudo1_500.jpg", "http://justbartending.com/wp-content/uploads/2012/03/colorful-drinks-625.jpg"];
+	var spotlightCaptions = ["find your scene", "Galileo", "welcome to Kefi"];
+	var configObject = {"kefiHashtags" : kefiHashtags, "spotlightURLs" : spotlightURLs, "spotlightCaptions" : spotlightCaptions};
 	response.success(configObject);
 
 });

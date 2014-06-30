@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) IBOutlet UIScrollView *spotlightView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
+@property (nonatomic) BOOL populatingPlaceList;
 
 @end
 
@@ -107,18 +108,19 @@
     self.refreshControl = refreshControl;
     
     // Set up Spotlight
-    [self setUpSpotlight];
+    //[self setUpSpotlight];
     
     //searchTerm = @"";
     
     // Set up location manager
+    self.populatingPlaceList = NO;
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation]; // calls Kefi Service to populate list
     
     // Get settings
-    [KefiService GetKefiSettings];
+    [KefiService GetKefiSettings:self]; // sets up spotlight
     
     // Set the side bar button action. When it's tapped, it'll show the menu.
     self.menuButton.target = self.revealViewController;
@@ -153,8 +155,9 @@
 {
     self.spotlightView.delegate = self;
     
-    NSArray *imageURLs = [NSArray arrayWithObjects:@"http://newjerseysgottalent.com/wp-content/uploads/2014/04/light_show.jpg", @"http://www.earlybirdsclub.com/wp-content/uploads/2013/03/tumblr_m3om90v9OW1rp7zudo1_500.jpg", @"http://justbartending.com/wp-content/uploads/2012/03/colorful-drinks-625.jpg", nil];
-    NSArray *spotlightStrings = [NSArray arrayWithObjects:@"find your scene", @"shots fired", @"welcome to Kefi", nil];
+    NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
+    NSArray *imageURLs = [userData objectForKey:@"spotlightURLs"];
+    NSArray *spotlightStrings = [userData objectForKey:@"spotlightCaptions"];
     
     for (int i = 0; i < imageURLs.count; i++) {
         CGRect frame;
@@ -187,18 +190,6 @@
                         [self.spotlightView addSubview:imgLabel];
                     }];
                 }] resume];
-        
-        // Synchronous image loading
-        /*
-         NSURL *url = [NSURL URLWithString:@"http://i.imgur.com/VebP6Ol.jpg"];
-         NSData *data = [NSData dataWithContentsOfURL:url];
-         UIImage *img = [[UIImage alloc] initWithData:data];
-         //UIView *subview = [[UIView alloc] initWithFrame:frame];
-         //subview.backgroundColor = [colors objectAtIndex:i];
-         //[self.spotlightView addSubview:subview];
-         UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-         imgView.frame = frame;
-         [self.spotlightView addSubview:imgView]; */
     }
     
     self.spotlightView.contentSize = CGSizeMake(self.spotlightView.frame.size.width * imageURLs.count, self.spotlightView.frame.size.height);
@@ -269,13 +260,20 @@
     cell.placeName.text = cell.place.name;
 
     //display category name and distance
-    NSString *distanceString = [cell.place.currentDistance stringValue];
-    distanceString = [distanceString substringToIndex:4];
+    if (cell.place.currentDistance != nil)
+    {
+        NSString *distanceString = [cell.place.currentDistance stringValue];
+        distanceString = [distanceString substringToIndex:4];
+        
+        NSString *displayDistance = [NSString stringWithFormat:@" %@ mi", distanceString];
+        
+        
+        cell.placeDistance.text = displayDistance;
+    }
+    else
+        cell.placeDistance.text = @"";
     
-    NSString *displayDistance = [NSString stringWithFormat:@" %@ mi", distanceString];
     NSString *displayType = [NSString stringWithFormat:@"%@", cell.place.categoryType];
-    
-    cell.placeDistance.text = displayDistance;
     cell.placeType.text = displayType;
     
     NSString *hashtagText = @"";
@@ -373,12 +371,17 @@
     //NSLog(@"didUpdateToLocation: %@", newLocation);
     CLLocation *currentLocation = newLocation;
     
-    if (currentLocation != nil) {
+    if (currentLocation != nil && !self.spinner.isAnimating) {
+        self.populatingPlaceList = YES;
+        [self.spinner startAnimating];
+        [self.placeList.places removeAllObjects];
         [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:currentLocation withSpinner:self.spinner];
     }
     
     [locationManager stopUpdatingLocation];
 }
+
+
 
 
 #pragma mark - User Identity Views

@@ -35,6 +35,7 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert3EnergyCircles;
 
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 
 
 
@@ -72,6 +73,11 @@ NSDictionary *energyStrings;
 NSString *coordinateLabelDefault;
 NSString *energyLabelDefault;
 
+
+
+
+
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -106,6 +112,17 @@ NSString *energyLabelDefault;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self.drawView removeConstraint:self.topConstraint];
+
+    NSLayoutConstraint *lcl = [NSLayoutConstraint constraintWithItem:self.L4Sentiment
+                                                           attribute:NSLayoutAttributeCenterY
+                                                           relatedBy:NSLayoutRelationEqual
+                                                              toItem:self.drawView
+                                                           attribute:NSLayoutAttributeTop
+                                                          multiplier:1
+                                                            constant:(self.drawView.frame.size.height / 5.0)];
+    [self.drawView addConstraints:@[lcl]];
     
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
