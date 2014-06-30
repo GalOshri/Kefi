@@ -209,7 +209,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-q7-k4y">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-q7-k4y">
                                 <rect key="frame" x="0.0" y="112" width="320" height="456"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -234,9 +234,13 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvm-RL-7d1">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvm-RL-7d1">
                                         <rect key="frame" x="130" y="23" width="59" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="59" id="DCq-wM-MJw"/>
+                                            <constraint firstAttribute="height" constant="60" id="l3J-WQ-MJX"/>
+                                        </constraints>
                                         <state key="normal" image="soHappy.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -348,6 +352,10 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Bvm-RL-7d1" firstAttribute="top" secondItem="AYU-q7-k4y" secondAttribute="top" constant="23" id="N6K-U1-7lq"/>
+                                    <constraint firstAttribute="centerX" secondItem="Bvm-RL-7d1" secondAttribute="centerX" id="W6L-RL-laA"/>
+                                </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How do you feel?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJd-ia-wPO">
                                 <rect key="frame" x="103" y="89" width="115" height="32"/>
@@ -389,6 +397,7 @@
                         <outlet property="energyLabel" destination="kvq-Wq-Ppj" id="9Vx-Gk-Qhn"/>
                         <outlet property="placeLabel" destination="rXU-8i-va5" id="xnW-tK-iQR"/>
                         <outlet property="reviewButton" destination="oOI-lE-Jeb" id="3ZK-FU-Syf"/>
+                        <outlet property="topConstraint" destination="N6K-U1-7lq" id="tUa-Rf-gFN"/>
                         <outletCollection property="L4EnergyCircles" destination="qh0-Jn-zqj" id="qmp-NT-gPj"/>
                         <outletCollection property="L4EnergyCircles" destination="LTg-XA-WnX" id="LwA-eu-Fje"/>
                         <outletCollection property="L4EnergyCircles" destination="haE-4a-ExV" id="otZ-IW-So8"/>
