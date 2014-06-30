@@ -397,14 +397,18 @@ int radius = 1000;
     
     NSDate *lastUpdated = [userData objectForKey:@"lastUpdated"];
     NSDate *currentDate = [NSDate date];
+    NSNumber *updateInterval = [userData objectForKey:@"updateInterval"];
     
     // if we recently updated, return
     if (lastUpdated != nil)
     {
         NSTimeInterval secondsSinceUpdate = [currentDate timeIntervalSinceDate:lastUpdated];
-        int numberOfDays = secondsSinceUpdate / 86400.0;
-        if (numberOfDays < 0)
-            return;
+        double numberOfDays = secondsSinceUpdate / 86400.0;
+        if (updateInterval != nil)
+        {
+            if (numberOfDays < [updateInterval doubleValue])
+                return;
+        }
     }
 
     [PFCloud callFunctionInBackground:@"getConfigObject"
@@ -420,6 +424,9 @@ int radius = 1000;
                                         
                                         NSArray *spotlightCaptions = [result objectForKey:@"spotlightCaptions"];
                                         [userData setObject:spotlightCaptions forKey:@"spotlightCaptions"];
+                                        
+                                        NSNumber *newUpdateInterval = [result objectForKey:@"updateInterval"];
+                                        [userData setObject:newUpdateInterval forKey:@"updateInterval"];
                                         
                                         [userData synchronize];
                                         
