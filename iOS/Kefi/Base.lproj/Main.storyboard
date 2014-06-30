@@ -1311,12 +1311,6 @@ Gal and Paul.</string>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stavropoulos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmY-6w-Yfc">
-                                    <rect key="frame" x="113" y="54" width="187" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recent Activity:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqX-yA-IjB">
                                     <rect key="frame" x="100" y="118" width="120" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1401,9 +1395,8 @@ Gal and Paul.</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="firstName" destination="IoO-dP-c7T" id="a1q-B5-0sg"/>
-                        <outlet property="lastName" destination="FmY-6w-Yfc" id="V79-sr-PhM"/>
                         <outlet property="profPic" destination="XJU-Ex-A5N" id="qlW-Rh-mgn"/>
+                        <outlet property="usernameLabel" destination="IoO-dP-c7T" id="6ML-FH-XD1"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSf-EG-ri3" userLabel="First Responder" sceneMemberID="firstResponder"/>

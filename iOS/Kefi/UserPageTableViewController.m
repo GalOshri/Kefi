@@ -14,8 +14,7 @@
 
 @interface UserPageTableViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profPic;
-@property (weak, nonatomic) IBOutlet UILabel *firstName;
-@property (weak, nonatomic) IBOutlet UILabel *lastName;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 
 @property (nonatomic, strong) NSMutableArray *reviewList;
 
@@ -62,6 +61,7 @@
     // Set the side bar button action. When it's tapped, it'll show the menu.
     
     [KefiService PopulateReviews:self.reviewList forUser:[PFUser currentUser] withTable:self.tableView];
+    self.usernameLabel.text = [[PFUser currentUser] username];
 }
 
 
