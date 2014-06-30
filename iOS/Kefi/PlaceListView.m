@@ -271,13 +271,20 @@
     cell.placeName.text = cell.place.name;
 
     //display category name and distance
-    NSString *distanceString = [cell.place.currentDistance stringValue];
-    distanceString = [distanceString substringToIndex:4];
+    if (cell.place.currentDistance != nil)
+    {
+        NSString *distanceString = [cell.place.currentDistance stringValue];
+        distanceString = [distanceString substringToIndex:4];
+        
+        NSString *displayDistance = [NSString stringWithFormat:@" %@ mi", distanceString];
+        
+        
+        cell.placeDistance.text = displayDistance;
+    }
+    else
+        cell.placeDistance.text = @"";
     
-    NSString *displayDistance = [NSString stringWithFormat:@" %@ mi", distanceString];
     NSString *displayType = [NSString stringWithFormat:@"%@", cell.place.categoryType];
-    
-    cell.placeDistance.text = displayDistance;
     cell.placeType.text = displayType;
     
     NSString *hashtagText = @"";

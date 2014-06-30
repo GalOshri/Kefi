@@ -29,8 +29,6 @@
 @property (strong, nonatomic) NSMutableArray *hashtags;
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 
-@property (weak, nonatomic) IBOutlet UIButton *fbTest;
-
 @property (nonatomic, strong) KefiService *kefiService;
 
 @property (nonatomic) BOOL firstRun;
@@ -201,8 +199,14 @@
             
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:submitTweet];
             NSString *postString = [NSString stringWithFormat:@"status=%@", tweet];
-            postString = [postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            postString = [postString stringByReplacingOccurrencesOfString:@"'" withString:@"%27"];
+            
+            postString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                                (CFStringRef)postString,
+                                                                NULL,
+                                                                (CFStringRef)@"!*'\"();:@&+$,/?%#[]% ",
+                                                                             CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)));
+            //postString = [postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            //postString = [postString stringByReplacingOccurrencesOfString:@"'" withString:@"%27"];
             NSData *parameters = [postString dataUsingEncoding:NSUTF8StringEncoding];
             [request setHTTPBody:parameters];
             [request setHTTPMethod:@"POST"];

@@ -30,4 +30,15 @@
     return _reviewTime;
 }
 
+
+- (NSString *)placeName
+{
+    if (!_placeName)
+    {
+        _placeName = [[NSString alloc] init];
+    }
+    
+    return _placeName;
+}
+
 @end

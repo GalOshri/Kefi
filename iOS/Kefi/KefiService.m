@@ -114,11 +114,27 @@ int radius = 1000;
     
     NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
     NSArray *favoritePlaces = [userData objectForKey:@"FavoritePlaces"];
-    
-    int __block counter = 0;
-    
+  
     for (NSString *favoritePlaceFsId in favoritePlaces)
     {
+        Place *place = [[Place alloc] init];
+        place.fsId = [NSString stringWithString:favoritePlaceFsId];
+        
+        // TODO: Set the other fields as necessary
+        place.pId = @"";
+        place.sentiment = [NSNumber numberWithInt:100];
+        place.energy = [NSNumber numberWithInt:-1];
+        place.currentDistance = nil;
+        place.crossStreet = @"";
+        place.address = @"";
+        
+        
+        [placeList.places addObject:place];
+    }
+    
+    [self PopulateWithParseData: placeList withTableView:tableView withSpinner:spinner];
+    /*
+        
         NSString *fsURLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/%@?ll=%f,%f&client_id=%@&client_secret=%@&v=%d",
                                  
                                  favoritePlaceFsId,
@@ -156,7 +172,7 @@ int radius = 1000;
                 place.currentDistance =  @([place.currentDistance doubleValue]* 0.000621371192);
                 
                 //grab image url
-                /* NSString *imageURL = [NSString stringWithFormat:@"%@%@%@",
+                 NSString *imageURL = [NSString stringWithFormat:@"%@%@%@",
                  [[[[venue objectForKey:@"categories"] objectAtIndex:0] objectForKey:@"icon"] objectForKey:@"prefix"],
                  @"bg_64",
                  [[[[venue objectForKey:@"categories"] objectAtIndex:0]objectForKey:@"icon"]objectForKey:@"suffix"]
@@ -164,7 +180,7 @@ int radius = 1000;
                  
                  NSURL *imageURLConcat = [NSURL URLWithString:imageURL];
                  NSData *imageData = [NSData dataWithContentsOfURL:imageURLConcat];
-                 place.imageType = [UIImage imageWithData:imageData];*/
+                 place.imageType = [UIImage imageWithData:imageData];
                 
                 //grab category type
                 place.categoryType = [NSString stringWithFormat:@"%@", [[[venue objectForKey:@"categories"] objectAtIndex:0] objectForKey:@"name"]];
@@ -186,9 +202,9 @@ int radius = 1000;
                     [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
                         
                 }
-            }] resume];
+            }] resume];*/
         
-    }
+    
 }
 
 + (void) PopulateWithParseData:(PlaceList *)placeList withTableView:(UITableView *)tableView withSpinner:(UIActivityIndicatorView *)spinner
@@ -218,6 +234,12 @@ int radius = 1000;
                 place.lastReviewedTime = [object valueForKey:@"lastReviewed"];
                 place.sentiment = [object valueForKey:@"sentiment"];
                 place.energy = [object valueForKey:@"energy"];
+                PFGeoPoint *location = [object valueForKey:@"location"];
+                NSArray *latLongArray = @[[NSNumber numberWithDouble:[location latitude]], [NSNumber numberWithDouble:[location longitude]]];
+                place.latLong = latLongArray;
+                place.name = [NSString stringWithString:[object valueForKey:@"name"]];
+                place.categoryType = [NSString stringWithString:[object valueForKey:@"category"]];
+                
                 
                 //hashtags
                 for (id hashtagObject in [object valueForKey:@"hashtagList"])
@@ -267,6 +289,7 @@ int radius = 1000;
     //store sentiment, energy, pId
     reviewObject[@"sentiment"] = [NSNumber numberWithInt:sentiment];
     reviewObject[@"energy"] = [NSNumber numberWithInt:energy];
+    reviewObject[@"placeName"] = place.name;
     reviewObject[@"hashtagStrings"] = hashtagStrings;
     reviewObject[@"user"] = [PFUser currentUser];
 
@@ -284,6 +307,9 @@ int radius = 1000;
         //TODO: move server side
         PFObject *placeObject = [PFObject objectWithClassName:@"Place"];
         placeObject[@"fsID"] = place.fsId;
+        placeObject[@"name"] = place.name;
+        placeObject[@"location"] = [PFGeoPoint geoPointWithLatitude:[[place.latLong objectAtIndex:0] doubleValue] longitude:[[place.latLong objectAtIndex:1] doubleValue]];
+        placeObject[@"category"] = place.categoryType;
         placeObject[@"hashtagList"] = [[NSArray alloc] initWithObjects:nil];
         
         placeObject[@"sentiment"] = [NSNumber numberWithInt:100];
@@ -347,6 +373,7 @@ int radius = 1000;
             review.sentiment = [parseReview[@"sentiment"] intValue];
             review.energy = [parseReview[@"energy"] intValue];
             review.reviewTime = parseReview.createdAt;
+            review.placeName = [NSString stringWithString:parseReview[@"placeName"]];
             
             for (NSString *parseHashtag in parseReview[@"hashtagStrings"])
             {
