@@ -210,6 +210,9 @@
             [NSURLConnection sendSynchronousRequest:request
                                                  returningResponse:&response
                                                              error:&error];
+            NSLog(@"Error: %@", error);
+            NSLog(@"Response: %@", response);
+            NSLog(@"posted to twitter");
 
         }
     }
@@ -231,6 +234,8 @@
             // Send request to Facebook
             [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
                 // handle response
+                NSLog(@"Error: %@", error);
+                NSLog(@"posted to facebook");
             }];
 
         }
@@ -289,7 +294,7 @@
     [label setFont:[UIFont systemFontOfSize:14]];
     [label sizeToFit];
  
-    return CGSizeMake(label.frame.size.width + 4, 20);
+    return CGSizeMake(label.frame.size.width + 4, 30);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
