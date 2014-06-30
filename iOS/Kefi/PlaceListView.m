@@ -108,7 +108,7 @@
     self.refreshControl = refreshControl;
     
     // Set up Spotlight
-    [self setUpSpotlight];
+    //[self setUpSpotlight];
     
     //searchTerm = @"";
     
@@ -120,7 +120,7 @@
     [locationManager startUpdatingLocation]; // calls Kefi Service to populate list
     
     // Get settings
-    [KefiService GetKefiSettings];
+    [KefiService GetKefiSettings:self]; // sets up spotlight
     
     // Set the side bar button action. When it's tapped, it'll show the menu.
     self.menuButton.target = self.revealViewController;
@@ -155,8 +155,9 @@
 {
     self.spotlightView.delegate = self;
     
-    NSArray *imageURLs = [NSArray arrayWithObjects:@"http://newjerseysgottalent.com/wp-content/uploads/2014/04/light_show.jpg", @"http://www.earlybirdsclub.com/wp-content/uploads/2013/03/tumblr_m3om90v9OW1rp7zudo1_500.jpg", @"http://justbartending.com/wp-content/uploads/2012/03/colorful-drinks-625.jpg", nil];
-    NSArray *spotlightStrings = [NSArray arrayWithObjects:@"find your scene", @"shots fired", @"welcome to Kefi", nil];
+    NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
+    NSArray *imageURLs = [userData objectForKey:@"spotlightURLs"];
+    NSArray *spotlightStrings = [userData objectForKey:@"spotlightCaptions"];
     
     for (int i = 0; i < imageURLs.count; i++) {
         CGRect frame;
@@ -189,18 +190,6 @@
                         [self.spotlightView addSubview:imgLabel];
                     }];
                 }] resume];
-        
-        // Synchronous image loading
-        /*
-         NSURL *url = [NSURL URLWithString:@"http://i.imgur.com/VebP6Ol.jpg"];
-         NSData *data = [NSData dataWithContentsOfURL:url];
-         UIImage *img = [[UIImage alloc] initWithData:data];
-         //UIView *subview = [[UIView alloc] initWithFrame:frame];
-         //subview.backgroundColor = [colors objectAtIndex:i];
-         //[self.spotlightView addSubview:subview];
-         UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-         imgView.frame = frame;
-         [self.spotlightView addSubview:imgView]; */
     }
     
     self.spotlightView.contentSize = CGSizeMake(self.spotlightView.frame.size.width * imageURLs.count, self.spotlightView.frame.size.height);

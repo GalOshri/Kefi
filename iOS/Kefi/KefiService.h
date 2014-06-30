@@ -13,6 +13,7 @@
 #import "PlaceDetailView.h"
 #import "Review.h"
 #import <Parse/Parse.h>
+#import "PlaceListView.h"
 
 
 @interface KefiService : NSObject
@@ -30,7 +31,7 @@
 + (void) PopulateReviews:(NSMutableArray *)reviewList forUser:(PFUser *)user withTable:(UITableView *)tableView;
 
 // Get Settings
-+ (void) GetKefiSettings;
++ (void) GetKefiSettings:(PlaceListView *)plv;
 
 // Favorites
 + (void) addFavorite:(NSString *)fsId;

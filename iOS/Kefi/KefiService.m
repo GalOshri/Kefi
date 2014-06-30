@@ -391,11 +391,11 @@ int radius = 1000;
 
 #pragma mark - Get Settings
 
-+ (void) GetKefiSettings
++ (void) GetKefiSettings:(PlaceListView *)plv;
 {
     NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
     
-    NSDate *lastUpdated = [userData objectForKey:@"ContactList"];
+    NSDate *lastUpdated = [userData objectForKey:@"lastUpdated"];
     NSDate *currentDate = [NSDate date];
     
     // if we recently updated, return
@@ -403,7 +403,7 @@ int radius = 1000;
     {
         NSTimeInterval secondsSinceUpdate = [currentDate timeIntervalSinceDate:lastUpdated];
         int numberOfDays = secondsSinceUpdate / 86400.0;
-        if (numberOfDays < 1)
+        if (numberOfDays < 0)
             return;
     }
 
@@ -413,9 +413,18 @@ int radius = 1000;
                                     if (!error) {
 
                                         NSArray *kefiHashtags = [result objectForKey:@"kefiHashtags"];
-                                        
                                         [userData setObject:kefiHashtags forKey:@"kefiHashtags"];
+                                        
+                                        NSArray *spotlightURLs = [result objectForKey:@"spotlightURLs"];
+                                        [userData setObject:spotlightURLs forKey:@"spotlightURLs"];
+                                        
+                                        NSArray *spotlightCaptions = [result objectForKey:@"spotlightCaptions"];
+                                        [userData setObject:spotlightCaptions forKey:@"spotlightCaptions"];
+                                        
                                         [userData synchronize];
+                                        
+                                        
+                                        [plv performSelectorOnMainThread:@selector(setUpSpotlight) withObject:nil waitUntilDone:NO];
                                     }
                                 }];   
 }
