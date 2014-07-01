@@ -17,7 +17,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
 @property (strong, nonatomic) IBOutlet UIView *drawView;
 @property (strong, nonatomic) IBOutlet UIButton *reviewButton;
-@property (weak, nonatomic) IBOutlet UILabel *PlaceName;
 
 @property (weak, nonatomic) IBOutlet UIButton *L4Sentiment;
 @property (weak, nonatomic) IBOutlet UIButton *L3Sentiment;
@@ -35,14 +34,13 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert3EnergyCircles;
 
 // constraints
+/*
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *L4TopConstraint;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *L3TopConstraint;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *reviewButtonTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *L2TopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *L1TopConstraint;
-
+*/
 
 @end
 
@@ -116,8 +114,6 @@ NSString *energyLabelDefault;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    NSLog(@"viewDidLoad");
-    
     
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
@@ -157,6 +153,28 @@ NSString *energyLabelDefault;
                       @1: @"chill",
                       @2: @"buzzin'",
                       @3: @"ragin'!"};
+
+
+   
+    // NSLog(@"screenheight: %f, drawView height: %f", screenHeight, screenHeight - self.drawView.frame.origin.y);
+    NSLog(@"drawview Height no screen height calculations: %f, (x,y): %f, %f", self.drawView.frame.size.height, self.drawView.frame.origin.x, self.drawView.frame.origin.y);
+    // hardcode position of sentiment circles
+    /*
+     // remove constraints
+     [self.L4Sentiment removeConstraint:self.L4TopConstraint];
+     [self.L3Sentiment removeConstraint:self.L3TopConstraint];
+     [self.L2Sentiment removeConstraint:self.L2TopConstraint];
+     [self.L1Sentiment removeConstraint:self.L1TopConstraint];
+     [self.reviewButton removeConstraint:self.reviewButtonTopConstraint];
+     
+     //add constraints
+     NSLayoutConstraint *L4NewConstraint = [NSLayoutConstraint constraintWithItem:self.L4Sentiment attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.drawView attribute:NSLayoutAttributeTop multiplier:0.2 constant:self.drawView.frame.size.height];
+     
+     NSLayoutConstraint *L3NewConstraint = [NSLayoutConstraint constraintWithItem:self.L3Sentiment attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.drawView attribute:NSLayoutAttributeTop multiplier:0.4 constant:self.drawView.frame.size.height];
+     
+     [self.drawView addConstraints:@[L4NewConstraint, L3NewConstraint]];
+     */
+    
 }
 
 
@@ -166,82 +184,36 @@ NSString *energyLabelDefault;
     [self.placeLabel setText: self.place.name];
     [self.placeLabel sizeToFit];
     [self.placeLabel setCenter: CGPointMake(self.view.center.x, 45.5)];
-    
-    // set height of drawView
-   // self.drawView.frame = CGRectMake(self.drawView.frame.origin.x, self.drawView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height - self.drawView.frame.origin.y);
 }
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    NSLog(@"viewWillAppear");
     // set height of drawView
-    self.drawView.frame = CGRectMake(self.drawView.frame.origin.x, self.drawView.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height - self.drawView.frame.origin.y);
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
     
-    NSLog(@"%f", self.view.frame.size.height - self.drawView.frame.origin.y);
-    NSLog(@"%f", self.drawView.frame.size.height);
+    CGRect frame = CGRectMake(self.drawView.frame.origin.x, self.drawView.frame.origin.y, screenWidth, screenHeight - self.drawView.frame.origin.y);
     
+    [self.drawView setFrame:frame];
     
-    // hardcode position of sentiment circles
-    // float separatorSpace = self.drawView.frame.size.height / 5;
-    [self.drawView removeConstraint:self.L4TopConstraint];
-    NSLayoutConstraint *sentiment4Constraint = [NSLayoutConstraint constraintWithItem:self.L4Sentiment
-                                                                            attribute:NSLayoutAttributeCenterY
-                                                                            relatedBy:NSLayoutRelationEqual
-                                                                               toItem:self.drawView
-                                                                            attribute:NSLayoutAttributeTop
-                                                                           multiplier:1
-                                                                             constant:(self.drawView.frame.size.height / numVerticalCells) - 30];
-    [self.drawView addConstraints:@[sentiment4Constraint]];
-    
-    
-    
-    [self.drawView removeConstraint:self.L3TopConstraint];
-    NSLayoutConstraint *sentiment3Constraint = [NSLayoutConstraint constraintWithItem:self.L4Sentiment
-                                                                            attribute:NSLayoutAttributeCenterY
-                                                                            relatedBy:NSLayoutRelationEqual
-                                                                               toItem:self.drawView
-                                                                            attribute:NSLayoutAttributeTop
-                                                                           multiplier:1
-                                                                             constant:(2*self.drawView.frame.size.height / numVerticalCells) - 30];
-    [self.drawView addConstraints:@[sentiment3Constraint]];
-    
-    
-    
-    [self.drawView removeConstraint:self.reviewButtonTopConstraint];
-    NSLayoutConstraint *reviewButtonConstraint = [NSLayoutConstraint constraintWithItem:self.L4Sentiment
-                                                                              attribute:NSLayoutAttributeCenterY
-                                                                              relatedBy:NSLayoutRelationEqual
-                                                                                 toItem:self.drawView
-                                                                              attribute:NSLayoutAttributeTop
-                                                                             multiplier:1
-                                                                               constant:(3*self.drawView.frame.size.height / numVerticalCells) - 30];
-    [self.drawView addConstraints:@[reviewButtonConstraint]];
-    
-    
-    
-    [self.drawView removeConstraint:self.L2TopConstraint];
-    NSLayoutConstraint *sentiment2Constraint = [NSLayoutConstraint constraintWithItem:self.L4Sentiment
-                                                                            attribute:NSLayoutAttributeCenterY
-                                                                            relatedBy:NSLayoutRelationEqual
-                                                                               toItem:self.drawView
-                                                                            attribute:NSLayoutAttributeTop
-                                                                           multiplier:1
-                                                                             constant:(4*self.drawView.frame.size.height / numVerticalCells) - 30];
-    [self.drawView addConstraints:@[sentiment2Constraint]];
-    
-    
-    
-    [self.drawView removeConstraint:self.L1TopConstraint];
-    NSLayoutConstraint *sentiment1Constraint = [NSLayoutConstraint constraintWithItem:self.L4Sentiment
-                                                                            attribute:NSLayoutAttributeCenterY
-                                                                            relatedBy:NSLayoutRelationEqual
-                                                                               toItem:self.drawView
-                                                                            attribute:NSLayoutAttributeTop
-                                                                           multiplier:1
-                                                                             constant:(5*self.drawView.frame.size.height / numVerticalCells) - 30];
-    [self.drawView addConstraints:@[sentiment1Constraint]];
-    
-
+    // set location of sentiment circles.
+    for (UIButton *temp in self.sentimentCircles) {
+        int index = [self.sentimentCircles indexOfObject:temp];
+        
+        temp.center = CGPointMake(self.drawView.center.x, (self.drawView.frame.size.height * (((float)index + 1) / (float)numVerticalCells)) - 40);
+        
+        NSLog(@"%d button at y = %f", index, (self.drawView.frame.size.height * ((index + 1) / (float)numVerticalCells)) - 60);
+        
+        // grab correct horizontalEnergy from dictionary
+        if (index != 2) {
+            NSArray *energyCircles = [horizontalToEnergyCirclesDict objectForKey:[NSNumber numberWithInt:4-index]];
+            
+            for (UIButton *energy in energyCircles)
+                energy.center = CGPointMake(energy.center.x, temp.center.y);
+        }
+    }
 }
 
 
