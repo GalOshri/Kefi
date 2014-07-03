@@ -205,8 +205,6 @@ NSString *energyLabelDefault;
         
         temp.center = CGPointMake(self.drawView.center.x, (self.drawView.frame.size.height * (((float)index + 1) / (float)numVerticalCells)) - 40);
         
-        NSLog(@"%d button at y = %f", index, (self.drawView.frame.size.height * ((index + 1) / (float)numVerticalCells)) - 60);
-        
         // grab correct horizontalEnergy from dictionary
         if (index != 2) {
             NSArray *energyCircles = [horizontalToEnergyCirclesDict objectForKey:[NSNumber numberWithInt:4-index]];
@@ -232,7 +230,6 @@ NSString *energyLabelDefault;
     int horizontalCellIndex = floor(sender.frame.origin.x / cellWidth);
     int verticalCellIndex = floor((self.drawView.frame.size.height - sender.frame.origin.y) / cellHeight);
     
-    NSLog(@"we are at x:%f, y:%f in vertical cell index %d", sender.frame.origin.x, sender.frame.origin.y, verticalCellIndex);
     if (activatedSentiment == -1)
     {
         self.coordinateLabel.text = [NSString stringWithFormat:@"%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]]];
