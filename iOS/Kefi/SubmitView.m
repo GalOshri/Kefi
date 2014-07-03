@@ -203,7 +203,7 @@ NSString *energyLabelDefault;
     for (UIButton *temp in self.sentimentCircles) {
         int index = (int) [self.sentimentCircles indexOfObject:temp];
         
-        temp.center = CGPointMake(self.drawView.center.x, (self.drawView.frame.size.height * (((float)index + 1) / (float)numVerticalCells)) - 40);
+        temp.center = CGPointMake(self.drawView.center.x, (self.drawView.frame.size.height * (((float)index + 1) / (float)numVerticalCells)) - 44);
         
         // grab correct horizontalEnergy from dictionary
         if (index != 2) {
@@ -261,7 +261,7 @@ NSString *energyLabelDefault;
             }
             
             // self.energyLabel.text = @"";
-            self.coordinateLabel.text = @"";
+            self.coordinateLabel.text = energyLabelDefault;
             // Deactivate all energy circles
             [self DeactivateAllEnergyCircles];
             activatedEnergy = -1;
@@ -286,7 +286,7 @@ NSString *energyLabelDefault;
                 if (horizontalCellIndex !=0)
                 {
                     UILabel *activateEnergylabel = [self.energyLabels objectAtIndex:3-horizontalCellIndex];
-                    [activateEnergylabel setTextColor:self.view.tintColor];
+                    [activateEnergylabel setTextColor:[UIColor blackColor]];
                 }
                 
             }

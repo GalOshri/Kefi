@@ -46,7 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vqQ-MC-gyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1886" y="505"/>
+            <point key="canvasLocation" x="1961" y="499"/>
         </scene>
         <!--Place Detail View-->
         <scene sceneID="ufC-wZ-h7g">
@@ -337,7 +337,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How do you feel?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJd-ia-wPO">
                                 <rect key="frame" x="103" y="73" width="115" height="32"/>
@@ -424,7 +424,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vqm-ny-vLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="IkS-tb-46b" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1886" y="-247"/>
+            <point key="canvasLocation" x="1961" y="-247"/>
         </scene>
         <!--Submit Review Detail View-->
         <scene sceneID="bNm-Eu-nDW">
@@ -791,7 +791,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Tu-ew-r1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GKO-KP-OHu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1886" y="1295"/>
+            <point key="canvasLocation" x="1961" y="1295"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="1mr-Hw-78A">
@@ -1265,7 +1265,7 @@ Gal and Paul.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NUN-bS-F1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1363" y="505"/>
+            <point key="canvasLocation" x="1446" y="1295"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BN0-mo-ihb">
