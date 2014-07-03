@@ -26,6 +26,6 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *hashtagView;
 @property (nonatomic) CGRect imageFrame;
 @property (nonatomic) CGRect placeLabelFrame;
-@property (nonatomic) CGRect reviewDetailLabelFrame;
+@property (nonatomic) CGPoint reviewDetailLabelCenter;
 
 @end

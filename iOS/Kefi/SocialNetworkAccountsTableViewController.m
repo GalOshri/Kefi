@@ -93,7 +93,16 @@
                     }];
                 }
                 else
+                {
+                    
                     NSLog(@"Already linked to Facebook");
+                    UIAlertView *FacebookAlert = [[UIAlertView alloc] initWithTitle:@"Already Connected"
+                                                                    message:@"Your account is already connected to Facebook."
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil];
+                    [FacebookAlert show];
+                }
                 break;
             // Twitter
             case 1:
@@ -107,13 +116,30 @@
                         }];
                     }
                     else
+                    {
                         NSLog(@"Already linked to Twitter");
+                        UIAlertView *TwitterAlert = [[UIAlertView alloc] initWithTitle:@"Already Connected"
+                                                                        message:@"Your account is already connected to Twitter."
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"OK"
+                                                              otherButtonTitles:nil];
+                        [TwitterAlert show];
+                    }
                 }
                 break;
             // Foursquare
             case 2:
+            {
                 NSLog(@"No Foursquare for you. NEXT!");
+                UIAlertView *FoursquareAlert = [[UIAlertView alloc] initWithTitle:@"Coming Soon!"
+                                                                message:@"Foursquare connectivity coming soon."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [FoursquareAlert show];
+            }
                 break;
+            
             default:
                 break;
 

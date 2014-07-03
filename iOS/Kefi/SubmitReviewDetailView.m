@@ -102,7 +102,7 @@
     if (self.firstRun) {
         
         [self.placeLabel setFrame:self.placeLabelFrame];
-        [self.reviewDetailLabel setFrame:self.reviewDetailLabelFrame];
+        [self.reviewDetailLabel setCenter:self.reviewDetailLabelCenter];
 
         self.placeLabel.textAlignment = NSTextAlignmentLeft;
         self.reviewDetailLabel.textAlignment = NSTextAlignmentLeft;
@@ -114,7 +114,7 @@
         
         
             self.placeLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width + 15, self.sentimentImage.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
-            self.reviewDetailLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width, self.sentimentImage.frame.origin.y + 30, self.reviewDetailLabel.frame.size.width, self.reviewDetailLabel.frame.size.height);
+            self.reviewDetailLabel.frame = CGRectMake(self.placeLabel.frame.origin.x, self.sentimentImage.frame.origin.y + 30, self.reviewDetailLabel.frame.size.width, self.reviewDetailLabel.frame.size.height);
         }completion:^(BOOL finished){
             //change label to energy levels
             if (finished) {

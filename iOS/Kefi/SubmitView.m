@@ -99,10 +99,9 @@ NSString *energyLabelDefault;
             
             srdv.placeLabelFrame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
             
-            [self.coordinateLabel sizeToFit];
-            srdv.reviewDetailLabelText = self.energyLabel.text;
-            srdv.reviewDetailLabelFrame = CGRectMake(self.energyLabel.frame.origin.x, self.energyLabel.frame.origin.y, self.energyLabel.frame.size.width, self.energyLabel.frame.size.height);
             
+            srdv.reviewDetailLabelText = self.energyLabel.text;
+            srdv.reviewDetailLabelCenter = CGPointMake(self.energyLabel.center.x, self.energyLabel.center.y);
             srdv.place = self.place;
         }
     }
@@ -114,6 +113,18 @@ NSString *energyLabelDefault;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    // set height of drawView
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
+    CGRect frame = CGRectMake(self.drawView.frame.origin.x, self.drawView.frame.origin.y, screenWidth, screenHeight - self.drawView.frame.origin.y);
+    
+    [self.drawView setFrame:frame];
+    
     
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
@@ -155,9 +166,6 @@ NSString *energyLabelDefault;
                       @3: @"ragin'!"};
 
 
-   
-    // NSLog(@"screenheight: %f, drawView height: %f", screenHeight, screenHeight - self.drawView.frame.origin.y);
-    NSLog(@"drawview Height no screen height calculations: %f, (x,y): %f, %f", self.drawView.frame.size.height, self.drawView.frame.origin.x, self.drawView.frame.origin.y);
     // hardcode position of sentiment circles
     /*
      // remove constraints
@@ -183,28 +191,17 @@ NSString *energyLabelDefault;
     // set title
     [self.placeLabel setText: self.place.name];
     [self.placeLabel sizeToFit];
-    [self.placeLabel setCenter: CGPointMake(self.view.center.x, 45.5)];
+    [self.placeLabel setCenter: CGPointMake(self.view.center.x, 65)];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    // set height of drawView
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
-    
-    CGRect frame = CGRectMake(self.drawView.frame.origin.x, self.drawView.frame.origin.y, screenWidth, screenHeight - self.drawView.frame.origin.y);
-    
-    [self.drawView setFrame:frame];
     
     // set location of sentiment circles.
     for (UIButton *temp in self.sentimentCircles) {
-        int index = [self.sentimentCircles indexOfObject:temp];
+        int index = (int) [self.sentimentCircles indexOfObject:temp];
         
         temp.center = CGPointMake(self.drawView.center.x, (self.drawView.frame.size.height * (((float)index + 1) / (float)numVerticalCells)) - 40);
-        
-        NSLog(@"%d button at y = %f", index, (self.drawView.frame.size.height * ((index + 1) / (float)numVerticalCells)) - 60);
         
         // grab correct horizontalEnergy from dictionary
         if (index != 2) {
@@ -231,7 +228,6 @@ NSString *energyLabelDefault;
     int horizontalCellIndex = floor(sender.frame.origin.x / cellWidth);
     int verticalCellIndex = floor((self.drawView.frame.size.height - sender.frame.origin.y) / cellHeight);
     
-  
     if (activatedSentiment == -1)
     {
         self.coordinateLabel.text = [NSString stringWithFormat:@"%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]]];
@@ -398,9 +394,8 @@ NSString *energyLabelDefault;
         }
         
         self.coordinateLabel.center = CGPointMake(self.drawView.center.x, self.coordinateLabel.center.y);
-        
     }    completion:^(BOOL finished){
-        self.coordinateLabel.text = coordinateLabelDefault;
+        self.coordinateLabel.text = @"how do you feel?";
     }];
     
     activatedSentiment = -1;
