@@ -12,7 +12,7 @@
 
 @interface SubmitView ()
 
-@property (weak, nonatomic) IBOutlet UILabel *energyLabel;
+// @property (weak, nonatomic) IBOutlet UILabel *energyLabel;
 @property (strong, nonatomic) IBOutlet UILabel *coordinateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
 @property (strong, nonatomic) IBOutlet UIView *drawView;
@@ -32,6 +32,8 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert1EnergyCircles;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert2EnergyCircles;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert3EnergyCircles;
+
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *energyLabels; 
 
 // constraints
 /*
@@ -100,8 +102,8 @@ NSString *energyLabelDefault;
             srdv.placeLabelFrame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
             
             
-            srdv.reviewDetailLabelText = self.energyLabel.text;
-            srdv.reviewDetailLabelCenter = CGPointMake(self.energyLabel.center.x, self.energyLabel.center.y);
+            srdv.reviewDetailLabelText = self.coordinateLabel.text;
+            srdv.reviewDetailLabelCenter = CGPointMake(self.coordinateLabel.center.x, self.coordinateLabel.center.y);
             srdv.place = self.place;
         }
     }
@@ -191,7 +193,7 @@ NSString *energyLabelDefault;
     // set title
     [self.placeLabel setText: self.place.name];
     [self.placeLabel sizeToFit];
-    [self.placeLabel setCenter: CGPointMake(self.view.center.x, 65)];
+    [self.placeLabel setCenter: CGPointMake(self.view.center.x, 55)];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -245,9 +247,9 @@ NSString *energyLabelDefault;
     
     else
     {
-        self.coordinateLabel.text = [NSString stringWithFormat:@"%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]]];
+        // self.coordinateLabel.text = energyLabelDefault;// [NSString stringWithFormat:@"%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]]];
         
-        self.energyLabel.text = [NSString stringWithFormat:@"%@", [energyStrings objectForKey:[NSNumber numberWithInt:horizontalCellIndex]]];
+        // self.energyLabel.text = [NSString stringWithFormat:@"%@", [energyStrings objectForKey:[NSNumber numberWithInt:horizontalCellIndex]]];
         
         if (activatedSentiment != verticalCellIndex)
         {
@@ -258,7 +260,7 @@ NSString *energyLabelDefault;
                 [self ActivateSentiment:verticalCellIndex];
             }
             
-            self.energyLabel.text = @"";
+            // self.energyLabel.text = @"";
             self.coordinateLabel.text = @"";
             // Deactivate all energy circles
             [self DeactivateAllEnergyCircles];
@@ -280,6 +282,12 @@ NSString *energyLabelDefault;
                 
                 [activatedEnergyCircles addObjectsFromArray:vertEnergyCircles];
                 activatedEnergy = horizontalCellIndex;
+                
+                if (horizontalCellIndex !=0)
+                {
+                    UILabel *activateEnergylabel = [self.energyLabels objectAtIndex:3-horizontalCellIndex];
+                    [activateEnergylabel setTextColor:self.view.tintColor];
+                }
                 
             }
         }
@@ -309,7 +317,8 @@ NSString *energyLabelDefault;
         [self HideAllExceptSentiment:activatedSentiment];
         UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
         [UIView animateWithDuration:0.75 animations:^{
-            [self.coordinateLabel setHidden:YES];
+            // [self.coordinateLabel setHidden:YES];
+            [self.view setBackgroundColor:[UIColor whiteColor]];
             currentButton.center = CGPointMake(currentButton.center.x, 0);
         }completion:^(BOOL finished){
             [self performSegueWithIdentifier:@"SubmitReviewDetailSegue" sender:self];
@@ -364,13 +373,13 @@ NSString *energyLabelDefault;
                 [currentButton setAlpha:0.4];
         }
         
-        self.coordinateLabel.frame = CGRectMake(self.drawView.frame.origin.x, self.coordinateLabel.frame.origin.y, self.coordinateLabel.frame.size.width, self.coordinateLabel.frame.size.height);
+        // self.coordinateLabel.frame = CGRectMake(self.drawView.frame.origin.x, self.coordinateLabel.frame.origin.y, self.coordinateLabel.frame.size.width, self.coordinateLabel.frame.size.height);
     }
         completion:^(BOOL finished) {
             if (!slideBackRight) {
                 [self ActivateSentiment:selectedSentiment];
-                [self.energyLabel setHidden:NO];
-                self.energyLabel.text = energyLabelDefault;
+                // [self.energyLabel setHidden:NO];
+                // self.energyLabel.text = energyLabelDefault;
             }
             else {
                 [self SlideAllSentimentsRight];
@@ -385,7 +394,7 @@ NSString *energyLabelDefault;
 - (void)SlideAllSentimentsRight
 {
     [UIView animateWithDuration:0.5 animations:^{
-        [self.energyLabel setHidden:YES];
+        // [self.energyLabel setHidden:YES];
         for (id key in horizontalToSentimentDict)
         {
             UIButton *currentButton = [horizontalToSentimentDict objectForKey:key];
@@ -440,7 +449,15 @@ NSString *energyLabelDefault;
     {
         energyCircle.hidden = NO;
         energyCircle.alpha = 1;
+        
+        int index = (int) [energyCircles indexOfObject:energyCircle];
+        
+        UILabel *energyLabel = [self.energyLabels objectAtIndex:index];
+        [energyLabel setHidden:NO];
+        energyLabel.center = CGPointMake(energyCircle.center.x, energyCircle.center.y - 40);
     }
+    
+    self.coordinateLabel.text = energyLabelDefault;
 }
 
 - (void)DeactivateEnergyLevel:(int)sentiment
@@ -451,6 +468,11 @@ NSString *energyLabelDefault;
     {
         energyCircle.hidden = YES;
         energyCircle.alpha = 0;
+        
+        int index = (int) [energyCircles indexOfObject:energyCircle];
+        
+        UILabel *energyLabel = [self.energyLabels objectAtIndex:index];
+        [energyLabel setHidden:YES];
     }
 }
 
@@ -471,6 +493,10 @@ NSString *energyLabelDefault;
         [self DeactivateEnergyCircle:energyCircle];
     }
     [activatedEnergyCircles removeAllObjects];
+    
+    for (UILabel *energyLabel in self.energyLabels) {
+        energyLabel.textColor = [UIColor grayColor];
+    }
 }
 
 - (void)HideAllExceptSentiment:(int)sentiment

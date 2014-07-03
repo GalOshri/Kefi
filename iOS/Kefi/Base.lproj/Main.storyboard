@@ -324,11 +324,32 @@
                                             <action selector="reviewButtonTouchUp:forEvent:" destination="wCa-SH-iDl" eventType="touchUpInside" id="pGt-b8-Wpc"/>
                                         </connections>
                                     </button>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ragin'!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EW2-2f-yba">
+                                        <rect key="frame" x="20" y="447" width="44" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="buzzin'" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FOQ-77-qRP">
+                                        <rect key="frame" x="89" y="447" width="46" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="relaxed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UQR-hE-D7I">
+                                        <rect key="frame" x="175" y="447" width="47" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="how do you feel?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HJd-ia-wPO">
-                                <rect key="frame" x="103" y="65" width="115" height="32"/>
+                                <rect key="frame" x="103" y="58" width="115" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -342,7 +363,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's the vibe?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kvq-Wq-Ppj">
-                                <rect key="frame" x="139" y="70" width="118" height="21"/>
+                                <rect key="frame" x="139" y="64" width="118" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
@@ -375,7 +396,6 @@
                         <outlet property="L4Sentiment" destination="Bvm-RL-7d1" id="DAy-y7-ijd"/>
                         <outlet property="coordinateLabel" destination="HJd-ia-wPO" id="plg-9b-4rR"/>
                         <outlet property="drawView" destination="AYU-q7-k4y" id="ei4-XW-2WT"/>
-                        <outlet property="energyLabel" destination="kvq-Wq-Ppj" id="9Vx-Gk-Qhn"/>
                         <outlet property="placeLabel" destination="rXU-8i-va5" id="xnW-tK-iQR"/>
                         <outlet property="reviewButton" destination="oOI-lE-Jeb" id="3ZK-FU-Syf"/>
                         <outletCollection property="L4EnergyCircles" destination="qh0-Jn-zqj" id="qmp-NT-gPj"/>
@@ -407,6 +427,9 @@
                         <outletCollection property="sentimentCircles" destination="oOI-lE-Jeb" id="AC0-zh-Up2"/>
                         <outletCollection property="sentimentCircles" destination="eP7-7A-tAd" id="ed4-Ev-A7R"/>
                         <outletCollection property="sentimentCircles" destination="KCj-C5-5MC" id="HSr-Ad-48D"/>
+                        <outletCollection property="energyLabels" destination="EW2-2f-yba" id="xHh-to-bCd"/>
+                        <outletCollection property="energyLabels" destination="FOQ-77-qRP" id="dc5-p4-EDm"/>
+                        <outletCollection property="energyLabels" destination="UQR-hE-D7I" id="06a-Hf-7wv"/>
                         <segue destination="d9R-wC-4Vk" kind="modal" identifier="SubmitReviewDetailSegue" modalTransitionStyle="crossDissolve" animates="NO" id="MBc-02-YWn"/>
                     </connections>
                 </viewController>
