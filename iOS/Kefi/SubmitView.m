@@ -99,10 +99,9 @@ NSString *energyLabelDefault;
             
             srdv.placeLabelFrame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
             
-            [self.coordinateLabel sizeToFit];
-            srdv.reviewDetailLabelText = self.energyLabel.text;
-            srdv.reviewDetailLabelFrame = CGRectMake(self.energyLabel.frame.origin.x, self.energyLabel.frame.origin.y, self.energyLabel.frame.size.width, self.energyLabel.frame.size.height);
             
+            srdv.reviewDetailLabelText = self.energyLabel.text;
+            srdv.reviewDetailLabelCenter = CGPointMake(self.energyLabel.center.x, self.energyLabel.center.y);
             srdv.place = self.place;
         }
     }
@@ -114,6 +113,17 @@ NSString *energyLabelDefault;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    // set height of drawView
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
+    CGRect frame = CGRectMake(self.drawView.frame.origin.x, self.drawView.frame.origin.y, screenWidth, screenHeight - self.drawView.frame.origin.y);
+    
+    [self.drawView setFrame:frame];
+    
     
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
@@ -183,20 +193,11 @@ NSString *energyLabelDefault;
     // set title
     [self.placeLabel setText: self.place.name];
     [self.placeLabel sizeToFit];
-    [self.placeLabel setCenter: CGPointMake(self.view.center.x, 45.5)];
+    [self.placeLabel setCenter: CGPointMake(self.view.center.x, 65)];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    // set height of drawView
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
-    
-    CGRect frame = CGRectMake(self.drawView.frame.origin.x, self.drawView.frame.origin.y, screenWidth, screenHeight - self.drawView.frame.origin.y);
-    
-    [self.drawView setFrame:frame];
     
     // set location of sentiment circles.
     for (UIButton *temp in self.sentimentCircles) {
@@ -231,7 +232,7 @@ NSString *energyLabelDefault;
     int horizontalCellIndex = floor(sender.frame.origin.x / cellWidth);
     int verticalCellIndex = floor((self.drawView.frame.size.height - sender.frame.origin.y) / cellHeight);
     
-  
+    NSLog(@"we are at x:%f, y:%f in vertical cell index %d", sender.frame.origin.x, sender.frame.origin.y, verticalCellIndex);
     if (activatedSentiment == -1)
     {
         self.coordinateLabel.text = [NSString stringWithFormat:@"%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]]];
