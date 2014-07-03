@@ -114,6 +114,7 @@ NSString *energyLabelDefault;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     // set height of drawView
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
@@ -165,9 +166,6 @@ NSString *energyLabelDefault;
                       @3: @"ragin'!"};
 
 
-   
-    // NSLog(@"screenheight: %f, drawView height: %f", screenHeight, screenHeight - self.drawView.frame.origin.y);
-    NSLog(@"drawview Height no screen height calculations: %f, (x,y): %f, %f", self.drawView.frame.size.height, self.drawView.frame.origin.x, self.drawView.frame.origin.y);
     // hardcode position of sentiment circles
     /*
      // remove constraints
@@ -201,7 +199,7 @@ NSString *energyLabelDefault;
     
     // set location of sentiment circles.
     for (UIButton *temp in self.sentimentCircles) {
-        int index = [self.sentimentCircles indexOfObject:temp];
+        int index = (int) [self.sentimentCircles indexOfObject:temp];
         
         temp.center = CGPointMake(self.drawView.center.x, (self.drawView.frame.size.height * (((float)index + 1) / (float)numVerticalCells)) - 40);
         
@@ -396,9 +394,8 @@ NSString *energyLabelDefault;
         }
         
         self.coordinateLabel.center = CGPointMake(self.drawView.center.x, self.coordinateLabel.center.y);
-        
     }    completion:^(BOOL finished){
-        self.coordinateLabel.text = coordinateLabelDefault;
+        self.coordinateLabel.text = @"how do you feel?";
     }];
     
     activatedSentiment = -1;
