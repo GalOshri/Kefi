@@ -37,7 +37,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="EOn-Xk-k1w"/>
+                    <navigationItem key="navigationItem" id="EOn-Xk-k1w">
+                        <barButtonItem key="rightBarButtonItem" title="Directions" id="PmF-6U-j7p">
+                            <connections>
+                                <action selector="showDirections:" destination="Y6T-oR-Iet" id="Pkt-5r-mFP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="xMV-V0-8xA" id="NaG-3d-pZS"/>
                         <outlet property="placeAddress" destination="LyZ-4q-5mA" id="jQl-XE-ily"/>

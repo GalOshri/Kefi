@@ -59,5 +59,10 @@
     [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
 }*/
 
+- (IBAction)showDirections:(id)sender {
+    NSString *urlString = [NSString stringWithFormat:@"http://maps.apple.com/?daddr=%f,%f&saddr=%f,%f", self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude,self.region.center.latitude, self.region.center.longitude];
+    NSURL *url = [NSURL URLWithString:urlString];
+    [[UIApplication sharedApplication] openURL:url];
+}
 
 @end
