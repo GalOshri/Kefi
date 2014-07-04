@@ -261,7 +261,7 @@ NSString *energyLabelDefault;
             }
             
             // self.energyLabel.text = @"";
-            self.coordinateLabel.text = energyLabelDefault;
+            self.coordinateLabel.text = energyLabelDefault;  
             // Deactivate all energy circles
             [self DeactivateAllEnergyCircles];
             activatedEnergy = -1;
