@@ -48,4 +48,10 @@
     textView.text = @"";
 }
 
+- (IBAction)sendFeedbackEmail:(id)sender {
+    NSString *urlString = @"mailto:kefiapp@gmail.com?subject=Feedback%20On%20Kefi";
+    NSURL *url = [NSURL URLWithString:urlString];
+    [[UIApplication sharedApplication] openURL:url];
+}
+
 @end
