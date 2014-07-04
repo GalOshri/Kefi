@@ -91,7 +91,7 @@
     
     self.menuHeader.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     
-    _menuItems = @[@"me", @"settings", @"contact", @"aboutKefi"];
+    _menuItems = @[@"me", @"news", @"settings", @"contact", @"aboutKefi"];
     
     SWRevealViewController *revealController = [self revealViewController];
     [revealController panGestureRecognizer];

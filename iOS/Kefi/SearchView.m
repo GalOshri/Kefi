@@ -24,11 +24,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.searchTextField.delegate = self;
-    [self.searchTextField setReturnKeyType:UIReturnKeyDone];
-    [self.searchTextField addTarget:self
-                       action:@selector(textFieldFinished:)
-             forControlEvents:UIControlEventEditingDidEndOnExit];
+  
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -37,12 +33,6 @@
     if (self.searchTextField.text.length > 0) {
         self.searchTerm = self.searchTextField.text;
     }
-}
-
-- (IBAction)textFieldFinished:(id)sender
-{
-    // [sender resignFirstResponder];
-    
 }
 
 @end

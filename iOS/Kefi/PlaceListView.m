@@ -295,6 +295,11 @@
     //define dictionary:
     NSArray *energyLevels = @[cell.energyLevel1, cell.energyLevel2, cell.energyLevel3];
     
+    /*int randomInt = arc4random() % 100;
+    double randomDouble = randomInt / 100.0;
+    cell.contentView.backgroundColor = [UIColor colorWithRed:randomDouble green:0.5 blue:0.8 alpha:0.06];
+    cell.placeHashtags.backgroundColor = [UIColor clearColor]; */
+    
     if((long)[cell.place.sentiment integerValue] != 100) {
         // NSLog(@"%@ is in Interval: %d with s: %ld, e: %ld", cell.place.name, cell.place.isInInterval, (long)[cell.place.sentiment integerValue], (long)[cell.place.energy integerValue]);
 
@@ -312,6 +317,8 @@
             else
                 [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
         }
+        
+        
         
         if (cell.place.isInInterval) {
             [cell.sentimentImage setAlpha:1.0];

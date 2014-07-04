@@ -365,6 +365,7 @@ int radius = 1000;
 + (void) PopulateReviews:(NSMutableArray *)reviewList forUser:(PFUser *)user withTable:(UITableView *)tableView
 {
     PFQuery *query = [PFQuery queryWithClassName:@"Review"];
+    [query orderByDescending:@"createdAt"];
     [query whereKey:@"user" equalTo:user];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         for (PFObject *parseReview in objects)

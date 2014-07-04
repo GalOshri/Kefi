@@ -766,7 +766,7 @@
                                 <rect key="frame" x="20" y="108" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <segue destination="GKO-KP-OHu" kind="unwind" unwindAction="unwindToList:" id="v7v-ri-ROS"/>
                                 </connections>
@@ -864,8 +864,25 @@
                                     <segue destination="oC0-1R-LjB" kind="modal" identifier="UserPageSegue" id="aCx-qf-uc1"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settings" textLabel="zog-LB-S0r" style="IBUITableViewCellStyleDefault" id="Qov-jP-GaT">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="news" textLabel="KsO-35-clf" style="IBUITableViewCellStyleDefault" id="zwj-nG-pAn">
                                 <rect key="frame" x="0.0" y="165" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zwj-nG-pAn" id="4g7-Pt-D0Q">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Beta User News" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KsO-35-clf">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settings" textLabel="zog-LB-S0r" style="IBUITableViewCellStyleDefault" id="Qov-jP-GaT">
+                                <rect key="frame" x="0.0" y="209" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qov-jP-GaT" id="pL4-Zu-9QN">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -885,7 +902,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="contact" textLabel="Fc3-RE-sg5" style="IBUITableViewCellStyleDefault" id="XnD-su-jI9">
-                                <rect key="frame" x="0.0" y="209" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="253" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XnD-su-jI9" id="6Do-bd-457">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -905,7 +922,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="aboutKefi" textLabel="hX5-Jm-nyO" style="IBUITableViewCellStyleDefault" id="sUk-bs-ZL8">
-                                <rect key="frame" x="0.0" y="253" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="297" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sUk-bs-ZL8" id="KT1-8m-a4g">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
