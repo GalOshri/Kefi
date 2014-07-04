@@ -1190,7 +1190,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5O-RE-ejr">
-                                <rect key="frame" x="20" y="89" width="280" height="459"/>
+                                <rect key="frame" x="20" y="79" width="280" height="469"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
@@ -1214,7 +1214,7 @@ Gal and Paul.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Z5O-RE-ejr" firstAttribute="top" secondItem="TJu-XD-O7T" secondAttribute="bottom" constant="25" id="JHk-7M-l2S"/>
+                            <constraint firstItem="Z5O-RE-ejr" firstAttribute="top" secondItem="TJu-XD-O7T" secondAttribute="bottom" constant="15" id="JHk-7M-l2S"/>
                             <constraint firstItem="hBe-nl-3KZ" firstAttribute="top" secondItem="Z5O-RE-ejr" secondAttribute="bottom" constant="20" id="mXj-Lp-IKv"/>
                         </constraints>
                     </view>
@@ -1325,12 +1325,6 @@ Gal and Paul.</string>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Stavropoulos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmY-6w-Yfc">
-                                    <rect key="frame" x="113" y="54" width="187" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recent Activity:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqX-yA-IjB">
                                     <rect key="frame" x="100" y="118" width="120" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1415,9 +1409,8 @@ Gal and Paul.</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="firstName" destination="IoO-dP-c7T" id="a1q-B5-0sg"/>
-                        <outlet property="lastName" destination="FmY-6w-Yfc" id="V79-sr-PhM"/>
                         <outlet property="profPic" destination="XJU-Ex-A5N" id="qlW-Rh-mgn"/>
+                        <outlet property="usernameLabel" destination="IoO-dP-c7T" id="GG5-J8-wy7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSf-EG-ri3" userLabel="First Responder" sceneMemberID="firstResponder"/>
