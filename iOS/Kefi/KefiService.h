@@ -14,6 +14,7 @@
 #import "Review.h"
 #import <Parse/Parse.h>
 #import "PlaceListView.h"
+#import "BetaNewsView.h"
 
 
 @interface KefiService : NSObject
@@ -42,6 +43,9 @@
 
 // Feedback
 + (void) submitFeedback:(NSString *)feedback;
+
+// Beta News
++ (void) GetBetaNews:(BetaNewsView *)bnv;
 
 
 @end

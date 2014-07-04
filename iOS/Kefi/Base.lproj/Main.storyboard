@@ -880,6 +880,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="VIX-u3-7YN" kind="modal" id="wuT-xX-RPZ"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settings" textLabel="zog-LB-S0r" style="IBUITableViewCellStyleDefault" id="Qov-jP-GaT">
                                 <rect key="frame" x="0.0" y="209" width="320" height="44"/>
@@ -1201,7 +1204,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxH-p9-FIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2402" y="-1844"/>
+            <point key="canvasLocation" x="2928" y="-1844"/>
         </scene>
         <!--About Kefi View - About Kefi-->
         <scene sceneID="hJk-95-k0V">
@@ -1250,7 +1253,7 @@ Gal and Paul.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="li1-ZC-pXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1323" y="-1836"/>
+            <point key="canvasLocation" x="1849" y="-1836"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fUp-YI-cYN">
@@ -1306,6 +1309,48 @@ Gal and Paul.</string>
             </objects>
             <point key="canvasLocation" x="845" y="-1150"/>
         </scene>
+        <!--Beta News View - News!-->
+        <scene sceneID="bQH-rA-pke">
+            <objects>
+                <viewController id="BuO-k0-JqJ" customClass="BetaNewsView" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VzA-Ww-RHj"/>
+                        <viewControllerLayoutGuide type="bottom" id="2QU-3c-3Zz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pdd-a0-EkH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="C4X-q0-ngN">
+                                <rect key="frame" x="150" y="79" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZa-t2-PFz">
+                                <rect key="frame" x="20" y="122" width="280" height="426"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="News!" id="hvZ-GB-FUE">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="Wi6-lz-39B">
+                            <connections>
+                                <action selector="cancelModal:" destination="BuO-k0-JqJ" id="Bav-4I-ePU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="betaNewsTextView" destination="WZa-t2-PFz" id="Yzs-nQ-c7U"/>
+                        <outlet property="spinner" destination="C4X-q0-ngN" id="QLB-VO-9Bo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cjX-T6-uWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1002" y="-2225"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Xb-SS-SV4">
             <objects>
@@ -1322,7 +1367,7 @@ Gal and Paul.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gsz-Cn-TVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845" y="-1836"/>
+            <point key="canvasLocation" x="1371" y="-1836"/>
         </scene>
         <!--User Page Table View Controller - Me-->
         <scene sceneID="Yzm-BX-OyO">
@@ -1470,7 +1515,25 @@ Gal and Paul.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9K-94-ebv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1886" y="-1836"/>
+            <point key="canvasLocation" x="2412" y="-1836"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AD5-gr-zJO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VIX-u3-7YN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ljA-b0-nca">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BuO-k0-JqJ" kind="relationship" relationship="rootViewController" id="LNb-HU-Ycr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sOy-pH-D4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="476" y="-2225"/>
         </scene>
     </scenes>
     <resources>

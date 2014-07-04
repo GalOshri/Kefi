@@ -272,5 +272,16 @@ Parse.Cloud.define("getConfigObject", function(request, response) {
 
 });
 
+/******
+	Return object of data news
+*******/
+Parse.Cloud.define("getBetaNews", function(request, response) {
+	var betaNewsString = "Hello. This is beta news!";
+	var configObject = {"betaNewsString" : betaNewsString};
+	response.success(configObject);
+
+});
+
+
 
 

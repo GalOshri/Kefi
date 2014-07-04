@@ -38,6 +38,7 @@
 		0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466618F10DD90072702B /* PlaceDetailView.m */; };
 		0D81466D18F1259F0072702B /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D81466C18F1259F0072702B /* SearchView.m */; };
 		0D87999D195566D300C0973F /* AboutKefiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D87999C195566D300C0973F /* AboutKefiView.m */; };
+		0D8C537719670EAE005A1A23 /* BetaNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8C537619670EAE005A1A23 /* BetaNewsView.m */; };
 		0DB0B4381921D8DF008D5624 /* SubmitReviewDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */; };
 		0DCF8C8C195D331A005F6CDA /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCF8C8B195D331A005F6CDA /* Review.m */; };
 		0DCF8C8F195D38FE005F6CDA /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCF8C8E195D38FE005F6CDA /* ReviewCell.m */; };
@@ -140,6 +141,8 @@
 		0D81466C18F1259F0072702B /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 		0D87999B195566D300C0973F /* AboutKefiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutKefiView.h; sourceTree = "<group>"; };
 		0D87999C195566D300C0973F /* AboutKefiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutKefiView.m; sourceTree = "<group>"; };
+		0D8C537519670EAE005A1A23 /* BetaNewsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetaNewsView.h; sourceTree = "<group>"; };
+		0D8C537619670EAE005A1A23 /* BetaNewsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetaNewsView.m; sourceTree = "<group>"; };
 		0DB0B4361921D8DF008D5624 /* SubmitReviewDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitReviewDetailView.h; sourceTree = "<group>"; };
 		0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitReviewDetailView.m; sourceTree = "<group>"; };
 		0DCF8C8A195D331A005F6CDA /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
@@ -546,6 +549,8 @@
 				0DCF8C9419613E20005F6CDA /* About Kefi View */,
 				0DCF8C9319613E0D005F6CDA /* Account Settings View */,
 				0DCF8C9119613DD6005F6CDA /* Feedback View */,
+				0D8C537519670EAE005A1A23 /* BetaNewsView.h */,
+				0D8C537619670EAE005A1A23 /* BetaNewsView.m */,
 			);
 			name = "Menu Views";
 			sourceTree = "<group>";
@@ -683,6 +688,7 @@
 				DA359793195416F600432057 /* ContactUsViewController.m in Sources */,
 				0D4F4A0918F0B66A00F901AE /* PlaceCell.m in Sources */,
 				DAAAB4B01952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.m in Sources */,
+				0D8C537719670EAE005A1A23 /* BetaNewsView.m in Sources */,
 				0D4F4A0018F0AD8100F901AE /* PlaceList.m in Sources */,
 				0D727EB318F099F1008310FC /* AppDelegate.m in Sources */,
 				0DCF8C8F195D38FE005F6CDA /* ReviewCell.m in Sources */,

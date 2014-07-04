@@ -505,4 +505,22 @@ int radius = 1000;
     [feedbackObject save];
 }
 
+#pragma mark - Beta News
+
++ (void) GetBetaNews:(BetaNewsView *)bnv;
+{
+    [bnv.spinner startAnimating];
+    [PFCloud callFunctionInBackground:@"getBetaNews"
+                       withParameters:@{}
+                                block:^(NSDictionary *result, NSError *error) {
+                                    if (!error) {
+                                        
+                                        NSString *betaNewsString = [result objectForKey:@"betaNewsString"];
+                                        bnv.betaNewsTextView.text = [NSString stringWithString:betaNewsString];
+                                        [bnv.spinner stopAnimating];
+                                    }
+                                }];   
+}
+
+
 @end
