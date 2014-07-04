@@ -33,22 +33,22 @@
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert2EnergyCircles;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert3EnergyCircles;
 
-@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *energyLabels; 
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *energyLabels;
 
 // constraints
 /*
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *L4TopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *L3TopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *reviewButtonTopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *L2TopConstraint;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *L1TopConstraint;
-*/
+ @property (strong, nonatomic) IBOutlet NSLayoutConstraint *L4TopConstraint;
+ @property (weak, nonatomic) IBOutlet NSLayoutConstraint *L3TopConstraint;
+ @property (weak, nonatomic) IBOutlet NSLayoutConstraint *reviewButtonTopConstraint;
+ @property (weak, nonatomic) IBOutlet NSLayoutConstraint *L2TopConstraint;
+ @property (weak, nonatomic) IBOutlet NSLayoutConstraint *L1TopConstraint;
+ */
 
 @end
 
 @implementation SubmitView
 
-    
+
 
 //globals needed
 int numVerticalCells = 5;
@@ -96,7 +96,7 @@ NSString *energyLabelDefault;
             srdv.energyLevel = activatedEnergy;
             
             UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
-
+            
             srdv.imageFrame = CGRectMake(currentButton.frame.origin.x, currentButton.frame.origin.y + self.drawView.frame.origin.y, currentButton.frame.size.width, currentButton.frame.size.height);
             
             srdv.placeLabelFrame = CGRectMake(self.placeLabel.frame.origin.x, self.placeLabel.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
@@ -132,15 +132,15 @@ NSString *energyLabelDefault;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
     
     horizontalToSentimentDict = @{@0:self.L1Sentiment,
-                                                @1:self.L2Sentiment,
-                                                @3:self.L3Sentiment,
-                                                @4:self.L4Sentiment};
+                                  @1:self.L2Sentiment,
+                                  @3:self.L3Sentiment,
+                                  @4:self.L4Sentiment};
     
     horizontalToEnergyCirclesDict = @{@0:self.L1EnergyCircles,
                                       @1:self.L2EnergyCircles,
                                       @3:self.L3EnergyCircles,
                                       @4:self.L4EnergyCircles};
-                                      
+    
     verticalToEnergyCirclesDict = @{@1:self.Vert1EnergyCircles,
                                     @2:self.Vert2EnergyCircles,
                                     @3:self.Vert3EnergyCircles};
@@ -166,8 +166,8 @@ NSString *energyLabelDefault;
                       @1: @"chill",
                       @2: @"buzzin'",
                       @3: @"ragin'!"};
-
-
+    
+    
     // hardcode position of sentiment circles
     /*
      // remove constraints
@@ -191,19 +191,24 @@ NSString *energyLabelDefault;
 -(void) viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     // set title
-    [self.placeLabel setText: self.place.name];
-    [self.placeLabel sizeToFit];
-    [self.placeLabel setCenter: CGPointMake(self.view.center.x, 55)];
+
+    //self.L4Sentiment.frame = CGRectMake(100, 100, 250, 250);
 }
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+ /*   [self.placeLabel setText: self.place.name];
+    [self.placeLabel sizeToFit];
+    [self.placeLabel setCenter: CGPointMake(self.view.center.x, 55)];
+    
     // set location of sentiment circles.
     for (UIButton *temp in self.sentimentCircles) {
         int index = (int) [self.sentimentCircles indexOfObject:temp];
         
+        [temp removeFromSuperview];
         temp.center = CGPointMake(self.drawView.center.x, (self.drawView.frame.size.height * (((float)index + 1) / (float)numVerticalCells)) - 44);
+        [self.drawView addSubview:temp ];
         
         // grab correct horizontalEnergy from dictionary
         if (index != 2) {
@@ -211,8 +216,9 @@ NSString *energyLabelDefault;
             
             for (UIButton *energy in energyCircles)
                 energy.center = CGPointMake(energy.center.x, temp.center.y);
+            NSLog(@"energy circle set");
         }
-    }
+    }*/
 }
 
 
@@ -235,7 +241,7 @@ NSString *energyLabelDefault;
         self.coordinateLabel.text = [NSString stringWithFormat:@"%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]]];
         
         self.coordinateLabel.textAlignment = NSTextAlignmentCenter;
-
+        
         if((115 < sender.frame.origin.x < 165) && (verticalCellIndex != 2) && selectedSentimentIndex != verticalCellIndex)
         {
             [timer invalidate];
@@ -261,7 +267,7 @@ NSString *energyLabelDefault;
             }
             
             // self.energyLabel.text = @"";
-            self.coordinateLabel.text = energyLabelDefault;  
+            self.coordinateLabel.text = energyLabelDefault;
             // Deactivate all energy circles
             [self DeactivateAllEnergyCircles];
             activatedEnergy = -1;
@@ -272,7 +278,7 @@ NSString *energyLabelDefault;
             if (activatedEnergy != horizontalCellIndex)
             {
                 [self DeactivateAllEnergyCircles];
-
+                
                 NSArray *vertEnergyCircles = [verticalToEnergyCirclesDict objectForKey:[NSNumber numberWithInt:horizontalCellIndex]];
                 
                 for (UIButton *energyCircle in vertEnergyCircles)
@@ -302,7 +308,7 @@ NSString *energyLabelDefault;
     
     activatedSentiment = (int)selectedSentiment;
     [self SlideAllSentimentsLeft:(int)selectedSentiment];
-   
+    
 }
 
 - (IBAction)reviewButtonTouchUp:(UIButton *)sender forEvent:(UIEvent *)event {
@@ -322,7 +328,7 @@ NSString *energyLabelDefault;
             currentButton.center = CGPointMake(currentButton.center.x, 0);
         }completion:^(BOOL finished){
             [self performSegueWithIdentifier:@"SubmitReviewDetailSegue" sender:self];
- 
+            
         }];
         
         [timer invalidate];
@@ -349,7 +355,7 @@ NSString *energyLabelDefault;
     activatedEnergy = -1;
     
     
- 
+    
 }
 
 - (void)resetReviewButton
@@ -375,20 +381,20 @@ NSString *energyLabelDefault;
         
         // self.coordinateLabel.frame = CGRectMake(self.drawView.frame.origin.x, self.coordinateLabel.frame.origin.y, self.coordinateLabel.frame.size.width, self.coordinateLabel.frame.size.height);
     }
-        completion:^(BOOL finished) {
-            if (!slideBackRight) {
-                [self ActivateSentiment:selectedSentiment];
-                // [self.energyLabel setHidden:NO];
-                // self.energyLabel.text = energyLabelDefault;
-            }
-            else {
-                [self SlideAllSentimentsRight];
-                    [self resetReviewButton];
-            }
+                     completion:^(BOOL finished) {
+                         if (!slideBackRight) {
+                             [self ActivateSentiment:selectedSentiment];
+                             // [self.energyLabel setHidden:NO];
+                             // self.energyLabel.text = energyLabelDefault;
+                         }
+                         else {
+                             [self SlideAllSentimentsRight];
+                             [self resetReviewButton];
+                         }
                          
-            isAnimating = NO;
-            slideBackRight = NO;
-        }];
+                         isAnimating = NO;
+                         slideBackRight = NO;
+                     }];
 }
 
 - (void)SlideAllSentimentsRight
@@ -423,9 +429,9 @@ NSString *energyLabelDefault;
     
     [UIView animateWithDuration:0.5 animations:^{
         UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:sentiment]];
-                                   [currentButton setAlpha:1];
-                                   }];
-        
+        [currentButton setAlpha:1];
+    }];
+    
     [self ActivateEnergyLevel:sentiment];
 }
 
@@ -435,8 +441,8 @@ NSString *energyLabelDefault;
     
     [UIView animateWithDuration:0.5 animations:^{
         UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:sentiment]];
-                                   [currentButton setAlpha:0.4];
-                                   }];
+        [currentButton setAlpha:0.4];
+    }];
     
     [self DeactivateEnergyLevel:sentiment];
 }
