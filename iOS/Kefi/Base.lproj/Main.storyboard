@@ -218,168 +218,24 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-q7-k4y">
                                 <rect key="frame" x="0.0" y="95" width="320" height="475"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCj-C5-5MC">
-                                        <rect key="frame" x="130" y="395" width="60" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="soPissed.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eP7-7A-tAd">
-                                        <rect key="frame" x="130" y="304" width="60" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="eh.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onz-A6-ax2">
-                                        <rect key="frame" x="130" y="115" width="60" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="semiHappy.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvm-RL-7d1">
-                                        <rect key="frame" x="130" y="20" width="60" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="soHappy.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haE-4a-ExV">
-                                        <rect key="frame" x="109" y="55" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="smallCircle.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTg-XA-WnX">
-                                        <rect key="frame" x="189" y="55" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="smallCircle.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qh0-Jn-zqj">
-                                        <rect key="frame" x="270" y="55" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="smallCircle.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkh-Uf-swV">
-                                        <rect key="frame" x="109" y="130" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="smallCircle.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="34Q-nC-nCx">
-                                        <rect key="frame" x="189" y="130" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="smallCircle.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HNH-FB-9Gk">
-                                        <rect key="frame" x="270" y="130" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="smallCircle.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVF-7w-ELx">
-                                        <rect key="frame" x="109" y="318" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="smallCircle.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYJ-vB-eAF">
-                                        <rect key="frame" x="189" y="318" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="smallCircle.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvK-zw-Ecd">
-                                        <rect key="frame" x="270" y="318" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="smallCircle.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MK1-Oh-CI5">
-                                        <rect key="frame" x="109" y="395" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="smallCircle.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lld-ew-SOq">
-                                        <rect key="frame" x="189" y="395" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="smallCircle.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rLu-DJ-XXB">
-                                        <rect key="frame" x="270" y="395" width="30" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="smallCircle.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOI-lE-Jeb">
-                                        <rect key="frame" x="135" y="212" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="fullCircle.png" backgroundImage="fullCircle.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="reviewButtonDragged:forEvent:" destination="wCa-SH-iDl" eventType="touchDragInside" id="jxa-WO-9Rf"/>
-                                            <action selector="reviewButtonTouchUp:forEvent:" destination="wCa-SH-iDl" eventType="touchUpInside" id="pGt-b8-Wpc"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ragin'" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfa-3l-2mk">
-                                        <rect key="frame" x="11" y="441" width="49" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Buzzin'" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXZ-cW-D7B">
-                                        <rect key="frame" x="66" y="441" width="56" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chillin'" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWv-ZG-FPK">
-                                        <rect key="frame" x="116" y="441" width="52" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="How do you feel?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HJd-ia-wPO">
-                                <rect key="frame" x="103" y="73" width="115" height="32"/>
+                                <rect key="frame" x="103" y="63" width="115" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Place Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXU-8i-va5">
-                                <rect key="frame" x="35" y="58" width="250" height="21"/>
+                                <rect key="frame" x="35" y="45" width="250" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What's the vibe?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvq-Wq-Ppj">
-                                <rect key="frame" x="139" y="78" width="118" height="21"/>
+                                <rect key="frame" x="139" y="68" width="118" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
@@ -405,46 +261,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="L1Sentiment" destination="KCj-C5-5MC" id="xAz-Xa-Rwq"/>
-                        <outlet property="L2Sentiment" destination="eP7-7A-tAd" id="zuA-4W-F7T"/>
-                        <outlet property="L3Sentiment" destination="onz-A6-ax2" id="MpT-Yq-Bkc"/>
-                        <outlet property="L4Sentiment" destination="Bvm-RL-7d1" id="DAy-y7-ijd"/>
                         <outlet property="coordinateLabel" destination="HJd-ia-wPO" id="plg-9b-4rR"/>
                         <outlet property="drawView" destination="AYU-q7-k4y" id="ei4-XW-2WT"/>
                         <outlet property="placeLabel" destination="rXU-8i-va5" id="xnW-tK-iQR"/>
-                        <outlet property="reviewButton" destination="oOI-lE-Jeb" id="3ZK-FU-Syf"/>
-                        <outletCollection property="L4EnergyCircles" destination="qh0-Jn-zqj" id="qmp-NT-gPj"/>
-                        <outletCollection property="L4EnergyCircles" destination="LTg-XA-WnX" id="LwA-eu-Fje"/>
-                        <outletCollection property="L4EnergyCircles" destination="haE-4a-ExV" id="otZ-IW-So8"/>
-                        <outletCollection property="L3EnergyCircles" destination="HNH-FB-9Gk" id="uck-sV-VJy"/>
-                        <outletCollection property="L3EnergyCircles" destination="34Q-nC-nCx" id="9KW-rl-vMX"/>
-                        <outletCollection property="L3EnergyCircles" destination="tkh-Uf-swV" id="6SI-9h-B0N"/>
-                        <outletCollection property="L2EnergyCircles" destination="qvK-zw-Ecd" id="At8-oz-Q5Q"/>
-                        <outletCollection property="L2EnergyCircles" destination="gYJ-vB-eAF" id="3pW-yf-vPv"/>
-                        <outletCollection property="L2EnergyCircles" destination="wVF-7w-ELx" id="7aT-fe-Cu2"/>
-                        <outletCollection property="L1EnergyCircles" destination="rLu-DJ-XXB" id="fvl-b9-TJK"/>
-                        <outletCollection property="L1EnergyCircles" destination="Lld-ew-SOq" id="zy5-8i-tZc"/>
-                        <outletCollection property="L1EnergyCircles" destination="MK1-Oh-CI5" id="7NX-wR-vAI"/>
-                        <outletCollection property="Vert1EnergyCircles" destination="haE-4a-ExV" id="Vv8-UY-HV4"/>
-                        <outletCollection property="Vert1EnergyCircles" destination="tkh-Uf-swV" id="aIj-7I-ssH"/>
-                        <outletCollection property="Vert1EnergyCircles" destination="wVF-7w-ELx" id="Go6-Tg-pXz"/>
-                        <outletCollection property="Vert1EnergyCircles" destination="MK1-Oh-CI5" id="Yo2-fL-pLr"/>
-                        <outletCollection property="Vert2EnergyCircles" destination="Lld-ew-SOq" id="u63-6h-4UF"/>
-                        <outletCollection property="Vert3EnergyCircles" destination="rLu-DJ-XXB" id="hnt-xb-s3j"/>
-                        <outletCollection property="Vert2EnergyCircles" destination="LTg-XA-WnX" id="k4i-UO-zic"/>
-                        <outletCollection property="Vert3EnergyCircles" destination="qh0-Jn-zqj" id="CFD-Lv-8yK"/>
-                        <outletCollection property="Vert2EnergyCircles" destination="34Q-nC-nCx" id="pof-VI-8s6"/>
-                        <outletCollection property="Vert3EnergyCircles" destination="HNH-FB-9Gk" id="qpy-Zl-Tuw"/>
-                        <outletCollection property="Vert2EnergyCircles" destination="gYJ-vB-eAF" id="lMU-uU-ECl"/>
-                        <outletCollection property="Vert3EnergyCircles" destination="qvK-zw-Ecd" id="Osw-Kd-NRP"/>
-                        <outletCollection property="sentimentCircles" destination="Bvm-RL-7d1" id="c3F-LX-jCs"/>
-                        <outletCollection property="sentimentCircles" destination="onz-A6-ax2" id="EVS-nK-WZh"/>
-                        <outletCollection property="sentimentCircles" destination="oOI-lE-Jeb" id="AC0-zh-Up2"/>
-                        <outletCollection property="sentimentCircles" destination="eP7-7A-tAd" id="ed4-Ev-A7R"/>
-                        <outletCollection property="sentimentCircles" destination="KCj-C5-5MC" id="HSr-Ad-48D"/>
-                        <outletCollection property="energyLabels" destination="hfa-3l-2mk" id="rD6-Gm-AmZ"/>
-                        <outletCollection property="energyLabels" destination="lXZ-cW-D7B" id="lqW-Vm-Mgj"/>
-                        <outletCollection property="energyLabels" destination="rWv-ZG-FPK" id="LLq-XF-ZI4"/>
                         <segue destination="d9R-wC-4Vk" kind="modal" identifier="SubmitReviewDetailSegue" modalTransitionStyle="crossDissolve" animates="NO" id="MBc-02-YWn"/>
                     </connections>
                 </viewController>
@@ -1541,7 +1360,6 @@ Gal and Paul.</string>
         <image name="KefItIcon.png" width="250" height="250"/>
         <image name="Kefi.png" width="546" height="226"/>
         <image name="PoweredByFoursquare.png" width="482" height="121"/>
-        <image name="eh.png" width="107" height="107"/>
         <image name="fullCircle.png" width="107" height="107"/>
         <image name="map.png" width="200" height="200"/>
         <image name="menu.png" width="28" height="20"/>
@@ -1550,7 +1368,6 @@ Gal and Paul.</string>
         <image name="smallCircle.png" width="40" height="40"/>
         <image name="smallCircleFull.png" width="40" height="40"/>
         <image name="soHappy.png" width="107" height="107"/>
-        <image name="soPissed.png" width="107" height="107"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

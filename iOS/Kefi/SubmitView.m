@@ -16,24 +16,25 @@
 @property (strong, nonatomic) IBOutlet UILabel *coordinateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
 @property (strong, nonatomic) IBOutlet UIView *drawView;
-@property (strong, nonatomic) IBOutlet UIButton *reviewButton;
+@property (strong, nonatomic)  UIButton *reviewButton;
 
-@property (weak, nonatomic) IBOutlet UIButton *L4Sentiment;
-@property (weak, nonatomic) IBOutlet UIButton *L3Sentiment;
-@property (weak, nonatomic) IBOutlet UIButton *L2Sentiment;
-@property (weak, nonatomic) IBOutlet UIButton *L1Sentiment;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *sentimentCircles;
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L4EnergyCircles;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L3EnergyCircles;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L2EnergyCircles;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *L1EnergyCircles;
+@property UIButton *L4Sentiment;
+@property UIButton *L3Sentiment;
+@property UIButton *L2Sentiment;
+@property UIButton *L1Sentiment;
+@property (strong, nonatomic) NSMutableArray *sentimentCircles;
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert1EnergyCircles;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert2EnergyCircles;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *Vert3EnergyCircles;
+@property (strong, nonatomic) NSMutableArray *L4EnergyCircles;
+@property (strong, nonatomic) NSMutableArray *L3EnergyCircles;
+@property (strong, nonatomic) NSMutableArray *L2EnergyCircles;
+@property (strong, nonatomic) NSMutableArray *L1EnergyCircles;
 
-@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *energyLabels;
+@property (strong, nonatomic)  NSMutableArray *Vert1EnergyCircles;
+@property (strong, nonatomic)  NSMutableArray *Vert2EnergyCircles;
+@property (strong, nonatomic)  NSMutableArray *Vert3EnergyCircles;
+
+@property (strong, nonatomic) NSMutableArray *energyLabels;
 
 // constraints
 /*
@@ -117,6 +118,7 @@ NSString *energyLabelDefault;
 	// Do any additional setup after loading the view.
     
     [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+
     // set height of drawView
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
@@ -130,6 +132,23 @@ NSString *energyLabelDefault;
     
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
+    
+    self.L1Sentiment =  [[UIButton alloc] init];
+    self.L2Sentiment =  [[UIButton alloc] init];
+    self.L3Sentiment =  [[UIButton alloc] init];
+    self.L4Sentiment =  [[UIButton alloc] init];
+    self.reviewButton = [[UIButton alloc] init];
+    
+    self.L1EnergyCircles =  [[NSMutableArray alloc] init];
+    self.L2EnergyCircles =  [[NSMutableArray alloc] init];
+    self.L3EnergyCircles =  [[NSMutableArray alloc] init];
+    self.L4EnergyCircles =  [[NSMutableArray alloc] init];
+    
+    self.Vert1EnergyCircles = [[NSMutableArray alloc] init];
+    self.Vert2EnergyCircles = [[NSMutableArray alloc] init];
+    self.Vert3EnergyCircles = [[NSMutableArray alloc] init];
+    
+    self.sentimentCircles = [[NSMutableArray alloc]init];
     
     horizontalToSentimentDict = @{@0:self.L1Sentiment,
                                   @1:self.L2Sentiment,
@@ -197,16 +216,19 @@ NSString *energyLabelDefault;
 
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    //create all zeh buttonz, ya?
+    [self createSentimentButtons];
+    [self createEnergyLevels];
+    [self createEnergyLabels];
     
- /*   [self.placeLabel setText: self.place.name];
+    [self.placeLabel setText: self.place.name];
     [self.placeLabel sizeToFit];
-    [self.placeLabel setCenter: CGPointMake(self.view.center.x, 55)];
+    [self.placeLabel setCenter: CGPointMake(self.view.center.x, 45)];
     
     // set location of sentiment circles.
     for (UIButton *temp in self.sentimentCircles) {
         int index = (int) [self.sentimentCircles indexOfObject:temp];
-        
-        [temp removeFromSuperview];
+    
         temp.center = CGPointMake(self.drawView.center.x, (self.drawView.frame.size.height * (((float)index + 1) / (float)numVerticalCells)) - 44);
         [self.drawView addSubview:temp ];
         
@@ -214,11 +236,12 @@ NSString *energyLabelDefault;
         if (index != 2) {
             NSArray *energyCircles = [horizontalToEnergyCirclesDict objectForKey:[NSNumber numberWithInt:4-index]];
             
-            for (UIButton *energy in energyCircles)
-                energy.center = CGPointMake(energy.center.x, temp.center.y);
-            NSLog(@"energy circle set");
+            for (UIButton *energy in energyCircles) {
+                int count = (int) [energyCircles indexOfObject:energy];
+                energy.center = CGPointMake(120 + count*80, temp.center.y);
+            }
         }
-    }*/
+    }
 }
 
 
@@ -279,7 +302,7 @@ NSString *energyLabelDefault;
             {
                 [self DeactivateAllEnergyCircles];
                 
-                NSArray *vertEnergyCircles = [verticalToEnergyCirclesDict objectForKey:[NSNumber numberWithInt:horizontalCellIndex]];
+                NSArray *vertEnergyCircles = [verticalToEnergyCirclesDict objectForKey:[NSNumber numberWithInt:4-horizontalCellIndex]];
                 
                 for (UIButton *energyCircle in vertEnergyCircles)
                 {
@@ -291,8 +314,8 @@ NSString *energyLabelDefault;
                 
                 if (horizontalCellIndex !=0)
                 {
-                    UILabel *activateEnergylabel = [self.energyLabels objectAtIndex:3-horizontalCellIndex];
-                    [activateEnergylabel setTextColor:[UIColor blackColor]];
+                    UILabel *activateEnergylabel = [self.energyLabels objectAtIndex:horizontalCellIndex-1];
+                    [activateEnergylabel setTextColor:[UIColor colorWithRed:40.0/255.0f green:114.0/255.0f blue:179.0/255.0f alpha:1.0f]];
                 }
                 
             }
@@ -520,6 +543,100 @@ NSString *energyLabelDefault;
         if ([key integerValue] != sentiment)
             currentButton.hidden = YES;
     }
+}
+
+-(void)createSentimentButtons {
+    
+    // set Dictionary for sentiment picture
+    NSDictionary *sentimentToImageDict = @{@0:@"soPissed.png",
+                                           @1:@"eh.png",
+                                           @2:@"fullCircle.png",
+                                           @3:@"semiHappy.png",
+                                           @4:@"soHappy.png"};
+    
+    NSDictionary *sentimentLevel = @{@0:self.L1Sentiment,
+                                     @1:self.L2Sentiment,
+                                     @3:self.L3Sentiment,
+                                     @4:self.L4Sentiment,
+                                     @2:self.reviewButton};
+    for (int i = 4; i>=0; i--) {
+        UIButton *sentimentTemp = [sentimentLevel objectForKey:[NSNumber numberWithInt:i]];
+        UIImage *image = [UIImage imageNamed:[sentimentToImageDict objectForKey:[NSNumber numberWithInt:i]]];
+
+        [sentimentTemp setBackgroundImage:image forState:UIControlStateNormal];
+        
+        //set frame
+        if (i!=2)
+            sentimentTemp.frame = CGRectMake(100.0 + i*20.0 ,100.0 + i*20.0, 60.0, 60.0);
+        else{
+            sentimentTemp.frame = CGRectMake(100.0 + i*20.0, 100.0 +i*20, 50.0, 50.0);
+            [sentimentTemp addTarget:self action:@selector(reviewButtonTouchUp:forEvent:) forControlEvents:UIControlEventTouchUpInside];
+            [sentimentTemp addTarget:self action:@selector(reviewButtonDragged:forEvent:) forControlEvents:UIControlEventTouchDragInside];
+        }
+        
+        // set correct button
+        [self.sentimentCircles addObject:sentimentTemp];
+        
+        [self.drawView addSubview:sentimentTemp];
+    }
+}
+
+-(void)createEnergyLevels {
+    
+    NSDictionary *energyLevels = @{@0:self.L1EnergyCircles,
+                                   @1:self.L2EnergyCircles,
+                                   @2:self.L3EnergyCircles,
+                                   @3:self.L4EnergyCircles};
+    
+    NSDictionary *vertEnergyLevels = @{@0:self.Vert1EnergyCircles,
+                                       @1:self.Vert2EnergyCircles,
+                                       @2:self.Vert3EnergyCircles};
+
+    for (int i=12; i>=0; i--) {
+        UIButton *energyTemp = [[UIButton alloc] init];
+        [energyTemp setBackgroundImage:[UIImage imageNamed:@"smallCircle.png"] forState:UIControlStateNormal];
+
+        energyTemp.frame = CGRectMake(50+ i*20.0, 50+ i*20.0, 30.0, 30.0);
+        [energyTemp setHidden:YES];
+        
+        int level = i/3;
+        int vertLevel = i % 3;
+        
+        NSMutableArray *energyLevel = [energyLevels objectForKey:[NSNumber numberWithInt:level]];
+        NSMutableArray *vertEnergyLevel = [vertEnergyLevels objectForKey:[NSNumber numberWithInt:vertLevel]];
+        
+        [energyLevel addObject:energyTemp];
+        [vertEnergyLevel addObject:energyTemp];
+        
+        [self.drawView addSubview:energyTemp];
+    }
+    
+}
+
+
+-(void)createEnergyLabels {
+    UILabel *label1 = [[UILabel alloc] init];
+    [label1 setText:@"ragin'!"];
+    [label1 sizeToFit];
+    [label1 setHidden:YES];
+    [self.drawView addSubview:label1];
+    
+    UILabel *label2 = [[UILabel alloc] init];
+    [label2 setText:@"buzzin'"];
+    [label2 sizeToFit];
+    [label2 setHidden:YES];
+    [self.drawView addSubview:label2];
+    
+    UILabel *label3 = [[UILabel alloc] init];
+    [label3 setText:@"relaxed"];
+    [label3 sizeToFit];
+    [label3 setHidden:YES];
+    [self.drawView addSubview:label3];
+    
+    self.energyLabels = [[NSMutableArray alloc] init];
+    [self.energyLabels addObject:label3];
+    [self.energyLabels addObject:label2];
+    [self.energyLabels addObject:label1];
 }
 
 @end
