@@ -35,4 +35,8 @@
     }
 }
 
+- (IBAction)finishedSearching:(id)sender {
+    [self performSegueWithIdentifier:@"FinishedSearch" sender:self];
+}
+
 @end

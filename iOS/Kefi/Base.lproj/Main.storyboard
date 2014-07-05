@@ -606,7 +606,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
-                                    <segue destination="GKO-KP-OHu" kind="unwind" unwindAction="unwindToList:" id="v7v-ri-ROS"/>
+                                    <action selector="finishedSearching:" destination="UnE-lY-y3g" eventType="editingDidEndOnExit" id="FfO-hW-xLs"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x81-3O-AoA">
@@ -616,7 +616,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="GKO-KP-OHu" kind="unwind" unwindAction="unwindToList:" id="VJM-an-7rc"/>
+                                    <segue destination="GKO-KP-OHu" kind="unwind" identifier="FinishedSearch" unwindAction="unwindToList:" id="VJM-an-7rc"/>
                                 </connections>
                             </button>
                         </subviews>
