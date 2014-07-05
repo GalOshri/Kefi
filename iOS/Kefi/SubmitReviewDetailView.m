@@ -30,14 +30,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 
 @property (weak, nonatomic) IBOutlet UIButton *fbTest;
-
 @property (nonatomic, strong) KefiService *kefiService;
-
 @property (nonatomic) BOOL firstRun;
 
 @property (strong, nonatomic) IBOutlet UISwitch *twitterPostSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *facebookPostSwitch;
-
 
 @end
 
@@ -58,15 +55,6 @@
     if (self.sentimentLevel > 2)
         self.sentimentLevel -= 1;
 
-    NSDictionary *sentimentToImageDict = @{@0:@"soPissed.png",
-                                           @1:@"eh.png",
-                                           @2:@"semiHappy.png",
-                                           @3:@"soHappy.png"};
-    
-    
-    self.sentimentImage.frame = self.imageFrame;
-    self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:[NSNumber numberWithInt:self.sentimentLevel]]];
-    
     // uicollectionview background color
     self.hashtagView.backgroundColor = [UIColor whiteColor];
 
@@ -94,16 +82,33 @@
 
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
+    
+    // create image and labels
+    NSDictionary *sentimentToImageDict = @{@0:@"soPissed.png",
+                                           @1:@"eh.png",
+                                           @2:@"semiHappy.png",
+                                           @3:@"soHappy.png"};
+    // self.sentimentImage = [[UIImageView alloc] init];
+    self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:[NSNumber numberWithInt:self.sentimentLevel]]];
+    self.sentimentImage.frame = self.imageFrame;
+    
+   // self.placeLabel = [[UILabel alloc] init];
     [self.placeLabel setText:self.place.name];
-    [self.reviewDetailLabel setText: self.reviewDetailLabelText];
     [self.placeLabel sizeToFit];
+    
+    
+    // self.reviewDetailLabel = [[UILabel alloc] init];
+    [self.reviewDetailLabel setText: self.reviewDetailLabelText];
     [self.reviewDetailLabel sizeToFit];
     
+    /*[self.view addSubview:self.sentimentImage];
+    [self.view addSubview:self.placeLabel];
+    [self.view addSubview:self.reviewDetailLabel];*/
+    
+    
     if (self.firstRun) {
-        
         [self.placeLabel setFrame:self.placeLabelFrame];
         [self.reviewDetailLabel setCenter:self.reviewDetailLabelCenter];
-
         self.placeLabel.textAlignment = NSTextAlignmentLeft;
         self.reviewDetailLabel.textAlignment = NSTextAlignmentLeft;
         
@@ -111,10 +116,11 @@
 
         // animate placeName and reviewdetail labels down
         [UIView animateWithDuration:0.5 animations:^{
-        
-        
-            self.placeLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width + 15, self.sentimentImage.frame.origin.y, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
+            self.placeLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width + 15, self.sentimentImage.frame.origin.y + 20.0, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
+            
             self.reviewDetailLabel.frame = CGRectMake(self.placeLabel.frame.origin.x, self.sentimentImage.frame.origin.y + 30, self.reviewDetailLabel.frame.size.width, self.reviewDetailLabel.frame.size.height);
+            
+            
         }completion:^(BOOL finished){
             //change label to energy levels
             if (finished) {

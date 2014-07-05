@@ -24,6 +24,7 @@
 // UI
 @property (strong, nonatomic) IBOutlet UIImageView *sentimentImage;
 @property (strong, nonatomic) IBOutlet UICollectionView *hashtagView;
+// posiotioning of elements
 @property (nonatomic) CGRect imageFrame;
 @property (nonatomic) CGRect placeLabelFrame;
 @property (nonatomic) CGPoint reviewDetailLabelCenter;

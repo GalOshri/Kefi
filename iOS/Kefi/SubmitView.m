@@ -120,6 +120,7 @@ NSString *energyLabelDefault;
     [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
 
     // set height of drawView
+    
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
@@ -128,7 +129,6 @@ NSString *energyLabelDefault;
     CGRect frame = CGRectMake(self.drawView.frame.origin.x, self.drawView.frame.origin.y, screenWidth, screenHeight - self.drawView.frame.origin.y);
     
     [self.drawView setFrame:frame];
-    
     
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
@@ -258,7 +258,7 @@ NSString *energyLabelDefault;
         sender.center = point;
     int horizontalCellIndex = floor(sender.frame.origin.x / cellWidth);
     int verticalCellIndex = floor((self.drawView.frame.size.height - sender.frame.origin.y) / cellHeight);
-    
+
     if (activatedSentiment == -1)
     {
         self.coordinateLabel.text = [NSString stringWithFormat:@"%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]]];
@@ -346,12 +346,10 @@ NSString *energyLabelDefault;
         [self HideAllExceptSentiment:activatedSentiment];
         UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
         [UIView animateWithDuration:0.75 animations:^{
-            // [self.coordinateLabel setHidden:YES];
             [self.view setBackgroundColor:[UIColor whiteColor]];
-            currentButton.center = CGPointMake(currentButton.center.x, 0);
+            currentButton.center = CGPointMake(currentButton.center.x, 30);
         }completion:^(BOOL finished){
             [self performSegueWithIdentifier:@"SubmitReviewDetailSegue" sender:self];
-            
         }];
         
         [timer invalidate];
@@ -483,7 +481,7 @@ NSString *energyLabelDefault;
         
         UILabel *energyLabel = [self.energyLabels objectAtIndex:index];
         [energyLabel setHidden:NO];
-        energyLabel.center = CGPointMake(energyCircle.center.x, energyCircle.center.y - 40);
+        energyLabel.center = CGPointMake(energyCircle.center.x, energyCircle.center.y - 30);
     }
     
     self.coordinateLabel.text = energyLabelDefault;
@@ -570,6 +568,7 @@ NSString *energyLabelDefault;
             sentimentTemp.frame = CGRectMake(100.0 + i*20.0 ,100.0 + i*20.0, 60.0, 60.0);
         else{
             sentimentTemp.frame = CGRectMake(100.0 + i*20.0, 100.0 +i*20, 50.0, 50.0);
+            
             [sentimentTemp addTarget:self action:@selector(reviewButtonTouchUp:forEvent:) forControlEvents:UIControlEventTouchUpInside];
             [sentimentTemp addTarget:self action:@selector(reviewButtonDragged:forEvent:) forControlEvents:UIControlEventTouchDragInside];
         }
@@ -617,18 +616,21 @@ NSString *energyLabelDefault;
 -(void)createEnergyLabels {
     UILabel *label1 = [[UILabel alloc] init];
     [label1 setText:@"ragin'!"];
+    [label1 setFont:[UIFont systemFontOfSize:13.0]];
     [label1 sizeToFit];
     [label1 setHidden:YES];
     [self.drawView addSubview:label1];
     
     UILabel *label2 = [[UILabel alloc] init];
     [label2 setText:@"buzzin'"];
+    [label2 setFont:[UIFont systemFontOfSize:13.0]];
     [label2 sizeToFit];
     [label2 setHidden:YES];
     [self.drawView addSubview:label2];
     
     UILabel *label3 = [[UILabel alloc] init];
     [label3 setText:@"relaxed"];
+    [label3 setFont:[UIFont systemFontOfSize:13.0]];
     [label3 sizeToFit];
     [label3 setHidden:YES];
     [self.drawView addSubview:label3];
