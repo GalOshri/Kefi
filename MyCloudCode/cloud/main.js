@@ -276,7 +276,7 @@ Parse.Cloud.define("getConfigObject", function(request, response) {
 	Return object of data news
 *******/
 Parse.Cloud.define("getBetaNews", function(request, response) {
-	var betaNewsString = "Hello. This is beta news!";
+	var betaNewsString = "Hello! Welcome to the Kefi Beta program! We will use this page to update you on news. Check back often!";
 	var configObject = {"betaNewsString" : betaNewsString};
 	response.success(configObject);
 

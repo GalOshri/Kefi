@@ -1147,7 +1147,7 @@ Gal and Paul.</string>
             </objects>
             <point key="canvasLocation" x="845" y="-1150"/>
         </scene>
-        <!--Beta News View - News!-->
+        <!--Beta News View - News-->
         <scene sceneID="bQH-rA-pke">
             <objects>
                 <viewController id="BuO-k0-JqJ" customClass="BetaNewsView" sceneMemberID="viewController">
@@ -1160,11 +1160,11 @@ Gal and Paul.</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="C4X-q0-ngN">
-                                <rect key="frame" x="150" y="79" width="20" height="20"/>
+                                <rect key="frame" x="150" y="82" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZa-t2-PFz">
-                                <rect key="frame" x="20" y="122" width="280" height="426"/>
+                                <rect key="frame" x="20" y="69" width="280" height="383"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1173,7 +1173,7 @@ Gal and Paul.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="News!" id="hvZ-GB-FUE">
+                    <navigationItem key="navigationItem" title="News" id="hvZ-GB-FUE">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="Wi6-lz-39B">
                             <connections>
                                 <action selector="cancelModal:" destination="BuO-k0-JqJ" id="Bav-4I-ePU"/>
