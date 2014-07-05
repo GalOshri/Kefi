@@ -209,9 +209,6 @@ NSString *energyLabelDefault;
 
 -(void) viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    // set title
-
-    //self.L4Sentiment.frame = CGRectMake(100, 100, 250, 250);
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -224,12 +221,13 @@ NSString *energyLabelDefault;
     [self.placeLabel setText: self.place.name];
     [self.placeLabel sizeToFit];
     [self.placeLabel setCenter: CGPointMake(self.view.center.x, 45)];
-    
+
     // set location of sentiment circles.
     for (UIButton *temp in self.sentimentCircles) {
         int index = (int) [self.sentimentCircles indexOfObject:temp];
     
-        temp.center = CGPointMake(self.drawView.center.x, (self.drawView.frame.size.height * (((float)index + 1) / (float)numVerticalCells)) - 44);
+        temp.center = CGPointMake(self.drawView.center.x, self.drawView.frame.origin.y + ((self.drawView.frame.size.height) * (((float)index) / (float)numVerticalCells)) - 55);
+        NSLog(@"%d: x:%f, y:%f", index, temp.center.x, temp.center.y);
         [self.drawView addSubview:temp ];
         
         // grab correct horizontalEnergy from dictionary
@@ -617,6 +615,7 @@ NSString *energyLabelDefault;
     UILabel *label1 = [[UILabel alloc] init];
     [label1 setText:@"ragin'!"];
     [label1 setFont:[UIFont systemFontOfSize:13.0]];
+    label1.textColor = [UIColor lightGrayColor];
     [label1 sizeToFit];
     [label1 setHidden:YES];
     [self.drawView addSubview:label1];
@@ -624,6 +623,7 @@ NSString *energyLabelDefault;
     UILabel *label2 = [[UILabel alloc] init];
     [label2 setText:@"buzzin'"];
     [label2 setFont:[UIFont systemFontOfSize:13.0]];
+    label2.textColor = [UIColor lightGrayColor];
     [label2 sizeToFit];
     [label2 setHidden:YES];
     [self.drawView addSubview:label2];
@@ -631,6 +631,7 @@ NSString *energyLabelDefault;
     UILabel *label3 = [[UILabel alloc] init];
     [label3 setText:@"relaxed"];
     [label3 setFont:[UIFont systemFontOfSize:13.0]];
+    label3.textColor = [UIColor lightGrayColor];
     [label3 sizeToFit];
     [label3 setHidden:YES];
     [self.drawView addSubview:label3];
