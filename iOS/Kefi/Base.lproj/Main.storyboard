@@ -52,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vqQ-MC-gyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1961" y="499"/>
+            <point key="canvasLocation" x="1977" y="515"/>
         </scene>
         <!--Place Detail View-->
         <scene sceneID="ufC-wZ-h7g">
@@ -201,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446" y="-36"/>
+            <point key="canvasLocation" x="1470" y="108"/>
         </scene>
         <!--Submit View-->
         <scene sceneID="YN8-sA-H2g">
@@ -276,7 +276,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vqm-ny-vLQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="IkS-tb-46b" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1961" y="-247"/>
+            <point key="canvasLocation" x="1977" y="-119"/>
         </scene>
         <!--Submit Review Detail View-->
         <scene sceneID="bNm-Eu-nDW">
@@ -440,7 +440,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EvM-Cd-43n" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Rj0-8q-Owb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2402" y="-247"/>
+            <point key="canvasLocation" x="2466" y="-119"/>
         </scene>
         <!--Place List View - Kefi-->
         <scene sceneID="6Zz-Oo-Fvl">
@@ -581,7 +581,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUI-ba-g42" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="856" y="-225"/>
+            <point key="canvasLocation" x="872" y="537"/>
         </scene>
         <!--Search View-->
         <scene sceneID="ycy-VW-CcL">
@@ -633,7 +633,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Tu-ew-r1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="GKO-KP-OHu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1961" y="1295"/>
+            <point key="canvasLocation" x="1977" y="1303"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="1mr-Hw-78A">
@@ -841,7 +841,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ae6-Qo-TDi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1323" y="-1150"/>
+            <point key="canvasLocation" x="1470" y="-822"/>
         </scene>
         <!--Social Network Accounts Table View Controller - Accounts & Settings-->
         <scene sceneID="Jpj-H5-dno">
@@ -1037,7 +1037,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sxH-p9-FIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2928" y="-1844"/>
+            <point key="canvasLocation" x="2064" y="-2080"/>
         </scene>
         <!--About Kefi View - About Kefi-->
         <scene sceneID="hJk-95-k0V">
@@ -1086,7 +1086,7 @@ Gal and Paul.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="li1-ZC-pXm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1849" y="-1836"/>
+            <point key="canvasLocation" x="1470" y="-2736"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fUp-YI-cYN">
@@ -1104,7 +1104,7 @@ Gal and Paul.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ghF-x0-mIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="302" y="-247"/>
+            <point key="canvasLocation" x="334" y="537"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wpx-Ox-voF">
@@ -1122,7 +1122,7 @@ Gal and Paul.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NUN-bS-F1y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446" y="1295"/>
+            <point key="canvasLocation" x="1470" y="1303"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BN0-mo-ihb">
@@ -1140,7 +1140,7 @@ Gal and Paul.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgJ-Bl-xV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845" y="-1150"/>
+            <point key="canvasLocation" x="872" y="-822"/>
         </scene>
         <!--Beta News View - News-->
         <scene sceneID="bQH-rA-pke">
@@ -1182,7 +1182,7 @@ Gal and Paul.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjX-T6-uWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1002" y="-2225"/>
+            <point key="canvasLocation" x="1470" y="-3417"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0Xb-SS-SV4">
@@ -1200,7 +1200,7 @@ Gal and Paul.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gsz-Cn-TVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1371" y="-1836"/>
+            <point key="canvasLocation" x="872" y="-2736"/>
         </scene>
         <!--User Page Table View Controller - Me-->
         <scene sceneID="Yzm-BX-OyO">
@@ -1218,15 +1218,15 @@ Gal and Paul.</string>
                                     <rect key="frame" x="10" y="9" width="87" height="87"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Paul" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoO-dP-c7T">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoO-dP-c7T">
                                     <rect key="frame" x="113" y="24" width="187" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recent Activity:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqX-yA-IjB">
-                                    <rect key="frame" x="100" y="118" width="120" height="21"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recent Reviews:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqX-yA-IjB">
+                                    <rect key="frame" x="96" y="113" width="128" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
@@ -1271,7 +1271,7 @@ Gal and Paul.</string>
                                             <rect key="frame" x="84" y="99" width="20" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Hashtag" translatesAutoresizingMaskIntoConstraints="NO" id="f2O-Ya-6qJ">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Hashtag" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2O-Ya-6qJ">
                                             <rect key="frame" x="131" y="48" width="160" height="69"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1315,7 +1315,7 @@ Gal and Paul.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSf-EG-ri3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2402" y="-1150"/>
+            <point key="canvasLocation" x="1470" y="-1442"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="axY-nF-RD6">
@@ -1330,7 +1330,7 @@ Gal and Paul.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfY-3c-vO2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1886" y="-1150"/>
+            <point key="canvasLocation" x="872" y="-1442"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="igx-Sr-Do6">
@@ -1348,7 +1348,7 @@ Gal and Paul.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g9K-94-ebv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2412" y="-1836"/>
+            <point key="canvasLocation" x="872" y="-2080"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AD5-gr-zJO">
@@ -1366,7 +1366,7 @@ Gal and Paul.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sOy-pH-D4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="476" y="-2225"/>
+            <point key="canvasLocation" x="872" y="-3417"/>
         </scene>
     </scenes>
     <resources>
@@ -1391,6 +1391,6 @@ Gal and Paul.</string>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pwR-ZL-Kqt"/>
+        <segue reference="0yC-Fe-h4B"/>
     </inferredMetricsTieBreakers>
 </document>

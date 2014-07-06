@@ -326,6 +326,7 @@ int radius = 1000;
         placeObject[@"confidence"] = [NSNumber numberWithInt:0];
         
         placeObject[@"lastReviewed"] = [NSDate new];
+        place.pId = [NSString stringWithString:placeObject.objectId];
         
         [placeObject saveInBackground];
         
@@ -484,6 +485,7 @@ int radius = 1000;
             placeObject[@"confidence"] = [NSNumber numberWithInt:0];
             
             placeObject[@"lastReviewed"] = [NSDate new];
+            place.pId = [NSString stringWithString:placeObject.objectId];
             
             [placeObject saveInBackground];
             
