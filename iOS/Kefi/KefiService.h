@@ -35,7 +35,7 @@
 + (void) GetKefiSettings:(PlaceListView *)plv;
 
 // Favorites
-+ (void) addFavorite:(NSString *)fsId;
++ (void) addFavorite:(Place *)place;
 
 + (void) removeFavorite:(NSString *)fsId;
 

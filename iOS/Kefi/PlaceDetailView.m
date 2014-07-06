@@ -108,9 +108,16 @@
 - (void)viewDidLayoutSubviews
 {
     //modifications to print sigFigs for distance. NEED TO ROUND
-    NSString *distanceString = [self.place.currentDistance stringValue];
-    distanceString = [distanceString substringToIndex:4];
-    self.distanceLabel.text = [NSString stringWithFormat:@"%@ mi",distanceString];
+    if (self.place.currentDistance != nil)
+    {
+        NSString *distanceString = [self.place.currentDistance stringValue];
+        distanceString = [distanceString substringToIndex:4];
+        self.distanceLabel.text = [NSString stringWithFormat:@"%@ mi",distanceString];
+    }
+    else
+    {
+        self.distanceLabel.text = @"";
+    }
     
     if (self.place.hashtagList.count <= 0) {
         [self.noTagLabel setHidden:NO];
@@ -206,7 +213,7 @@
     
     else
     {
-        [KefiService addFavorite:self.place.fsId];
+        [KefiService addFavorite:self.place];
         [self.favoriteButton setImage:[UIImage imageNamed:@"FavFilled.png"] forState:UIControlStateNormal];
         self.isFavorite = YES;
     }

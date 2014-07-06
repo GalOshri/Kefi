@@ -448,21 +448,50 @@ int radius = 1000;
 
 #pragma mark - Favorites
 
-+ (void) addFavorite:(NSString *)fsId
++ (void) addFavorite:(Place *)place
 {
+    // Add to local favorites
     NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
     NSMutableArray *favoritePlaces = [[userData objectForKey:@"FavoritePlaces"] mutableCopy];
     if (favoritePlaces == nil)
     {
-        favoritePlaces = [[NSMutableArray alloc] initWithObjects:fsId, nil];
+        favoritePlaces = [[NSMutableArray alloc] initWithObjects:place.fsId, nil];
     }
     else
     {
-        if (![favoritePlaces containsObject:fsId])
-            [favoritePlaces addObject:fsId];
+        if (![favoritePlaces containsObject:place.fsId])
+            [favoritePlaces addObject:place.fsId];
     }
     [userData setObject:favoritePlaces forKey:@"FavoritePlaces"];
     [userData synchronize];
+    
+    // Add to DB if place doesn't exist
+    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+    [query whereKey:@"fsID" equalTo:place.fsId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *object, NSError *error) {
+        if (!object) {
+            // Create place
+            NSLog(@"The getFirstObject request failed.");
+            PFObject *placeObject = [PFObject objectWithClassName:@"Place"];
+            placeObject[@"fsID"] = place.fsId;
+            placeObject[@"name"] = place.name;
+            placeObject[@"location"] = [PFGeoPoint geoPointWithLatitude:[[place.latLong objectAtIndex:0] doubleValue] longitude:[[place.latLong objectAtIndex:1] doubleValue]];
+            placeObject[@"category"] = place.categoryType;
+            placeObject[@"hashtagList"] = [[NSArray alloc] initWithObjects:nil];
+            
+            placeObject[@"sentiment"] = [NSNumber numberWithInt:100];
+            placeObject[@"energy"] = [NSNumber numberWithInt:100];
+            placeObject[@"confidence"] = [NSNumber numberWithInt:0];
+            
+            placeObject[@"lastReviewed"] = [NSDate new];
+            
+            [placeObject saveInBackground];
+            
+        } else {
+            // Place exists so don't do anything.
+            NSLog(@"Successfully retrieved the object.");
+        }
+    }];
 }
 
 + (void) removeFavorite:(NSString *)fsId

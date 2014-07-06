@@ -265,7 +265,7 @@ Parse.Cloud.define("updateSentimentAndEnergy", function(request, response) {
 Parse.Cloud.define("getConfigObject", function(request, response) {
 	var kefiHashtags = ["LustyIntentions", "TurnDownForWhat", "Crickets", "TooSoberForThis", "GenerousBartender", "DanceAllNight", "LinesForDays", "CasualBlackout"];
 	var spotlightURLs = ["http://newjerseysgottalent.com/wp-content/uploads/2014/04/light_show.jpg", "http://www.earlybirdsclub.com/wp-content/uploads/2013/03/tumblr_m3om90v9OW1rp7zudo1_500.jpg", "http://justbartending.com/wp-content/uploads/2012/03/colorful-drinks-625.jpg"];
-	var spotlightCaptions = ["find your scene", "Galileo", "welcome to Kefi"];
+	var spotlightCaptions = ["find your scene", "shots fired", "welcome to Kefi"];
 	var updateInterval = 0.0;
 	var configObject = {"kefiHashtags" : kefiHashtags, "spotlightURLs" : spotlightURLs, "spotlightCaptions" : spotlightCaptions, "updateInterval" : updateInterval};
 	response.success(configObject);
@@ -276,7 +276,7 @@ Parse.Cloud.define("getConfigObject", function(request, response) {
 	Return object of data news
 *******/
 Parse.Cloud.define("getBetaNews", function(request, response) {
-	var betaNewsString = "Hello! Welcome to the Kefi Beta program! We will use this page to update you on news. Check back often!";
+	var betaNewsString = "Hello! Welcome to the Kefi Beta program! \nWe will use this page to update you on news. Check back often! \n \nFirst of all, we would like to welcome our first user, Zuzanna.";
 	var configObject = {"betaNewsString" : betaNewsString};
 	response.success(configObject);
 

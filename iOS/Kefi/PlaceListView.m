@@ -136,7 +136,7 @@
     // Create the log in view controller
     KefiLogInView *logInViewController = [[KefiLogInView alloc] init];
     [logInViewController setDelegate:self]; // Set ourselves as the delegate
-    [logInViewController setFacebookPermissions:[NSArray arrayWithObjects:@"friends_about_me", nil]];
+    [logInViewController setFacebookPermissions:[NSArray arrayWithObjects:@"friends_about_me", @"publish_actions", nil]];
     [logInViewController setFields: PFLogInFieldsDefault | PFLogInFieldsTwitter | PFLogInFieldsFacebook | PFLogInFieldsDismissButton];
     
     
@@ -416,6 +416,7 @@
 // Sent to the delegate when the log in attempt fails.
 - (void)logInViewController:(PFLogInViewController *)logInController didFailToLogInWithError:(NSError *)error {
     NSLog(@"Failed to log in...");
+    NSLog(@"%@", error);
 }
 
 // Sent to the delegate when the log in screen is dismissed.
