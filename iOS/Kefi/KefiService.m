@@ -39,7 +39,16 @@ int radius = 1000;
     
     if (![searchTerm isEqualToString:@""])
     {
-        fsURLString = [fsURLString stringByAppendingFormat:@"&query=%@",searchTerm];
+        fsURLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?ll=%f,%f&radius=%d&intent=browse&categoryId=%@&client_id=%@&client_secret=%@&v=%d&query=%@",
+                       currentLocation.coordinate.latitude,
+                       currentLocation.coordinate.longitude,
+                       10000,
+                       category_id,
+                       client_id,
+                       client_secret,
+                       20140306,
+                       searchTerm];
+        
         fsURLString = [fsURLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
     

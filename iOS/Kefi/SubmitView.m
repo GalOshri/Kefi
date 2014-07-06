@@ -288,7 +288,7 @@ NSString *energyLabelDefault;
             }
             
             // self.energyLabel.text = @"";
-            self.coordinateLabel.text = energyLabelDefault;
+            self.coordinateLabel.text = [NSString stringWithFormat:@"%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]]];
             // Deactivate all energy circles
             [self DeactivateAllEnergyCircles];
             activatedEnergy = -1;
@@ -482,7 +482,7 @@ NSString *energyLabelDefault;
         energyLabel.center = CGPointMake(energyCircle.center.x, energyCircle.center.y - 30);
     }
     
-    self.coordinateLabel.text = energyLabelDefault;
+    // self.coordinateLabel.text = energyLabelDefault;
 }
 
 - (void)DeactivateEnergyLevel:(int)sentiment
