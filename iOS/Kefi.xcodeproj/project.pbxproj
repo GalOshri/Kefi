@@ -43,6 +43,7 @@
 		0D8C5384196A1C75005A1A23 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8C5382196A1C75005A1A23 /* twitter.png */; };
 		0D8C5387196A1CD0005A1A23 /* Launch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8C5385196A1CD0005A1A23 /* Launch@2x.png */; };
 		0D8C5388196A1CD0005A1A23 /* Launch@R4.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8C5386196A1CD0005A1A23 /* Launch@R4.png */; };
+		0D8C538A196A23A3005A1A23 /* KefiSpotlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D8C5389196A23A3005A1A23 /* KefiSpotlight.png */; };
 		0DB0B4381921D8DF008D5624 /* SubmitReviewDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */; };
 		0DCF8C8C195D331A005F6CDA /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCF8C8B195D331A005F6CDA /* Review.m */; };
 		0DCF8C8F195D38FE005F6CDA /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCF8C8E195D38FE005F6CDA /* ReviewCell.m */; };
@@ -151,6 +152,7 @@
 		0D8C5382196A1C75005A1A23 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		0D8C5385196A1CD0005A1A23 /* Launch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch@2x.png"; sourceTree = "<group>"; };
 		0D8C5386196A1CD0005A1A23 /* Launch@R4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Launch@R4.png"; sourceTree = "<group>"; };
+		0D8C5389196A23A3005A1A23 /* KefiSpotlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KefiSpotlight.png; sourceTree = "<group>"; };
 		0DB0B4361921D8DF008D5624 /* SubmitReviewDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitReviewDetailView.h; sourceTree = "<group>"; };
 		0DB0B4371921D8DF008D5624 /* SubmitReviewDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitReviewDetailView.m; sourceTree = "<group>"; };
 		0DCF8C8A195D331A005F6CDA /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 		0D0C131818FB7F9000C90A5F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				0D8C5389196A23A3005A1A23 /* KefiSpotlight.png */,
 				0D8C5381196A1C75005A1A23 /* facebook.png */,
 				0D8C5382196A1C75005A1A23 /* twitter.png */,
 				0DCF8C9819614218005F6CDA /* Review Images */,
@@ -671,6 +674,7 @@
 				DAAAB4A319529D3B004D2DB1 /* menu.png in Resources */,
 				0D8C5388196A1CD0005A1A23 /* Launch@R4.png in Resources */,
 				DA089B39192016120055FD31 /* smallCircle.png in Resources */,
+				0D8C538A196A23A3005A1A23 /* KefiSpotlight.png in Resources */,
 				DA109B29195D2816002DADDE /* Kefi.png in Resources */,
 				0D727EAD18F099F1008310FC /* InfoPlist.strings in Resources */,
 				DA089B38192016120055FD31 /* smallCircleFull.png in Resources */,

@@ -461,6 +461,12 @@
                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmF-57-y88">
                                     <rect key="frame" x="0.0" y="1" width="320" height="127"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="KefiSpotlight.png" translatesAutoresizingMaskIntoConstraints="NO" id="eVF-w2-0s2">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="127"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                    </subviews>
                                 </scrollView>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="RTM-PN-RaB">
                                     <rect key="frame" x="75" y="128" width="170" height="29"/>
@@ -573,6 +579,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelSearchButton" destination="P34-La-VSr" id="fBI-x6-sWm"/>
+                        <outlet property="kefiSpotlight" destination="eVF-w2-0s2" id="fny-bk-xcT"/>
                         <outlet property="menuButton" destination="oqg-Iq-bKW" id="Twk-IE-GeD"/>
                         <outlet property="segmentControl" destination="RTM-PN-RaB" id="gA8-h1-Wrg"/>
                         <outlet property="spinner" destination="Sae-Bi-fEX" id="0lL-BD-cGM"/>
@@ -1373,6 +1380,7 @@ Gal and Paul.</string>
         <image name="FavUnfilled.png" width="100" height="100"/>
         <image name="KefItIcon.png" width="250" height="250"/>
         <image name="Kefi.png" width="546" height="226"/>
+        <image name="KefiSpotlight.png" width="640" height="256"/>
         <image name="PoweredByFoursquare.png" width="482" height="121"/>
         <image name="facebook.png" width="30" height="30"/>
         <image name="fullCircle.png" width="107" height="107"/>

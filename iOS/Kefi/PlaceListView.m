@@ -25,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *spotlightView;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (nonatomic) BOOL populatingPlaceList;
+@property (strong, nonatomic) IBOutlet UIImageView *kefiSpotlight;
 
 @end
 
@@ -163,25 +164,29 @@
         frame.origin.x = self.spotlightView.frame.size.width * i;
         frame.origin.y = 0;
         frame.size = self.spotlightView.frame.size;
+
         
         // Asynchornous image loading
         NSURLSession *session = [NSURLSession sharedSession];
-        UIActivityIndicatorView *spotlightSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        spotlightSpinner.center = CGPointMake(frame.origin.x + (frame.size.width / 2.0), frame.origin.y + (frame.size.height / 2.0));
-        [self.spotlightView addSubview:spotlightSpinner];
-        [spotlightSpinner startAnimating];
+        //UIActivityIndicatorView *spotlightSpinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        //spotlightSpinner.center = CGPointMake(frame.origin.x + (frame.size.width / 2.0), frame.origin.y + (frame.size.height / 2.0));
+        //[self.spotlightView addSubview:spotlightSpinner];
+        //[spotlightSpinner startAnimating];
         [[session dataTaskWithURL:[NSURL URLWithString:[imageURLs objectAtIndex:i]]
                 completionHandler:^(NSData *data,
                                     NSURLResponse *response,
                                     NSError *error) {
                     
                     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                        
                         UIImage *img = [[UIImage alloc] initWithData:data];
+                        
                         UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
                         imgView.frame = frame;
                         [self.spotlightView addSubview:imgView];
-                        [spotlightSpinner stopAnimating];
-                        [spotlightSpinner removeFromSuperview];
+//[self.kefiSpotlight removeFromSuperview];
+                      //  [spotlightSpinner stopAnimating];
+                        //[spotlightSpinner removeFromSuperview];
                         UILabel *imgLabel = [[UILabel alloc] init];
                         imgLabel.frame = CGRectMake(frame.origin.x + 10, frame.origin.y + 105, frame.size.width, 23);
                         imgLabel.text = [spotlightStrings objectAtIndex:i];
