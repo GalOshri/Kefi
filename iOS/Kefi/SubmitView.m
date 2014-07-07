@@ -227,7 +227,6 @@ NSString *energyLabelDefault;
         int index = (int) [self.sentimentCircles indexOfObject:temp];
     
         temp.center = CGPointMake(self.drawView.center.x, self.drawView.frame.origin.y + ((self.drawView.frame.size.height) * (((float)index) / (float)numVerticalCells)) - 55);
-        NSLog(@"%d: x:%f, y:%f", index, temp.center.x, temp.center.y);
         [self.drawView addSubview:temp ];
         
         // grab correct horizontalEnergy from dictionary

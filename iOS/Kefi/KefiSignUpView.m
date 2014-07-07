@@ -26,14 +26,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self.signUpView setBackgroundColor:[UIColor blackColor]];
+    [self.signUpView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Kefi.png"]]];
+    CGPoint currentCenter = CGPointMake(self.signUpView.logo.center.x, self.signUpView.logo.center.y);
+    self.signUpView.logo.frame = CGRectMake(self.signUpView.logo.frame.origin.x, self.signUpView.logo.frame.origin.y, 200.0,82.0);
+    self.signUpView.logo.center = currentCenter;
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     
-    // Move all fields down on smaller screen sizes
-  /*  float yOffset = [UIScreen mainScreen].bounds.size.height <= 480.0f ? 30.0f : 0.0f;
+    [[self.signUpView.usernameField layer] setBorderColor:[[UIColor grayColor] CGColor]];
+    [[self.signUpView.passwordField layer] setBorderColor:[[UIColor grayColor] CGColor]];
+    [[self.signUpView.emailField layer] setBorderColor:[[UIColor grayColor] CGColor]];
+    
+    [[self.signUpView.usernameField layer] setBorderWidth:1.0];
+    [[self.signUpView.passwordField layer] setBorderWidth:1.0];
+    [[self.signUpView.emailField layer] setBorderWidth: 1.0];
+    
+    [[self.signUpView.usernameField layer] setCornerRadius:5.0];
+    [self.signUpView.usernameField setClipsToBounds:YES];
+    
+    [[self.signUpView.passwordField layer] setCornerRadius:5.0];
+    [self.signUpView.passwordField setClipsToBounds:YES];
+    
+    [[self.signUpView.emailField layer] setCornerRadius: 5.0];
+    [self.signUpView.emailField setClipsToBounds:YES];
+    
+    self.signUpView.passwordField.frame = CGRectMake(self.signUpView.passwordField.frame.origin.x, self.signUpView.passwordField.frame.origin.y + 2.0, self.signUpView.passwordField.frame.size.width, self.signUpView.passwordField.frame.size.height);
+    
+    self.signUpView.emailField.frame = CGRectMake(self.signUpView.emailField.frame.origin.x, self.signUpView.emailField.frame.origin.y + 4.0, self.signUpView.emailField.frame.size.width, self.signUpView.emailField.frame.size.height);
+    
+    /*  float yOffset = [UIScreen mainScreen].bounds.size.height <= 480.0f ? 30.0f : 0.0f;
     
     CGRect fieldFrame = self.signUpView.usernameField.frame;
     

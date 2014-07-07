@@ -28,10 +28,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    /*
-    [self.logInView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"main_background.png"]]];
-    [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo.png"]]];
     
+    [self.logInView setBackgroundColor:[UIColor blackColor]];
+    [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Kefi.png"]]];
+    CGPoint currentCenter = CGPointMake(self.logInView.logo.center.x, self.logInView.logo.center.y);
+    self.logInView.logo.frame = CGRectMake(self.logInView.logo.frame.origin.x, self.logInView.logo.frame.origin.y, 200.0,82.0);
+    self.logInView.logo.center = currentCenter;
+    
+    /*
     // Set buttons appearance
     [self.logInView.dismissButton setImage:[UIImage imageNamed:@"exit.png"] forState:UIControlStateNormal];
     [self.logInView.dismissButton setImage:[UIImage imageNamed:@"exit_down.png"] forState:UIControlStateHighlighted];
@@ -49,15 +53,16 @@
     [self.logInView.twitterButton setBackgroundImage:[UIImage imageNamed:@"twitter_down.png"] forState:UIControlStateHighlighted];
     [self.logInView.twitterButton setTitle:@"" forState:UIControlStateNormal];
     [self.logInView.twitterButton setTitle:@"" forState:UIControlStateHighlighted];
+    */
     
-    [self.logInView.signUpButton setBackgroundImage:[UIImage imageNamed:@"signup.png"] forState:UIControlStateNormal];
-    [self.logInView.signUpButton setBackgroundImage:[UIImage imageNamed:@"signup_down.png"] forState:UIControlStateHighlighted];
+    // [self.logInView.signUpButton setBackgroundImage:[UIImage imageNamed:@"signup.png"] forState:UIControlStateNormal];
+    // [self.logInView.signUpButton setBackgroundColor:[UIColor purpleColor]];
+   
+    /*
     [self.logInView.signUpButton setTitle:@"" forState:UIControlStateNormal];
     [self.logInView.signUpButton setTitle:@"" forState:UIControlStateHighlighted];
     
-    // Add login field background
-    fieldsBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background.png"]];
-    [self.logInView insertSubview:fieldsBackground atIndex:1];
+    
     
     // Remove text shadow
     CALayer *layer = self.logInView.usernameField.layer;
@@ -73,6 +78,20 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+    
+    [[self.logInView.usernameField layer] setBorderColor:[[UIColor grayColor] CGColor]];
+    [[self.logInView.passwordField layer] setBorderColor:[[UIColor grayColor] CGColor]];
+    
+    [[self.logInView.usernameField layer] setBorderWidth:1.0];
+    [[self.logInView.passwordField layer] setBorderWidth:1.0];
+    
+    [[self.logInView.usernameField layer] setCornerRadius:5.0];
+    [self.logInView.usernameField setClipsToBounds:YES];
+    
+    [[self.logInView.passwordField layer] setCornerRadius:5.0];
+    [self.logInView.passwordField setClipsToBounds:YES];
+    
+    self.logInView.passwordField.frame = CGRectMake(self.logInView.passwordField.frame.origin.x, self.logInView.passwordField.frame.origin.y + 2.0, self.logInView.passwordField.frame.size.width, self.logInView.passwordField.frame.size.height);
     
     // Set frame for elements
  /*   [self.logInView.dismissButton setFrame:CGRectMake(10.0f, 10.0f, 87.5f, 45.5f)];
