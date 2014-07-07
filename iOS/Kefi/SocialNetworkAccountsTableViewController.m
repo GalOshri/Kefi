@@ -11,7 +11,11 @@
 
 @interface SocialNetworkAccountsTableViewController ()
 
-@property (nonatomic, strong) NSArray *accountTypes;
+// @property (nonatomic, strong) NSArray *accountTypes;
+// set text fields for username and password changes
+@property UITextField *usernameTextfield;
+@property UITextField *passwordTextfield;
+
 @end
 
 @implementation SocialNetworkAccountsTableViewController
@@ -30,11 +34,8 @@
     [super viewDidLoad];
     
    //  self.accountTypes = @[@"Facebook",@"Twitter",@"Foursquare"];
-    
-    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
-
-        
 }
+    
 
 - (void)didReceiveMemoryWarning
 {
@@ -145,8 +146,71 @@
 
         }
     }
+    
+    if (indexPath.section == 1)
+    {
+        NSLog(@"clicked section1 ");
+        switch ([indexPath row])
+        {
+            case 1:
+                NSLog(@"password change");
+                if ([PFUser user]) {
+                    // change password
+                    UIAlertView *passwordAlert = [[UIAlertView alloc] initWithTitle:@"Change Password" message:@"an email will be sent to the below address" delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"go", nil];
+                    passwordAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
+                    self.passwordTextfield.text = @"";
+                    self.passwordTextfield = [passwordAlert textFieldAtIndex:0];
+                   
+                    
+                    [passwordAlert show];
+                }
+                break;
+            case 0:
+                NSLog(@"case 0");
+                if ([PFUser user]) {
+                    NSLog(@" username change");
+                    // change username
+                    UIAlertView *usernameAlert = [[UIAlertView alloc] initWithTitle:@"Change Username" message:[NSString stringWithFormat:@"your current username is: %@ \nChange it to:", [[PFUser currentUser] username]]  delegate:self cancelButtonTitle:@"cancel" otherButtonTitles:@"go", nil];
+                    
+                    usernameAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
+
+                    self.usernameTextfield = [usernameAlert textFieldAtIndex:0];
+                    self.usernameTextfield.text = @"";
+                    [usernameAlert show];
+                }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1)
+    {
+        if (![self.passwordTextfield.text isEqualToString:@""]){
+            [PFUser requestPasswordResetForEmailInBackground:[NSString stringWithFormat:@"%@",self.passwordTextfield.text]];
+            NSLog(@"initiated password reset");
+            
+            UIAlertView *alertSuccessPassword = [[UIAlertView alloc] initWithTitle:@"Success" message:@"Check your email to finish changing your password" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertSuccessPassword show];
+        }
+        
+        if (![self.usernameTextfield.text isEqualToString:@""]) {
+            [[PFUser currentUser] setUsername:[NSString stringWithFormat:@"%@", self.usernameTextfield.text]];
+            [[PFUser currentUser] saveInBackground];
+            
+            UIAlertView *alertSuccessUsername = [[UIAlertView alloc] initWithTitle:@"Success" message:[NSString stringWithFormat:@"Your username is now: %@", self.usernameTextfield.text] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alertSuccessUsername show];
+        }
+    }
+}
+
+
 
 -(CGFloat)tableView:(UITableView*)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -157,6 +221,8 @@
 {
     return 2.0;
 }
+
+
 
 /*
 // Override to support conditional editing of the table view.
