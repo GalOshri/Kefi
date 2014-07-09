@@ -186,6 +186,30 @@ NSString *energyLabelDefault;
                       @2: @"buzzin'",
                       @3: @"ragin'!"};
     
+    // Tooltip
+    NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
+    NSNumber *reviewNumber = [userData objectForKey:@"ReviewNumber"];
+    if (reviewNumber == nil)
+    {
+        reviewNumber = [NSNumber numberWithInt:0];
+        [userData setObject:reviewNumber forKey:@"ReviewNumber"];
+        [userData synchronize];
+    }
+    else
+    {
+        int reviewNumberInt = [reviewNumber intValue];
+        if (reviewNumberInt < 3)
+        {
+            reviewNumberInt += 1;
+            reviewNumber = [NSNumber numberWithInt:reviewNumberInt];
+            [self showTooltip];
+            [userData setObject:reviewNumber forKey:@"ReviewNumber"];
+            [userData synchronize];
+        }
+    }
+    
+    
+    
     
     // hardcode position of sentiment circles
     /*
@@ -239,6 +263,11 @@ NSString *energyLabelDefault;
             }
         }
     }
+}
+
+- (void)showTooltip
+{
+    // TODO: PAUL DO IT. DO IT NOWWWW.
 }
 
 
