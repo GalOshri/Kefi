@@ -184,7 +184,8 @@
                         UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
                         imgView.frame = frame;
                         [self.spotlightView addSubview:imgView];
-//[self.kefiSpotlight removeFromSuperview];
+
+                        
                       //  [spotlightSpinner stopAnimating];
                         //[spotlightSpinner removeFromSuperview];
                         UILabel *imgLabel = [[UILabel alloc] init];
@@ -192,6 +193,8 @@
                         imgLabel.text = [spotlightStrings objectAtIndex:i];
                         imgLabel.textColor = [UIColor whiteColor];
                         [self.spotlightView addSubview:imgLabel];
+                        if (i == 0)
+                            [self.kefiSpotlight removeFromSuperview];
                     }];
                 }] resume];
     }
