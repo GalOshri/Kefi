@@ -267,18 +267,19 @@ NSString *energyLabelDefault;
 - (void)showTooltip
 {
     self.tooltipImgView = [[UIImageView alloc] init];
-    self.tooltipImgView.image = [UIImage imageNamed: @"tooltip.png"];
+    self.tooltipImgView.image = [UIImage imageNamed: @"tooltip1.png"];
     [self.tooltipImgView setAlpha:0.95];
     
     //position it
-    self.tooltipImgView.frame = CGRectMake(self.reviewButton.frame.origin.x - 35, self.reviewButton.frame.origin.y - 85, self.drawView.frame.size.width/1.5, self.drawView.frame.size.height/6 + 5);
+    self.tooltipImgView.frame = CGRectMake(self.drawView.frame.origin.x+23 , self.reviewButton.frame.origin.y - 40, self.drawView.frame.size.width - 46, self.drawView.frame.size.height/10 - 5);
     
     self.tooltipTextView = [[UITextView alloc] init];
     self.tooltipTextView.editable = NO;
     
-    self.tooltipTextView.text = @"Drag this button to the appropriate face.\n\nThen, share what the vibe's like.";
+    self.tooltipTextView.text = @"Drag this button to the appropriate face.\nThen, share what the vibe's like.";
     self.tooltipTextView.textColor = [UIColor whiteColor];
-    self.tooltipTextView.frame = CGRectMake(self.reviewButton.frame.origin.x - 32, self.reviewButton.frame.origin.y - 82, self.drawView.frame.size.width/1.5 - 3, self.drawView.frame.size.height/5 - 3);
+    [self.tooltipTextView setFont:[UIFont systemFontOfSize:11.0]];
+    self.tooltipTextView.frame = CGRectMake(self.drawView.frame.origin.x + 25, self.reviewButton.frame.origin.y - 43, self.drawView.frame.size.width - 35, self.drawView.frame.size.height/10 - 13);
 
     [self.tooltipTextView setBackgroundColor:[UIColor clearColor]];
     
