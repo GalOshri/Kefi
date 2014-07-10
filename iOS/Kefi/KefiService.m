@@ -326,9 +326,12 @@ int radius = 1000;
         placeObject[@"confidence"] = [NSNumber numberWithInt:0];
         
         placeObject[@"lastReviewed"] = [NSDate new];
-        place.pId = [NSString stringWithString:placeObject.objectId];
+        //place.pId = [NSString stringWithString:[placeObject valueForKey:@"objectId"]];
+        //place.pId = [NSString stringWithString:placeObject.objectId];
         
-        [placeObject saveInBackground];
+        [placeObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            place.pId = [NSString stringWithString:placeObject.objectId];
+        }];
         
         reviewObject[@"place"] = placeObject;
         
@@ -485,9 +488,11 @@ int radius = 1000;
             placeObject[@"confidence"] = [NSNumber numberWithInt:0];
             
             placeObject[@"lastReviewed"] = [NSDate new];
-            place.pId = [NSString stringWithString:placeObject.objectId];
+           // place.pId = [NSString stringWithString:placeObject.objectId];
             
-            [placeObject saveInBackground];
+            [placeObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                place.pId = [NSString stringWithString:placeObject.objectId];
+            }];
             
         } else {
             // Place exists so don't do anything.

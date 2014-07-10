@@ -29,6 +29,12 @@
     return self;
 }
 
+- (IBAction)unwindToAccountSettings:(UIStoryboardSegue *)segue
+{
+    
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -160,7 +166,6 @@
                     passwordAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
                     self.passwordTextfield.text = @"";
                     self.passwordTextfield = [passwordAlert textFieldAtIndex:0];
-                   
                     
                     [passwordAlert show];
                 }
@@ -192,7 +197,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1)
     {
-        if (![self.passwordTextfield.text isEqualToString:@""]){
+        if ([alertView.title isEqualToString:@"Change Password"] && ![self.passwordTextfield.text isEqualToString:@""]){
             [PFUser requestPasswordResetForEmailInBackground:[NSString stringWithFormat:@"%@",self.passwordTextfield.text]];
             NSLog(@"initiated password reset");
             
@@ -200,7 +205,7 @@
             [alertSuccessPassword show];
         }
         
-        if (![self.usernameTextfield.text isEqualToString:@""]) {
+        if ([alertView.title isEqualToString:@"Change Username"] && ![self.usernameTextfield.text isEqualToString:@""]) {
             [[PFUser currentUser] setUsername:[NSString stringWithFormat:@"%@", self.usernameTextfield.text]];
             [[PFUser currentUser] saveInBackground];
             

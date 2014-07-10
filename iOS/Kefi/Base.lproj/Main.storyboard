@@ -973,27 +973,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="User Settings" id="GyI-ht-Uh9">
+                            <tableViewSection headerTitle="Misc." id="GyI-ht-Uh9">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Facebook" textLabel="GuN-pL-ZBy" rowHeight="50" style="IBUITableViewCellStyleDefault" id="Q9k-OL-L6W">
-                                        <rect key="frame" x="0.0" y="380" width="320" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q9k-OL-L6W" id="pmI-X6-evj">
-                                            <rect key="frame" x="0.0" y="0.0" width="281" height="49"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Allow Push Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GuN-pL-ZBy">
-                                                    <rect key="frame" x="15" y="0.0" width="266" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Twitter" textLabel="5gA-Tw-K5d" rowHeight="50" style="IBUITableViewCellStyleDefault" id="5B7-ha-1uj">
-                                        <rect key="frame" x="0.0" y="430" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="380" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5B7-ha-1uj" id="rdp-Fv-biW">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -1008,23 +991,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Foursquare" textLabel="fRc-YH-poK" rowHeight="50" style="IBUITableViewCellStyleDefault" id="LbP-Zs-Mhf">
-                                        <rect key="frame" x="0.0" y="480" width="320" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LbP-Zs-Mhf" id="W50-YW-YzW">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Logout" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fRc-YH-poK">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="49"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="VIO-Ds-Giz" kind="modal" id="q42-3q-9b1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1046,6 +1015,169 @@
             </objects>
             <point key="canvasLocation" x="2064" y="-2080"/>
         </scene>
+        <!--View Controller - Terms of Use-->
+        <scene sceneID="tOO-8r-Wpi">
+            <objects>
+                <viewController id="zPN-Wn-aB2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hTb-PZ-Yrd"/>
+                        <viewControllerLayoutGuide type="bottom" id="BCH-Ki-obn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TQr-Iv-u8I">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bgS-TW-05I">
+                                <rect key="frame" x="20" y="80" width="280" height="392"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">Two households, both alike in dignity,
+In fair Verona, where we lay our scene,
+From ancient grudge break to new mutiny,
+Where civil blood makes civil hands unclean.
+From forth the fatal loins of these two foes
+A pair of star-cross'd lovers take their life;
+Whose misadventured piteous overthrows
+Do with their death bury their parents' strife.
+The fearful passage of their death-mark'd love,
+And the continuance of their parents' rage,
+Which, but their children's end, nought could remove,
+Is now the two hours' traffic of our stage;
+The which if you with patient ears attend,
+What here shall miss, our toil shall strive to mend.
+SCENE I. Verona. A public place.
+
+Enter SAMPSON and GREGORY, of the house of Capulet, armed with swords and bucklers
+SAMPSON
+Gregory, o' my word, we'll not carry coals.
+GREGORY
+No, for then we should be colliers.
+SAMPSON
+I mean, an we be in choler, we'll draw.
+GREGORY
+Ay, while you live, draw your neck out o' the collar.
+SAMPSON
+I strike quickly, being moved.
+GREGORY
+But thou art not quickly moved to strike.
+SAMPSON
+A dog of the house of Montague moves me.
+GREGORY
+To move is to stir; and to be valiant is to stand:
+therefore, if thou art moved, thou runn'st away.
+SAMPSON
+A dog of that house shall move me to stand: I will
+take the wall of any man or maid of Montague's.
+GREGORY
+That shows thee a weak slave; for the weakest goes
+to the wall.
+SAMPSON
+True; and therefore women, being the weaker vessels,
+are ever thrust to the wall: therefore I will push
+Montague's men from the wall, and thrust his maids
+to the wall.
+GREGORY
+The quarrel is between our masters and us their men.
+SAMPSON
+'Tis all one, I will show myself a tyrant: when I
+have fought with the men, I will be cruel with the
+maids, and cut off their heads.
+GREGORY
+The heads of the maids?
+SAMPSON
+Ay, the heads of the maids, or their maidenheads;
+take it in what sense thou wilt.
+GREGORY
+They must take it in sense that feel it.
+SAMPSON
+Me they shall feel while I am able to stand: and
+'tis known I am a pretty piece of flesh.
+GREGORY
+'Tis well thou art not fish; if thou hadst, thou
+hadst been poor John. Draw thy tool! here comes
+two of the house of the Montagues.
+SAMPSON
+My naked weapon is out: quarrel, I will back thee.
+GREGORY
+How! turn thy back and run?
+SAMPSON
+Fear me not.
+GREGORY
+No, marry; I fear thee!
+SAMPSON
+Let us take the law of our sides; let them begin.
+GREGORY
+I will frown as I pass by, and let them take it as
+they list.
+SAMPSON
+Nay, as they dare. I will bite my thumb at them;
+which is a disgrace to them, if they bear it.
+Enter ABRAHAM and BALTHASAR
+
+ABRAHAM
+Do you bite your thumb at us, sir?
+SAMPSON
+I do bite my thumb, sir.
+ABRAHAM
+Do you bite your thumb at us, sir?
+SAMPSON
+[Aside to GREGORY] Is the law of our side, if I say
+ay?
+GREGORY
+No.
+SAMPSON
+No, sir, I do not bite my thumb at you, sir, but I
+bite my thumb, sir.
+GREGORY
+Do you quarrel, sir?
+ABRAHAM
+Quarrel sir! no, sir.
+SAMPSON
+If you do, sir, I am for you: I serve as good a man as you.
+ABRAHAM
+No better.
+SAMPSON
+Well, sir.
+GREGORY
+Say 'better:' here comes one of my master's kinsmen.
+SAMPSON
+Yes, better, sir.
+ABRAHAM
+You lie.
+SAMPSON
+Draw, if you be men. Gregory, remember thy swashing blow.
+They fight
+
+Enter BENVOLIO
+
+BENVOLIO
+Part, fools!
+Put up your swords; you know not what you do.
+</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bgS-TW-05I" firstAttribute="top" secondItem="hTb-PZ-Yrd" secondAttribute="bottom" constant="16" id="Zor-77-qBN"/>
+                            <constraint firstAttribute="centerX" secondItem="bgS-TW-05I" secondAttribute="centerX" id="pCr-KM-zYp"/>
+                            <constraint firstItem="BCH-Ki-obn" firstAttribute="top" secondItem="bgS-TW-05I" secondAttribute="bottom" constant="8" id="xPn-rG-THP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Terms of Use" id="KQX-za-yIE">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="Bba-f0-AUo">
+                            <connections>
+                                <segue destination="tad-LL-gfY" kind="unwind" unwindAction="unwindToAccountSettings:" id="wnd-QI-2sL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Up7-dH-jyL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="tad-LL-gfY" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2938" y="-2067"/>
+        </scene>
         <!--About Kefi View - About Kefi-->
         <scene sceneID="hJk-95-k0V">
             <objects>
@@ -1059,7 +1191,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5O-RE-ejr">
-                                <rect key="frame" x="20" y="79" width="280" height="381"/>
+                                <rect key="frame" x="0.0" y="79" width="320" height="401"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
@@ -1374,6 +1506,24 @@ Gal and Paul.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sOy-pH-D4f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="872" y="-3417"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zRh-bF-4Vt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VIO-Ds-Giz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M1z-f9-Scj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zPN-Wn-aB2" kind="relationship" relationship="rootViewController" id="y9l-xu-RB2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kkQ-M9-gzc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2488" y="-2080"/>
         </scene>
     </scenes>
     <resources>
