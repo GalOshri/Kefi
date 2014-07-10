@@ -246,6 +246,7 @@ NSString *energyLabelDefault;
     if (reviewNumber == nil)
     {
         reviewNumber = [NSNumber numberWithInt:0];
+        [self showTooltip];
         [userData setObject:reviewNumber forKey:@"ReviewNumber"];
         [userData synchronize];
     }
