@@ -271,7 +271,7 @@ NSString *energyLabelDefault;
     [self.tooltipImgView setAlpha:0.95];
     
     //position it
-    self.tooltipImgView.frame = CGRectMake(self.drawView.frame.origin.x+23 , self.reviewButton.frame.origin.y - 40, self.drawView.frame.size.width - 46, self.drawView.frame.size.height/10 - 5);
+    self.tooltipImgView.frame = CGRectMake(self.drawView.frame.origin.x+23 , self.reviewButton.frame.origin.y - 40, self.drawView.frame.size.width - 46, 45);
     
     self.tooltipTextView = [[UITextView alloc] init];
     self.tooltipTextView.editable = NO;
@@ -279,7 +279,7 @@ NSString *energyLabelDefault;
     self.tooltipTextView.text = @"Drag this button to the appropriate face.\nThen, share what the vibe's like.";
     self.tooltipTextView.textColor = [UIColor whiteColor];
     [self.tooltipTextView setFont:[UIFont systemFontOfSize:11.0]];
-    self.tooltipTextView.frame = CGRectMake(self.drawView.frame.origin.x + 25, self.reviewButton.frame.origin.y - 43, self.drawView.frame.size.width - 35, self.drawView.frame.size.height/10 - 13);
+    self.tooltipTextView.frame = CGRectMake(self.drawView.frame.origin.x + 25, self.reviewButton.frame.origin.y - 43, self.drawView.frame.size.width - 35, 43);
 
     [self.tooltipTextView setBackgroundColor:[UIColor clearColor]];
     
