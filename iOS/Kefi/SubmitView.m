@@ -34,6 +34,8 @@
 @property (strong, nonatomic)  NSMutableArray *Vert2EnergyCircles;
 @property (strong, nonatomic)  NSMutableArray *Vert3EnergyCircles;
 
+@property (strong, nonatomic) UITextView *tooltipTextView;
+@property (strong, nonatomic) UIImageView *tooltipImgView;
 @property (strong, nonatomic) NSMutableArray *energyLabels;
 
 // constraints
@@ -77,7 +79,6 @@ NSDictionary *sentimentStrings;
 NSDictionary *energyStrings;
 NSString *coordinateLabelDefault;
 NSString *energyLabelDefault;
-
 
 
 
@@ -186,31 +187,6 @@ NSString *energyLabelDefault;
                       @2: @"buzzin'",
                       @3: @"ragin'!"};
     
-    // Tooltip
-    NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
-    NSNumber *reviewNumber = [userData objectForKey:@"ReviewNumber"];
-    if (reviewNumber == nil)
-    {
-        reviewNumber = [NSNumber numberWithInt:0];
-        [userData setObject:reviewNumber forKey:@"ReviewNumber"];
-        [userData synchronize];
-    }
-    else
-    {
-        int reviewNumberInt = [reviewNumber intValue];
-        if (reviewNumberInt < 3)
-        {
-            reviewNumberInt += 1;
-            reviewNumber = [NSNumber numberWithInt:reviewNumberInt];
-            [self showTooltip];
-            [userData setObject:reviewNumber forKey:@"ReviewNumber"];
-            [userData synchronize];
-        }
-    }
-    
-    
-    
-    
     // hardcode position of sentiment circles
     /*
      // remove constraints
@@ -263,17 +239,60 @@ NSString *energyLabelDefault;
             }
         }
     }
+    
+    // Tooltip
+    NSUserDefaults *userData = [NSUserDefaults standardUserDefaults];
+    NSNumber *reviewNumber = [userData objectForKey:@"ReviewNumber"];
+    if (reviewNumber == nil)
+    {
+        reviewNumber = [NSNumber numberWithInt:0];
+        [userData setObject:reviewNumber forKey:@"ReviewNumber"];
+        [userData synchronize];
+    }
+    else
+    {
+        int reviewNumberInt = [reviewNumber intValue];
+        if (reviewNumberInt < 30)
+        {
+            reviewNumberInt += 1;
+            reviewNumber = [NSNumber numberWithInt:reviewNumberInt];
+            [self showTooltip];
+            [userData setObject:reviewNumber forKey:@"ReviewNumber"];
+            [userData synchronize];
+        }
+    }
 }
 
 - (void)showTooltip
 {
-    // TODO: PAUL DO IT. DO IT NOWWWW.
+    self.tooltipImgView = [[UIImageView alloc] init];
+    self.tooltipImgView.image = [UIImage imageNamed: @"tooltip.png"];
+    [self.tooltipImgView setAlpha:0.95];
+    
+    //position it
+    self.tooltipImgView.frame = CGRectMake(self.reviewButton.frame.origin.x - 35, self.reviewButton.frame.origin.y - 85, self.drawView.frame.size.width/1.5, self.drawView.frame.size.height/6 + 5);
+    
+    self.tooltipTextView = [[UITextView alloc] init];
+    self.tooltipTextView.editable = NO;
+    
+    self.tooltipTextView.text = @"Drag this button to the appropriate face.\n\nThen, share what the vibe's like.";
+    self.tooltipTextView.textColor = [UIColor whiteColor];
+    self.tooltipTextView.frame = CGRectMake(self.reviewButton.frame.origin.x - 32, self.reviewButton.frame.origin.y - 82, self.drawView.frame.size.width/1.5 - 3, self.drawView.frame.size.height/5 - 3);
+
+    [self.tooltipTextView setBackgroundColor:[UIColor clearColor]];
+    
+    [self.drawView addSubview: self.tooltipImgView];
+    [self.drawView addSubview: self.tooltipTextView];
+    
+    NSLog(@"tooltip?");
 }
 
 
 #pragma mark - Button Moving Methods
 
 - (IBAction)reviewButtonDragged:(UIButton *)sender forEvent:(UIEvent *)event {
+    [self.tooltipImgView setHidden:YES];
+    [self.tooltipTextView setHidden:YES];
     
     // Which segment are we in?
     CGPoint point = [[[event allTouches] anyObject] locationInView:self.drawView];

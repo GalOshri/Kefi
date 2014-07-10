@@ -1031,7 +1031,7 @@
                                 <rect key="frame" x="20" y="80" width="280" height="392"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <mutableString key="text">Two households, both alike in dignity,
+                                <string key="text">Two households, both alike in dignity,
 In fair Verona, where we lay our scene,
 From ancient grudge break to new mutiny,
 Where civil blood makes civil hands unclean.
@@ -1153,7 +1153,7 @@ Enter BENVOLIO
 BENVOLIO
 Part, fools!
 Put up your swords; you know not what you do.
-</mutableString>
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
