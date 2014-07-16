@@ -1346,12 +1346,12 @@ Gal and Paul.</string>
                             <rect key="frame" x="0.0" y="64" width="320" height="139"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="KefiNoBorder.png" translatesAutoresizingMaskIntoConstraints="NO" id="XJU-Ex-A5N">
-                                    <rect key="frame" x="27" y="9" width="59" height="83"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="KefiPic.png" translatesAutoresizingMaskIntoConstraints="NO" id="XJU-Ex-A5N">
+                                    <rect key="frame" x="20" y="5" width="90" height="90"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IoO-dP-c7T">
-                                    <rect key="frame" x="113" y="24" width="187" height="22"/>
+                                    <rect key="frame" x="118" y="31" width="187" height="22"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1523,7 +1523,7 @@ Gal and Paul.</string>
         <image name="FavUnfilled.png" width="100" height="100"/>
         <image name="KefItIcon.png" width="310" height="300"/>
         <image name="Kefi.png" width="546" height="226"/>
-        <image name="KefiNoBorder.png" width="51" height="83"/>
+        <image name="KefiPic.png" width="310" height="300"/>
         <image name="KefiSpotlight.png" width="640" height="256"/>
         <image name="PoweredByFoursquare.png" width="482" height="121"/>
         <image name="facebook.png" width="30" height="30"/>

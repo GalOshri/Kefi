@@ -66,6 +66,7 @@
 		DA851D86196A740A00BBEB2C /* TermsOfUseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA851D85196A740A00BBEB2C /* TermsOfUseViewController.m */; };
 		DA851D8A196E3D9800BBEB2C /* tooltip.png in Resources */ = {isa = PBXBuildFile; fileRef = DA851D89196E3D9800BBEB2C /* tooltip.png */; };
 		DA851D8C196E78C100BBEB2C /* tooltip1.png in Resources */ = {isa = PBXBuildFile; fileRef = DA851D8B196E78C100BBEB2C /* tooltip1.png */; };
+		DA851D8E19761BFA00BBEB2C /* KefiPic.png in Resources */ = {isa = PBXBuildFile; fileRef = DA851D8D19761BFA00BBEB2C /* KefiPic.png */; };
 		DA9EB651191EDF4F00C375B3 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9EB650191EDF4F00C375B3 /* MapKit.framework */; };
 		DAAAB4A319529D3B004D2DB1 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = DAAAB4A219529D3B004D2DB1 /* menu.png */; };
 		DAAAB4A719529DF5004D2DB1 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAAB4A619529DF5004D2DB1 /* SWRevealViewController.m */; };
@@ -185,6 +186,7 @@
 		DA851D85196A740A00BBEB2C /* TermsOfUseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsOfUseViewController.m; sourceTree = "<group>"; };
 		DA851D89196E3D9800BBEB2C /* tooltip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tooltip.png; sourceTree = "<group>"; };
 		DA851D8B196E78C100BBEB2C /* tooltip1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tooltip1.png; sourceTree = "<group>"; };
+		DA851D8D19761BFA00BBEB2C /* KefiPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KefiPic.png; sourceTree = "<group>"; };
 		DA9EB650191EDF4F00C375B3 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DAAAB4A219529D3B004D2DB1 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		DAAAB4A519529DF5004D2DB1 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 		0D0C131818FB7F9000C90A5F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DA851D8D19761BFA00BBEB2C /* KefiPic.png */,
 				0D8C5389196A23A3005A1A23 /* KefiSpotlight.png */,
 				0D8C5381196A1C75005A1A23 /* facebook.png */,
 				0D8C5382196A1C75005A1A23 /* twitter.png */,
@@ -697,6 +700,7 @@
 				DA109B29195D2816002DADDE /* Kefi.png in Resources */,
 				0D727EAD18F099F1008310FC /* InfoPlist.strings in Resources */,
 				DA089B38192016120055FD31 /* smallCircleFull.png in Resources */,
+				DA851D8E19761BFA00BBEB2C /* KefiPic.png in Resources */,
 				0D0C131718FB762600C90A5F /* KefItIcon.png in Resources */,
 				DA851D8A196E3D9800BBEB2C /* tooltip.png in Resources */,
 				0D727EB618F099F1008310FC /* Main.storyboard in Resources */,
