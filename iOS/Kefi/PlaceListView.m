@@ -129,6 +129,7 @@
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+
     
 }
 
@@ -295,7 +296,6 @@
     
     cell.placeHashtags.text = hashtagText;
     cell.placeHashtags.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-    cell.placeHashtags.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
     // cell.placeHashtags.textAlignment = NSTextAlignmentCenter;
     
     // set sentiment / Energy Level and active/inactive states
@@ -355,8 +355,20 @@
         }
     }
     
+    cell.placeHashtags.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
+    
+    //set cell backgorund color and text color
+    // [cell.placeName setTextColor:[UIColor whiteColor]];
+    
     return cell;
 }
+
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // cell.contentView.backgroundColor = [UIColor blackColor];
+
+
+}
+
 
 // Refresh table on pull down
 - (void)refreshList {

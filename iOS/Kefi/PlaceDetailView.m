@@ -85,7 +85,7 @@
     [self.navigationController.viewControllers[self.navigationController.viewControllers.count -1] setTitle:self.place.name];
     
     //set some more variables here
-    // self.placeAddress.text = self.place.address;
+    self.placeAddress.text = self.place.address;
     
     self.hashtagView.backgroundColor = [UIColor whiteColor];
     
@@ -103,10 +103,24 @@
         [self.noTagLabel setHidden:NO];
     else
         [self.noTagLabel setHidden:YES];
+    
+
 }
 
 - (void)viewDidLayoutSubviews
 {
+    
+    if ([KefiService isFavorite:self.place.fsId])
+    {
+        self.isFavorite = YES;
+        [self.favoriteButton setImage:[UIImage imageNamed:@"FavFilled.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.favoriteButton setImage:[UIImage imageNamed:@"FavUnfilled.png"] forState:UIControlStateNormal];
+        self.isFavorite = NO;
+    }
+    
     //modifications to print sigFigs for distance. NEED TO ROUND
     if (self.place.currentDistance != nil)
     {
@@ -121,29 +135,16 @@
     
     if (self.place.hashtagList.count <= 0) {
         [self.noTagLabel setHidden:NO];
+        [self.hashtagView setHidden:YES];
     }
+    else
+        [self.hashtagView setHidden:NO];
+    
     //deal with UI showing crossStreets if not null
-    /*
-     if (![self.place.crossStreet isEqual:@"(null)"])
+    if (![self.place.crossStreet isEqual:@"(null)"])
         self.placeCrossStreets.text = self.place.crossStreet;
     else
-    {
-        CGRect moveCrossStreetFrame = CGRectMake(self.placeCrossStreets.frame.origin.x, self.placeCrossStreets.frame.origin.y, self.distanceMi.frame.size.width, self.distanceMi.frame.size.height);
-        self.distanceMi.frame = moveCrossStreetFrame;
         self.placeCrossStreets.hidden = YES;
-    }
-    */
-    
-    if ([KefiService isFavorite:self.place.fsId])
-    {
-        self.isFavorite = YES;
-        [self.favoriteButton setImage:[UIImage imageNamed:@"FavFilled.png"] forState:UIControlStateNormal];
-    }
-    else
-    {
-        [self.favoriteButton setImage:[UIImage imageNamed:@"FavUnfilled.png"] forState:UIControlStateNormal];
-        self.isFavorite = NO;
-    }
 }
 
 

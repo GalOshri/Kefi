@@ -23,10 +23,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
-/*
- @property (weak, nonatomic) IBOutlet UILabel *placeAddress;
- @property (weak, nonatomic) IBOutlet UILabel *placeCrossStreets;
-*/
+
+@property (weak, nonatomic) IBOutlet UILabel *placeAddress;
+@property (weak, nonatomic) IBOutlet UILabel *placeCrossStreets;
+
 
 -(void)setSentimentImage;
 
