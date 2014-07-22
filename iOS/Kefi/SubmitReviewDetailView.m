@@ -56,7 +56,8 @@
         self.sentimentLevel -= 1;
 
     // uicollectionview background color
-    self.hashtagView.backgroundColor = [UIColor whiteColor];
+    self.hashtagView.backgroundColor = [UIColor viewFlipsideBackgroundColor];
+    self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];
 
     self.hashtags = [[NSMutableArray alloc] init];
     for (Hashtag *hashtag in self.place.hashtagList)
@@ -277,7 +278,7 @@
     
     [myCell.textLabel setText:temp];
     [myCell.textLabel setFont:[UIFont systemFontOfSize:14]];
-    [myCell.textLabel setTextColor:self.view.tintColor];
+    [myCell.textLabel setTextColor: [UIColor whiteColor]];
     
     /*
     [myCell.layer setBorderWidth:2];
@@ -352,7 +353,7 @@
 
 {
     HashtagCollectionCell *cell = (HashtagCollectionCell *)[self.hashtagView cellForItemAtIndexPath:indexPath];
-    [cell.textLabel setTextColor:self.view.tintColor];
+    [cell.textLabel setTextColor: [UIColor whiteColor]];
 
 }
 

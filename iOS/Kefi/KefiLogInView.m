@@ -29,7 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self.logInView setBackgroundColor:[UIColor blackColor]];
+    self.logInView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"potentialReviewBckgrnd.jpg"]];
     [self.logInView setLogo:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Kefi.png"]]];
     CGPoint currentCenter = CGPointMake(self.logInView.logo.center.x, self.logInView.logo.center.y);
     self.logInView.logo.frame = CGRectMake(self.logInView.logo.frame.origin.x, self.logInView.logo.frame.origin.y, 200.0,82.0);

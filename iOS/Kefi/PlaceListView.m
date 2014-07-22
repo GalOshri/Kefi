@@ -296,16 +296,16 @@
     
     cell.placeHashtags.text = hashtagText;
     cell.placeHashtags.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-    // cell.placeHashtags.textAlignment = NSTextAlignmentCenter;
+    
+    //set cell backgorund color and text color
+    // [cell.placeHashtags setBackgroundColor:[UIColor darkGrayColor]];
+    // [cell.placeName setTextColor:[UIColor purpleColor]];
+    [cell.placeHashtags setTextColor:[UIColor whiteColor]];
+    
     
     // set sentiment / Energy Level and active/inactive states
     //define dictionary:
     NSArray *energyLevels = @[cell.energyLevel1, cell.energyLevel2, cell.energyLevel3];
-    
-    /*int randomInt = arc4random() % 100;
-    double randomDouble = randomInt / 100.0;
-    cell.contentView.backgroundColor = [UIColor colorWithRed:randomDouble green:0.5 blue:0.8 alpha:0.06];
-    cell.placeHashtags.backgroundColor = [UIColor clearColor]; */
     
     if((long)[cell.place.sentiment integerValue] != 100) {
         // NSLog(@"%@ is in Interval: %d with s: %ld, e: %ld", cell.place.name, cell.place.isInInterval, (long)[cell.place.sentiment integerValue], (long)[cell.place.energy integerValue]);
@@ -324,7 +324,6 @@
             else
                 [imageView setImage:[UIImage imageNamed:@"smallCircle.png"]];
         }
-        
         
         
         if (cell.place.isInInterval) {
@@ -357,16 +356,11 @@
     
     cell.placeHashtags.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
     
-    //set cell backgorund color and text color
-    // [cell.placeName setTextColor:[UIColor whiteColor]];
-    
     return cell;
 }
 
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    // cell.contentView.backgroundColor = [UIColor blackColor];
-
-
+    // cell.contentView.backgroundColor = [UIColor lightGrayColor];
 }
 
 

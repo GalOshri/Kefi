@@ -21,7 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel1;
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel2;
 @property (weak, nonatomic) IBOutlet UIImageView *energyLevel3;
-
+@property (weak, nonatomic) IBOutlet UIImageView *venueTypeImg;
+@property (weak, nonatomic) IBOutlet UILabel *venueType;
 @property (weak, nonatomic) IBOutlet UILabel *noTagLabel;
 @end
 
@@ -81,6 +82,9 @@
 {
     [super viewDidLoad];
     
+    [self.view setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
+    
+    
     //sets name to view?
     [self.navigationController.viewControllers[self.navigationController.viewControllers.count -1] setTitle:self.place.name];
     
@@ -103,12 +107,11 @@
         [self.noTagLabel setHidden:NO];
     else
         [self.noTagLabel setHidden:YES];
-    
-
 }
 
 - (void)viewDidLayoutSubviews
 {
+    [self.hashtagView setBackgroundColor:[UIColor viewFlipsideBackgroundColor]];
     
     if ([KefiService isFavorite:self.place.fsId])
     {
@@ -145,6 +148,10 @@
         self.placeCrossStreets.text = self.place.crossStreet;
     else
         self.placeCrossStreets.hidden = YES;
+    
+    //set venue Type and image type
+    self.venueType.text = self.place.categoryType;
+    [self.venueTypeImg setImage:self.place.imageType];
 }
 
 
@@ -257,7 +264,7 @@
     
     [myCell.textLabel setText:temp];
     [myCell.textLabel setFont:[UIFont systemFontOfSize:14]];
-    [myCell.textLabel setTextColor:self.view.tintColor];
+    [myCell.textLabel setTextColor: [UIColor whiteColor]];
     
     /* 
     [myCell.layer setBorderWidth:2];

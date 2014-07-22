@@ -74,6 +74,7 @@
 		DAAAB4B01952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAAB4AF1952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.m */; };
 		DAD0DD20197B22230075E69D /* headerImg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD0DD1F197B22230075E69D /* headerImg1.jpg */; };
 		DAD0DD22197B23F40075E69D /* headerImg1Blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD0DD21197B23F40075E69D /* headerImg1Blur.jpg */; };
+		DAD0DD24197CDAD30075E69D /* potentialReviewBckgrnd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD0DD23197CDAD30075E69D /* potentialReviewBckgrnd.jpg */; };
 		DAE95AAA193012B300109E75 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AA9193012B300109E75 /* AudioToolbox.framework */; };
 		DAE95AAC193012BC00109E75 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AAB193012BC00109E75 /* CFNetwork.framework */; };
 		DAE95AAE193012D300109E75 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AAD193012D300109E75 /* libz.dylib */; };
@@ -199,6 +200,7 @@
 		DAAAB4AF1952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialNetworkAccountsTableViewController.m; sourceTree = "<group>"; };
 		DAD0DD1F197B22230075E69D /* headerImg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = headerImg1.jpg; sourceTree = "<group>"; };
 		DAD0DD21197B23F40075E69D /* headerImg1Blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = headerImg1Blur.jpg; sourceTree = "<group>"; };
+		DAD0DD23197CDAD30075E69D /* potentialReviewBckgrnd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = potentialReviewBckgrnd.jpg; sourceTree = "<group>"; };
 		DAE95AA9193012B300109E75 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DAE95AAB193012BC00109E75 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAE95AAD193012D300109E75 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -259,6 +261,7 @@
 		0D0C131818FB7F9000C90A5F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DAD0DD23197CDAD30075E69D /* potentialReviewBckgrnd.jpg */,
 				DAD0DD21197B23F40075E69D /* headerImg1Blur.jpg */,
 				DAD0DD1F197B22230075E69D /* headerImg1.jpg */,
 				DA851D8D19761BFA00BBEB2C /* KefiPic.png */,
@@ -691,6 +694,7 @@
 				DA109B2D195E9DBE002DADDE /* Icon-40@2x.png in Resources */,
 				0D727EBB18F099F1008310FC /* Images.xcassets in Resources */,
 				DAE95AD61932A29C00109E75 /* KefiNoBorder.png in Resources */,
+				DAD0DD24197CDAD30075E69D /* potentialReviewBckgrnd.jpg in Resources */,
 				0D0C131418FB72B600C90A5F /* FavFilled.png in Resources */,
 				DA109B2719596684002DADDE /* settingGear.png in Resources */,
 				DA089B3C192016120055FD31 /* soHappy.png in Resources */,

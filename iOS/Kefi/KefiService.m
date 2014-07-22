@@ -82,16 +82,18 @@ int radius = 1000;
                     place.currentDistance =  @([place.currentDistance doubleValue]* 0.000621371192);
                   
                     //grab image url
-                   /* NSString *imageURL = [NSString stringWithFormat:@"%@%@%@",
+                    NSString *imageURL = [NSString stringWithFormat:@"%@%@%@",
                                           [[[[venue objectForKey:@"categories"] objectAtIndex:0] objectForKey:@"icon"] objectForKey:@"prefix"],
-                                          @"bg_64",
+                                          @"64",
                                           [[[[venue objectForKey:@"categories"] objectAtIndex:0]objectForKey:@"icon"]objectForKey:@"suffix"]
                                           ];
                     
                     NSURL *imageURLConcat = [NSURL URLWithString:imageURL];
                     NSData *imageData = [NSData dataWithContentsOfURL:imageURLConcat];
-                    place.imageType = [UIImage imageWithData:imageData];*/
+                    place.imageType = [UIImage imageWithData:imageData];
                  
+                    
+                    
                     //grab category type
                     place.categoryType = [NSString stringWithFormat:@"%@", [[[venue objectForKey:@"categories"] objectAtIndex:0] objectForKey:@"name"]];
                     

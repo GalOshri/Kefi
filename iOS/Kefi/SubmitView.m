@@ -118,7 +118,7 @@ NSString *energyLabelDefault;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    // [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
 
     // set height of drawView
     
@@ -129,7 +129,10 @@ NSString *energyLabelDefault;
     
     CGRect frame = CGRectMake(self.drawView.frame.origin.x, self.drawView.frame.origin.y, screenWidth, screenHeight - self.drawView.frame.origin.y);
     
+    // self.drawView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"potentialReviewBckgrnd.jpg"]];
+    
     [self.drawView setFrame:frame];
+    
     
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
@@ -276,7 +279,7 @@ NSString *energyLabelDefault;
     self.tooltipTextView = [[UITextView alloc] init];
     self.tooltipTextView.editable = NO;
     
-    self.tooltipTextView.text = @"Drag this button to the appropriate face.\nThen, share what the vibe's like.";
+    self.tooltipTextView.text = @"Drag and hold this button to the appropriate face.\nThen, share what the vibe's like.";
     self.tooltipTextView.textColor = [UIColor whiteColor];
     [self.tooltipTextView setFont:[UIFont systemFontOfSize:11.0]];
     self.tooltipTextView.frame = CGRectMake(self.drawView.frame.origin.x + 25, self.reviewButton.frame.origin.y - 43, self.drawView.frame.size.width - 35, 43);
@@ -393,7 +396,14 @@ NSString *energyLabelDefault;
         [self HideAllExceptSentiment:activatedSentiment];
         UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
         [UIView animateWithDuration:0.75 animations:^{
+
+            /*
             [self.view setBackgroundColor:[UIColor whiteColor]];
+            [self.drawView setBackgroundColor:[UIColor whiteColor]];
+            [self.placeLabel setTextColor:[UIColor blackColor]];
+            [self.coordinateLabel setTextColor:[UIColor blackColor]];
+             */
+            
             currentButton.center = CGPointMake(currentButton.center.x, 30);
         }completion:^(BOOL finished){
             [self performSegueWithIdentifier:@"SubmitReviewDetailSegue" sender:self];
@@ -614,7 +624,7 @@ NSString *energyLabelDefault;
         if (i!=2)
             sentimentTemp.frame = CGRectMake(100.0 + i*20.0 ,100.0 + i*20.0, 60.0, 60.0);
         else{
-            sentimentTemp.frame = CGRectMake(100.0 + i*20.0, 100.0 +i*20, 50.0, 50.0);
+            sentimentTemp.frame = CGRectMake(100.0 + i*20.0, 100.0 +i*20, 70.0, 70.0);
             
             [sentimentTemp addTarget:self action:@selector(reviewButtonTouchUp:forEvent:) forControlEvents:UIControlEventTouchUpInside];
             [sentimentTemp addTarget:self action:@selector(reviewButtonDragged:forEvent:) forControlEvents:UIControlEventTouchDragInside];
