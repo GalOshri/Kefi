@@ -75,6 +75,8 @@
 		DAD0DD20197B22230075E69D /* headerImg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD0DD1F197B22230075E69D /* headerImg1.jpg */; };
 		DAD0DD22197B23F40075E69D /* headerImg1Blur.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD0DD21197B23F40075E69D /* headerImg1Blur.jpg */; };
 		DAD0DD24197CDAD30075E69D /* potentialReviewBckgrnd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DAD0DD23197CDAD30075E69D /* potentialReviewBckgrnd.jpg */; };
+		DAD0DD291981E6A90075E69D /* FSOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD0DD281981E6A90075E69D /* FSOAuth.m */; };
+		DAD0DD2B19845B1A0075E69D /* foursquare.png in Resources */ = {isa = PBXBuildFile; fileRef = DAD0DD2A19845B1A0075E69D /* foursquare.png */; };
 		DAE95AAA193012B300109E75 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AA9193012B300109E75 /* AudioToolbox.framework */; };
 		DAE95AAC193012BC00109E75 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AAB193012BC00109E75 /* CFNetwork.framework */; };
 		DAE95AAE193012D300109E75 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE95AAD193012D300109E75 /* libz.dylib */; };
@@ -201,6 +203,9 @@
 		DAD0DD1F197B22230075E69D /* headerImg1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = headerImg1.jpg; sourceTree = "<group>"; };
 		DAD0DD21197B23F40075E69D /* headerImg1Blur.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = headerImg1Blur.jpg; sourceTree = "<group>"; };
 		DAD0DD23197CDAD30075E69D /* potentialReviewBckgrnd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = potentialReviewBckgrnd.jpg; sourceTree = "<group>"; };
+		DAD0DD271981E6A90075E69D /* FSOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSOAuth.h; path = fsqAuth/FSOAuth.h; sourceTree = "<group>"; };
+		DAD0DD281981E6A90075E69D /* FSOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSOAuth.m; path = fsqAuth/FSOAuth.m; sourceTree = "<group>"; };
+		DAD0DD2A19845B1A0075E69D /* foursquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foursquare.png; sourceTree = "<group>"; };
 		DAE95AA9193012B300109E75 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DAE95AAB193012BC00109E75 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DAE95AAD193012D300109E75 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -261,6 +266,7 @@
 		0D0C131818FB7F9000C90A5F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DAD0DD2A19845B1A0075E69D /* foursquare.png */,
 				DAD0DD23197CDAD30075E69D /* potentialReviewBckgrnd.jpg */,
 				DAD0DD21197B23F40075E69D /* headerImg1Blur.jpg */,
 				DAD0DD1F197B22230075E69D /* headerImg1.jpg */,
@@ -358,7 +364,6 @@
 				0D727EB418F099F1008310FC /* Main.storyboard */,
 				0DABAFEF192860C20018CED9 /* Home View */,
 				DAAAB4A419529D90004D2DB1 /* Menu Views */,
-				0DABAFF0192861520018CED9 /* Place Detail View */,
 				0DABAFEE192860950018CED9 /* Review Submission */,
 				0DABAFF11928616A0018CED9 /* Search View */,
 				0D4FDB2D194170D200B0F28F /* Collection View Helpers */,
@@ -523,8 +528,10 @@
 		0DCF8C9319613E0D005F6CDA /* Account Settings View */ = {
 			isa = PBXGroup;
 			children = (
+				DAD0DD261981E6960075E69D /* foursquare oauth */,
 				DAAAB4AE1952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.h */,
 				DAAAB4AF1952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.m */,
+				0DABAFF0192861520018CED9 /* Place Detail View */,
 			);
 			name = "Account Settings View";
 			sourceTree = "<group>";
@@ -609,6 +616,15 @@
 			name = "Menu Views";
 			sourceTree = "<group>";
 		};
+		DAD0DD261981E6960075E69D /* foursquare oauth */ = {
+			isa = PBXGroup;
+			children = (
+				DAD0DD271981E6A90075E69D /* FSOAuth.h */,
+				DAD0DD281981E6A90075E69D /* FSOAuth.m */,
+			);
+			name = "foursquare oauth";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -690,6 +706,7 @@
 			files = (
 				DA089B3D192016120055FD31 /* eh.png in Resources */,
 				DA089B3E192016120055FD31 /* soPissed.png in Resources */,
+				DAD0DD2B19845B1A0075E69D /* foursquare.png in Resources */,
 				0D61950319500F30000314A3 /* PoweredByFoursquare.png in Resources */,
 				DA109B2D195E9DBE002DADDE /* Icon-40@2x.png in Resources */,
 				0D727EBB18F099F1008310FC /* Images.xcassets in Resources */,
@@ -766,6 +783,7 @@
 				0D4FDB2C19416F9300B0F28F /* LeftAlignFlowLayout.m in Sources */,
 				0D727EAF18F099F1008310FC /* main.m in Sources */,
 				0D0C131B18FB824600C90A5F /* SubmitView.m in Sources */,
+				DAD0DD291981E6A90075E69D /* FSOAuth.m in Sources */,
 				0D81466718F10DD90072702B /* PlaceDetailView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

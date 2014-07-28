@@ -288,8 +288,6 @@ NSString *energyLabelDefault;
     
     [self.drawView addSubview: self.tooltipImgView];
     [self.drawView addSubview: self.tooltipTextView];
-    
-    NSLog(@"tooltip?");
 }
 
 

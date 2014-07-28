@@ -8,7 +8,8 @@
 
 #import "SocialNetworkAccountsTableViewController.h"
 #import "SWRevealViewController.h"
-
+#import "FSOAuth.h"
+#import "KefiService.h"
 @interface SocialNetworkAccountsTableViewController ()
 
 // @property (nonatomic, strong) NSArray *accountTypes;
@@ -137,19 +138,34 @@
             // Foursquare
             case 2:
             {
-                NSLog(@"No Foursquare for you. NEXT!");
-                UIAlertView *FoursquareAlert = [[UIAlertView alloc] initWithTitle:@"Coming Soon!"
-                                                                message:@"Foursquare connectivity coming soon."
-                                                               delegate:nil
-                                                      cancelButtonTitle:@"OK"
-                                                      otherButtonTitles:nil];
-                [FoursquareAlert show];
-            }
-                break;
+                NSString *client_id = @"T4XPWMEQAID11W0CSQLCP2P0NXGEUSDZRV4COSBJH2QEMC2O";
+                // NSString *client_secret = @"0P1EQQ3NH102D0R3GNGTG0ZAL0S5T41YDB2NPOOMRMO2I2EO";
+                NSString *client_callbackString = @"kefiCallback://";
+                
+                FSOAuthStatusCode statusCode = [FSOAuth authorizeUserUsingClientId:client_id
+                                                                 callbackURIString:client_callbackString
+                                                              allowShowingAppStore:YES];
+                NSString *resultText = nil;
+                
+                if (statusCode == FSOAuthStatusErrorInvalidCallback)
+                    resultText = @"Invalid callback URI";
+                else if (statusCode == FSOAuthStatusErrorFoursquareNotInstalled)
+                    resultText = @"Foursquare not installed";
+                else if (statusCode == FSOAuthStatusErrorInvalidClientID)
+                    resultText = @"Invalid client id";
+                else if (statusCode == FSOAuthStatusErrorFoursquareOAuthNotSupported)
+                    resultText = @"Installed FSQ app does not support oauth";
+                else if (statusCode == FSOAuthStatusSuccess)
+                    resultText =  @"success!";
+                else
+                    resultText = @"Unknown status code returned";
             
+                NSLog(@"Foursquare oauth status: %@",resultText);
+                
+                break;
+            }
             default:
                 break;
-
         }
     }
     
@@ -227,7 +243,60 @@
     return 2.0;
 }
 
+- (void)handleURL:(NSURL *)url {
+    if ([[url scheme] isEqualToString:@"kefiCallback"]) {
+        FSOAuthErrorCode errorCode;
+        NSString *accessCode = [FSOAuth accessCodeForFSOAuthURL:url error:&errorCode];;
+        
+        NSString *resultText = nil;
+        if (errorCode == FSOAuthErrorNone) {
+            resultText = [NSString stringWithFormat:@"Access code: %@", accessCode];
+            NSLog(@"%@", accessCode);
+        }
+        else {
+            NSLog(@"%@",[self errorMessageForCode:errorCode]);
+        }
+        
+        NSLog(@"%@",[NSString stringWithFormat:@"Result: %@", resultText]);
+    }
+}
 
+- (NSString *)errorMessageForCode:(FSOAuthErrorCode)errorCode {
+    NSString *resultText = nil;
+    
+    switch (errorCode) {
+        case FSOAuthErrorNone: {
+            break;
+        }
+        case FSOAuthErrorInvalidClient: {
+            resultText = @"Invalid client error";
+            break;
+        }
+        case FSOAuthErrorInvalidGrant: {
+            resultText = @"Invalid grant error";
+            break;
+        }
+        case FSOAuthErrorInvalidRequest: {
+            resultText =  @"Invalid request error";
+            break;
+        }
+        case FSOAuthErrorUnauthorizedClient: {
+            resultText =  @"Invalid unauthorized client error";
+            break;
+        }
+        case FSOAuthErrorUnsupportedGrantType: {
+            resultText =  @"Invalid unsupported grant error";
+            break;
+        }
+        case FSOAuthErrorUnknown:
+        default: {
+            resultText =  @"Unknown error";
+            break;
+        }
+    }
+    
+    return resultText;
+}
 
 /*
 // Override to support conditional editing of the table view.

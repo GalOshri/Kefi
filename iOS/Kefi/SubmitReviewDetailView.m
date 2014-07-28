@@ -35,6 +35,8 @@
 
 @property (strong, nonatomic) IBOutlet UISwitch *twitterPostSwitch;
 @property (strong, nonatomic) IBOutlet UISwitch *facebookPostSwitch;
+@property (weak, nonatomic) IBOutlet UIImageView *fsqImg;
+@property (weak, nonatomic) IBOutlet UIImageView *fbImg;
 
 @end
 
@@ -76,6 +78,12 @@
     self.hashtagView.delegate = self;
     self.hashtagView.dataSource = self;
     self.hashtagView.allowsMultipleSelection = YES;
+    
+    //round corners of fb and fsq img
+    [[self.fsqImg layer] setCornerRadius:2];
+    [[self.fsqImg layer] setMasksToBounds:YES];
+    [[self. fbImg layer] setCornerRadius:2];
+    [[self.fbImg layer] setMasksToBounds:YES];
     
     
 }
