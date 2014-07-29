@@ -54,7 +54,7 @@
     // manually change sentiment if greater than 2 to sentiment - 1
     // because our "2" is merely a placeholder and this messes up calculation
 
-    if (self.sentimentLevel > 2)
+    if (self.sentimentLevel > 3)
         self.sentimentLevel -= 1;
 
     // uicollectionview background color
@@ -93,10 +93,10 @@
     [super viewDidLayoutSubviews];
     
     // create image and labels
-    NSDictionary *sentimentToImageDict = @{@0:@"soPissed.png",
-                                           @1:@"eh.png",
-                                           @2:@"semiHappy.png",
-                                           @3:@"soHappy.png"};
+    NSDictionary *sentimentToImageDict = @{@1:@"soPissed.png",
+                                           @2:@"eh.png",
+                                           @3:@"semiHappy.png",
+                                           @4:@"soHappy.png"};
     // self.sentimentImage = [[UIImageView alloc] init];
     self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:[NSNumber numberWithInt:self.sentimentLevel]]];
     self.sentimentImage.frame = self.imageFrame;

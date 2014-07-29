@@ -135,12 +135,16 @@
                     }
                 }
                 break;
+                
+                
             // Foursquare
             case 2:
             {
                 NSString *client_id = @"T4XPWMEQAID11W0CSQLCP2P0NXGEUSDZRV4COSBJH2QEMC2O";
+                
+                
                 // NSString *client_secret = @"0P1EQQ3NH102D0R3GNGTG0ZAL0S5T41YDB2NPOOMRMO2I2EO";
-                NSString *client_callbackString = @"kefiCallback://";
+                NSString *client_callbackString = @"https://kefiCallback://";
                 
                 FSOAuthStatusCode statusCode = [FSOAuth authorizeUserUsingClientId:client_id
                                                                  callbackURIString:client_callbackString
@@ -164,6 +168,7 @@
                 
                 break;
             }
+            
             default:
                 break;
         }

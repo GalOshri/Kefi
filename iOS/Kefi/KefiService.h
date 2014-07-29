@@ -47,5 +47,6 @@
 // Beta News
 + (void) GetBetaNews:(BetaNewsView *)bnv;
 
++ (void) SortListView:(int)sortNum forTable:(UITableView *)tableView withPlaces:(PlaceList *)placeList withSpinner:(UIActivityIndicatorView *)spinner;
 
 @end

@@ -31,7 +31,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>kefiCallback</string>
+				<string>https://kefiCallback</string>
 			</array>
 			<key>CFBundleURLName</key>
 			<string>com.foursquare.oauthexample</string>

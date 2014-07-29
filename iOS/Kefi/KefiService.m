@@ -100,7 +100,7 @@ int radius = 1000;
                     
                     //set pid, sentiment, energy to values for checking later
                     place.pId = @"";
-                    place.sentiment = [NSNumber numberWithInt:100];
+                    place.sentiment = [NSNumber numberWithInt:0];
                     place.energy = [NSNumber numberWithInt:-1];
                     
                     [placeList.places addObject:place];
@@ -133,7 +133,7 @@ int radius = 1000;
         
         // TODO: Set the other fields as necessary
         place.pId = @"";
-        place.sentiment = [NSNumber numberWithInt:100];
+        place.sentiment = [NSNumber numberWithInt:0];
         place.energy = [NSNumber numberWithInt:-1];
         place.currentDistance = nil;
         place.crossStreet = @"";
@@ -323,8 +323,8 @@ int radius = 1000;
         placeObject[@"category"] = place.categoryType;
         placeObject[@"hashtagList"] = [[NSArray alloc] initWithObjects:nil];
         
-        placeObject[@"sentiment"] = [NSNumber numberWithInt:100];
-        placeObject[@"energy"] = [NSNumber numberWithInt:100];
+        placeObject[@"sentiment"] = [NSNumber numberWithInt:0];
+        placeObject[@"energy"] = [NSNumber numberWithInt:0];
         placeObject[@"confidence"] = [NSNumber numberWithInt:0];
         
         placeObject[@"lastReviewed"] = [NSDate new];
@@ -485,8 +485,8 @@ int radius = 1000;
             placeObject[@"category"] = place.categoryType;
             placeObject[@"hashtagList"] = [[NSArray alloc] initWithObjects:nil];
             
-            placeObject[@"sentiment"] = [NSNumber numberWithInt:100];
-            placeObject[@"energy"] = [NSNumber numberWithInt:100];
+            placeObject[@"sentiment"] = [NSNumber numberWithInt:0];
+            placeObject[@"energy"] = [NSNumber numberWithInt:0];
             placeObject[@"confidence"] = [NSNumber numberWithInt:0];
             
             placeObject[@"lastReviewed"] = [NSDate new];
@@ -569,5 +569,36 @@ int radius = 1000;
                                 }];   
 }
 
+
++ (void) SortListView:(int)sortNum forTable:(UITableView *)tableView withPlaces:(PlaceList *)placeList withSpinner:(UIActivityIndicatorView *)spinner {
+    
+    [spinner startAnimating];
+    
+    NSSortDescriptor *distanceSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"currentDistance" ascending:YES];
+    NSSortDescriptor *reviewSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"lastReviewedTime" ascending:NO];
+    NSSortDescriptor *sentimentSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sentiment" ascending:NO];
+    
+    NSArray *sortedArray;
+    
+    if (sortNum == 1) {
+        //distance
+        placeList.places = [placeList.places sortedArrayUsingDescriptors:@[distanceSortDescriptor]];
+    }
+    
+    else if (sortNum == 2) {
+        //last tagged
+        placeList.places = [placeList.places sortedArrayUsingDescriptors:@[reviewSortDescriptor]];
+    }
+    
+    else {
+        //sentiment
+        placeList.places = [placeList.places sortedArrayUsingDescriptors:@[sentimentSortDescriptor, distanceSortDescriptor]];
+    }
+    
+    //reload data
+    [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+    
+    [spinner stopAnimating];
+}
 
 @end

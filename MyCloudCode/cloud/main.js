@@ -62,8 +62,8 @@ Parse.Cloud.job("UpdatePlaces", function(request, status) {
 
   		if ((deltaTReviewed / (1000 * 60 * 60 * 24)) > DAYS_CUTOFF_SENTIMENT_AND_ENERGY)
   		{
-  			place.set("sentiment", 100);
-  			place.set("energy", 100);
+  			place.set("sentiment", 0);
+  			place.set("energy", 0);
   			place.set("confidence", 0);
   		}
 

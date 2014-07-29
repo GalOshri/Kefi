@@ -26,6 +26,8 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segmentControl;
 @property (nonatomic) BOOL populatingPlaceList;
 @property (strong, nonatomic) IBOutlet UIImageView *kefiSpotlight;
+@property (weak, nonatomic) IBOutlet UIButton *filter;
+
 
 @end
 
@@ -246,18 +248,18 @@
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 125.00;
+    return 132.00;
             
 }
 
 - (PlaceCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // set Dictionary for sentiment picture
-    NSDictionary *sentimentToImageDict = @{@100:@"question.png",
-                                           @0:@"soPissed.png",
-                                           @1:@"eh.png",
-                                           @2:@"semiHappy.png",
-                                           @3:@"soHappy.png"};
+    NSDictionary *sentimentToImageDict = @{@0:@"question.png",
+                                           @1:@"soPissed.png",
+                                           @2:@"eh.png",
+                                           @3:@"semiHappy.png",
+                                           @4:@"soHappy.png"};
     
     static NSString *CellIdentifier = @"PlaceCell";
     PlaceCell *cell = (PlaceCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
@@ -284,32 +286,25 @@
     NSString *displayType = [NSString stringWithFormat:@"%@", cell.place.categoryType];
     cell.placeType.text = displayType;
     
-    NSString *hashtagText = @"";
-        
+    cell.placeHashtag1.text = @"";
+    cell.placeHashtag2.text = @"";
+    
     for (int i=0; i<2; i++)
     {
         if ([cell.place.hashtagList count] > i) {
             Hashtag *currentTag = cell.place.hashtagList[i];
-            hashtagText = [hashtagText stringByAppendingFormat:@"#%@\n",currentTag.text];
+            if (i==0)
+                cell.placeHashtag1.text =[NSString stringWithFormat:@"%@",currentTag.text];
+            else
+                cell.placeHashtag2.text =[NSString stringWithFormat:@"%@",currentTag.text];
         }
     }
-    
-    cell.placeHashtags.text = hashtagText;
-    cell.placeHashtags.font = [UIFont fontWithName:@"Helvetica Neue" size:12];
-    
-    //set cell backgorund color and text color
-    // [cell.placeHashtags setBackgroundColor:[UIColor darkGrayColor]];
-    // [cell.placeName setTextColor:[UIColor purpleColor]];
-    [cell.placeHashtags setTextColor:[UIColor whiteColor]];
-    
     
     // set sentiment / Energy Level and active/inactive states
     //define dictionary:
     NSArray *energyLevels = @[cell.energyLevel1, cell.energyLevel2, cell.energyLevel3];
     
-    if((long)[cell.place.sentiment integerValue] != 100) {
-        // NSLog(@"%@ is in Interval: %d with s: %ld, e: %ld", cell.place.name, cell.place.isInInterval, (long)[cell.place.sentiment integerValue], (long)[cell.place.energy integerValue]);
-
+    if((long)[cell.place.sentiment integerValue] != 0) {
         [cell.sentimentImage setHidden:NO];
         cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey: cell.place.sentiment]];
        
@@ -345,7 +340,7 @@
     else {
         [cell.sentimentImage setHidden:NO];
 
-        cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@100]];
+        cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@0]];
         [cell.sentimentImage setAlpha:0.5];
         
         for (int i=0; i<[energyLevels count]; i++) {
@@ -354,7 +349,8 @@
         }
     }
     
-    cell.placeHashtags.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
+    cell.placeHashtag1.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
+    cell.placeHashtag2.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
     
     return cell;
 }
@@ -484,5 +480,22 @@
             break; 
     }
 }
+
+- (IBAction)filterAlert:(id)sender {
+    UIAlertView *sortAlert = [[UIAlertView alloc] initWithTitle:@"Sort" message:@"Sort by:" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"distance", @"last tagged", @"sentiment", nil];
+    
+    [sortAlert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"%d", buttonIndex);
+    if (buttonIndex != 0) {
+        //send to kefi Service sorting method
+        [KefiService SortListView:buttonIndex forTable:self.tableView withPlaces:self.placeList withSpinner:self.spinner];
+    }
+    
+}
+
+
 
 @end

@@ -94,7 +94,7 @@ NSString *energyLabelDefault;
         {
             // Pass information to next view to tell where to place UI elements
             SubmitReviewDetailView *srdv = (SubmitReviewDetailView *)segue.destinationViewController;
-            srdv.sentimentLevel = activatedSentiment;
+            srdv.sentimentLevel = activatedSentiment + 1;
             srdv.energyLevel = activatedEnergy;
             
             UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
