@@ -304,14 +304,16 @@
         }
     }
     
+    cell.placeHashtag1.textColor = [UIColor darkGrayColor];
     //hide bar text
-    if (![cell.placeHashtag1.text isEqualToString:@""]) {
+    /*
+     if ([cell.place.hashtagList count] >= 1) {
         [cell.placeType setHidden:YES];
-        cell.placeHashtag1.textColor = [UIColor darkGrayColor];
     }
+    */
     
-    // set sentiment / Energy Level and active/inactive states
-    //define dictionary:
+    
+    // set sentiment / Energy Level and active/inactive states. Define dictionary:
     NSArray *energyLevels = @[cell.energyLevel1, cell.energyLevel2, cell.energyLevel3];
     
     if((long)[cell.place.sentiment integerValue] != 0) {
