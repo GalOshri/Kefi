@@ -577,6 +577,7 @@ int radius = 1000;
     NSSortDescriptor *distanceSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"currentDistance" ascending:YES];
     NSSortDescriptor *reviewSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"lastReviewedTime" ascending:NO];
     NSSortDescriptor *sentimentSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sentiment" ascending:NO];
+    NSSortDescriptor *energySortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"energy" ascending:NO];
     
     NSArray *sortedArray;
     
@@ -590,10 +591,16 @@ int radius = 1000;
         placeList.places = [placeList.places sortedArrayUsingDescriptors:@[reviewSortDescriptor]];
     }
     
-    else {
+    else if (sortNum == 3) {
         //sentiment
         placeList.places = [placeList.places sortedArrayUsingDescriptors:@[sentimentSortDescriptor, distanceSortDescriptor]];
     }
+    
+    else {
+        //energy
+        placeList.places = [placeList.places sortedArrayUsingDescriptors:@[energySortDescriptor, sentimentSortDescriptor, distanceSortDescriptor]];
+    }
+    
     
     //reload data
     [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];

@@ -16,7 +16,7 @@
 // UI elements
 @property (strong, nonatomic) IBOutlet UILabel *placeName;
 @property (weak, nonatomic) IBOutlet UITextView *placeHashtag1;
-@property (weak, nonatomic) IBOutlet UITextView *placeHashtag2;
+// @property (weak, nonatomic) IBOutlet UITextView *placeHashtag2;
 @property (weak, nonatomic) IBOutlet UILabel *placeDistance;
 @property (weak, nonatomic) IBOutlet UILabel *placeType;
 

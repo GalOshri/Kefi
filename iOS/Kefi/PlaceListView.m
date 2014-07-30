@@ -192,7 +192,7 @@
                       //  [spotlightSpinner stopAnimating];
                         //[spotlightSpinner removeFromSuperview];
                         UILabel *imgLabel = [[UILabel alloc] init];
-                        imgLabel.frame = CGRectMake(frame.origin.x + 10, frame.origin.y + 105, frame.size.width, 23);
+                        imgLabel.frame = CGRectMake(frame.origin.x + 12, frame.origin.y + 122, frame.size.width, 23);
                         imgLabel.text = [spotlightStrings objectAtIndex:i];
                         imgLabel.textColor = [UIColor whiteColor];
                         [self.spotlightView addSubview:imgLabel];
@@ -207,7 +207,7 @@
     numSpotlightTiles = imageURLs.count;
     currentSpotlightTile = 0;
     
-    [NSTimer scheduledTimerWithTimeInterval:4.0f
+    [NSTimer scheduledTimerWithTimeInterval:10.0f
                                      target:self
                                    selector:@selector(scrollSpotlight:)
                                    userInfo:nil
@@ -287,17 +287,27 @@
     cell.placeType.text = displayType;
     
     cell.placeHashtag1.text = @"";
-    cell.placeHashtag2.text = @"";
+    // cell.placeHashtag2.text = @"";
     
     for (int i=0; i<2; i++)
     {
         if ([cell.place.hashtagList count] > i) {
             Hashtag *currentTag = cell.place.hashtagList[i];
-            if (i==0)
-                cell.placeHashtag1.text =[NSString stringWithFormat:@"%@",currentTag.text];
-            else
-                cell.placeHashtag2.text =[NSString stringWithFormat:@"%@",currentTag.text];
+            if (i==0){
+                cell.placeHashtag1.text =[NSString stringWithFormat:@"#%@",currentTag.text];
+                // cell.placeHashtag1.textAlignment = NSTextAlignmentRight;
+            }
+            else {
+                cell.placeHashtag1.text = [NSString stringWithFormat:@"%@    #%@", cell.placeHashtag1.text, currentTag.text];
+                // cell.placeHashtag2.textAlignment = NSTextAlignmentRight;
+            }
         }
+    }
+    
+    //hide bar text
+    if (![cell.placeHashtag1.text isEqualToString:@""]) {
+        [cell.placeType setHidden:YES];
+        cell.placeHashtag1.textColor = [UIColor darkGrayColor];
     }
     
     // set sentiment / Energy Level and active/inactive states
@@ -349,14 +359,14 @@
         }
     }
     
-    cell.placeHashtag1.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
-    cell.placeHashtag2.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
+    // cell.placeHashtag1.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
+    // cell.placeHashtag2.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
     
     return cell;
 }
 
 -(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    // cell.contentView.backgroundColor = [UIColor lightGrayColor];
+    // cell.contentView.backgroundColor = [UIColor viewFlipsideBackgroundColor];
 }
 
 
@@ -482,7 +492,7 @@
 }
 
 - (IBAction)filterAlert:(id)sender {
-    UIAlertView *sortAlert = [[UIAlertView alloc] initWithTitle:@"Sort" message:@"Sort by:" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"distance", @"last tagged", @"sentiment", nil];
+    UIAlertView *sortAlert = [[UIAlertView alloc] initWithTitle:@"Sort by" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"distance", @"last tagged", @"sentiment", @"energy", nil];
     
     [sortAlert show];
 }
