@@ -25,16 +25,14 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb443646799115032</string>
+				<string>https://kefiCallback</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>https://kefiCallback</string>
+				<string>fb443646799115032</string>
 			</array>
-			<key>CFBundleURLName</key>
-			<string>com.foursquare.oauthexample</string>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>

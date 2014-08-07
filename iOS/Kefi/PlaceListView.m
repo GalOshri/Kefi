@@ -274,10 +274,7 @@
     {
         NSString *distanceString = [cell.place.currentDistance stringValue];
         distanceString = [distanceString substringToIndex:4];
-        
         NSString *displayDistance = [NSString stringWithFormat:@" %@ mi", distanceString];
-        
-        
         cell.placeDistance.text = displayDistance;
     }
     else
@@ -304,14 +301,6 @@
         }
     }
     
-    cell.placeHashtag1.textColor = [UIColor darkGrayColor];
-    //hide bar text
-    /*
-     if ([cell.place.hashtagList count] >= 1) {
-        [cell.placeType setHidden:YES];
-    }
-    */
-    
     
     // set sentiment / Energy Level and active/inactive states. Define dictionary:
     NSArray *energyLevels = @[cell.energyLevel1, cell.energyLevel2, cell.energyLevel3];
@@ -319,7 +308,7 @@
     if((long)[cell.place.sentiment integerValue] != 0) {
         [cell.sentimentImage setHidden:NO];
         cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey: cell.place.sentiment]];
-       
+        
         for (int i=0; i<[energyLevels count]; i++) {
             [energyLevels[i] setHidden:NO];
             
@@ -361,14 +350,26 @@
         }
     }
     
-    // cell.placeHashtag1.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
+    cell.placeHashtag1.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
     // cell.placeHashtag2.textColor = [UIColor colorWithRed:40.0f/255.0f green:114.0f/255.0f blue:179.0f/255.0f alpha:1.0];
     
     return cell;
 }
 
--(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    // cell.contentView.backgroundColor = [UIColor viewFlipsideBackgroundColor];
+-(void) tableView:(UITableView *)tableView willDisplayCell:(PlaceCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // declare array of energy levels
+    NSArray *energyLevels = @[cell.energyLevel1, cell.energyLevel2, cell.energyLevel3];
+    
+    if ([cell.placeHashtag1.text isEqualToString:@""])
+    {
+        cell.sentimentImage.frame = CGRectMake(cell.sentimentImage.frame.origin.x, cell.sentimentImage.frame.origin.y - 15, cell.sentimentImage.frame.size.width, cell.sentimentImage.frame.size.height);
+        
+        for (int i=0; i<[energyLevels count]; i++) {
+            UIImageView *imageView = [energyLevels objectAtIndex:i];
+            imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y - 15, imageView.frame.size.width, imageView.frame.size.height);
+        }
+        
+    }
 }
 
 
