@@ -44,35 +44,34 @@ const NSInteger kMaxCellSpacing = 9;
     CGRect previousFrame = [self layoutAttributesForItemAtIndexPath:previousIndexPath].frame;
     CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width + kMaxCellSpacing;
     
-    // hack? We will always at least be at least as big.
-    CGRect currentFrame = currentItemAttributes.frame;
-    NSLog(@"changed height");
-    currentItemAttributes.frame = CGRectMake(currentFrame.origin.x, previousFrame.origin.y, currentFrame.size.width, currentFrame.size.height);
+    // We will always at least be at least as big.
+    currentItemAttributes.frame = CGRectMake(currentItemAttributes.frame.origin.x, previousFrame.origin.y, currentItemAttributes.frame.size.width, currentItemAttributes.frame.size.height);
     
-    CGRect strecthedCurrentFrame = CGRectMake(0,
+    /*
+     CGRect strecthedCurrentFrame = CGRectMake(0,
                                               currentItemAttributes.frame.origin.y,
                                               self.collectionView.frame.size.width,
                                               currentFrame.size.height);
     
-    if (!CGRectIntersectsRect(previousFrame, strecthedCurrentFrame))
+    
+     if (!CGRectIntersectsRect(previousFrame, strecthedCurrentFrame))
     {
         CGRect frame = CGRectMake(sectionInset.left, currentFrame.origin.y, currentItemAttributes.frame.size.width, currentFrame.size.height);
         
         [currentItemAttributes setFrame:frame];
         currentFrame = frame;
         
-        // NSLog(@"new line started. Old Frame x:%f, y:%f. New frame x: %f and y: %f",previousFrame.origin.x, previousFrame.origin.y,currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
+         NSLog(@"new line started. Old Frame x:%f, y:%f. New frame x: %f and y: %f",previousFrame.origin.x, previousFrame.origin.y,currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
         return currentItemAttributes;
     }
+    */
 
-    else if (previousFrameRightPoint + currentItemAttributes.frame.size.width + kMaxCellSpacing > self.collectionView.frame.size.width)
+    if (previousFrameRightPoint + currentItemAttributes.frame.size.width + kMaxCellSpacing > self.collectionView.frame.size.width)
     {
-        CGRect frame = CGRectMake(sectionInset.left, currentItemAttributes.frame.origin.y + 25, currentItemAttributes.frame.size.width, currentFrame.size.height);
+        CGRect frame = CGRectMake(sectionInset.left, currentItemAttributes.frame.origin.y + 25, currentItemAttributes.frame.size.width, currentItemAttributes.frame.size.height);
         
         [currentItemAttributes setFrame:frame];
-        currentFrame = frame;
         
-       // NSLog(@"new line bc text too long. Old frame x:%f, y:%f. New frame has x: %f and y: %f",previousFrame.origin.x, previousFrame.origin.y,currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
         return currentItemAttributes;
     }
     
@@ -81,13 +80,10 @@ const NSInteger kMaxCellSpacing = 9;
         frame.origin.x = previousFrameRightPoint;
         frame.origin.y = previousFrame.origin.y;
         [currentItemAttributes setFrame:frame];
-        currentFrame = frame;
-        
-        // NSLog(@"continue same line");
+
         return currentItemAttributes;
     }
 
 }
-
 
 @end

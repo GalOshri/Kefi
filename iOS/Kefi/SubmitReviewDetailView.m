@@ -29,14 +29,12 @@
 @property (strong, nonatomic) NSMutableArray *hashtags;
 @property (weak, nonatomic) IBOutlet UITextField *hashtagTextField;
 
-@property (weak, nonatomic) IBOutlet UIButton *fbTest;
 @property (nonatomic, strong) KefiService *kefiService;
 @property (nonatomic) BOOL firstRun;
 
-@property (strong, nonatomic) IBOutlet UISwitch *twitterPostSwitch;
-@property (strong, nonatomic) IBOutlet UISwitch *facebookPostSwitch;
-@property (weak, nonatomic) IBOutlet UIImageView *fsqImg;
-@property (weak, nonatomic) IBOutlet UIImageView *fbImg;
+@property (weak, nonatomic) IBOutlet UIButton *facebookButton;
+@property (weak, nonatomic) IBOutlet UIButton *foursquareButton;
+@property (weak, nonatomic) IBOutlet UIButton *twitterButton;
 
 @end
 
@@ -80,10 +78,10 @@
     self.hashtagView.allowsMultipleSelection = YES;
     
     //round corners of fb and fsq img
-    [[self.fsqImg layer] setCornerRadius:2];
-    [[self.fsqImg layer] setMasksToBounds:YES];
-    [[self. fbImg layer] setCornerRadius:2];
-    [[self.fbImg layer] setMasksToBounds:YES];
+    [[self.foursquareButton layer] setCornerRadius:2];
+    [[self.foursquareButton layer] setMasksToBounds:YES];
+    [[self. facebookButton layer] setCornerRadius:2];
+    [[self.facebookButton layer] setMasksToBounds:YES];
     
     
 }
@@ -162,6 +160,48 @@
 }
 
 
+- (IBAction)facebookSelector:(id)sender
+{
+    if ([self.facebookButton isSelected])
+    {
+        [self.facebookButton setSelected:NO];
+        [self.facebookButton setAlpha:0.3];
+    }
+    else
+    {
+        [self.facebookButton setSelected:YES];
+        [self.facebookButton setAlpha:1.0];
+    }
+    
+}
+
+- (IBAction)twitterSelector:(id)sender
+{
+    if ([self.twitterButton isSelected])
+    {
+        [self.twitterButton setSelected:NO];
+        [self.twitterButton setAlpha:0.3];
+    }
+    else
+    {
+        [self.twitterButton setSelected:YES];
+        [self.twitterButton setAlpha:1.0];
+    }
+}
+
+- (IBAction)foursquareSelector:(id)sender
+{
+    if ([self.foursquareButton isSelected])
+    {
+        [self.foursquareButton setSelected:NO];
+        [self.foursquareButton setAlpha:0.3];
+    }
+    else
+    {
+        [self.foursquareButton setSelected:YES];
+        [self.foursquareButton setAlpha:1.0];
+    }
+}
 
 #pragma mark - Submission methods
 - (IBAction)submitReview:(UIButton *)sender {
@@ -198,7 +238,7 @@
     }
     
     // Submit to Twitter
-    if (self.twitterPostSwitch.on)
+    if (self.twitterButton.isSelected)
     {
         if ([PFTwitterUtils isLinkedWithUser:[PFUser currentUser]])
         {
@@ -233,7 +273,7 @@
     }
     
     // Submit to Facebook
-    if (self.facebookPostSwitch.on)
+    if (self.facebookButton.isSelected)
     {
         if ([PFFacebookUtils isLinkedWithUser:[PFUser currentUser]])
         {
