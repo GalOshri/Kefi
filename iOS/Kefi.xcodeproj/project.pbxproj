@@ -366,6 +366,7 @@
 			children = (
 				0D727EB418F099F1008310FC /* Main.storyboard */,
 				0DABAFEF192860C20018CED9 /* Home View */,
+				0DABAFF0192861520018CED9 /* Place Detail View */,
 				DAAAB4A419529D90004D2DB1 /* Menu Views */,
 				0DABAFEE192860950018CED9 /* Review Submission */,
 				0DABAFF11928616A0018CED9 /* Search View */,
@@ -534,7 +535,6 @@
 				DAD0DD261981E6960075E69D /* foursquare oauth */,
 				DAAAB4AE1952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.h */,
 				DAAAB4AF1952BFC6004D2DB1 /* SocialNetworkAccountsTableViewController.m */,
-				0DABAFF0192861520018CED9 /* Place Detail View */,
 			);
 			name = "Account Settings View";
 			sourceTree = "<group>";

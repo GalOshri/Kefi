@@ -362,13 +362,24 @@
     
     if ([cell.placeHashtag1.text isEqualToString:@""])
     {
-        cell.sentimentImage.frame = CGRectMake(cell.sentimentImage.frame.origin.x, cell.sentimentImage.frame.origin.y - 15, cell.sentimentImage.frame.size.width, cell.sentimentImage.frame.size.height);
+        cell.sentimentImage.frame = CGRectMake(cell.sentimentImage.frame.origin.x, 65.0, cell.sentimentImage.frame.size.width, cell.sentimentImage.frame.size.height);
         
         for (int i=0; i<[energyLevels count]; i++) {
             UIImageView *imageView = [energyLevels objectAtIndex:i];
-            imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y - 15, imageView.frame.size.width, imageView.frame.size.height);
+            imageView.frame = CGRectMake(imageView.frame.origin.x, 75.0, imageView.frame.size.width, imageView.frame.size.height);
         }
         
+    }
+    
+    else
+    {
+        cell.sentimentImage.frame = CGRectMake(cell.sentimentImage.frame.origin.x, 80.0, cell.sentimentImage.frame.size.width, cell.sentimentImage.frame.size.height);
+        
+        for (int i=0; i<[energyLevels count]; i++)
+        {
+            UIImageView *imageView = [energyLevels objectAtIndex:i];
+            imageView.frame = CGRectMake(imageView.frame.origin.x, 90.0, imageView.frame.size.width, imageView.frame.size.height);
+        }
     }
 }
 
@@ -501,7 +512,6 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSLog(@"%d", buttonIndex);
     if (buttonIndex != 0) {
         //send to kefi Service sorting method
         [KefiService SortListView:buttonIndex forTable:self.tableView withPlaces:self.placeList withSpinner:self.spinner];

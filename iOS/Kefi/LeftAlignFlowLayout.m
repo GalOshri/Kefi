@@ -29,11 +29,14 @@ const NSInteger kMaxCellSpacing = 9;
     
     UIEdgeInsets sectionInset = [(UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout sectionInset];
     
-    if (indexPath.item == 0) { // first item of section
+    if (indexPath.item == 0)
+    {
+        // first item of section
         CGRect frame = currentItemAttributes.frame;
         frame.origin.x = sectionInset.left; // first item of the section should always be left aligned
         currentItemAttributes.frame = frame;
         
+       // NSLog(@"first item with x:%f, y:%f", currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
         return currentItemAttributes;
     }
     
@@ -41,36 +44,36 @@ const NSInteger kMaxCellSpacing = 9;
     CGRect previousFrame = [self layoutAttributesForItemAtIndexPath:previousIndexPath].frame;
     CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width + kMaxCellSpacing;
     
+    // hack? We will always at least be at least as big.
     CGRect currentFrame = currentItemAttributes.frame;
+    NSLog(@"changed height");
+    currentItemAttributes.frame = CGRectMake(currentFrame.origin.x, previousFrame.origin.y, currentFrame.size.width, currentFrame.size.height);
+    
     CGRect strecthedCurrentFrame = CGRectMake(0,
-                                              currentFrame.origin.y,
+                                              currentItemAttributes.frame.origin.y,
                                               self.collectionView.frame.size.width,
                                               currentFrame.size.height);
     
-    // NSLog(@"previous frame is  x: %f and y: %f",previousFrame.origin.x, previousFrame.origin.y);
-    
-    if (!CGRectIntersectsRect(previousFrame, strecthedCurrentFrame)) {
-        CGRect frame = CGRectMake(sectionInset.left, currentItemAttributes.frame.origin.y, currentItemAttributes.frame.size.width, currentFrame.size.height);
+    if (!CGRectIntersectsRect(previousFrame, strecthedCurrentFrame))
+    {
+        CGRect frame = CGRectMake(sectionInset.left, currentFrame.origin.y, currentItemAttributes.frame.size.width, currentFrame.size.height);
         
         [currentItemAttributes setFrame:frame];
         currentFrame = frame;
         
-        // NSLog(@"new line. New frame has x: %f and y: %f",currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
-        
+        // NSLog(@"new line started. Old Frame x:%f, y:%f. New frame x: %f and y: %f",previousFrame.origin.x, previousFrame.origin.y,currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
         return currentItemAttributes;
-
     }
 
-    else if (previousFrameRightPoint + currentItemAttributes.frame.size.width + kMaxCellSpacing > self.collectionView.frame.size.width) {
+    else if (previousFrameRightPoint + currentItemAttributes.frame.size.width + kMaxCellSpacing > self.collectionView.frame.size.width)
+    {
         CGRect frame = CGRectMake(sectionInset.left, currentItemAttributes.frame.origin.y + 25, currentItemAttributes.frame.size.width, currentFrame.size.height);
         
         [currentItemAttributes setFrame:frame];
         currentFrame = frame;
         
-        // NSLog(@"new line due to text being too long. New frame has x: %f and y: %f",currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
-        
+       // NSLog(@"new line bc text too long. Old frame x:%f, y:%f. New frame has x: %f and y: %f",previousFrame.origin.x, previousFrame.origin.y,currentItemAttributes.frame.origin.x, currentItemAttributes.frame.origin.y);
         return currentItemAttributes;
-        
     }
     
     else {
@@ -81,7 +84,6 @@ const NSInteger kMaxCellSpacing = 9;
         currentFrame = frame;
         
         // NSLog(@"continue same line");
-        
         return currentItemAttributes;
     }
 

@@ -12,7 +12,8 @@
 #import "KefiService.h"
 @interface SocialNetworkAccountsTableViewController ()
 
-// @property (nonatomic, strong) NSArray *accountTypes;
+@property (strong, nonatomic) NSString *foursquareAccessCode;
+
 // set text fields for username and password changes
 @property UITextField *usernameTextfield;
 @property UITextField *passwordTextfield;
@@ -176,7 +177,6 @@
     
     if (indexPath.section == 1)
     {
-        NSLog(@"clicked section1 ");
         switch ([indexPath row])
         {
             case 1:
@@ -243,20 +243,22 @@
     return 32.0;
 }
 
+
 -(CGFloat)tableView:(UITableView*)tableView heightForFooterInSection:(NSInteger)section
 {
     return 2.0;
 }
 
+
 - (void)handleURL:(NSURL *)url {
-    if ([[url scheme] isEqualToString:@"kefiCallback"]) {
+    if ([[url scheme] isEqualToString:@"https://kefiCallback"]) {
         FSOAuthErrorCode errorCode;
-        NSString *accessCode = [FSOAuth accessCodeForFSOAuthURL:url error:&errorCode];;
+        self.foursquareAccessCode = [FSOAuth accessCodeForFSOAuthURL:url error:&errorCode];;
         
         NSString *resultText = nil;
         if (errorCode == FSOAuthErrorNone) {
-            resultText = [NSString stringWithFormat:@"Access code: %@", accessCode];
-            NSLog(@"%@", accessCode);
+            resultText = [NSString stringWithFormat:@"Access code: %@", self.foursquareAccessCode];
+            NSLog(@"%@", self.foursquareAccessCode);
         }
         else {
             NSLog(@"%@",[self errorMessageForCode:errorCode]);
@@ -302,6 +304,8 @@
     
     return resultText;
 }
+
+
 
 /*
 // Override to support conditional editing of the table view.

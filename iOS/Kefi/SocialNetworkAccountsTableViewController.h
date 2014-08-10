@@ -11,4 +11,6 @@
 
 @interface SocialNetworkAccountsTableViewController : UITableViewController
 
+- (void)handleURL:(NSURL *)url;
+
 @end

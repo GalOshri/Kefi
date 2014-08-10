@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "SocialNetworkAccountsTableViewController.h"
 
 
 @implementation AppDelegate
@@ -37,13 +38,39 @@
     return YES;
 }
 
+/*
+ - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    if ([[url scheme] isEqualToString:@"https://kefiCallback"])
+    {
+        //foursquare
+        SocialNetworkAccountsTableViewController *snatvc = [[SocialNetworkAccountsTableViewController alloc] init];
+        [snatvc handleURL:url];
+    }
+    return YES;
+}
+*/
+
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
-    return [FBAppCall handleOpenURL:url
-                  sourceApplication:sourceApplication
-                        withSession:[PFFacebookUtils session]];
+    
+    NSLog(@"%@", sourceApplication);
+    if ([sourceApplication isEqual:@"com.facebook.Facebook"])
+    {
+        return [FBAppCall handleOpenURL:url
+                      sourceApplication:sourceApplication
+                            withSession:[PFFacebookUtils session]];
+    }
+    
+    else
+    {
+        //foursquare
+        SocialNetworkAccountsTableViewController *snatvc = [[SocialNetworkAccountsTableViewController alloc] init];
+        [snatvc handleURL:url];
+        return YES;
+    }
 }
 
 - (void)application:(UIApplication *)application
