@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
 @property (strong, nonatomic) IBOutlet UIView *drawView;
 @property (strong, nonatomic)  UIButton *reviewButton;
-
+@property (strong, nonatomic) UIView *drawCrap;
 
 @property UIButton *L4Sentiment;
 @property UIButton *L3Sentiment;
@@ -38,14 +38,6 @@
 @property (strong, nonatomic) UIImageView *tooltipImgView;
 @property (strong, nonatomic) NSMutableArray *energyLabels;
 
-// constraints
-/*
- @property (strong, nonatomic) IBOutlet NSLayoutConstraint *L4TopConstraint;
- @property (weak, nonatomic) IBOutlet NSLayoutConstraint *L3TopConstraint;
- @property (weak, nonatomic) IBOutlet NSLayoutConstraint *reviewButtonTopConstraint;
- @property (weak, nonatomic) IBOutlet NSLayoutConstraint *L2TopConstraint;
- @property (weak, nonatomic) IBOutlet NSLayoutConstraint *L1TopConstraint;
- */
 
 @end
 
@@ -81,11 +73,7 @@ NSString *coordinateLabelDefault;
 NSString *energyLabelDefault;
 
 
-
-
-
 #pragma mark - Navigation
-
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -111,8 +99,8 @@ NSString *energyLabelDefault;
     }
 }
 
-#pragma mark - View Methods
 
+#pragma mark - View Methods
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -127,12 +115,13 @@ NSString *energyLabelDefault;
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
     
+    // take care of self.drawView
     CGRect frame = CGRectMake(self.drawView.frame.origin.x, self.drawView.frame.origin.y, screenWidth, screenHeight - self.drawView.frame.origin.y);
-    
     // self.drawView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"potentialReviewBckgrnd.jpg"]];
-    
     [self.drawView setFrame:frame];
     
+    //TODO: Fix
+    [self.drawView addTarget:self action:@selector(touchBasedReview:forEvent:) forControlEvents:UIControlEventTouchUpInside];
     
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
@@ -189,24 +178,6 @@ NSString *energyLabelDefault;
                       @1: @"chill",
                       @2: @"buzzin'",
                       @3: @"ragin'!"};
-    
-    // hardcode position of sentiment circles
-    /*
-     // remove constraints
-     [self.L4Sentiment removeConstraint:self.L4TopConstraint];
-     [self.L3Sentiment removeConstraint:self.L3TopConstraint];
-     [self.L2Sentiment removeConstraint:self.L2TopConstraint];
-     [self.L1Sentiment removeConstraint:self.L1TopConstraint];
-     [self.reviewButton removeConstraint:self.reviewButtonTopConstraint];
-     
-     //add constraints
-     NSLayoutConstraint *L4NewConstraint = [NSLayoutConstraint constraintWithItem:self.L4Sentiment attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.drawView attribute:NSLayoutAttributeTop multiplier:0.2 constant:self.drawView.frame.size.height];
-     
-     NSLayoutConstraint *L3NewConstraint = [NSLayoutConstraint constraintWithItem:self.L3Sentiment attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.drawView attribute:NSLayoutAttributeTop multiplier:0.4 constant:self.drawView.frame.size.height];
-     
-     [self.drawView addConstraints:@[L4NewConstraint, L3NewConstraint]];
-     */
-    
 }
 
 
@@ -697,6 +668,15 @@ NSString *energyLabelDefault;
     [self.energyLabels addObject:label3];
     [self.energyLabels addObject:label2];
     [self.energyLabels addObject:label1];
+}
+
+
+// Perform Touch Experiment.
+- (IBAction)touchBasedReview:(UIView *)sender forEvent:(UIEvent *)event
+{
+    
+    
+    
 }
 
 @end
