@@ -121,7 +121,7 @@ NSString *energyLabelDefault;
     [self.drawView setFrame:frame];
     
     //TODO: Fix
-    [self.drawView addTarget:self action:@selector(touchBasedReview:forEvent:) forControlEvents:UIControlEventTouchUpInside];
+    // [self.drawView addTarget:self action:@selector(touchBasedReview:forEvent:) forControlEvents:UIControlEventTouchUpInside];
     
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;

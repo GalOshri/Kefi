@@ -23,6 +23,8 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.kefiCallback.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>https://kefiCallback</string>
