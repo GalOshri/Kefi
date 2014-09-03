@@ -284,7 +284,6 @@
     cell.placeType.text = displayType;
     
     cell.placeHashtag1.text = @"";
-    // cell.placeHashtag2.text = @"";
     
     for (int i=0; i<2; i++)
     {
@@ -306,11 +305,9 @@
     NSArray *energyLevels = @[cell.energyLevel1, cell.energyLevel2, cell.energyLevel3];
     
     if((long)[cell.place.sentiment integerValue] != 0) {
-        [cell.sentimentImage setHidden:NO];
         cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey: cell.place.sentiment]];
         
         for (int i=0; i<[energyLevels count]; i++) {
-            [energyLevels[i] setHidden:NO];
             
             UIImageView *imageView = [energyLevels objectAtIndex:i];
             
@@ -339,13 +336,11 @@
     }
     
     else {
-        [cell.sentimentImage setHidden:NO];
 
         cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@0]];
         [cell.sentimentImage setAlpha:0.5];
         
         for (int i=0; i<[energyLevels count]; i++) {
-            [energyLevels[i] setHidden:NO];
             [energyLevels[i] setImage:[UIImage imageNamed:@"smallCircle.png"]];
         }
     }
@@ -363,10 +358,12 @@
     if ([cell.placeHashtag1.text isEqualToString:@""])
     {
         cell.sentimentImage.frame = CGRectMake(cell.sentimentImage.frame.origin.x, 65.0, cell.sentimentImage.frame.size.width, cell.sentimentImage.frame.size.height);
+        [cell.sentimentImage setHidden:NO];
         
         for (int i=0; i<[energyLevels count]; i++) {
             UIImageView *imageView = [energyLevels objectAtIndex:i];
             imageView.frame = CGRectMake(imageView.frame.origin.x, 75.0, imageView.frame.size.width, imageView.frame.size.height);
+            [imageView setHidden:NO];
         }
         
     }
@@ -374,11 +371,13 @@
     else
     {
         cell.sentimentImage.frame = CGRectMake(cell.sentimentImage.frame.origin.x, 80.0, cell.sentimentImage.frame.size.width, cell.sentimentImage.frame.size.height);
+        [cell.sentimentImage setHidden:NO];
         
         for (int i=0; i<[energyLevels count]; i++)
         {
             UIImageView *imageView = [energyLevels objectAtIndex:i];
             imageView.frame = CGRectMake(imageView.frame.origin.x, 90.0, imageView.frame.size.width, imageView.frame.size.height);
+            [imageView setHidden:NO];
         }
     }
 }

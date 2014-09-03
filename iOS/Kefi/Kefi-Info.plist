@@ -27,7 +27,7 @@
 			<string>com.kefiCallback.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>https://kefiCallback</string>
+				<string>https://kefiCallback://</string>
 			</array>
 		</dict>
 		<dict>
