@@ -62,6 +62,7 @@ int radius = 1000;
                 NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
                 NSDictionary *responseDict = [jsonDict objectForKey:@"response"];
                 NSArray *venueArray = [responseDict objectForKey:@"venues"];
+                NSMutableArray *newPlaceList = [[NSMutableArray alloc] init];
                 
                 for (int i = 0; i < [venueArray count]; i++)
                 {
@@ -103,10 +104,13 @@ int radius = 1000;
                     place.sentiment = [NSNumber numberWithInt:0];
                     place.energy = [NSNumber numberWithInt:-1];
                     
-                    [placeList.places addObject:place];
+                    [newPlaceList addObject:place];
                     
                     
                 }
+                
+                placeList.places = newPlaceList;
+                
                 //make call to populate with parse data
                 if (![searchTerm isEqualToString:@""])
                     [self PopulateWithParseData: placeList withTableView:tableView withSpinner:spinner];
@@ -495,10 +499,6 @@ int radius = 1000;
             [placeObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 place.pId = [NSString stringWithString:placeObject.objectId];
             }];
-            
-        } else {
-            // Place exists so don't do anything.
-            NSLog(@"Successfully retrieved the object.");
         }
     }];
 }

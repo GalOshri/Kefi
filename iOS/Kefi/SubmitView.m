@@ -17,7 +17,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *placeLabel;
 @property (strong, nonatomic) IBOutlet UIView *drawView;
 @property (strong, nonatomic)  UIButton *reviewButton;
-@property (strong, nonatomic) UIView *drawCrap;
 
 @property UIButton *L4Sentiment;
 @property UIButton *L3Sentiment;
@@ -120,9 +119,6 @@ NSString *energyLabelDefault;
     // self.drawView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"potentialReviewBckgrnd.jpg"]];
     [self.drawView setFrame:frame];
     
-    //TODO: Fix
-    // [self.drawView addTarget:self action:@selector(touchBasedReview:forEvent:) forControlEvents:UIControlEventTouchUpInside];
-    
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
     cellHeight = (self.drawView.frame.size.height) / numVerticalCells;
     
@@ -180,13 +176,9 @@ NSString *energyLabelDefault;
                       @3: @"ragin'!"};
 }
 
-
--(void) viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-}
-
 -(void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     //create all zeh buttonz, ya?
     [self createSentimentButtons];
     [self createEnergyLevels];
@@ -250,7 +242,7 @@ NSString *energyLabelDefault;
     self.tooltipTextView = [[UITextView alloc] init];
     self.tooltipTextView.editable = NO;
     
-    self.tooltipTextView.text = @"Drag and hold this button to the appropriate face.\nThen, share what the vibe's like.";
+    self.tooltipTextView.text = @"Drag and hold this button to the appropriate face and energy,\nor simply tap on a button! ";
     self.tooltipTextView.textColor = [UIColor whiteColor];
     [self.tooltipTextView setFont:[UIFont systemFontOfSize:11.0]];
     self.tooltipTextView.frame = CGRectMake(self.drawView.frame.origin.x + 25, self.reviewButton.frame.origin.y - 43, self.drawView.frame.size.width - 35, 43);
@@ -289,7 +281,7 @@ NSString *energyLabelDefault;
             [timer invalidate];
             selectedSentimentIndex = verticalCellIndex;
             //start/reset the timer.
-            timer = [NSTimer scheduledTimerWithTimeInterval:0.50 target:self selector:@selector(InitiateReviewEnergyLevels:) userInfo:[NSString stringWithFormat:@"%d",verticalCellIndex] repeats:NO];
+            timer = [NSTimer scheduledTimerWithTimeInterval:0.30 target:self selector:@selector(InitiateReviewEnergyLevels:) userInfo:[NSString stringWithFormat:@"%d",verticalCellIndex] repeats:NO];
         }
     }
     
@@ -365,13 +357,6 @@ NSString *energyLabelDefault;
         [self HideAllExceptSentiment:activatedSentiment];
         UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
         [UIView animateWithDuration:0.75 animations:^{
-
-            /*
-            [self.view setBackgroundColor:[UIColor whiteColor]];
-            [self.drawView setBackgroundColor:[UIColor whiteColor]];
-            [self.placeLabel setTextColor:[UIColor blackColor]];
-            [self.coordinateLabel setTextColor:[UIColor blackColor]];
-             */
             
             currentButton.center = CGPointMake(currentButton.center.x, 30);
         }completion:^(BOOL finished){
@@ -400,8 +385,6 @@ NSString *energyLabelDefault;
     [timer invalidate];
     activatedSentiment = -1;
     activatedEnergy = -1;
-    
-    
     
 }
 
@@ -591,7 +574,11 @@ NSString *energyLabelDefault;
         
         //set frame
         if (i!=2)
-            sentimentTemp.frame = CGRectMake(100.0 + i*20.0 ,100.0 + i*20.0, 60.0, 60.0);
+            {
+                sentimentTemp.frame = CGRectMake(100.0 + i*20.0 ,100.0 + i*20.0, 60.0, 60.0);
+                [sentimentTemp addTarget:self action:@selector(sentimentButtonTouchUp:) forControlEvents:UIControlEventTouchUpInside];
+            }
+        
         else{
             sentimentTemp.frame = CGRectMake(100.0 + i*20.0, 100.0 +i*20, 70.0, 70.0);
             
@@ -623,6 +610,7 @@ NSString *energyLabelDefault;
 
         energyTemp.frame = CGRectMake(50+ i*20.0, 50+ i*20.0, 30.0, 30.0);
         [energyTemp setHidden:YES];
+        [energyTemp addTarget:self action:@selector(energyButtonTouchUp:) forControlEvents:UIControlEventTouchUpInside];
         
         int level = i/3;
         int vertLevel = i % 3;
@@ -635,7 +623,6 @@ NSString *energyLabelDefault;
         
         [self.drawView addSubview:energyTemp];
     }
-    
 }
 
 
@@ -671,12 +658,106 @@ NSString *energyLabelDefault;
 }
 
 
-// Perform Touch Experiment.
-- (IBAction)touchBasedReview:(UIView *)sender forEvent:(UIEvent *)event
+// Perform Touch Experiment
+- (void)sentimentButtonTouchUp: (id)sender
 {
+    [self.tooltipImgView setHidden:YES];
+    [self.tooltipTextView setHidden:YES];
     
+    UIButton *sentimentButton = sender;
+    CGPoint point = CGPointMake(sentimentButton.center.x, sentimentButton.center.y);
+
+    int horizontalCellIndex = floor(point.x / cellWidth);
+    int verticalCellIndex = floor((self.drawView.frame.size.height - point.y) / cellHeight);
     
+    if (activatedSentiment == -1)
+    {
+        self.coordinateLabel.text = [NSString stringWithFormat:@"%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]]];
+        
+        activatedSentiment = (int)verticalCellIndex;
+        [self SlideAllSentimentsLeft:(int)verticalCellIndex];
+        [self.reviewButton setHidden:YES];
+    }
     
+    else
+    {
+        if (activatedSentiment != verticalCellIndex)
+        {
+            // Choose different sentiment
+            if (horizontalCellIndex == 0 && verticalCellIndex != 2)
+            {
+                [self DeactivateSentiment:activatedSentiment];
+                [self ActivateSentiment:verticalCellIndex];
+            }
+            
+            // self.energyLabel.text = @"";
+            self.coordinateLabel.text = [NSString stringWithFormat:@"%@",[sentimentStrings objectForKey:[NSNumber numberWithInt:verticalCellIndex]]];
+            
+            // Deactivate all energy circles
+            [self DeactivateAllEnergyCircles];
+            activatedEnergy = -1;
+        }
+        
+        else
+        {
+            if (activatedEnergy != horizontalCellIndex)
+            {
+                [self DeactivateAllEnergyCircles];
+                
+                NSArray *vertEnergyCircles = [verticalToEnergyCirclesDict objectForKey:[NSNumber numberWithInt:4-horizontalCellIndex]];
+                
+                for (UIButton *energyCircle in vertEnergyCircles)
+                {
+                    [self ActivateEnergyCircle:energyCircle];
+                }
+                
+                [activatedEnergyCircles addObjectsFromArray:vertEnergyCircles];
+                activatedEnergy = horizontalCellIndex;
+                
+                if (horizontalCellIndex !=0)
+                {
+                    UILabel *activateEnergylabel = [self.energyLabels objectAtIndex:horizontalCellIndex-1];
+                    [activateEnergylabel setTextColor:[UIColor colorWithRed:40.0/255.0f green:114.0/255.0f blue:179.0/255.0f alpha:1.0f]];
+                }
+                
+            }
+        }
+    }
+
+}
+
+- (void)energyButtonTouchUp: (id)sender
+{
+    UIButton *selectedEnergy = sender;
+    int horizontalCellIndex = floor(selectedEnergy.center.x / cellWidth);
+    
+    // select energy circle
+    [self DeactivateAllEnergyCircles];
+    
+    NSArray *vertEnergyCircles = [verticalToEnergyCirclesDict objectForKey:[NSNumber numberWithInt:4-horizontalCellIndex]];
+    
+    for (UIButton *energyCircle in vertEnergyCircles)
+    {
+        [self ActivateEnergyCircle:energyCircle];
+    }
+    
+    [activatedEnergyCircles addObjectsFromArray:vertEnergyCircles];
+    activatedEnergy = horizontalCellIndex;
+    
+    if (activatedSentiment != -1)
+    {
+        // TODO: SUBMIT REVIEW
+        [self HideAllExceptSentiment:activatedSentiment];
+        UIButton *currentButton = [horizontalToSentimentDict objectForKey:[NSNumber numberWithInt:activatedSentiment]];
+        [UIView animateWithDuration:0.75 animations:^{
+            
+            currentButton.center = CGPointMake(currentButton.center.x, 30);
+        }completion:^(BOOL finished){
+            [self performSegueWithIdentifier:@"SubmitReviewDetailSegue" sender:self];
+        }];
+        
+        return;
+    }
 }
 
 @end

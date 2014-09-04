@@ -385,7 +385,7 @@
 
 // Refresh table on pull down
 - (void)refreshList {
-    [self.placeList.places removeAllObjects];
+    //[self.placeList.places removeAllObjects];
     if (locationManager.location != nil)
         [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:locationManager.location withSpinner:self.spinner];
     else
