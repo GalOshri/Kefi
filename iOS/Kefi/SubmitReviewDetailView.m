@@ -83,6 +83,12 @@
     [[self. facebookButton layer] setCornerRadius:2];
     [[self.facebookButton layer] setMasksToBounds:YES];
     
+    //call selector to dismiss keyboard code if it is present
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchEventOnView:)];
+    [tapRecognizer setNumberOfTapsRequired:1];
+    [tapRecognizer setDelegate:self];
+    [self.view addGestureRecognizer:tapRecognizer];
+    
     
 }
 
@@ -406,10 +412,9 @@
 }
 
 
-- (IBAction)didSubmitFacebook:(id)sender {
-    
-    
-    
+- (void)touchEventOnView: (id) sender
+{
+    [self.view endEditing:YES];
 }
 
 

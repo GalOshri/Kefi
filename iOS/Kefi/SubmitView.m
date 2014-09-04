@@ -242,7 +242,7 @@ NSString *energyLabelDefault;
     self.tooltipTextView = [[UITextView alloc] init];
     self.tooltipTextView.editable = NO;
     
-    self.tooltipTextView.text = @"Drag and hold this button to the appropriate face and energy,\nor simply tap on a button! ";
+    self.tooltipTextView.text = @"Drag and hold this button to the appropriate face\nand energy button,or just tap on a face! ";
     self.tooltipTextView.textColor = [UIColor whiteColor];
     [self.tooltipTextView setFont:[UIFont systemFontOfSize:11.0]];
     self.tooltipTextView.frame = CGRectMake(self.drawView.frame.origin.x + 25, self.reviewButton.frame.origin.y - 43, self.drawView.frame.size.width - 35, 43);
