@@ -303,6 +303,7 @@
     
     // set sentiment / Energy Level and active/inactive states. Define dictionary:
     NSArray *energyLevels = @[cell.energyLevel1, cell.energyLevel2, cell.energyLevel3];
+    [cell.sentimentImage setHidden:YES];
     
     if((long)[cell.place.sentiment integerValue] != 0) {
         cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey: cell.place.sentiment]];
@@ -310,7 +311,7 @@
         for (int i=0; i<[energyLevels count]; i++) {
             
             UIImageView *imageView = [energyLevels objectAtIndex:i];
-            
+            [energyLevels[i] setHidden:YES];
             if ([cell.place.energy integerValue]  > i)
                 [imageView setImage:[UIImage imageNamed:@"smallCircleFull.png"]];
             
@@ -339,9 +340,11 @@
 
         cell.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:@0]];
         [cell.sentimentImage setAlpha:0.5];
+        [cell.sentimentImage setHidden:YES];
         
         for (int i=0; i<[energyLevels count]; i++) {
             [energyLevels[i] setImage:[UIImage imageNamed:@"smallCircle.png"]];
+            [energyLevels[i] setHidden:YES];
         }
     }
     

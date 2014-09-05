@@ -82,14 +82,6 @@
     [[self.foursquareButton layer] setMasksToBounds:YES];
     [[self. facebookButton layer] setCornerRadius:2];
     [[self.facebookButton layer] setMasksToBounds:YES];
-    
-    //call selector to dismiss keyboard code if it is present
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchEventOnView:)];
-    [tapRecognizer setNumberOfTapsRequired:1];
-    [tapRecognizer setDelegate:self];
-    [self.view addGestureRecognizer:tapRecognizer];
-    
-    
 }
 
 
@@ -397,6 +389,15 @@
     return YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    //call selector to dismiss keyboard code if it is present
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(touchEventOnView:)];
+    [tapRecognizer setNumberOfTapsRequired:1];
+    [tapRecognizer setDelegate:self];
+    [self.view addGestureRecognizer:tapRecognizer];
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HashtagCollectionCell *cell = (HashtagCollectionCell *)[self.hashtagView cellForItemAtIndexPath:indexPath];
@@ -415,6 +416,11 @@
 - (void)touchEventOnView: (id) sender
 {
     [self.view endEditing:YES];
+    
+    // remove gesture
+    UITapGestureRecognizer *gestureRecognizer = sender;
+    
+    [self.view removeGestureRecognizer:gestureRecognizer];
 }
 
 
