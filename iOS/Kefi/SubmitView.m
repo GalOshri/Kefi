@@ -105,7 +105,7 @@ NSString *energyLabelDefault;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    // [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:32/256 green:32/256 blue:32/256 alpha:1.0]];
 
     // set height of drawView
     
@@ -116,7 +116,7 @@ NSString *energyLabelDefault;
     
     // take care of self.drawView
     CGRect frame = CGRectMake(self.drawView.frame.origin.x, self.drawView.frame.origin.y, screenWidth, screenHeight - self.drawView.frame.origin.y);
-    // self.drawView.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"potentialReviewBckgrnd.jpg"]];
+    self.drawView.backgroundColor = [UIColor colorWithRed:32/256 green:32/256 blue:32/256 alpha:1.0];
     [self.drawView setFrame:frame];
     
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;
@@ -758,6 +758,10 @@ NSString *energyLabelDefault;
         
         return;
     }
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 @end

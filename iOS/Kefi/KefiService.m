@@ -579,7 +579,7 @@ int radius = 1000;
     NSSortDescriptor *sentimentSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"sentiment" ascending:NO];
     NSSortDescriptor *energySortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"energy" ascending:NO];
     
-    NSArray *sortedArray;
+   // NSArray *sortedArray;
     
     if (sortNum == 1) {
         //distance

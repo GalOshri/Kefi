@@ -47,7 +47,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.firstRun = YES;
     
     // manually change sentiment if greater than 2 to sentiment - 1
     // because our "2" is merely a placeholder and this messes up calculation
@@ -56,8 +55,8 @@
         self.sentimentLevel -= 1;
 
     // uicollectionview background color
-    self.hashtagView.backgroundColor = [UIColor viewFlipsideBackgroundColor];
-    self.view.backgroundColor = [UIColor viewFlipsideBackgroundColor];
+    self.hashtagView.backgroundColor = [UIColor colorWithRed:32/256 green:32/256 blue:32/256 alpha:1.0];
+    self.view.backgroundColor = [UIColor colorWithRed:32/256 green:32/256 blue:32/256 alpha:1.0];
 
     self.hashtags = [[NSMutableArray alloc] init];
     for (Hashtag *hashtag in self.place.hashtagList)
@@ -84,34 +83,41 @@
     [[self.facebookButton layer] setMasksToBounds:YES];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.firstRun = YES;
+}
 
--(void)viewDidLayoutSubviews{
+- (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     
-    // create image and labels
-    NSDictionary *sentimentToImageDict = @{@1:@"soPissed.png",
-                                           @2:@"eh.png",
-                                           @3:@"semiHappy.png",
-                                           @4:@"soHappy.png"};
-    // self.sentimentImage = [[UIImageView alloc] init];
-    self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:[NSNumber numberWithInt:self.sentimentLevel]]];
-    self.sentimentImage.frame = self.imageFrame;
     
-   // self.placeLabel = [[UILabel alloc] init];
-    [self.placeLabel setText:self.place.name];
-    [self.placeLabel sizeToFit];
-    
-    
-    // self.reviewDetailLabel = [[UILabel alloc] init];
-    [self.reviewDetailLabel setText: self.reviewDetailLabelText];
-    [self.reviewDetailLabel sizeToFit];
-    
-    /*[self.view addSubview:self.sentimentImage];
-    [self.view addSubview:self.placeLabel];
-    [self.view addSubview:self.reviewDetailLabel];*/
-    
-    
-    if (self.firstRun) {
+    if (self.firstRun)
+    {
+        // create image and labels
+        NSDictionary *sentimentToImageDict = @{@1:@"soPissed.png",
+                                               @2:@"eh.png",
+                                               @3:@"semiHappy.png",
+                                               @4:@"soHappy.png"};
+        // self.sentimentImage = [[UIImageView alloc] init];
+        self.sentimentImage.image = [UIImage imageNamed:[sentimentToImageDict objectForKey:[NSNumber numberWithInt:self.sentimentLevel]]];
+        self.sentimentImage.frame = self.imageFrame;
+        
+       // self.placeLabel = [[UILabel alloc] init];
+        [self.placeLabel setText:self.place.name];
+        [self.placeLabel sizeToFit];
+        
+        
+        // self.reviewDetailLabel = [[UILabel alloc] init];
+        [self.reviewDetailLabel setText: self.reviewDetailLabelText];
+        [self.reviewDetailLabel sizeToFit];
+        
+        /*[self.view addSubview:self.sentimentImage];
+        [self.view addSubview:self.placeLabel];
+        [self.view addSubview:self.reviewDetailLabel];*/
+        
+        
         [self.placeLabel setFrame:self.placeLabelFrame];
         [self.reviewDetailLabel setCenter:self.reviewDetailLabelCenter];
         self.placeLabel.textAlignment = NSTextAlignmentLeft;
@@ -121,9 +127,9 @@
 
         // animate placeName and reviewdetail labels down
         [UIView animateWithDuration:0.5 animations:^{
-            self.placeLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width + 15, self.sentimentImage.frame.origin.y + 20.0, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
+            self.placeLabel.frame = CGRectMake(self.sentimentImage.frame.origin.x + self.sentimentImage.frame.size.width + 15, self.sentimentImage.frame.origin.y - 10.0, self.placeLabel.frame.size.width, self.placeLabel.frame.size.height);
             
-            self.reviewDetailLabel.frame = CGRectMake(self.placeLabel.frame.origin.x, self.sentimentImage.frame.origin.y + 30, self.reviewDetailLabel.frame.size.width, self.reviewDetailLabel.frame.size.height);
+            self.reviewDetailLabel.frame = CGRectMake(self.placeLabel.frame.origin.x, self.sentimentImage.frame.origin.y + 40, self.reviewDetailLabel.frame.size.width, self.reviewDetailLabel.frame.size.height);
             
             
         }completion:^(BOOL finished){
@@ -421,6 +427,10 @@
     UITapGestureRecognizer *gestureRecognizer = sender;
     
     [self.view removeGestureRecognizer:gestureRecognizer];
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 
