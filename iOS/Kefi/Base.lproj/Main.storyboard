@@ -811,7 +811,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Contact Us" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fc3-RE-sg5">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Report Bugs / Contact Us" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fc3-RE-sg5">
                                             <rect key="frame" x="15" y="0.0" width="290" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -870,7 +870,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Or add your feedback here and click submit!" translatesAutoresizingMaskIntoConstraints="NO" id="krT-Yc-rh3">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Or add your feedback/bug here and click submit!" translatesAutoresizingMaskIntoConstraints="NO" id="krT-Yc-rh3">
                                 <rect key="frame" x="20" y="123" width="280" height="291"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1274,8 +1274,8 @@ Put up your swords; you know not what you do.
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5O-RE-ejr">
-                                <rect key="frame" x="0.0" y="79" width="320" height="401"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5O-RE-ejr">
+                                <rect key="frame" x="20" y="79" width="280" height="401"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
@@ -1298,6 +1298,13 @@ Gal and Paul.</string>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Z5O-RE-ejr" secondAttribute="centerX" id="I4b-Ow-rbt"/>
+                            <constraint firstAttribute="trailing" secondItem="Z5O-RE-ejr" secondAttribute="trailing" constant="20" id="LHt-YS-7qy"/>
+                            <constraint firstItem="Z5O-RE-ejr" firstAttribute="top" secondItem="eeX-bP-IZY" secondAttribute="bottom" constant="15" id="Szi-0f-l4G"/>
+                            <constraint firstItem="Z5O-RE-ejr" firstAttribute="leading" secondItem="goG-3A-XZQ" secondAttribute="leading" constant="20" id="WwQ-aZ-wLy"/>
+                            <constraint firstItem="2d8-4m-cFg" firstAttribute="top" secondItem="Z5O-RE-ejr" secondAttribute="bottom" id="x2z-UJ-xCB"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About Kefi" id="bHa-Rh-Loi">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="dnv-sh-8vr">

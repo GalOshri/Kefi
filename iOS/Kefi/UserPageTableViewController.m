@@ -88,11 +88,11 @@
 - (ReviewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // set Dictionary for sentiment picture
-    NSDictionary *sentimentToImageDict = @{@100:@"question.png",
-                                           @0:@"soPissed.png",
-                                           @1:@"eh.png",
-                                           @2:@"semiHappy.png",
-                                           @3:@"soHappy.png"};
+    NSDictionary *sentimentToImageDict = @{@0:@"question.png",
+                                           @1:@"soPissed.png",
+                                           @2:@"eh.png",
+                                           @3:@"semiHappy.png",
+                                           @4:@"soHappy.png"};
     
     static NSString *CellIdentifier = @"ReviewCell";
     ReviewCell *cell = (ReviewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
