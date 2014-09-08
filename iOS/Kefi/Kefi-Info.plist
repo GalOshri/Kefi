@@ -23,11 +23,17 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleURLName</key>
-			<string>com.kefiCallback.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>https://kefiCallback://</string>
+				<string>Kefi://foursquare</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.getkefi.Kefi</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kefiCallback</string>
 			</array>
 		</dict>
 		<dict>

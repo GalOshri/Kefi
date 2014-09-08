@@ -141,11 +141,11 @@
             // Foursquare
             case 2:
             {
-                NSString *client_id = @"T4XPWMEQAID11W0CSQLCP2P0NXGEUSDZRV4COSBJH2QEMC2O";
+                NSString *client_id = @"NR2PZN1AJMC400XHN1CA1M4YZOBHMQXL0DMLUSU4TGRPJLJ5";
                 
                 
-                // NSString *client_secret = @"0P1EQQ3NH102D0R3GNGTG0ZAL0S5T41YDB2NPOOMRMO2I2EO";
-                NSString *client_callbackString = @"https://kefiCallback://";
+                // NSString *client_secret = @"Q03E0UKCWUXUBHR4LYO3NI0B2ZTAOTTXVTJJKSZ3HUS0YCVF";
+                NSString *client_callbackString = @"kefiCallback://foursquare";
                 
                 FSOAuthStatusCode statusCode = [FSOAuth authorizeUserUsingClientId:client_id
                                                                  callbackURIString:client_callbackString
@@ -251,7 +251,8 @@
 
 
 - (void)handleURL:(NSURL *)url {
-    if ([[url scheme] isEqualToString:@"https://kefiCallback"]) {
+    NSLog(@"%@", [url scheme]);
+    if ([[url scheme] isEqualToString:@"keficallback"]) {
         FSOAuthErrorCode errorCode;
         self.foursquareAccessCode = [FSOAuth accessCodeForFSOAuthURL:url error:&errorCode];;
         
