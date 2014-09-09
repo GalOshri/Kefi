@@ -41,6 +41,9 @@
 
 @implementation SubmitReviewDetailView
 
+NSString *client_id = @"T4XPWMEQAID11W0CSQLCP2P0NXGEUSDZRV4COSBJH2QEMC2O";
+NSString *client_secret = @"0P1EQQ3NH102D0R3GNGTG0ZAL0S5T41YDB2NPOOMRMO2I2EO";
+
 
 #pragma mark - View Methods
 
@@ -298,6 +301,39 @@
             }];
 
         }
+    }
+    
+    if (self.foursquareButton.isSelected)
+    {
+        // TODO: GET FOURSQUARE TOKEN
+        NSString *fsAccessToken = @"GALILEO!";
+        NSString *shout = [NSString stringWithFormat:@"I'm at %@ and it's ", self.place.name];
+        for (NSString *hashtag in self.selectedHashtagStrings)
+        {
+            if ([shout length] + [hashtag length] < 140)
+                shout = [shout stringByAppendingFormat:@"#%@ ", hashtag];
+            
+        }
+        
+        NSString *fsURLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/checkins/add?venueId=%@&shout=%@&oauth_token=%@&client_id=%@&client_secret=%@&v=%d",
+                                 self.place.fsId,
+                                 shout,
+                                 fsAccessToken,
+                                 client_id,
+                                 client_secret,
+                                 20140306];
+        
+        fsURLString = [fsURLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        NSURLSession *session = [NSURLSession sharedSession];
+        [[session dataTaskWithURL:[NSURL URLWithString:fsURLString]
+                completionHandler:^(NSData *data,
+                                    NSURLResponse *response,
+                                    NSError *error) {
+                    // NOOP
+                }] resume];
+        
+
     }
 
     // manually segue here to PlaceDetailView
