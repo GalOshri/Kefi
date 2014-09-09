@@ -335,9 +335,12 @@
         NSError *error = nil;
         [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         
-        NSLog(@"Error: %@", error);
-        NSLog(@"Response: %@", response);
-        NSLog(@"posted to twitter");
+        if (error)
+            NSLog(@"Error: %@", error);
+        else
+            NSLog(@"Response: %@", response);
+        
+        NSLog(@"posted to fsq!");
 
     }
 
