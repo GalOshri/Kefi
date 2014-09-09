@@ -323,7 +323,7 @@
         
         NSURL *fsCheckin = [NSURL URLWithString:@"https://api.foursquare.com/v2/checkins/add"];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:fsCheckin];
-        NSString *postString = [NSString stringWithFormat:@"venueId=%@&shout=%@&oauth_token=%@&client_id=%@&client_secret=%@&v=%d", self.place.fsId, shout, fsAccessToken, client_id,client_secret, 20140306];
+        NSString *postString = [NSString stringWithFormat:@"venueId=%@&shout=%@&oauth_token=%@&client_id=%@&client_secret=%@&v=%d&m=%@", self.place.fsId, shout, fsAccessToken, client_id,client_secret, 20140806, @"swarm"];
         
         postString = [postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         postString = [postString stringByReplacingOccurrencesOfString:@"'" withString:@"%27"];
