@@ -10,6 +10,8 @@
 #import "SWRevealViewController.h"
 #import "FSOAuth.h"
 #import "KefiService.h"
+#import "KeychainItemWrapper.h"
+#import <Security/Security.h>
 @interface SocialNetworkAccountsTableViewController ()
 
 @property (strong, nonatomic) NSString *foursquareAccessCode;
@@ -17,6 +19,10 @@
 // set text fields for username and password changes
 @property UITextField *usernameTextfield;
 @property UITextField *passwordTextfield;
+
+@property (strong, nonatomic) NSString *fs_client_id;
+@property (strong, nonatomic) NSString *fs_client_secret;
+@property (strong, nonatomic) NSString *fs_client_callbackString;
 
 @end
 
@@ -40,7 +46,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.fs_client_id = @"NR2PZN1AJMC400XHN1CA1M4YZOBHMQXL0DMLUSU4TGRPJLJ5";
+    self.fs_client_secret = @"Q03E0UKCWUXUBHR4LYO3NI0B2ZTAOTTXVTJJKSZ3HUS0YCVF";
+    self.fs_client_callbackString = @"kefiCallback://foursquare";
+
    //  self.accountTypes = @[@"Facebook",@"Twitter",@"Foursquare"];
 }
     
@@ -141,14 +150,8 @@
             // Foursquare
             case 2:
             {
-                NSString *client_id = @"NR2PZN1AJMC400XHN1CA1M4YZOBHMQXL0DMLUSU4TGRPJLJ5";
-                
-                
-                // NSString *client_secret = @"Q03E0UKCWUXUBHR4LYO3NI0B2ZTAOTTXVTJJKSZ3HUS0YCVF";
-                NSString *client_callbackString = @"kefiCallback://foursquare";
-                
-                FSOAuthStatusCode statusCode = [FSOAuth authorizeUserUsingClientId:client_id
-                                                                 callbackURIString:client_callbackString
+                FSOAuthStatusCode statusCode = [FSOAuth authorizeUserUsingClientId:self.fs_client_id
+                                                                 callbackURIString:self.fs_client_callbackString
                                                               allowShowingAppStore:YES];
                 NSString *resultText = nil;
                 
@@ -255,17 +258,49 @@
     if ([[url scheme] isEqualToString:@"keficallback"]) {
         FSOAuthErrorCode errorCode;
         self.foursquareAccessCode = [FSOAuth accessCodeForFSOAuthURL:url error:&errorCode];;
-        
-        NSString *resultText = nil;
-        if (errorCode == FSOAuthErrorNone) {
-            resultText = [NSString stringWithFormat:@"Access code: %@", self.foursquareAccessCode];
-            NSLog(@"%@", self.foursquareAccessCode);
+    
+        if (errorCode == FSOAuthErrorNone)
+        {
+            // hard code FS strings.
+            // TODO: GET rid of diis, ya?
+            self.fs_client_id = @"NR2PZN1AJMC400XHN1CA1M4YZOBHMQXL0DMLUSU4TGRPJLJ5";
+            self.fs_client_secret = @"Q03E0UKCWUXUBHR4LYO3NI0B2ZTAOTTXVTJJKSZ3HUS0YCVF";
+            self.fs_client_callbackString = @"kefiCallback://foursquare";
+
+            // make call to get token
+            [FSOAuth requestAccessTokenForCode:self.foursquareAccessCode
+                                      clientId:self.fs_client_id
+                             callbackURIString:self.fs_client_callbackString
+                                  clientSecret:self.fs_client_secret
+                               completionBlock:^(NSString *authToken, BOOL requestCompleted, FSOAuthErrorCode errorCode) {
+
+                                   if (requestCompleted)
+                                   {
+                                       if (errorCode == FSOAuthErrorNone)
+                                       {
+                                           // add to keychain data
+                                            KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KefiFoursquareToken" accessGroup:nil];
+                                           
+                                           [keychain setObject:authToken forKey:(__bridge id)kSecAttrLabel];
+                                           NSLog(@"successfully saved into keychain!");
+
+                                       }
+                                       else {
+                                           NSLog(@"error when request completed: %@", [self errorMessageForCode:errorCode]);
+                                           
+                                       }
+                                   }
+                                   else {
+                                       NSLog(@"An error occurred when attempting to connect to the Foursquare server.");
+                                   }
+                               }];
         }
-        else {
-            NSLog(@"%@",[self errorMessageForCode:errorCode]);
+        else
+        {
+            NSLog(@" totally fail here: %@",[self errorMessageForCode:errorCode]);
         }
         
-        NSLog(@"%@",[NSString stringWithFormat:@"Result: %@", resultText]);
+        
     }
 }
 

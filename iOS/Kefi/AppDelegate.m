@@ -38,19 +38,6 @@
     return YES;
 }
 
-/*
- - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
-    if ([[url scheme] isEqualToString:@"https://kefiCallback"])
-    {
-        //foursquare
-        SocialNetworkAccountsTableViewController *snatvc = [[SocialNetworkAccountsTableViewController alloc] init];
-        [snatvc handleURL:url];
-    }
-    return YES;
-}
-*/
-
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
