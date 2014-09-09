@@ -10,8 +10,10 @@
 #import "Place.h"
 #import "KefiService.h"
 #import "HashtagCollectionCell.h"
+#import "KeychainItemWrapper.h"
 #import <Parse/Parse.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import <Security/Security.h>
 
 
 @interface SubmitReviewDetailView ()
@@ -41,8 +43,7 @@
 
 @implementation SubmitReviewDetailView
 
-NSString *client_id = @"T4XPWMEQAID11W0CSQLCP2P0NXGEUSDZRV4COSBJH2QEMC2O";
-NSString *client_secret = @"0P1EQQ3NH102D0R3GNGTG0ZAL0S5T41YDB2NPOOMRMO2I2EO";
+
 
 
 #pragma mark - View Methods
@@ -305,8 +306,10 @@ NSString *client_secret = @"0P1EQQ3NH102D0R3GNGTG0ZAL0S5T41YDB2NPOOMRMO2I2EO";
     
     if (self.foursquareButton.isSelected)
     {
-        // TODO: GET FOURSQUARE TOKEN
-        NSString *fsAccessToken = @"GALILEO!";
+        // Get password from keychain (if it exists)
+        KeychainItemWrapper *keychain = [[KeychainItemWrapper alloc] initWithIdentifier:@"KefiFoursquareToken" accessGroup:nil];
+        NSString *fsAccessToken = [NSString stringWithFormat:@"%@",[keychain objectForKey:(__bridge id)kSecAttrLabel]];
+        
         NSString *shout = [NSString stringWithFormat:@"I'm at %@ and it's ", self.place.name];
         for (NSString *hashtag in self.selectedHashtagStrings)
         {
@@ -315,24 +318,26 @@ NSString *client_secret = @"0P1EQQ3NH102D0R3GNGTG0ZAL0S5T41YDB2NPOOMRMO2I2EO";
             
         }
         
-        NSString *fsURLString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/checkins/add?venueId=%@&shout=%@&oauth_token=%@&client_id=%@&client_secret=%@&v=%d",
-                                 self.place.fsId,
-                                 shout,
-                                 fsAccessToken,
-                                 client_id,
-                                 client_secret,
-                                 20140306];
+        NSString *client_id = @"T4XPWMEQAID11W0CSQLCP2P0NXGEUSDZRV4COSBJH2QEMC2O";
+        NSString *client_secret = @"0P1EQQ3NH102D0R3GNGTG0ZAL0S5T41YDB2NPOOMRMO2I2EO";
         
-        fsURLString = [fsURLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSURL *fsCheckin = [NSURL URLWithString:@"https://api.foursquare.com/v2/checkins/add"];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:fsCheckin];
+        NSString *postString = [NSString stringWithFormat:@"venueId=%@&shout=%@&oauth_token=%@&client_id=%@&client_secret=%@&v=%d", self.place.fsId, shout, fsAccessToken, client_id,client_secret, 20140306];
         
-        NSURLSession *session = [NSURLSession sharedSession];
-        [[session dataTaskWithURL:[NSURL URLWithString:fsURLString]
-                completionHandler:^(NSData *data,
-                                    NSURLResponse *response,
-                                    NSError *error) {
-                    // NOOP
-                }] resume];
+        postString = [postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        postString = [postString stringByReplacingOccurrencesOfString:@"'" withString:@"%27"];
+        NSData *parameters = [postString dataUsingEncoding:NSUTF8StringEncoding];
+        [request setHTTPBody:parameters];
+        [request setHTTPMethod:@"POST"];
         
+        NSURLResponse *response = nil;
+        NSError *error = nil;
+        [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        
+        NSLog(@"Error: %@", error);
+        NSLog(@"Response: %@", response);
+        NSLog(@"posted to twitter");
 
     }
 

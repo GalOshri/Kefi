@@ -20,9 +20,9 @@
 @property UITextField *usernameTextfield;
 @property UITextField *passwordTextfield;
 
-@property (strong, nonatomic) NSString *fs_client_id;
-@property (strong, nonatomic) NSString *fs_client_secret;
-@property (strong, nonatomic) NSString *fs_client_callbackString;
+@property (strong, nonatomic) NSString *fsClientId;
+@property (strong, nonatomic) NSString *fsClientSecret;
+@property (strong, nonatomic) NSString *fsClientCallbackString;
 
 @end
 
@@ -46,9 +46,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.fs_client_id = @"NR2PZN1AJMC400XHN1CA1M4YZOBHMQXL0DMLUSU4TGRPJLJ5";
-    self.fs_client_secret = @"Q03E0UKCWUXUBHR4LYO3NI0B2ZTAOTTXVTJJKSZ3HUS0YCVF";
-    self.fs_client_callbackString = @"kefiCallback://foursquare";
+    /*self.fsClientId = @"NR2PZN1AJMC400XHN1CA1M4YZOBHMQXL0DMLUSU4TGRPJLJ5";
+    self.fsClientSecret = @"Q03E0UKCWUXUBHR4LYO3NI0B2ZTAOTTXVTJJKSZ3HUS0YCVF";
+    self.fsClientCallbackString = @"kefiCallback://foursquare";*/
 
    //  self.accountTypes = @[@"Facebook",@"Twitter",@"Foursquare"];
 }
@@ -150,8 +150,8 @@
             // Foursquare
             case 2:
             {
-                FSOAuthStatusCode statusCode = [FSOAuth authorizeUserUsingClientId:self.fs_client_id
-                                                                 callbackURIString:self.fs_client_callbackString
+                FSOAuthStatusCode statusCode = [FSOAuth authorizeUserUsingClientId:self.fsClientId
+                                                                 callbackURIString:self.fsClientCallbackString
                                                               allowShowingAppStore:YES];
                 NSString *resultText = nil;
                 
@@ -263,15 +263,15 @@
         {
             // hard code FS strings.
             // TODO: GET rid of diis, ya?
-            self.fs_client_id = @"NR2PZN1AJMC400XHN1CA1M4YZOBHMQXL0DMLUSU4TGRPJLJ5";
-            self.fs_client_secret = @"Q03E0UKCWUXUBHR4LYO3NI0B2ZTAOTTXVTJJKSZ3HUS0YCVF";
-            self.fs_client_callbackString = @"kefiCallback://foursquare";
+            self.fsClientId = @"NR2PZN1AJMC400XHN1CA1M4YZOBHMQXL0DMLUSU4TGRPJLJ5";
+            self.fsClientSecret = @"Q03E0UKCWUXUBHR4LYO3NI0B2ZTAOTTXVTJJKSZ3HUS0YCVF";
+            self.fsClientCallbackString = @"kefiCallback://foursquare";
 
             // make call to get token
             [FSOAuth requestAccessTokenForCode:self.foursquareAccessCode
-                                      clientId:self.fs_client_id
-                             callbackURIString:self.fs_client_callbackString
-                                  clientSecret:self.fs_client_secret
+                                      clientId:self.fsClientId
+                             callbackURIString:self.fsClientCallbackString
+                                  clientSecret:self.fsClientSecret
                                completionBlock:^(NSString *authToken, BOOL requestCompleted, FSOAuthErrorCode errorCode) {
 
                                    if (requestCompleted)
