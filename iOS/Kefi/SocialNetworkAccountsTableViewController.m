@@ -46,9 +46,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    /*self.fsClientId = @"NR2PZN1AJMC400XHN1CA1M4YZOBHMQXL0DMLUSU4TGRPJLJ5";
-    self.fsClientSecret = @"Q03E0UKCWUXUBHR4LYO3NI0B2ZTAOTTXVTJJKSZ3HUS0YCVF";
-    self.fsClientCallbackString = @"kefiCallback://foursquare";*/
+    self.fsClientId = @"NR2PZN1AJMC400XHN1CA1M4YZOBHMQXL0DMLUSU4TGRPJLJ5";
+    self.fsClientCallbackString = @"kefiCallback://foursquare";
+    //self.fsClientSecret = @"Q03E0UKCWUXUBHR4LYO3NI0B2ZTAOTTXVTJJKSZ3HUS0YCVF";
+
 
    //  self.accountTypes = @[@"Facebook",@"Twitter",@"Foursquare"];
 }
@@ -254,7 +255,6 @@
 
 
 - (void)handleURL:(NSURL *)url {
-    NSLog(@"%@", [url scheme]);
     if ([[url scheme] isEqualToString:@"keficallback"]) {
         FSOAuthErrorCode errorCode;
         self.foursquareAccessCode = [FSOAuth accessCodeForFSOAuthURL:url error:&errorCode];;
@@ -296,9 +296,7 @@
                                }];
         }
         else
-        {
             NSLog(@" totally fail here: %@",[self errorMessageForCode:errorCode]);
-        }
         
         
     }
