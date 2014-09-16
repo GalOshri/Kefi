@@ -59,8 +59,8 @@
         self.sentimentLevel -= 1;
 
     // uicollectionview background color
-    self.hashtagView.backgroundColor = [UIColor colorWithRed:32/256 green:32/256 blue:32/256 alpha:1.0];
-    self.view.backgroundColor = [UIColor colorWithRed:32/256 green:32/256 blue:32/256 alpha:1.0];
+    self.hashtagView.backgroundColor = [UIColor colorWithRed:32.0/256 green:32.0/256 blue:32.0/256 alpha:1.0];
+    self.view.backgroundColor = [UIColor colorWithRed:32.0/256 green:32.0/256 blue:32.0/256 alpha:1.0];
 
     self.hashtags = [[NSMutableArray alloc] init];
     for (Hashtag *hashtag in self.place.hashtagList)

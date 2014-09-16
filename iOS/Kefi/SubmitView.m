@@ -105,7 +105,7 @@ NSString *energyLabelDefault;
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self.view setBackgroundColor:[UIColor colorWithRed:32/256 green:32/256 blue:32/256 alpha:1.0]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:32.0/256 green:32.0/256 blue:32.0/256 alpha:1.0]];
 
     // set height of drawView
     
@@ -116,7 +116,7 @@ NSString *energyLabelDefault;
     
     // take care of self.drawView
     CGRect frame = CGRectMake(self.drawView.frame.origin.x, self.drawView.frame.origin.y, screenWidth, screenHeight - self.drawView.frame.origin.y);
-    self.drawView.backgroundColor = [UIColor colorWithRed:32/256 green:32/256 blue:32/256 alpha:1.0];
+    self.drawView.backgroundColor = [UIColor colorWithRed:32.0/256 green:32.0/256 blue:32.0/256 alpha:1.0];
     [self.drawView setFrame:frame];
     
     cellWidth = (self.drawView.frame.size.width) / numHorizontalCells;

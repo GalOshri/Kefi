@@ -82,7 +82,7 @@
 {
     [super viewDidLoad];
     
-    [self.view setBackgroundColor:[UIColor colorWithRed:32/256 green:32/256 blue:32/256 alpha:1.0]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:32.0/256 green:32.0/256 blue:32.0/256 alpha:1.0]];
     
     
     //sets name to view?
@@ -111,7 +111,7 @@
 
 - (void)viewDidLayoutSubviews
 {
-    [self.hashtagView setBackgroundColor:[UIColor colorWithRed:32/256 green:32/256 blue:32/256 alpha:1.0]];
+    [self.hashtagView setBackgroundColor:[UIColor colorWithRed:32.0/256 green:32.0/256 blue:32.0/256 alpha:1.0]];
     
     if ([KefiService isFavorite:self.place.fsId])
     {
