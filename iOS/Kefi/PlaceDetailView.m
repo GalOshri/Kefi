@@ -88,9 +88,6 @@
     //sets name to view?
     [self.navigationController.viewControllers[self.navigationController.viewControllers.count -1] setTitle:self.place.name];
     
-    //set some more variables here
-    self.placeAddress.text = self.place.address;
-    
     self.hashtagView.backgroundColor = [UIColor whiteColor];
     
     //map rounded edges
@@ -143,11 +140,16 @@
     else
         [self.hashtagView setHidden:NO];
     
-    //deal with UI showing crossStreets if not null
+    //deal with UI showing crossStreets + addrees  if not null
     if (![self.place.crossStreet isEqual:@"(null)"])
         self.placeCrossStreets.text = self.place.crossStreet;
     else
         self.placeCrossStreets.hidden = YES;
+    
+    if (![self.place.address isEqual:@"(null)"])
+        self.placeAddress.text = self.place.address;
+    else
+        [self.placeAddress setHidden:YES];
     
     //set venue Type and image type
     self.venueType.text = self.place.categoryType;
