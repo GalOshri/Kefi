@@ -56,7 +56,7 @@ Parse.Cloud.job("UpdatePlaces", function(request, status) {
 	      }
 
 	      place.set("hashtagList",newTagsArray);
-  		}
+  	  }
 
   		// Update Sentiment and Energy if this is old
 

@@ -10,29 +10,29 @@
 	<string>Kefi</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>752337F1-FF33-4AD4-BC6A-CD3C5BCD9991</key>
+		<key>8FC14EF6844D2E77511DE35B92FCACC30B198F51</key>
 		<string>https://github.com/GalOshri/Kefi.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>iOS/Kefi.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>752337F1-FF33-4AD4-BC6A-CD3C5BCD9991</key>
+		<key>8FC14EF6844D2E77511DE35B92FCACC30B198F51</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/GalOshri/Kefi.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>752337F1-FF33-4AD4-BC6A-CD3C5BCD9991</string>
+	<string>8FC14EF6844D2E77511DE35B92FCACC30B198F51</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>752337F1-FF33-4AD4-BC6A-CD3C5BCD9991</string>
+			<string>8FC14EF6844D2E77511DE35B92FCACC30B198F51</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Kefi</string>
 		</dict>
