@@ -283,5 +283,26 @@ Parse.Cloud.define("getBetaNews", function(request, response) {
 });
 
 
+/******
+	Store emails for Android customers on Ripple
+*******/
+Parse.Cloud.define("submitEmailAndroid", function(request, response) {
+	// grab email
+	var email = request.params.email;
+	console.log("hi. Email is " + request.params.email);
+
+	// store 
+	var Android_Email = Parse.Object.extend("Android_Email");
+	var newEmail = new Android_Email;
+
+	newEmail.set("email", email);
+
+	// save
+	newEmail.save();
+
+	response.success("successfully saved " + email);
+});
+
+
 
 

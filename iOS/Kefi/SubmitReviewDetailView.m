@@ -85,12 +85,13 @@
     [[self.foursquareButton layer] setMasksToBounds:YES];
     [[self. facebookButton layer] setCornerRadius:2];
     [[self.facebookButton layer] setMasksToBounds:YES];
+    
+    self.firstRun = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.firstRun = YES;
 }
 
 - (void)viewDidLayoutSubviews{
@@ -214,7 +215,7 @@
 #pragma mark - Submission methods
 - (IBAction)submitReview:(UIButton *)sender {
      bool isExisting;
-    
+    NSLog(@"wat");
     self.selectedHashtagStrings = [[NSMutableArray alloc] init];
     for (NSIndexPath *indexPath in [self.hashtagView indexPathsForSelectedItems])
     {
@@ -264,6 +265,7 @@
             NSString *postString = [NSString stringWithFormat:@"status=%@", tweet];
             postString = [postString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             postString = [postString stringByReplacingOccurrencesOfString:@"'" withString:@"%27"];
+
             NSData *parameters = [postString dataUsingEncoding:NSUTF8StringEncoding];
             [request setHTTPBody:parameters];
             [request setHTTPMethod:@"POST"];
@@ -345,7 +347,7 @@
     }
 
     // manually segue here to PlaceDetailView
-    [self performSegueWithIdentifier:@"UnwindDamnit" sender:self];
+    // [self performSegueWithIdentifier:@"UnwindDamnit" sender:self];
 }
 
 #pragma mark Collection View Methods

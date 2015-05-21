@@ -420,7 +420,7 @@
         [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:currentLocation withSpinner:self.spinner];
     }
     
-    [locationManager stopUpdatingLocation];
+    [manager stopUpdatingLocation];
 }
 
 
@@ -494,6 +494,7 @@
             if (locationManager.location != nil)
                 [KefiService PopulatePlaceList:self.placeList withTable:self.tableView withLocation:locationManager.location withSpinner:self.spinner];
             else
+                [locationManager requestWhenInUseAuthorization];
                 [locationManager startUpdatingLocation];
             break;
         // Favorites

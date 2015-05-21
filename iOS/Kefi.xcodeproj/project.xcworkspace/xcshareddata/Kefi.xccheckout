@@ -14,7 +14,7 @@
 		<string>https://github.com/GalOshri/Kefi.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>iOS/Kefi.xcodeproj/project.xcworkspace</string>
+	<string>iOS/Kefi.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>8FC14EF6844D2E77511DE35B92FCACC30B198F51</key>

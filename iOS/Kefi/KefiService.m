@@ -280,11 +280,6 @@ int radius = 1000;
             
             [spinner stopAnimating];
             [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-            
-        
-            
-            
-            
         }
         
         else {
